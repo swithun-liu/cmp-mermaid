@@ -1,0 +1,2608 @@
+{
+  "schemaVersion": 1,
+  "renderer": "native",
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "width": 1325.625,
+    "height": 562,
+    "background": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
+  },
+  "title": null,
+  "accessibilityTitle": null,
+  "accessibilityDescription": null,
+  "elements": [
+    {
+      "order": 0,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idNotification-Template-1",
+      "edgeId": "idNotification-Template-1",
+      "bounds": {
+        "x": 129,
+        "y": 144,
+        "width": 0,
+        "height": 66
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 129,
+        "y": 204
+      },
+      "routePoints": [
+        {
+          "x": 129,
+          "y": 144
+        },
+        {
+          "x": 129,
+          "y": 177
+        },
+        {
+          "x": 129,
+          "y": 210
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 129,
+          "y": 144
+        },
+        {
+          "x": 129,
+          "y": 210
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "D"
+      ],
+      "sourcePortSide": "Bottom",
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 1,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idRouter-PreferenceService-2",
+      "edgeId": "idRouter-PreferenceService-2",
+      "bounds": {
+        "x": 451.25,
+        "y": 131,
+        "width": 1.7648621,
+        "height": 92
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 451.25,
+        "y": 217
+      },
+      "routePoints": [
+        {
+          "x": 453.01486,
+          "y": 131
+        },
+        {
+          "x": 451.25,
+          "y": 177
+        },
+        {
+          "x": 451.25,
+          "y": 223
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 453.01486,
+          "y": 131
+        },
+        {
+          "x": 451.25,
+          "y": 177
+        },
+        {
+          "x": 451.25,
+          "y": 223
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 451.25,
+          "y": 177
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 2,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idRouter-Channel-3",
+      "edgeId": "idRouter-Channel-3",
+      "bounds": {
+        "x": 589.625,
+        "y": 116.41502,
+        "width": 201.625,
+        "height": 98.58498
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 791.25,
+        "y": 209
+      },
+      "routePoints": [
+        {
+          "x": 589.625,
+          "y": 116.41502
+        },
+        {
+          "x": 791.25,
+          "y": 177
+        },
+        {
+          "x": 791.25,
+          "y": 215
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 589.625,
+          "y": 116.41502
+        },
+        {
+          "x": 791.25,
+          "y": 177
+        },
+        {
+          "x": 791.25,
+          "y": 215
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 791.25,
+          "y": 177
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 3,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idChannel-EmailChannel-4",
+      "edgeId": "idChannel-EmailChannel-4",
+      "bounds": {
+        "x": 295.125,
+        "y": 306.2464,
+        "width": 357.375,
+        "height": 138.7536
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Dashed",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassExtension",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 635.59674,
+        "y": 309.68753
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 652.5,
+          "y": 306.2464
+        },
+        {
+          "x": 295.125,
+          "y": 379
+        },
+        {
+          "x": 295.125,
+          "y": 445
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 652.5,
+          "y": 306.2464
+        },
+        {
+          "x": 295.125,
+          "y": 379
+        },
+        {
+          "x": 295.125,
+          "y": 445
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 295.125,
+          "y": 379
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 4,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idChannel-PushChannel-5",
+      "edgeId": "idChannel-PushChannel-5",
+      "bounds": {
+        "x": 462.125,
+        "y": 320.5788,
+        "width": 190.375,
+        "height": 124.4212
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Dashed",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassExtension",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 636.00903,
+        "y": 325.63947
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 652.5,
+          "y": 320.5788
+        },
+        {
+          "x": 462.125,
+          "y": 379
+        },
+        {
+          "x": 462.125,
+          "y": 445
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 652.5,
+          "y": 320.5788
+        },
+        {
+          "x": 462.125,
+          "y": 379
+        },
+        {
+          "x": 462.125,
+          "y": 445
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 462.125,
+          "y": 379
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 5,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idChannel-SmsChannel-6",
+      "edgeId": "idChannel-SmsChannel-6",
+      "bounds": {
+        "x": 625.125,
+        "y": 341,
+        "width": 62.502502,
+        "height": 104
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Dashed",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassExtension",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 672.8879,
+        "y": 349.96133
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 687.6275,
+          "y": 341
+        },
+        {
+          "x": 625.125,
+          "y": 379
+        },
+        {
+          "x": 625.125,
+          "y": 445
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 687.6275,
+          "y": 341
+        },
+        {
+          "x": 625.125,
+          "y": 379
+        },
+        {
+          "x": 625.125,
+          "y": 445
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 625.125,
+          "y": 379
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 6,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idChannel-RetryPolicy-7",
+      "edgeId": "idChannel-RetryPolicy-7",
+      "bounds": {
+        "x": 831.09283,
+        "y": 341,
+        "width": 24.032166,
+        "height": 82
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 855.125,
+        "y": 417
+      },
+      "routePoints": [
+        {
+          "x": 831.09283,
+          "y": 341
+        },
+        {
+          "x": 855.125,
+          "y": 379
+        },
+        {
+          "x": 855.125,
+          "y": 423
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 831.09283,
+          "y": 341
+        },
+        {
+          "x": 855.125,
+          "y": 379
+        },
+        {
+          "x": 855.125,
+          "y": 423
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 855.125,
+          "y": 379
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 7,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idChannel-DeliveryStore-8",
+      "edgeId": "idChannel-DeliveryStore-8",
+      "bounds": {
+        "x": 930,
+        "y": 314.62527,
+        "width": 243.875,
+        "height": 97.374725
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 1173.875,
+        "y": 406
+      },
+      "routePoints": [
+        {
+          "x": 930,
+          "y": 314.62527
+        },
+        {
+          "x": 1173.875,
+          "y": 379
+        },
+        {
+          "x": 1173.875,
+          "y": 412
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 930,
+          "y": 314.62527
+        },
+        {
+          "x": 1173.875,
+          "y": 379
+        },
+        {
+          "x": 1173.875,
+          "y": 412
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 1173.875,
+          "y": 379
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 8,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idNotification-Template-1-label-background",
+      "bounds": {
+        "x": 84,
+        "y": 166,
+        "width": 90,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 9,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idRouter-PreferenceService-2-label-background",
+      "bounds": {
+        "x": 423.25,
+        "y": 166,
+        "width": 56,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 10,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idRouter-Channel-3-label-background",
+      "bounds": {
+        "x": 763.25,
+        "y": 166,
+        "width": 56,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 11,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idChannel-RetryPolicy-7-label-background",
+      "bounds": {
+        "x": 827.625,
+        "y": 368,
+        "width": 55,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 12,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idChannel-DeliveryStore-8-label-background",
+      "bounds": {
+        "x": 1143.875,
+        "y": 368,
+        "width": 60,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 13,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 90,
+        "y": 169,
+        "width": 78,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 90,
+          "y": 169
+        },
+        {
+          "x": 168,
+          "y": 169
+        },
+        {
+          "x": 168,
+          "y": 185
+        },
+        {
+          "x": 90,
+          "y": 185
+        }
+      ],
+      "text": "renders with",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 14,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 429.25,
+        "y": 169,
+        "width": 44,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 429.25,
+          "y": 169
+        },
+        {
+          "x": 473.25,
+          "y": 169
+        },
+        {
+          "x": 473.25,
+          "y": 185
+        },
+        {
+          "x": 429.25,
+          "y": 185
+        }
+      ],
+      "text": "checks",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 15,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 769.25,
+        "y": 169,
+        "width": 44,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 769.25,
+          "y": 169
+        },
+        {
+          "x": 813.25,
+          "y": 169
+        },
+        {
+          "x": 813.25,
+          "y": 185
+        },
+        {
+          "x": 769.25,
+          "y": 185
+        }
+      ],
+      "text": "selects",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 16,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 833.625,
+        "y": 371,
+        "width": 43,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 833.625,
+          "y": 371
+        },
+        {
+          "x": 876.625,
+          "y": 371
+        },
+        {
+          "x": 876.625,
+          "y": 387
+        },
+        {
+          "x": 833.625,
+          "y": 387
+        }
+      ],
+      "text": "follows",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 17,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1149.875,
+        "y": 371,
+        "width": 48,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1149.875,
+          "y": 371
+        },
+        {
+          "x": 1197.875,
+          "y": 371
+        },
+        {
+          "x": 1197.875,
+          "y": 387
+        },
+        {
+          "x": 1149.875,
+          "y": 387
+        }
+      ],
+      "text": "records",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 18,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Notification",
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 242,
+        "height": 136
+      },
+      "fill": {
+        "r": 253,
+        "g": 244,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 232,
+        "g": 121,
+        "b": 249,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 8,
+          "y": 8
+        },
+        {
+          "x": 250,
+          "y": 8
+        },
+        {
+          "x": 250,
+          "y": 144
+        },
+        {
+          "x": 8,
+          "y": 144
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 19,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Template",
+      "bounds": {
+        "x": 8,
+        "y": 210,
+        "width": 242,
+        "height": 136
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 250,
+        "a": 255
+      },
+      "stroke": {
+        "r": 45,
+        "g": 212,
+        "b": 191,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 8,
+          "y": 210
+        },
+        {
+          "x": 250,
+          "y": 210
+        },
+        {
+          "x": 250,
+          "y": 346
+        },
+        {
+          "x": 8,
+          "y": 346
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 20,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "PreferenceService",
+      "bounds": {
+        "x": 300,
+        "y": 223,
+        "width": 302.5,
+        "height": 110
+      },
+      "fill": {
+        "r": 255,
+        "g": 247,
+        "b": 237,
+        "a": 255
+      },
+      "stroke": {
+        "r": 251,
+        "g": 146,
+        "b": 60,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 300,
+          "y": 223
+        },
+        {
+          "x": 602.5,
+          "y": 223
+        },
+        {
+          "x": 602.5,
+          "y": 333
+        },
+        {
+          "x": 300,
+          "y": 333
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 21,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Router",
+      "bounds": {
+        "x": 320.625,
+        "y": 21,
+        "width": 269,
+        "height": 110
+      },
+      "fill": {
+        "r": 236,
+        "g": 254,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 34,
+        "g": 211,
+        "b": 238,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 320.625,
+          "y": 21
+        },
+        {
+          "x": 589.625,
+          "y": 21
+        },
+        {
+          "x": 589.625,
+          "y": 131
+        },
+        {
+          "x": 320.625,
+          "y": 131
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 22,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Channel",
+      "bounds": {
+        "x": 652.5,
+        "y": 215,
+        "width": 277.5,
+        "height": 126
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 244,
+        "a": 255
+      },
+      "stroke": {
+        "r": 74,
+        "g": 222,
+        "b": 128,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 652.5,
+          "y": 215
+        },
+        {
+          "x": 930,
+          "y": 215
+        },
+        {
+          "x": 930,
+          "y": 341
+        },
+        {
+          "x": 652.5,
+          "y": 341
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 23,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "EmailChannel",
+      "bounds": {
+        "x": 236.125,
+        "y": 445,
+        "width": 118,
+        "height": 76
+      },
+      "fill": {
+        "r": 245,
+        "g": 243,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 167,
+        "g": 139,
+        "b": 250,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 236.125,
+          "y": 445
+        },
+        {
+          "x": 354.125,
+          "y": 445
+        },
+        {
+          "x": 354.125,
+          "y": 521
+        },
+        {
+          "x": 236.125,
+          "y": 521
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 24,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "PushChannel",
+      "bounds": {
+        "x": 404.125,
+        "y": 445,
+        "width": 116,
+        "height": 76
+      },
+      "fill": {
+        "r": 254,
+        "g": 242,
+        "b": 242,
+        "a": 255
+      },
+      "stroke": {
+        "r": 248,
+        "g": 113,
+        "b": 113,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 404.125,
+          "y": 445
+        },
+        {
+          "x": 520.125,
+          "y": 445
+        },
+        {
+          "x": 520.125,
+          "y": 521
+        },
+        {
+          "x": 404.125,
+          "y": 521
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 25,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "SmsChannel",
+      "bounds": {
+        "x": 570.125,
+        "y": 445,
+        "width": 110,
+        "height": 76
+      },
+      "fill": {
+        "r": 254,
+        "g": 252,
+        "b": 232,
+        "a": 255
+      },
+      "stroke": {
+        "r": 250,
+        "g": 204,
+        "b": 21,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 570.125,
+          "y": 445
+        },
+        {
+          "x": 680.125,
+          "y": 445
+        },
+        {
+          "x": 680.125,
+          "y": 521
+        },
+        {
+          "x": 570.125,
+          "y": 521
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 26,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "RetryPolicy",
+      "bounds": {
+        "x": 730.125,
+        "y": 423,
+        "width": 250,
+        "height": 120
+      },
+      "fill": {
+        "r": 238,
+        "g": 242,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 129,
+        "g": 140,
+        "b": 248,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 730.125,
+          "y": 423
+        },
+        {
+          "x": 980.125,
+          "y": 423
+        },
+        {
+          "x": 980.125,
+          "y": 543
+        },
+        {
+          "x": 730.125,
+          "y": 543
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 27,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "DeliveryStore",
+      "bounds": {
+        "x": 1030.125,
+        "y": 412,
+        "width": 287.5,
+        "height": 142
+      },
+      "fill": {
+        "r": 247,
+        "g": 254,
+        "b": 231,
+        "a": 255
+      },
+      "stroke": {
+        "r": 163,
+        "g": 230,
+        "b": 53,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 1030.125,
+          "y": 412
+        },
+        {
+          "x": 1317.625,
+          "y": 412
+        },
+        {
+          "x": 1317.625,
+          "y": 554
+        },
+        {
+          "x": 1030.125,
+          "y": 554
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 28,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 89,
+        "y": 20,
+        "width": 80,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 89,
+          "y": 20
+        },
+        {
+          "x": 169,
+          "y": 20
+        },
+        {
+          "x": 169,
+          "y": 36
+        },
+        {
+          "x": 89,
+          "y": 36
+        }
+      ],
+      "text": "Notification",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 29,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 60,
+        "width": 105,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 60
+        },
+        {
+          "x": 129,
+          "y": 60
+        },
+        {
+          "x": 129,
+          "y": 76
+        },
+        {
+          "x": 24,
+          "y": 76
+        }
+      ],
+      "text": "+NotificationId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 30,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 76,
+        "width": 125,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 76
+        },
+        {
+          "x": 149,
+          "y": 76
+        },
+        {
+          "x": 149,
+          "y": 92
+        },
+        {
+          "x": 24,
+          "y": 92
+        }
+      ],
+      "text": "+Recipient recipient",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 31,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 92,
+        "width": 178,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 92
+        },
+        {
+          "x": 202,
+          "y": 92
+        },
+        {
+          "x": 202,
+          "y": 108
+        },
+        {
+          "x": 24,
+          "y": 108
+        }
+      ],
+      "text": "+Map<String,Any> variables",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 32,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 98,
+        "y": 222,
+        "width": 62,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 98,
+          "y": 222
+        },
+        {
+          "x": 160,
+          "y": 222
+        },
+        {
+          "x": 160,
+          "y": 238
+        },
+        {
+          "x": 98,
+          "y": 238
+        }
+      ],
+      "text": "Template",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 33,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 262,
+        "width": 94,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 262
+        },
+        {
+          "x": 118,
+          "y": 262
+        },
+        {
+          "x": 118,
+          "y": 278
+        },
+        {
+          "x": 24,
+          "y": 278
+        }
+      ],
+      "text": "+TemplateId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 34,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 278,
+        "width": 91,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 278
+        },
+        {
+          "x": 115,
+          "y": 278
+        },
+        {
+          "x": 115,
+          "y": 294
+        },
+        {
+          "x": 24,
+          "y": 294
+        }
+      ],
+      "text": "+Locale locale",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 35,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 318,
+        "width": 187,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 318
+        },
+        {
+          "x": 211,
+          "y": 318
+        },
+        {
+          "x": 211,
+          "y": 334
+        },
+        {
+          "x": 24,
+          "y": 334
+        }
+      ],
+      "text": "+render(variables) : Message",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 36,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 389.75,
+        "y": 235,
+        "width": 123,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 389.75,
+          "y": 235
+        },
+        {
+          "x": 512.75,
+          "y": 235
+        },
+        {
+          "x": 512.75,
+          "y": 251
+        },
+        {
+          "x": 389.75,
+          "y": 251
+        }
+      ],
+      "text": "PreferenceService",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 37,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 316,
+        "y": 299,
+        "width": 217,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 316,
+          "y": 299
+        },
+        {
+          "x": 533,
+          "y": 299
+        },
+        {
+          "x": 533,
+          "y": 315
+        },
+        {
+          "x": 316,
+          "y": 315
+        }
+      ],
+      "text": "+allowed(recipient, channel) : bool",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 38,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 432.125,
+        "y": 33,
+        "width": 46,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 432.125,
+          "y": 33
+        },
+        {
+          "x": 478.125,
+          "y": 33
+        },
+        {
+          "x": 478.125,
+          "y": 49
+        },
+        {
+          "x": 432.125,
+          "y": 49
+        }
+      ],
+      "text": "Router",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 39,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 336.625,
+        "y": 97,
+        "width": 222,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 336.625,
+          "y": 97
+        },
+        {
+          "x": 558.625,
+          "y": 97
+        },
+        {
+          "x": 558.625,
+          "y": 113
+        },
+        {
+          "x": 336.625,
+          "y": 113
+        }
+      ],
+      "text": "+route(notification) : List<Channel>",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 40,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 755.75,
+        "y": 227,
+        "width": 71,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 755.75,
+          "y": 227
+        },
+        {
+          "x": 826.75,
+          "y": 227
+        },
+        {
+          "x": 826.75,
+          "y": 243
+        },
+        {
+          "x": 755.75,
+          "y": 243
+        }
+      ],
+      "text": "«interface»",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 41,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 762.75,
+        "y": 243,
+        "width": 57,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 762.75,
+          "y": 243
+        },
+        {
+          "x": 819.75,
+          "y": 243
+        },
+        {
+          "x": 819.75,
+          "y": 259
+        },
+        {
+          "x": 762.75,
+          "y": 259
+        }
+      ],
+      "text": "Channel",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 42,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 668.5,
+        "y": 307,
+        "width": 218,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 668.5,
+          "y": 307
+        },
+        {
+          "x": 886.5,
+          "y": 307
+        },
+        {
+          "x": 886.5,
+          "y": 323
+        },
+        {
+          "x": 668.5,
+          "y": 323
+        }
+      ],
+      "text": "+send(message) : DeliveryReceipt",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 43,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 248.125,
+        "y": 457,
+        "width": 94,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 248.125,
+          "y": 457
+        },
+        {
+          "x": 342.125,
+          "y": 457
+        },
+        {
+          "x": 342.125,
+          "y": 473
+        },
+        {
+          "x": 248.125,
+          "y": 473
+        }
+      ],
+      "text": "EmailChannel",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 44,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 416.125,
+        "y": 457,
+        "width": 92,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 416.125,
+          "y": 457
+        },
+        {
+          "x": 508.125,
+          "y": 457
+        },
+        {
+          "x": 508.125,
+          "y": 473
+        },
+        {
+          "x": 416.125,
+          "y": 473
+        }
+      ],
+      "text": "PushChannel",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 45,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 582.125,
+        "y": 457,
+        "width": 86,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 582.125,
+          "y": 457
+        },
+        {
+          "x": 668.125,
+          "y": 457
+        },
+        {
+          "x": 668.125,
+          "y": 473
+        },
+        {
+          "x": 582.125,
+          "y": 473
+        }
+      ],
+      "text": "SmsChannel",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 46,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 816.125,
+        "y": 435,
+        "width": 78,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 816.125,
+          "y": 435
+        },
+        {
+          "x": 894.125,
+          "y": 435
+        },
+        {
+          "x": 894.125,
+          "y": 451
+        },
+        {
+          "x": 816.125,
+          "y": 451
+        }
+      ],
+      "text": "RetryPolicy",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 47,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 746.125,
+        "y": 475,
+        "width": 110,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 746.125,
+          "y": 475
+        },
+        {
+          "x": 856.125,
+          "y": 475
+        },
+        {
+          "x": 856.125,
+          "y": 491
+        },
+        {
+          "x": 746.125,
+          "y": 491
+        }
+      ],
+      "text": "+int maxAttempts",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 48,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 746.125,
+        "y": 515,
+        "width": 187,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 746.125,
+          "y": 515
+        },
+        {
+          "x": 933.125,
+          "y": 515
+        },
+        {
+          "x": 933.125,
+          "y": 531
+        },
+        {
+          "x": 746.125,
+          "y": 531
+        }
+      ],
+      "text": "+Duration nextDelay(attempt)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 49,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1138.375,
+        "y": 424,
+        "width": 71,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1138.375,
+          "y": 424
+        },
+        {
+          "x": 1209.375,
+          "y": 424
+        },
+        {
+          "x": 1209.375,
+          "y": 440
+        },
+        {
+          "x": 1138.375,
+          "y": 440
+        }
+      ],
+      "text": "«interface»",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 50,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1128.375,
+        "y": 440,
+        "width": 91,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1128.375,
+          "y": 440
+        },
+        {
+          "x": 1219.375,
+          "y": 440
+        },
+        {
+          "x": 1219.375,
+          "y": 456
+        },
+        {
+          "x": 1128.375,
+          "y": 456
+        }
+      ],
+      "text": "DeliveryStore",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 51,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1046.125,
+        "y": 504,
+        "width": 91,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1046.125,
+          "y": 504
+        },
+        {
+          "x": 1137.125,
+          "y": 504
+        },
+        {
+          "x": 1137.125,
+          "y": 520
+        },
+        {
+          "x": 1046.125,
+          "y": 520
+        }
+      ],
+      "text": "+save(receipt)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 52,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1046.125,
+        "y": 520,
+        "width": 218,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1046.125,
+          "y": 520
+        },
+        {
+          "x": 1264.125,
+          "y": 520
+        },
+        {
+          "x": 1264.125,
+          "y": 536
+        },
+        {
+          "x": 1046.125,
+          "y": 536
+        }
+      ],
+      "text": "+pending() : List<DeliveryReceipt>",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    }
+  ],
+  "outcome": "success",
+  "auditCaseId": "rc_class_notification_platform",
+  "auditSource": "production",
+  "sourceSha256": "0bf05ef0c2a96b58122ff20620857f63701e1bb5f23fd2c63a31b2c0974a0e17"
+}

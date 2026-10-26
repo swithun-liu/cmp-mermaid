@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "caseId": "rc_class_commerce_domain",
+  "before": {
+    "nativeOccludedTextCount": 0,
+    "officialOccludedTextCount": 1,
+    "mismatches": [
+      {
+        "textOccurrence": "0..*#0",
+        "nativeLaterOpaqueOverlaps": [],
+        "officialLaterOpaqueOverlaps": [
+          0.289
+        ]
+      }
+    ],
+    "ratioDifferences": []
+  },
+  "after": {
+    "nativeOccludedTextCount": 1,
+    "officialOccludedTextCount": 1,
+    "mismatches": [],
+    "ratioDifferences": []
+  },
+  "referenceUsesTextContentRects": true,
+  "beforeNativePlatform": "CI Linux Web",
+  "afterNativePlatform": "Local macOS Web",
+  "limitations": "Absolute paths are not compared across those platform font metrics"
+}

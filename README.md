@@ -79,11 +79,12 @@ geometry gates.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| Current 0.1.20 JVM tests | Core: 1,105 passed, 0 failed; Compose: 75 passed, 0 failed; unchanged tests verified from Gradle cache |
+| Current 0.1.20 JVM tests | Core: 1,108 passed, 0 failed; Compose: 75 passed, 0 failed |
 | Current container-width audit | 2 families, 3 unique sources, 9 configuration scenarios, 18 screenshots and 3 contact sheets; 0 Pass / 9 Review / 0 Fail |
-| Unchanged edge-label implementation, tested at 0.1.19 on Wasm | Core: 1,103 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
-| Unchanged edge-label implementation, tested at 0.1.19 on iOS Simulator Arm64 | Core: 1,103 passed, 0 failed; Compose: 76 passed, 0 failed |
-| Current SVG rectangle audit | 77 audit tests passed; one public source, two screenshots, matching occlusion; visual Review for independent geometry/raster differences |
+| Current 0.1.20 Wasm tests | Core: 1,106 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
+| Current 0.1.20 iOS Simulator Arm64 tests | Core: 1,106 passed, 0 failed; Compose: 76 passed, 0 failed |
+| Current SVG rectangle / text-content audit | 79 audit tests passed; one rectangle reproduction and 13 fresh Class sources; genuine occlusion differences remain failures |
+| Current Class terminal audit | 13 sources, 26 screenshots, one contact sheet; detail/geometry/topology each pass 13; overall 13 Review for text/node and absolute endpoint differences |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed all 441 cases; Web retains the prior 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -94,6 +95,7 @@ geometry gates.
 | **[Stability test report](docs/stability-report.md)** | Current decision, visual evidence, tests, soak metrics, runtime load evidence, and reproduction steps |
 | **[0.1.20 edge-label repair](docs/label-compatibility-report.md)** | Final SVG-path label checks and upstream polyline midpoint semantics; unchanged 32-source evidence captured at 0.1.19 |
 | **[SVG rectangle occlusion audit](docs/rectangle-occlusion-audit.md)** | Recognizes Official's filled rectangle paths and preserves matching label occlusion; separate one-source reproduction |
+| **[0.1.20 Class terminal repair](docs/class-terminal-report.md)** | Full upstream terminal calculation, original occlusion and actual HTML text coverage; 13 fresh source-bound pairs |
 | **[0.1.18 container-width repair](docs/container-width-report.md)** | Fresh Gantt parent-width, rounded-coordinate and label-side checks; same-config Mindmap paint and topology, with remaining visual Review findings |
 | **[All 8,448 Native/Official independent scenarios](docs/assets/stability-report/visual-parity-evidence.md)** | 528 paged contact sheets, with 16 different same-source scenarios per page |
 | **[Source-mutation Native/Official evidence](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 8,448 AI-like mutations from byte-distinct stress bases derived from 441 structural scenarios, 16,896 screenshots, and 528 comparison sheets |

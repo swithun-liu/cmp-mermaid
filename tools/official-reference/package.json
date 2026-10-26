@@ -85,7 +85,7 @@
     "test:visual-stress-corpus": "node --test visual-stress-corpus.test.mjs",
     "test:visual-structure-corpus": "node --test visual-structure-corpus.test.mjs",
     "test:visual-structure-official": "node validate-visual-structure-official.mjs",
-    "test:detail-audit": "node --test detail-audit-core.test.mjs detail-audit-policy.test.mjs geometry-audit-policy.test.mjs partial-audit-report.test.mjs topology-audit-core.test.mjs svg-rectangle-path.test.mjs",
+    "test:detail-audit": "node --test detail-audit-core.test.mjs detail-audit-policy.test.mjs geometry-audit-policy.test.mjs partial-audit-report.test.mjs topology-audit-core.test.mjs svg-rectangle-path.test.mjs text-content-occlusion.test.mjs",
     "test:web-load": "node run-web-load-test.mjs",
     "generate:marked-fixtures": "node generate-marked-fixtures.mjs",
     "generate:marked-rules": "node generate-marked-rules.mjs",

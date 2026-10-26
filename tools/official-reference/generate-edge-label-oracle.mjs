@@ -13,13 +13,18 @@ if (JSON.parse(fs.readFileSync(path.join(root, 'package.json'))).version !== '12
 const source = fs.readFileSync(path.join(root, 'src/utils.ts'), 'utf8');
 const bodies = [
   source.slice(source.indexOf('function distance('), source.indexOf('const calcCardinalityPosition')),
+  source.slice(source.indexOf('function calcTerminalLabelPosition('),
+    source.indexOf('\n/**', source.indexOf('function calcTerminalLabelPosition('))),
   source.slice(source.indexOf('export function isLabelCoordinateInPath(')),
 ];
 // The final function ends before the default export, if present.
-bodies[1] = bodies[1].slice(0, bodies[1].indexOf('\n}') + 2);
+bodies[2] = bodies[2].slice(0, bodies[2].indexOf('\n}') + 2);
 if (bodies.some(body => !body)) throw new Error('Upstream function extraction failed');
 const { code } = await transform(bodies.join('\n').replaceAll('export ', ''), { loader: 'ts' });
-const upstream = vm.runInNewContext(`${code}\n({calculatePoint, calcLabelPosition, isLabelCoordinateInPath})`);
+const upstream = vm.runInNewContext(
+  `${code}\n({calculatePoint, calcLabelPosition, isLabelCoordinateInPath, calcTerminalLabelPosition})`,
+  { structuredClone, log: { info() {} } },
+);
 const point = (x, y) => ({ x, y });
 const samples = [
   ['straight', [point(0, 0), point(0, 10), point(0, 20)], [0, 5, 10]],
@@ -47,11 +52,30 @@ const d = line().x(p => p.x).y(p => p.y).curve(curveBasis)(points);
 const basis = { points, d, coordinatePresent: upstream.isLabelCoordinateInPath(points[1], d),
   expected: upstream.calcLabelPosition(points) };
 const singleton = { points: [point(17, 29)], expected: upstream.calcLabelPosition([point(17, 29)]) };
+const terminals = [
+  ['horizontal', [point(0, 0), point(100, 0)]],
+  ['bent', [point(-12, 7), point(16, 25), point(90, 60)]],
+  ['duplicate', [point(3, 7), point(3, 7), point(103, 7)]],
+  ['short', [point(0, 0), point(10, 0)]],
+  ['empty', []],
+  ['singleton', [point(17, 29)]],
+].flatMap(([id, points]) =>
+  [0, 10].flatMap(markerSize =>
+    ['start_left', 'start_right', 'end_left', 'end_right'].map(position => {
+      const input = structuredClone(points);
+      try {
+        const expected = upstream.calcTerminalLabelPosition(markerSize, position, input);
+        if (JSON.stringify(input) !== JSON.stringify(points)) throw new Error('Input mutated');
+        return { id, points, markerSize, position, expected };
+      } catch (error) {
+        return { id, points, markerSize, position, error: error.message };
+      }
+    })));
 const output = process.argv[2] ?? 'build/edge-label-oracle.json';
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, JSON.stringify({
   mermaidVersion: '12.0.0', generatedAt: new Date().toISOString(),
   sourceSha256: crypto.createHash('sha256').update(bodies.join('\n')).digest('hex'),
-  calculatePoint, pathChecks, basis, singleton,
+  calculatePoint, pathChecks, basis, singleton, terminals,
 }, null, 2));
 console.log(JSON.stringify({ output, calculatePointCases: calculatePoint.length, pathChecks, basis }, null, 2));

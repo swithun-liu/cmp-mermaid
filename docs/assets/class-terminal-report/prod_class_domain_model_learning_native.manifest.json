@@ -1,0 +1,1038 @@
+{
+  "schemaVersion": 1,
+  "renderer": "native",
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "width": 336,
+    "height": 546,
+    "background": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
+  },
+  "title": null,
+  "accessibilityTitle": null,
+  "accessibilityDescription": null,
+  "elements": [
+    {
+      "order": 0,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idCourse-Lesson-1",
+      "edgeId": "idCourse-Lesson-1",
+      "bounds": {
+        "x": 168,
+        "y": 352,
+        "width": 0,
+        "height": 66
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassComposition",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 168,
+        "y": 369.25
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 168,
+          "y": 352
+        },
+        {
+          "x": 168,
+          "y": 385
+        },
+        {
+          "x": 168,
+          "y": 418
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 168,
+          "y": 352
+        },
+        {
+          "x": 168,
+          "y": 418
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "D"
+      ],
+      "sourcePortSide": "Bottom",
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 1,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idEnrollmentService-Course-2",
+      "edgeId": "idEnrollmentService-Course-2",
+      "bounds": {
+        "x": 168,
+        "y": 134,
+        "width": 0,
+        "height": 66
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Dashed",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 168,
+        "y": 194
+      },
+      "routePoints": [
+        {
+          "x": 168,
+          "y": 134
+        },
+        {
+          "x": 168,
+          "y": 167
+        },
+        {
+          "x": 168,
+          "y": 200
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 168,
+          "y": 134
+        },
+        {
+          "x": 168,
+          "y": 200
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "D"
+      ],
+      "sourcePortSide": "Bottom",
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 2,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idCourse-Lesson-1-label-background",
+      "bounds": {
+        "x": 135.5,
+        "y": 374,
+        "width": 65,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 3,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idEnrollmentService-Course-2-label-background",
+      "bounds": {
+        "x": 129.5,
+        "y": 156,
+        "width": 77,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 4,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 141.5,
+        "y": 377,
+        "width": 53,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 141.5,
+          "y": 377
+        },
+        {
+          "x": 194.5,
+          "y": 377
+        },
+        {
+          "x": 194.5,
+          "y": 393
+        },
+        {
+          "x": 141.5,
+          "y": 393
+        }
+      ],
+      "text": "contains",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 5,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 135.5,
+        "y": 159,
+        "width": 65,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 135.5,
+          "y": 159
+        },
+        {
+          "x": 200.5,
+          "y": 159
+        },
+        {
+          "x": 200.5,
+          "y": 175
+        },
+        {
+          "x": 135.5,
+          "y": 175
+        }
+      ],
+      "text": "processes",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 6,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 150,
+        "y": 363.5,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 150,
+          "y": 363.5
+        },
+        {
+          "x": 156,
+          "y": 363.5
+        },
+        {
+          "x": 156,
+          "y": 375.5
+        },
+        {
+          "x": 150,
+          "y": 375.5
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 7,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 178,
+        "y": 395.5,
+        "width": 16,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 178,
+          "y": 395.5
+        },
+        {
+          "x": 194,
+          "y": 395.5
+        },
+        {
+          "x": 194,
+          "y": 407.5
+        },
+        {
+          "x": 178,
+          "y": 407.5
+        }
+      ],
+      "text": "1..*",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 8,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Course",
+      "bounds": {
+        "x": 72.25,
+        "y": 200,
+        "width": 191.5,
+        "height": 152
+      },
+      "fill": {
+        "r": 253,
+        "g": 244,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 232,
+        "g": 121,
+        "b": 249,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 72.25,
+          "y": 200
+        },
+        {
+          "x": 263.75,
+          "y": 200
+        },
+        {
+          "x": 263.75,
+          "y": 352
+        },
+        {
+          "x": 72.25,
+          "y": 352
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 9,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Lesson",
+      "bounds": {
+        "x": 87.75,
+        "y": 418,
+        "width": 160.5,
+        "height": 120
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 250,
+        "a": 255
+      },
+      "stroke": {
+        "r": 45,
+        "g": 212,
+        "b": 191,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 87.75,
+          "y": 418
+        },
+        {
+          "x": 248.25,
+          "y": 418
+        },
+        {
+          "x": 248.25,
+          "y": 538
+        },
+        {
+          "x": 87.75,
+          "y": 538
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 10,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "EnrollmentService",
+      "bounds": {
+        "x": 8,
+        "y": 8,
+        "width": 320,
+        "height": 126
+      },
+      "fill": {
+        "r": 255,
+        "g": 247,
+        "b": 237,
+        "a": 255
+      },
+      "stroke": {
+        "r": 251,
+        "g": 146,
+        "b": 60,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 8,
+          "y": 8
+        },
+        {
+          "x": 328,
+          "y": 8
+        },
+        {
+          "x": 328,
+          "y": 134
+        },
+        {
+          "x": 8,
+          "y": 134
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 11,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 127.5,
+        "y": 212,
+        "width": 81,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 127.5,
+          "y": 212
+        },
+        {
+          "x": 208.5,
+          "y": 212
+        },
+        {
+          "x": 208.5,
+          "y": 228
+        },
+        {
+          "x": 127.5,
+          "y": 228
+        }
+      ],
+      "text": "«aggregate»",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 12,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 143.5,
+        "y": 228,
+        "width": 49,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 143.5,
+          "y": 228
+        },
+        {
+          "x": 192.5,
+          "y": 228
+        },
+        {
+          "x": 192.5,
+          "y": 244
+        },
+        {
+          "x": 143.5,
+          "y": 244
+        }
+      ],
+      "text": "Course",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 13,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 88.25,
+        "y": 268,
+        "width": 60,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 88.25,
+          "y": 268
+        },
+        {
+          "x": 148.25,
+          "y": 268
+        },
+        {
+          "x": 148.25,
+          "y": 284
+        },
+        {
+          "x": 88.25,
+          "y": 284
+        }
+      ],
+      "text": "+String id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 14,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 88.25,
+        "y": 284,
+        "width": 127,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 88.25,
+          "y": 284
+        },
+        {
+          "x": 215.25,
+          "y": 284
+        },
+        {
+          "x": 215.25,
+          "y": 300
+        },
+        {
+          "x": 88.25,
+          "y": 300
+        }
+      ],
+      "text": "-List<Lesson> items",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 15,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 88.25,
+        "y": 324,
+        "width": 108,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 88.25,
+          "y": 324
+        },
+        {
+          "x": 196.25,
+          "y": 324
+        },
+        {
+          "x": 196.25,
+          "y": 340
+        },
+        {
+          "x": 88.25,
+          "y": 340
+        }
+      ],
+      "text": "+total() : Decimal",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 16,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 142.5,
+        "y": 430,
+        "width": 51,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 142.5,
+          "y": 430
+        },
+        {
+          "x": 193.5,
+          "y": 430
+        },
+        {
+          "x": 193.5,
+          "y": 446
+        },
+        {
+          "x": 142.5,
+          "y": 446
+        }
+      ],
+      "text": "Lesson",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 17,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 103.75,
+        "y": 470,
+        "width": 60,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 103.75,
+          "y": 470
+        },
+        {
+          "x": 163.75,
+          "y": 470
+        },
+        {
+          "x": 163.75,
+          "y": 486
+        },
+        {
+          "x": 103.75,
+          "y": 486
+        }
+      ],
+      "text": "+String id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 18,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 103.75,
+        "y": 486,
+        "width": 111,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 103.75,
+          "y": 486
+        },
+        {
+          "x": 214.75,
+          "y": 486
+        },
+        {
+          "x": 214.75,
+          "y": 502
+        },
+        {
+          "x": 103.75,
+          "y": 502
+        }
+      ],
+      "text": "+Decimal amount",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 19,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 137.5,
+        "y": 20,
+        "width": 61,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 137.5,
+          "y": 20
+        },
+        {
+          "x": 198.5,
+          "y": 20
+        },
+        {
+          "x": 198.5,
+          "y": 36
+        },
+        {
+          "x": 137.5,
+          "y": 36
+        }
+      ],
+      "text": "«service»",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 20,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 106,
+        "y": 36,
+        "width": 124,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 106,
+          "y": 36
+        },
+        {
+          "x": 230,
+          "y": 36
+        },
+        {
+          "x": 230,
+          "y": 52
+        },
+        {
+          "x": 106,
+          "y": 52
+        }
+      ],
+      "text": "EnrollmentService",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 21,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 100,
+        "width": 234,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 100
+        },
+        {
+          "x": 258,
+          "y": 100
+        },
+        {
+          "x": 258,
+          "y": 116
+        },
+        {
+          "x": 24,
+          "y": 116
+        }
+      ],
+      "text": "+execute(Course) : Result<Boolean>",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    }
+  ],
+  "outcome": "success",
+  "auditCaseId": "prod_class_domain_model_learning",
+  "auditSource": "production",
+  "sourceSha256": "bac697905e5639f04e6dfc4b9221223270a51f2f4a12706f0458d225eddbfaf9"
+}

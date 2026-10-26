@@ -1,0 +1,1248 @@
+{
+  "mermaidVersion": "12.0.0",
+  "generatedAt": "2026-10-26T05:08:08.824Z",
+  "sourceSha256": "71188b54f01ba032a3e0a6c4b7ccffe2025d240de61b09fb9662431c9e9d8b58",
+  "calculatePoint": [
+    {
+      "id": "straight",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 10
+        },
+        {
+          "x": 0,
+          "y": 20
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "straight",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 10
+        },
+        {
+          "x": 0,
+          "y": 20
+        }
+      ],
+      "distance": 5,
+      "expected": {
+        "x": 0,
+        "y": 5
+      }
+    },
+    {
+      "id": "straight",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 10
+        },
+        {
+          "x": 0,
+          "y": 20
+        }
+      ],
+      "distance": 10,
+      "expected": {
+        "x": 0,
+        "y": 10
+      }
+    },
+    {
+      "id": "slope",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 20
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "slope",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 20
+        }
+      ],
+      "distance": 5,
+      "expected": {
+        "x": 3.53553,
+        "y": 3.53553
+      }
+    },
+    {
+      "id": "slope",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 20
+        }
+      ],
+      "distance": 10,
+      "expected": {
+        "x": 7.07107,
+        "y": 7.07107
+      }
+    },
+    {
+      "id": "negative-slope",
+      "points": [
+        {
+          "x": 20,
+          "y": 20
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 20,
+        "y": 20
+      }
+    },
+    {
+      "id": "negative-slope",
+      "points": [
+        {
+          "x": 20,
+          "y": 20
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "distance": 5,
+      "expected": {
+        "x": 16.46447,
+        "y": 16.46447
+      }
+    },
+    {
+      "id": "negative-slope",
+      "points": [
+        {
+          "x": 20,
+          "y": 20
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "distance": 10,
+      "expected": {
+        "x": 12.92893,
+        "y": 12.92893
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 0
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 0
+        }
+      ],
+      "distance": 15,
+      "expected": {
+        "x": 10.6066,
+        "y": 9.3934
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 0
+        }
+      ],
+      "distance": 20,
+      "expected": {
+        "x": 14.14214,
+        "y": 5.85786
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 3,
+        "y": 7
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "distance": 50,
+      "expected": {
+        "x": 3,
+        "y": 7
+      }
+    },
+    {
+      "id": "signed",
+      "points": [
+        {
+          "x": -5,
+          "y": -10
+        },
+        {
+          "x": 5,
+          "y": 10
+        }
+      ],
+      "distance": 5,
+      "expected": {
+        "x": -2.76393,
+        "y": -5.52786
+      }
+    },
+    {
+      "id": "too-far",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 20
+        }
+      ],
+      "distance": 30,
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "distance": 0,
+      "error": "Could not find a suitable point for the given distance"
+    }
+  ],
+  "pathChecks": [
+    {
+      "point": {
+        "x": -1.5,
+        "y": 42
+      },
+      "d": "M-1.5,18L13,19",
+      "expected": false
+    },
+    {
+      "point": {
+        "x": -1.5,
+        "y": 42
+      },
+      "d": "M-1,18L13,19",
+      "expected": true
+    },
+    {
+      "point": {
+        "x": 12,
+        "y": 999
+      },
+      "d": "M312,8L100,20",
+      "expected": true
+    },
+    {
+      "point": {
+        "x": 97,
+        "y": 57
+      },
+      "d": "M1,2L3,4",
+      "expected": false
+    },
+    {
+      "point": {
+        "x": 97,
+        "y": 57
+      },
+      "d": "M97.4,2L3,4",
+      "expected": true
+    }
+  ],
+  "basis": {
+    "points": [
+      {
+        "x": 23,
+        "y": 19
+      },
+      {
+        "x": 97,
+        "y": 57
+      },
+      {
+        "x": 163,
+        "y": 149
+      }
+    ],
+    "d": "M23,19L35.333,25.333C47.667,31.667,72.333,44.333,95.667,66C119,87.667,141,118.333,152,133.667L163,149",
+    "coordinatePresent": false,
+    "expected": {
+      "x": 105.75496,
+      "y": 69.20388
+    }
+  },
+  "singleton": {
+    "points": [
+      {
+        "x": 17,
+        "y": 29
+      }
+    ],
+    "expected": {
+      "x": 17,
+      "y": 29
+    }
+  },
+  "terminals": [
+    {
+      "id": "horizontal",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_left",
+      "expected": {
+        "x": 12.499999999999998,
+        "y": -10
+      }
+    },
+    {
+      "id": "horizontal",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_right",
+      "expected": {
+        "x": 12.500000000000002,
+        "y": 10
+      }
+    },
+    {
+      "id": "horizontal",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_left",
+      "expected": {
+        "x": 82.5,
+        "y": -15
+      }
+    },
+    {
+      "id": "horizontal",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_right",
+      "expected": {
+        "x": 82.5,
+        "y": 5
+      }
+    },
+    {
+      "id": "horizontal",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_left",
+      "expected": {
+        "x": 17.499999999999996,
+        "y": -15
+      }
+    },
+    {
+      "id": "horizontal",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_right",
+      "expected": {
+        "x": 17.500000000000004,
+        "y": 15
+      }
+    },
+    {
+      "id": "horizontal",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_left",
+      "expected": {
+        "x": 77.5,
+        "y": -20
+      }
+    },
+    {
+      "id": "horizontal",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_right",
+      "expected": {
+        "x": 77.5,
+        "y": 10
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": -12,
+          "y": 7
+        },
+        {
+          "x": 16,
+          "y": 25
+        },
+        {
+          "x": 90,
+          "y": 60
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_left",
+      "expected": {
+        "x": 3.922306317467136,
+        "y": 5.347685506162287
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": -12,
+          "y": 7
+        },
+        {
+          "x": 16,
+          "y": 25
+        },
+        {
+          "x": 90,
+          "y": 60
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_right",
+      "expected": {
+        "x": -6.892846317467137,
+        "y": 22.17125449383771
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": -12,
+          "y": 7
+        },
+        {
+          "x": 16,
+          "y": 25
+        },
+        {
+          "x": 90,
+          "y": 60
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_left",
+      "expected": {
+        "x": 77.97578201896148,
+        "y": 40.61562095991001
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": -12,
+          "y": 7
+        },
+        {
+          "x": 16,
+          "y": 25
+        },
+        {
+          "x": 90,
+          "y": 60
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_right",
+      "expected": {
+        "x": 69.42455798103852,
+        "y": 58.69534904008999
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": -12,
+          "y": 7
+        },
+        {
+          "x": 16,
+          "y": 25
+        },
+        {
+          "x": 90,
+          "y": 60
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_left",
+      "expected": {
+        "x": 10.80580776992865,
+        "y": 3.6975450817328337
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": -12,
+          "y": 7
+        },
+        {
+          "x": 16,
+          "y": 25
+        },
+        {
+          "x": 90,
+          "y": 60
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_right",
+      "expected": {
+        "x": -5.256947769928651,
+        "y": 29.035024918267162
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": -12,
+          "y": 7
+        },
+        {
+          "x": 16,
+          "y": 25
+        },
+        {
+          "x": 90,
+          "y": 60
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_left",
+      "expected": {
+        "x": 75.59365133411099,
+        "y": 33.95788313849214
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": -12,
+          "y": 7
+        },
+        {
+          "x": 16,
+          "y": 25
+        },
+        {
+          "x": 90,
+          "y": 60
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_right",
+      "expected": {
+        "x": 62.76681866588899,
+        "y": 61.07747686150785
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_left",
+      "expected": {
+        "x": 3.0000000000000013,
+        "y": 17
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_right",
+      "expected": {
+        "x": 3,
+        "y": -3
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_left",
+      "expected": {
+        "x": 85.5,
+        "y": -8
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_right",
+      "expected": {
+        "x": 85.5,
+        "y": 12
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_left",
+      "expected": {
+        "x": 3.0000000000000018,
+        "y": 22
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_right",
+      "expected": {
+        "x": 3,
+        "y": -8
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_left",
+      "expected": {
+        "x": 80.5,
+        "y": -13
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_right",
+      "expected": {
+        "x": 80.5,
+        "y": 17
+      }
+    },
+    {
+      "id": "short",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "short",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "short",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "short",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "short",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "short",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "short",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "short",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 0
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "markerSize": 0,
+      "position": "start_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "markerSize": 0,
+      "position": "start_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "markerSize": 0,
+      "position": "end_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "markerSize": 0,
+      "position": "end_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "markerSize": 10,
+      "position": "start_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "markerSize": 10,
+      "position": "start_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "markerSize": 10,
+      "position": "end_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "markerSize": 10,
+      "position": "end_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "singleton",
+      "points": [
+        {
+          "x": 17,
+          "y": 29
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "singleton",
+      "points": [
+        {
+          "x": 17,
+          "y": 29
+        }
+      ],
+      "markerSize": 0,
+      "position": "start_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "singleton",
+      "points": [
+        {
+          "x": 17,
+          "y": 29
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "singleton",
+      "points": [
+        {
+          "x": 17,
+          "y": 29
+        }
+      ],
+      "markerSize": 0,
+      "position": "end_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "singleton",
+      "points": [
+        {
+          "x": 17,
+          "y": 29
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "singleton",
+      "points": [
+        {
+          "x": 17,
+          "y": 29
+        }
+      ],
+      "markerSize": 10,
+      "position": "start_right",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "singleton",
+      "points": [
+        {
+          "x": 17,
+          "y": 29
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_left",
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "singleton",
+      "points": [
+        {
+          "x": 17,
+          "y": 29
+        }
+      ],
+      "markerSize": 10,
+      "position": "end_right",
+      "error": "Could not find a suitable point for the given distance"
+    }
+  ]
+}

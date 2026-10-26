@@ -1,0 +1,3126 @@
+{
+  "caseCount": 13,
+  "screenshotCount": 26,
+  "detailPass": 13,
+  "detailReview": 0,
+  "detailFail": 0,
+  "cases": [
+    {
+      "id": "rc_class_commerce_domain",
+      "source": "classDiagram\n  direction LR\n  class Order {\n    +OrderId id\n    +OrderStatus status\n    +Money total\n    +addItem(product, quantity)\n    +confirm()\n    +cancel(reason)\n  }\n  class OrderItem {\n    +ProductId productId\n    +int quantity\n    +Money unitPrice\n  }\n  class Customer {\n    +CustomerId id\n    +Email email\n  }\n  class Payment {\n    +PaymentId id\n    +PaymentStatus status\n    +authorize()\n    +capture()\n    +void()\n  }\n  class PaymentGateway {\n    <<interface>>\n    +authorize(request)\n    +capture(id)\n  }\n  class InventoryReservation {\n    +ReservationId id\n    +reserve()\n    +release()\n  }\n  class Shipment {\n    +ShipmentId id\n    +TrackingCode tracking\n    +dispatch()\n  }\n  class OrderRepository {\n    <<interface>>\n    +find(id) Order\n    +save(order)\n  }\n  Customer \"1\" --> \"0..*\" Order : places\n  Order \"1\" *-- \"1..*\" OrderItem : contains\n  Order \"1\" o-- \"0..1\" Payment : payment\n  Order \"1\" o-- \"0..1\" InventoryReservation : inventory\n  Order \"1\" o-- \"0..1\" Shipment : fulfillment\n  Payment --> PaymentGateway : delegates\n  OrderRepository ..> Order : persists",
+      "sourceSha256": "5aa704a9be29835d7c3059d903a464b6c9870160870224424882f2a1ed67db2e",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 75,
+          "typeCounts": {
+            "path": 7,
+            "shape": 15,
+            "text": 53
+          },
+          "textCount": 53,
+          "uniqueTextCount": 46,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 92,
+          "typeCounts": {
+            "path": 39,
+            "text": 53
+          },
+          "textCount": 53,
+          "uniqueTextCount": 46,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 53,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.018963264912688294,
+          "p95CenterDistance": 0.016602251846757936,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.2258064516129032,
+            "geometryObject": 0.7096774193548387,
+            "geometryExpanded": 1.2258064516129032
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 13,
+          "officialPaletteSize": 13,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 14,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 38,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 4,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 4,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idCustomer-Order-1",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.24548136915077992,
+                "y": 0.4227850943396227
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idOrder-OrderItem-2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.39530119584055456,
+                "y": 0.366361320754717
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idOrder-Payment-3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.45251325823223565,
+                "y": 0.40800978436657687
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idOrder-InventoryReservation-4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.45251325823223565,
+                "y": 0.6135535579514825
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idOrder-Shipment-5",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.3980153812824957,
+                "y": 0.6549406199460917
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPayment-PaymentGateway-6",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.8076256499133448,
+                "y": 0.3746630727762803
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idOrderRepository-Order-7",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.24548136915077992,
+                "y": 0.5987782479784366
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Customer_Order_1",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.25116184750202136,
+                "y": 0.42896613005165746
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Order_OrderItem_2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.3993915598470557,
+                "y": 0.36614601634373173
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Order_Payment_3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.4528502307640479,
+                "y": 0.41279555703992044
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Order_InventoryReservation_4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.4528502307640479,
+                "y": 0.6117371532404534
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Order_Shipment_5",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.4026791053261016,
+                "y": 0.6581624111282491
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Payment_PaymentGateway_6",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.8018395326606925,
+                "y": 0.37967289719626174
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_OrderRepository_Order_7",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.25116184750202136,
+                "y": 0.5955665802287164
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 1,
+          "officialOccludedTextCount": 1,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "rc_class_workflow_engine",
+      "source": "classDiagram\n  direction TB\n  namespace Definition {\n    class WorkflowDefinition {\n      +String key\n      +int version\n      +List~StepDefinition~ steps\n      +validate() Result\n    }\n    class StepDefinition {\n      <<abstract>>\n      +String id\n      +Duration timeout\n    }\n    class HttpStep {\n      +URI endpoint\n      +Map~String,String~ headers\n    }\n    class DecisionStep {\n      +Expression condition\n    }\n  }\n  namespace Runtime {\n    class WorkflowInstance {\n      +InstanceId id\n      +InstanceStatus status\n      +advance(event)\n    }\n    class StepExecution {\n      +ExecutionId id\n      +int attempt\n      +ExecutionStatus status\n    }\n    class Scheduler {\n      +schedule(instance)\n      +retry(execution)\n    }\n    class StateStore {\n      <<interface>>\n      +load(id) WorkflowInstance\n      +commit(instance)\n    }\n  }\n  StepDefinition <|-- HttpStep\n  StepDefinition <|-- DecisionStep\n  WorkflowDefinition \"1\" *-- \"1..*\" StepDefinition\n  WorkflowInstance \"1\" *-- \"0..*\" StepExecution\n  Scheduler --> StateStore\n  WorkflowInstance --> WorkflowDefinition : executes\n  StepExecution --> StepDefinition : realizes",
+      "sourceSha256": "6b594b76f4f87d37d1b9395f33f9a6fa268fded88b19c4993b0bb16f0f8b54dd",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 56,
+          "typeCounts": {
+            "shape": 12,
+            "text": 37,
+            "path": 7
+          },
+          "textCount": 37,
+          "uniqueTextCount": 36,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 78,
+          "typeCounts": {
+            "shape": 2,
+            "text": 37,
+            "path": 39
+          },
+          "textCount": 37,
+          "uniqueTextCount": 36,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 37,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.08876893271036375,
+          "p95CenterDistance": 0.016848594152635774,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.0606060606060606,
+            "geometryObject": 0.5757575757575758,
+            "geometryExpanded": 1.0606060606060606
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 14,
+          "officialPaletteSize": 13,
+          "nativePaletteCoverage": 0.9285714285714286,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 17
+          },
+          "officialStrokePatterns": {
+            "Solid": 41
+          },
+          "nativeMarkers": {
+            "start": 4,
+            "end": 3
+          },
+          "officialMarkers": {
+            "start": 4,
+            "end": 3
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idStepDefinition-HttpStep-1",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.16229549483164465,
+                "y": 0.7645560570071259
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idStepDefinition-DecisionStep-2",
+              "pathOrder": 5,
+              "position": "start",
+              "point": {
+                "x": 0.3379603643434654,
+                "y": 0.7645560570071259
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idWorkflowDefinition-StepDefinition-3",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.1422577013611708,
+                "y": 0.5097980997624703
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idWorkflowInstance-StepExecution-4",
+              "pathOrder": 7,
+              "position": "start",
+              "point": {
+                "x": 0.6320573124552247,
+                "y": 0.22063337292161522
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idScheduler-StateStore-5",
+              "pathOrder": 8,
+              "position": "end",
+              "point": {
+                "x": 0.8667485416027019,
+                "y": 0.30760095011876487
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idWorkflowInstance-WorkflowDefinition-6",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.2541339473953536,
+                "y": 0.3679628028503563
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idStepExecution-StepDefinition-7",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.33058069798382966,
+                "y": 0.6142616389548694
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_StepDefinition_HttpStep_1",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.1699423668073395,
+                "y": 0.7612154653381603
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_StepDefinition_DecisionStep_2",
+              "pathOrder": 5,
+              "position": "start",
+              "point": {
+                "x": 0.3402532269673324,
+                "y": 0.7612154653381603
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_WorkflowDefinition_StepDefinition_3",
+              "pathOrder": 6,
+              "position": "start",
+              "point": {
+                "x": 0.14955174899092866,
+                "y": 0.5138598326359832
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_WorkflowInstance_StepExecution_4",
+              "pathOrder": 7,
+              "position": "start",
+              "point": {
+                "x": 0.629598537441065,
+                "y": 0.22790377309631604
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Scheduler_StateStore_5",
+              "pathOrder": 8,
+              "position": "end",
+              "point": {
+                "x": 0.8596656628798087,
+                "y": 0.3122384937238494
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_WorkflowInstance_WorkflowDefinition_6",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.25921919538252763,
+                "y": 0.3724780222362055
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_StepExecution_StepDefinition_7",
+              "pathOrder": 10,
+              "position": "end",
+              "point": {
+                "x": 0.3332393686843866,
+                "y": 0.6151663169701229
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "rc_class_authorization_model",
+      "source": "classDiagram\n  class Principal {\n    <<interface>>\n    +PrincipalId id\n  }\n  class User {\n    +String email\n    +UserStatus status\n  }\n  class Group {\n    +String name\n  }\n  class Role {\n    +String name\n    +Set~Permission~ permissions\n  }\n  class Permission {\n    +String action\n    +String resourceType\n  }\n  class Grant {\n    +Instant startsAt\n    +Instant expiresAt\n    +Scope scope\n  }\n  class Policy {\n    +Effect effect\n    +Expression condition\n  }\n  class Evaluator {\n    +evaluate(request) Decision\n  }\n  class AuditSink {\n    <<interface>>\n    +append(decision)\n  }\n  Principal <|.. User\n  Principal <|.. Group\n  Group \"0..*\" o-- \"0..*\" User : members\n  Grant --> Principal : subject\n  Grant --> Role : assigns\n  Role \"1\" *-- \"1..*\" Permission\n  Policy --> Permission : constrains\n  Evaluator --> Grant : resolves\n  Evaluator --> Policy : applies\n  Evaluator --> AuditSink : records",
+      "sourceSha256": "6767f51f161a472af3714d33127cc8ab8dd6d22ef76f541842d7e04eefae1a17",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 63,
+          "typeCounts": {
+            "path": 10,
+            "shape": 16,
+            "text": 37
+          },
+          "textCount": 37,
+          "uniqueTextCount": 34,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 83,
+          "typeCounts": {
+            "path": 46,
+            "text": 37
+          },
+          "textCount": 37,
+          "uniqueTextCount": 34,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 37,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.024114229034113994,
+          "p95CenterDistance": 0.01726588786009378,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.1891891891891893,
+            "geometryObject": 0.7027027027027027,
+            "geometryExpanded": 1.1891891891891893
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 14,
+          "officialPaletteSize": 14,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Dashed": 2,
+            "Solid": 17
+          },
+          "officialStrokePatterns": {
+            "Dashed": 2,
+            "Solid": 44
+          },
+          "nativeMarkers": {
+            "start": 4,
+            "end": 6
+          },
+          "officialMarkers": {
+            "start": 4,
+            "end": 6
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idPrincipal-User-1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.054393299164987044,
+                "y": 0.5882448081264108
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPrincipal-Group-2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.14773741433918802,
+                "y": 0.5882448081264108
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idGroup-User-3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.15879642959976964,
+                "y": 0.7914785553047404
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idGrant-Principal-4",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.10106536135905557,
+                "y": 0.4288939051918736
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idGrant-Role-5",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.42153757558306937,
+                "y": 0.4288939051918736
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idRole-Permission-6",
+              "pathOrder": 5,
+              "position": "start",
+              "point": {
+                "x": 0.42153757558306937,
+                "y": 0.5905756207674944
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPolicy-Permission-7",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.6727660236107111,
+                "y": 0.6416505643340857
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idEvaluator-Grant-8",
+              "pathOrder": 7,
+              "position": "end",
+              "point": {
+                "x": 0.24013820904117478,
+                "y": 0.20090293453724606
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idEvaluator-Policy-9",
+              "pathOrder": 8,
+              "position": "end",
+              "point": {
+                "x": 0.7201266916210769,
+                "y": 0.4288939051918736
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idEvaluator-AuditSink-10",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.8885689605528362,
+                "y": 0.20654627539503387
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Principal_User_1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.0668818358748814,
+                "y": 0.5856099750272077
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Principal_Group_2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.15754290503452603,
+                "y": 0.5856099750272077
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Group_User_3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.1684402548715692,
+                "y": 0.7818407960199005
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Grant_Principal_4",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.11221237261396479,
+                "y": 0.4298507462686567
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Grant_Role_5",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.42411931862152225,
+                "y": 0.4298507462686567
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Role_Permission_6",
+              "pathOrder": 5,
+              "position": "start",
+              "point": {
+                "x": 0.42411931862152225,
+                "y": 0.5873134328358209
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Policy_Permission_7",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.6704825357587442,
+                "y": 0.6370646766169155
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Evaluator_Grant_8",
+              "pathOrder": 7,
+              "position": "end",
+              "point": {
+                "x": 0.24792434557462734,
+                "y": 0.20398009950248755
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Evaluator_Policy_9",
+              "pathOrder": 8,
+              "position": "end",
+              "point": {
+                "x": 0.7153715338505794,
+                "y": 0.4298507462686567
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Evaluator_AuditSink_10",
+              "pathOrder": 9,
+              "position": "end",
+              "point": {
+                "x": 0.8787355560984992,
+                "y": 0.21144278606965175
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "rc_class_notification_platform",
+      "source": "classDiagram\n  class Notification {\n    +NotificationId id\n    +Recipient recipient\n    +Map~String,Any~ variables\n  }\n  class Template {\n    +TemplateId id\n    +Locale locale\n    +render(variables) Message\n  }\n  class PreferenceService {\n    +allowed(recipient, channel) bool\n  }\n  class Router {\n    +route(notification) List~Channel~\n  }\n  class Channel {\n    <<interface>>\n    +send(message) DeliveryReceipt\n  }\n  class EmailChannel\n  class PushChannel\n  class SmsChannel\n  class RetryPolicy {\n    +int maxAttempts\n    +Duration nextDelay(attempt)\n  }\n  class DeliveryStore {\n    <<interface>>\n    +save(receipt)\n    +pending() List~DeliveryReceipt~\n  }\n  Notification --> Template : renders with\n  Router --> PreferenceService : checks\n  Router --> Channel : selects\n  Channel <|.. EmailChannel\n  Channel <|.. PushChannel\n  Channel <|.. SmsChannel\n  Channel --> RetryPolicy : follows\n  Channel --> DeliveryStore : records",
+      "sourceSha256": "0bf05ef0c2a96b58122ff20620857f63701e1bb5f23fd2c63a31b2c0974a0e17",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 53,
+          "typeCounts": {
+            "path": 8,
+            "shape": 15,
+            "text": 30
+          },
+          "textCount": 30,
+          "uniqueTextCount": 29,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 78,
+          "typeCounts": {
+            "path": 48,
+            "text": 30
+          },
+          "textCount": 30,
+          "uniqueTextCount": 29,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 30,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.022293834032542162,
+          "p95CenterDistance": 0.021703926828187507,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.131578947368421,
+            "geometryObject": 0.6052631578947368,
+            "geometryExpanded": 1.131578947368421
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 15,
+          "officialPaletteSize": 15,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 15,
+            "Dashed": 3
+          },
+          "officialStrokePatterns": {
+            "Solid": 45,
+            "Dashed": 3
+          },
+          "nativeMarkers": {
+            "start": 3,
+            "end": 5
+          },
+          "officialMarkers": {
+            "start": 3,
+            "end": 5
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idNotification-Template-1",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.0973125884016973,
+                "y": 0.36298932384341637
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idRouter-PreferenceService-2",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.3404054691183404,
+                "y": 0.3861209964412811
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idRouter-Channel-3",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.5968882602545968,
+                "y": 0.3718861209964413
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idChannel-EmailChannel-4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.47946948797736916,
+                "y": 0.5510454270462634
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idChannel-PushChannel-5",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.47978050353606794,
+                "y": 0.5794296619217082
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idChannel-SmsChannel-6",
+              "pathOrder": 5,
+              "position": "start",
+              "point": {
+                "x": 0.5076004903347477,
+                "y": 0.6227069928825623
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idChannel-RetryPolicy-7",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.645073078736445,
+                "y": 0.7419928825622776
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idChannel-DeliveryStore-8",
+              "pathOrder": 7,
+              "position": "end",
+              "point": {
+                "x": 0.8855256954266856,
+                "y": 0.7224199288256228
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Notification_Template_1",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.10453306702014373,
+                "y": 0.36737804878048785
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Router_PreferenceService_2",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.3425225329723126,
+                "y": 0.3948170731707317
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Router_Channel_3",
+              "pathOrder": 2,
+              "position": "end",
+              "point": {
+                "x": 0.5941284638505686,
+                "y": 0.37881097560975613
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Channel_EmailChannel_4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.4791490587290939,
+                "y": 0.5496173951683977
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Channel_PushChannel_5",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.47954056832197156,
+                "y": 0.5769009008640198
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Channel_SmsChannel_6",
+              "pathOrder": 5,
+              "position": "start",
+              "point": {
+                "x": 0.5074222034322845,
+                "y": 0.6179024300924162
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Channel_RetryPolicy_7",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.64210928505304,
+                "y": 0.7339939024390244
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Channel_DeliveryStore_8",
+              "pathOrder": 7,
+              "position": "end",
+              "point": {
+                "x": 0.878387315546936,
+                "y": 0.7134146341463417
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "rc_class_document_editor",
+      "source": "classDiagram\n  class Document {\n    +DocumentId id\n    +Revision revision\n    +List~Block~ blocks\n    +apply(operation)\n  }\n  class Block {\n    <<abstract>>\n    +BlockId id\n    +Position position\n  }\n  class TextBlock {\n    +String text\n    +List~Mark~ marks\n  }\n  class MediaBlock {\n    +URI source\n    +Dimensions size\n  }\n  class Operation {\n    +OperationId id\n    +Revision baseRevision\n    +transform(other) Operation\n  }\n  class Revision {\n    +long sequence\n    +Instant committedAt\n  }\n  class Session {\n    +SessionId id\n    +UserId user\n    +Cursor cursor\n  }\n  class SyncEngine {\n    +merge(local, remote) MergeResult\n  }\n  class DocumentStore {\n    <<interface>>\n    +load(id) Document\n    +commit(document, operations)\n  }\n  Block <|-- TextBlock\n  Block <|-- MediaBlock\n  Document \"1\" *-- \"1..*\" Block\n  Document \"1\" o-- \"0..*\" Revision\n  Document \"1\" o-- \"0..*\" Session\n  SyncEngine --> Operation\n  SyncEngine --> DocumentStore",
+      "sourceSha256": "a2ec06f7a12342bf98ddab63ab41abe20227d16b817f343fe2ca5874fcf31998",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 54,
+          "typeCounts": {
+            "path": 7,
+            "text": 38,
+            "shape": 9
+          },
+          "textCount": 38,
+          "uniqueTextCount": 35,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 81,
+          "typeCounts": {
+            "path": 43,
+            "text": 38
+          },
+          "textCount": 38,
+          "uniqueTextCount": 35,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 38,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.027813073682474928,
+          "p95CenterDistance": 0.024750122443196368,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 0.47058823529411764,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 14,
+          "officialPaletteSize": 14,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 16
+          },
+          "officialStrokePatterns": {
+            "Solid": 43
+          },
+          "nativeMarkers": {
+            "start": 5,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 5,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idBlock-TextBlock-1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.08623723590967505,
+                "y": 0.6795092452830189
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idBlock-MediaBlock-2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.223658138424821,
+                "y": 0.6795092452830189
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idDocument-Block-3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.24378584174775106,
+                "y": 0.2480542075471698
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idDocument-Revision-4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.3225628786487975,
+                "y": 0.33443396226415095
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idDocument-Session-5",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.4012426656875344,
+                "y": 0.2524729245283019
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idSyncEngine-Operation-6",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.6625665503947127,
+                "y": 0.3905660377358491
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idSyncEngine-DocumentStore-7",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.8916834955021112,
+                "y": 0.3849056603773585
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Block_TextBlock_1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.09180811517884482,
+                "y": 0.680517935985851
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Block_MediaBlock_2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.2313228582691587,
+                "y": 0.680517935985851
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Document_Block_3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.24901459794612477,
+                "y": 0.26391042404920356
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Document_Revision_4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.3271031777545022,
+                "y": 0.348941368078176
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Document_Session_5",
+              "pathOrder": 4,
+              "position": "start",
+              "point": {
+                "x": 0.40506868011973546,
+                "y": 0.26844300509275754
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_SyncEngine_Operation_6",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.6609800192881693,
+                "y": 0.39739413680781766
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_SyncEngine_DocumentStore_7",
+              "pathOrder": 6,
+              "position": "end",
+              "point": {
+                "x": 0.8852068648998244,
+                "y": 0.3925081433224756
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "prod_class_domain_model_billing",
+      "source": "classDiagram\n  class Invoice {\n    <<aggregate>>\n    +String id\n    -List~LineItem~ items\n    +total() Decimal\n  }\n  class LineItem {\n    +String id\n    +Decimal amount\n  }\n  class PaymentService {\n    <<service>>\n    +execute(Invoice) Result~Boolean~\n  }\n  Invoice \"1\" *-- \"1..*\" LineItem : contains\n  PaymentService ..> Invoice : processes",
+      "sourceSha256": "23710a6e6f78e9870d5e9c275f047b7fa57dd2975e3a8d8f0a12a591839ad9cd",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 22,
+          "typeCounts": {
+            "path": 2,
+            "shape": 5,
+            "text": 15
+          },
+          "textCount": 15,
+          "uniqueTextCount": 14,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 29,
+          "typeCounts": {
+            "path": 14,
+            "text": 15
+          },
+          "textCount": 15,
+          "uniqueTextCount": 14,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 15,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.02605136729528221,
+          "p95CenterDistance": 0.023642721599355185,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.1818181818181819,
+            "geometryObject": 0.6363636363636364,
+            "geometryExpanded": 1.1818181818181819
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 7,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 4,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 13,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 1,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 1,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idInvoice-LineItem-1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.5,
+                "y": 0.6762820512820513
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPaymentService-Invoice-2",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.3553113553113553
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Invoice_LineItem_1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.4999998246509853,
+                "y": 0.6712598425196851
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PaymentService_Invoice_2",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.4999998246509853,
+                "y": 0.35590551181102364
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "prod_class_domain_model_learning",
+      "source": "classDiagram\n  class Course {\n    <<aggregate>>\n    +String id\n    -List~Lesson~ items\n    +total() Decimal\n  }\n  class Lesson {\n    +String id\n    +Decimal amount\n  }\n  class EnrollmentService {\n    <<service>>\n    +execute(Course) Result~Boolean~\n  }\n  Course \"1\" *-- \"1..*\" Lesson : contains\n  EnrollmentService ..> Course : processes",
+      "sourceSha256": "bac697905e5639f04e6dfc4b9221223270a51f2f4a12706f0458d225eddbfaf9",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 22,
+          "typeCounts": {
+            "path": 2,
+            "shape": 5,
+            "text": 15
+          },
+          "textCount": 15,
+          "uniqueTextCount": 14,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 29,
+          "typeCounts": {
+            "path": 14,
+            "text": 15
+          },
+          "textCount": 15,
+          "uniqueTextCount": 14,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 15,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.025613441724223755,
+          "p95CenterDistance": 0.02343104801598184,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.1818181818181819,
+            "geometryObject": 0.6363636363636364,
+            "geometryExpanded": 1.1818181818181819
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 7,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 4,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 13,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 1,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 1,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idCourse-Lesson-1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.5,
+                "y": 0.6762820512820513
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idEnrollmentService-Course-2",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.5,
+                "y": 0.3553113553113553
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_Course_Lesson_1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.49999892911384786,
+                "y": 0.6712598425196851
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_EnrollmentService_Course_2",
+              "pathOrder": 1,
+              "position": "end",
+              "point": {
+                "x": 0.49999892911384786,
+                "y": 0.35590551181102364
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "prod_class_namespace_tree_observability",
+      "source": "classDiagram\n  direction LR\n  namespace observability {\n    namespace collection {\n      class TraceReceiver\n    }\n    class SpanStore\n  }\n  TraceReceiver --> SpanStore : publishes\n  note for TraceReceiver \"Owns request lifecycle\"",
+      "sourceSha256": "a9ace9f7e3c22ca84b03da9ea1625f22c68d9aa54b7dfcc6b8bcd4ac3b9b3d5e",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 14,
+          "typeCounts": {
+            "shape": 6,
+            "text": 6,
+            "path": 2
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 20,
+          "typeCounts": {
+            "shape": 2,
+            "text": 6,
+            "path": 12
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.033527710625051124,
+          "p95CenterDistance": 0.022496630134309806,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.0909090909090908,
+            "geometryObject": 0.7272727272727273,
+            "geometryExpanded": 1.0909090909090908
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 0.875,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 6,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 13,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idTraceReceiver-SpanStore-1",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.7925696594427245,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_TraceReceiver_SpanStore_1",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.7816704991884071,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "prod_class_namespace_tree_commerce",
+      "source": "classDiagram\n  direction LR\n  namespace commerce {\n    namespace checkout {\n      class CheckoutCoordinator\n    }\n    class FulfillmentGateway\n  }\n  CheckoutCoordinator --> FulfillmentGateway : publishes\n  note for CheckoutCoordinator \"Owns request lifecycle\"",
+      "sourceSha256": "bfa9ed196cee117ebd8767a5d8ac729833ee932d23dcfc03020ffb4f703635a5",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 14,
+          "typeCounts": {
+            "shape": 6,
+            "text": 6,
+            "path": 2
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 20,
+          "typeCounts": {
+            "shape": 2,
+            "text": 6,
+            "path": 12
+          },
+          "textCount": 6,
+          "uniqueTextCount": 6,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.03322092130363372,
+          "p95CenterDistance": 0.020730241517189305,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.0909090909090908,
+            "geometryObject": 0.7272727272727273,
+            "geometryExpanded": 1.0909090909090908
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 8,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 0.875,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 6,
+            "Dashed": 1
+          },
+          "officialStrokePatterns": {
+            "Solid": 13,
+            "Dashed": 1
+          },
+          "nativeMarkers": {
+            "start": 0,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 0,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idCheckoutCoordinator-FulfillmentGateway-1",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.7427440633245382,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_CheckoutCoordinator_FulfillmentGateway_1",
+              "pathOrder": 5,
+              "position": "end",
+              "point": {
+                "x": 0.736399249858225,
+                "y": 0.5
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "prod_class_relation_matrix_plugins",
+      "source": "classDiagram\n  class PluginBase\n  class PluginConfig\n  class PluginRuntime\n  class PluginRegistry\n  class PluginPort\n  PluginBase <|-- PluginRuntime\n  PluginRuntime *-- PluginConfig\n  PluginRegistry o-- PluginRuntime\n  PluginRuntime <--> PluginRegistry\n  PluginRuntime --() PluginPort",
+      "sourceSha256": "9456bb9770e1eaed46966bf851ea2bd052b8a35ae3c1cad2b015b02c5daea2ba",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 16,
+          "typeCounts": {
+            "path": 5,
+            "shape": 5,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 31,
+          "typeCounts": {
+            "path": 25,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.055002021162919704,
+          "p95CenterDistance": 0.05115783356042509,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 0.5,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 10,
+          "officialPaletteSize": 10,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 10
+          },
+          "officialStrokePatterns": {
+            "Solid": 25
+          },
+          "nativeMarkers": {
+            "start": 4,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 4,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idPluginBase-PluginRuntime-1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.5335608646188851,
+                "y": 0.29433139534883723
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPluginRuntime-PluginConfig-2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.35456370875995447,
+                "y": 0.5849997093023256
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPluginRegistry-PluginRuntime-3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.6595822070534698,
+                "y": 0.7224005813953488
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPluginRuntime-PluginRegistry-4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.4205343117178612,
+                "y": 0.621705523255814
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPluginRuntime-PluginRegistry-4",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.4205343117178612,
+                "y": 0.744573546511628
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPluginRuntime-interface0-5",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.8998862343572241,
+                "y": 0.7616279069767442
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PluginBase_PluginRuntime_1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.5154092617731062,
+                "y": 0.3087467362924282
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PluginRuntime_PluginConfig_2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.3507937947303311,
+                "y": 0.5793394083765094
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PluginRegistry_PluginRuntime_3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.6339487905167546,
+                "y": 0.7054830605927709
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PluginRuntime_PluginRegistry_4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.4093313399276842,
+                "y": 0.6161697029133689
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PluginRuntime_PluginRegistry_4",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.4093313399276842,
+                "y": 0.7258668107712547
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PluginRuntime_interface0_5",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.854838140546644,
+                "y": 0.7480417754569191
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "prod_class_relation_matrix_connectors",
+      "source": "classDiagram\n  class ConnectorBase\n  class ConnectorConfig\n  class ConnectorRuntime\n  class ConnectorRegistry\n  class ConnectorPort\n  ConnectorBase <|-- ConnectorRuntime\n  ConnectorRuntime *-- ConnectorConfig\n  ConnectorRegistry o-- ConnectorRuntime\n  ConnectorRuntime <--> ConnectorRegistry\n  ConnectorRuntime --() ConnectorPort",
+      "sourceSha256": "27b3a5507cd71778f4f415fd7ff8a9c2726a936a0d544e157d0d8f48edeed144",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 16,
+          "typeCounts": {
+            "path": 5,
+            "shape": 5,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 31,
+          "typeCounts": {
+            "path": 25,
+            "text": 6
+          },
+          "textCount": 6,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 6,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.047996559353701486,
+          "p95CenterDistance": 0.043077766652949455,
+          "maximumSizeRatio": 1
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1,
+            "geometryObject": 0.5,
+            "geometryExpanded": 1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 10,
+          "officialPaletteSize": 10,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 10
+          },
+          "officialStrokePatterns": {
+            "Solid": 25
+          },
+          "nativeMarkers": {
+            "start": 4,
+            "end": 2
+          },
+          "officialMarkers": {
+            "start": 4,
+            "end": 2
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idConnectorBase-ConnectorRuntime-1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.5281757402101241,
+                "y": 0.29433139534883723
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idConnectorRuntime-ConnectorConfig-2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.35065111747851,
+                "y": 0.5861767441860465
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idConnectorRegistry-ConnectorRuntime-3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.6516374403056352,
+                "y": 0.7257839534883721
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idConnectorRuntime-ConnectorRegistry-4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.41657234001910215,
+                "y": 0.6205612500000001
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idConnectorRuntime-ConnectorRegistry-4",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.41657234001910215,
+                "y": 0.7457177906976745
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idConnectorRuntime-interface0-5",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.8882521489971347,
+                "y": 0.7616279069767442
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_ConnectorBase_ConnectorRuntime_1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.5145715395420107,
+                "y": 0.30874673629242827
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_ConnectorRuntime_ConnectorConfig_2",
+              "pathOrder": 1,
+              "position": "start",
+              "point": {
+                "x": 0.34868294165531627,
+                "y": 0.5804490769189581
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_ConnectorRegistry_ConnectorRuntime_3",
+              "pathOrder": 2,
+              "position": "start",
+              "point": {
+                "x": 0.6324615127798587,
+                "y": 0.7084073298282477
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_ConnectorRuntime_ConnectorRegistry_4",
+              "pathOrder": 3,
+              "position": "start",
+              "point": {
+                "x": 0.40806833881345594,
+                "y": 0.6151592762600971
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_ConnectorRuntime_ConnectorRegistry_4",
+              "pathOrder": 3,
+              "position": "end",
+              "point": {
+                "x": 0.40806833881345594,
+                "y": 0.7268773171048875
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_ConnectorRuntime_interface0_5",
+              "pathOrder": 4,
+              "position": "end",
+              "point": {
+                "x": 0.8526432280582277,
+                "y": 0.7480417754569191
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "prod_class_styled_metadata_policy",
+      "source": "---\ntitle: Policy evaluation model\naccTitle: Policy evaluation model\naccDescr: A compact decision model\n---\nclassDiagram\n  class PolicyInput[\"\\`**PolicyInput**\\`\"]\n  class PolicyDecision\n  PolicyInput <--> PolicyDecision : evaluates\n  classDef input fill:#dbeafe,stroke:#1d4ed8,color:#172554\n  class PolicyInput input",
+      "sourceSha256": "5642456703a8f38cffe4964044f5afd45ab1b27ef47b2668eb097104b3e1dda7",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 10,
+          "typeCounts": {
+            "path": 1,
+            "shape": 4,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 18,
+          "typeCounts": {
+            "path": 13,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 5,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.029242125618085056,
+          "p95CenterDistance": 0.02668145953915051,
+          "maximumSizeRatio": 1.2857142857142858
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.1,
+            "geometryObject": 0.5,
+            "geometryExpanded": 1.1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 7,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 4
+          },
+          "officialStrokePatterns": {
+            "Solid": 13
+          },
+          "nativeMarkers": {
+            "start": 1,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 1,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idPolicyInput-PolicyDecision-1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.21981424148606812,
+                "y": 0.4838709677419355
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idPolicyInput-PolicyDecision-1",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.21981424148606812,
+                "y": 0.6774193548387096
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PolicyInput_PolicyDecision_1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.24068448139123239,
+                "y": 0.47962382445141066
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_PolicyInput_PolicyDecision_1",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.24068448139123239,
+                "y": 0.6645768025078369
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    },
+    {
+      "id": "prod_class_styled_metadata_routing",
+      "source": "---\ntitle: Routing decision model\naccTitle: Routing decision model\naccDescr: A compact decision model\n---\nclassDiagram\n  class RouteInput[\"\\`**RouteInput**\\`\"]\n  class RouteDecision\n  RouteInput <--> RouteDecision : evaluates\n  classDef input fill:#dbeafe,stroke:#1d4ed8,color:#172554\n  class RouteInput input",
+      "sourceSha256": "78ffba98f94fea4cb4be62073983a737003eaa19b6c956aac76c91f5e6f64e31",
+      "detail": {
+        "thresholds": {
+          "maximumTextCenterDistance": 0.12,
+          "maximumTextSizeLogRatio": 0.5877866649021191,
+          "maximumElementCountRatio": 1.5,
+          "minimumPaletteCoverage": 0.35,
+          "occlusionOverlapRatio": 0.1,
+          "maximumOcclusionOverlapRatioDifference": 0.1,
+          "textOverlapRatio": 0.35,
+          "maximumTextOverlapRatioDifference": 0.08,
+          "clippingTolerance": 0.01,
+          "maximumMarkerOcclusionDepthDifference": 0.01,
+          "maximumMarkerOcclusionErrorDepthDifference": 0.03
+        },
+        "status": "pass",
+        "findings": [],
+        "native": {
+          "renderer": "Native",
+          "elementCount": 10,
+          "typeCounts": {
+            "path": 1,
+            "shape": 4,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "official": {
+          "renderer": "Official",
+          "elementCount": 18,
+          "typeCounts": {
+            "path": 13,
+            "text": 5
+          },
+          "textCount": 5,
+          "uniqueTextCount": 5,
+          "clippedTextCount": 0,
+          "textOverlapCount": 0
+        },
+        "textComparison": {
+          "absentInNative": [],
+          "absentInOfficial": [],
+          "multiplicityDifferences": [],
+          "matchedCount": 5,
+          "segmentationEquivalent": false,
+          "segmentationGroups": [],
+          "maximumCenterDistance": 0.029314110889334347,
+          "p95CenterDistance": 0.026760969097987107,
+          "maximumSizeRatio": 1.2857142857142858
+        },
+        "elementComparison": {
+          "ratios": {
+            "text": 1,
+            "asset": 1,
+            "geometry": 1.1,
+            "geometryObject": 0.5,
+            "geometryExpanded": 1.1
+          }
+        },
+        "styleComparison": {
+          "nativePaletteSize": 7,
+          "officialPaletteSize": 7,
+          "nativePaletteCoverage": 1,
+          "officialPaletteCoverage": 1,
+          "nativeStrokePatterns": {
+            "Solid": 4
+          },
+          "officialStrokePatterns": {
+            "Solid": 13
+          },
+          "nativeMarkers": {
+            "start": 1,
+            "end": 1
+          },
+          "officialMarkers": {
+            "start": 1,
+            "end": 1
+          }
+        },
+        "markerVisibilityComparison": {
+          "native": [
+            {
+              "renderer": "Native",
+              "pathId": "idRouteInput-RouteDecision-1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.21962616822429906,
+                "y": 0.4838709677419355
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Native",
+              "pathId": "idRouteInput-RouteDecision-1",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.21962616822429906,
+                "y": 0.6774193548387096
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "official": [
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_RouteInput_RouteDecision_1",
+              "pathOrder": 0,
+              "position": "start",
+              "point": {
+                "x": 0.24059735977127178,
+                "y": 0.47962382445141066
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            },
+            {
+              "renderer": "Official",
+              "pathId": "cmp-official-1-id_RouteInput_RouteDecision_1",
+              "pathOrder": 0,
+              "position": "end",
+              "point": {
+                "x": 0.24059735977127178,
+                "y": 0.6645768025078369
+              },
+              "occlusionDepth": 0,
+              "occluder": null
+            }
+          ],
+          "differences": []
+        },
+        "paintOrderComparison": {
+          "nativeOccludedTextCount": 0,
+          "officialOccludedTextCount": 0,
+          "mismatches": [],
+          "ratioDifferences": []
+        },
+        "overlapComparison": {
+          "nativeCount": 0,
+          "officialCount": 0,
+          "mismatches": [],
+          "toleratedMismatches": [],
+          "ratioDifferences": []
+        }
+      },
+      "overallVisualStatus": "Review",
+      "reason": "Text/node dimensions and absolute endpoint coordinates differ"
+    }
+  ],
+  "schemaVersion": 1,
+  "nativeVersion": "0.1.20",
+  "mermaidVersion": "12.0.0",
+  "visualPass": 0,
+  "visualReview": 13,
+  "visualFail": 0,
+  "contactSheetCount": 1,
+  "files": [
+    {
+      "file": "rc_class_commerce_domain_native.png",
+      "sha256": "bc108bd9e5300e72d422087b9ab321e05f38709ecadffa2e3a0b8a89421fbf2a"
+    },
+    {
+      "file": "rc_class_commerce_domain_native.manifest.json",
+      "sha256": "2b7ecd57c676b4856ee487c80b83c963a66abc5b8dddc14e6362ce93d838e826"
+    },
+    {
+      "file": "rc_class_commerce_domain_official.png",
+      "sha256": "d6c8a952b71ca2759aa28de567eaa90fccc9b636c6d5a7e3736c0b845510aa48"
+    },
+    {
+      "file": "rc_class_commerce_domain_official.manifest.json",
+      "sha256": "0f0e773faecd9915e27a8b7ac925893bde922e7516bb7a865f35834940666d9f"
+    },
+    {
+      "file": "rc_class_workflow_engine_native.png",
+      "sha256": "f09342de4ad20724243cf38969119c19afdcd21bb3cd49f8e7bc48465cb0ed37"
+    },
+    {
+      "file": "rc_class_workflow_engine_native.manifest.json",
+      "sha256": "1a9b07bdd1804aae392d865f21179b1449bf57ba4b7d64c10caa64645542a5fe"
+    },
+    {
+      "file": "rc_class_workflow_engine_official.png",
+      "sha256": "e63a627698f28b9fd637b354cc0a79ec1eecdbfd2493dc02c992d4565af179db"
+    },
+    {
+      "file": "rc_class_workflow_engine_official.manifest.json",
+      "sha256": "570d2def242705a9688e001726cd0104102817dd5eec1e2c9dd1bab80ecbb064"
+    },
+    {
+      "file": "rc_class_authorization_model_native.png",
+      "sha256": "313df696922c6343addef149fa8e889140af4cd54ca5dc07a02d40e948dec985"
+    },
+    {
+      "file": "rc_class_authorization_model_native.manifest.json",
+      "sha256": "6c4643ab589535866e31b568c9dd6d299c4ae9da39fde2aab1e04ace9fe305eb"
+    },
+    {
+      "file": "rc_class_authorization_model_official.png",
+      "sha256": "3a8b800ae605ff193f10701c99b93717df7eb482e36f31601bae0b757fa3b190"
+    },
+    {
+      "file": "rc_class_authorization_model_official.manifest.json",
+      "sha256": "e2f5360b773dbfab20e0a64f3f16693052aabf302343c8daaff4fbfb7ebb6e78"
+    },
+    {
+      "file": "rc_class_notification_platform_native.png",
+      "sha256": "aea0b8d8858b30affdedccf29f4e0960a7746a22cd5692148346a219b23f0f09"
+    },
+    {
+      "file": "rc_class_notification_platform_native.manifest.json",
+      "sha256": "74c59acc227af0ee1fa9e8c3f27a4afa2ca2fbbc63813390bbc761e842c1b365"
+    },
+    {
+      "file": "rc_class_notification_platform_official.png",
+      "sha256": "23ed1a5ac5cbb93bc5738849f3c974bec6155d8f42fb6d9c40c7d3b22bcc751f"
+    },
+    {
+      "file": "rc_class_notification_platform_official.manifest.json",
+      "sha256": "6a7ba5d13f5e9411c18ba55fc1aa65b55c5ca17238c7ad11f041eec7ea5766d7"
+    },
+    {
+      "file": "rc_class_document_editor_native.png",
+      "sha256": "e06b35e690df871c78383913a5108349e5e2351bfeda8d29501297fef2f1e0e9"
+    },
+    {
+      "file": "rc_class_document_editor_native.manifest.json",
+      "sha256": "0d481869b229ef2c27cb72d8b06a6d854a71c273789d02900073ba244e06c1c1"
+    },
+    {
+      "file": "rc_class_document_editor_official.png",
+      "sha256": "70bc1919b3b497e7f88ca7e1221a18751d2f3326da70d7a4ecd80146fe8332a3"
+    },
+    {
+      "file": "rc_class_document_editor_official.manifest.json",
+      "sha256": "33546ab70ae39c2b1aeab71c789297b9d940b4ca22f46b5956f80d66238aa2d7"
+    },
+    {
+      "file": "prod_class_domain_model_billing_native.png",
+      "sha256": "184cacff373648cef3cd5a4a15a3f8168b4b4fbf28a1419d243a1876f9cab8ae"
+    },
+    {
+      "file": "prod_class_domain_model_billing_native.manifest.json",
+      "sha256": "d65fe789c39f5c6efd94ca1f25ce5890e7c33304c150a472480b5de87d5f69db"
+    },
+    {
+      "file": "prod_class_domain_model_billing_official.png",
+      "sha256": "d2b1fc6bc5c5399c292d439f273cc2a3de34d1f28a67ee5eb84fca2bd22645c5"
+    },
+    {
+      "file": "prod_class_domain_model_billing_official.manifest.json",
+      "sha256": "86e12a14a3c51ab4bc64b9bd734e3e358578c8b1279b897a102c060e439b51b9"
+    },
+    {
+      "file": "prod_class_domain_model_learning_native.png",
+      "sha256": "67a0fdbe164c80c9124d75477ad2d8f113ca8a8a8f3da9bc03e969dc2b7197b7"
+    },
+    {
+      "file": "prod_class_domain_model_learning_native.manifest.json",
+      "sha256": "44a6c4dbbd1c0b4802ee733c313217e2d5d85495a1c64919a9f093eb1cd30574"
+    },
+    {
+      "file": "prod_class_domain_model_learning_official.png",
+      "sha256": "c0256ed111c969de07957bc3e4385914c094c9009b5095f829def82eaa560f18"
+    },
+    {
+      "file": "prod_class_domain_model_learning_official.manifest.json",
+      "sha256": "ac12899b94485ebc7c2777b4142fcde11051e1b8ca4d0fc15e9c9e0896269034"
+    },
+    {
+      "file": "prod_class_namespace_tree_observability_native.png",
+      "sha256": "f6a8036cac9bf557380a2981c2d44b0a4a01267ee8edd80fd2386b5e8505e5f6"
+    },
+    {
+      "file": "prod_class_namespace_tree_observability_native.manifest.json",
+      "sha256": "93b16fef587ed2293c6617f1632ac3f419800abeb4c4af8393b0fe2704eb0cb8"
+    },
+    {
+      "file": "prod_class_namespace_tree_observability_official.png",
+      "sha256": "03c46a3113562700ff3f28a6f13cbc5a1d2cc5e40145cb138a1e33abcef41d3d"
+    },
+    {
+      "file": "prod_class_namespace_tree_observability_official.manifest.json",
+      "sha256": "59e97ca610dd94fdc6d3e8c2769a7256940f52df08e1d5ced38de2047ff0e355"
+    },
+    {
+      "file": "prod_class_namespace_tree_commerce_native.png",
+      "sha256": "02631daac0e625570961645e3723b7eddd75a98c412cae0a4a08a775692da0df"
+    },
+    {
+      "file": "prod_class_namespace_tree_commerce_native.manifest.json",
+      "sha256": "f63bed910d3195dfdf1760d1052c08c8cca00a5916eb37628dc96039450fd185"
+    },
+    {
+      "file": "prod_class_namespace_tree_commerce_official.png",
+      "sha256": "e9c7762ee3fdf22c1f0710246b91d600181ffbdd8958ba88d1f59b4070e746db"
+    },
+    {
+      "file": "prod_class_namespace_tree_commerce_official.manifest.json",
+      "sha256": "d05568d5d5c3d5f10a90090e9254b11286f95be2a6c4dd4cfa69b0d19326defa"
+    },
+    {
+      "file": "prod_class_relation_matrix_plugins_native.png",
+      "sha256": "da215d46dc6cdb38d590fe6e5cfb2bb7ff455e29a265af493c63d432b4f2d425"
+    },
+    {
+      "file": "prod_class_relation_matrix_plugins_native.manifest.json",
+      "sha256": "b6106a3e5a0a7d5ad8c7ed999556451741b5666eddf8e1bbc94025e5daad5c07"
+    },
+    {
+      "file": "prod_class_relation_matrix_plugins_official.png",
+      "sha256": "87ccc827a155d24afb8287e255075aea8773cd419cb582182da0bb98bdf47deb"
+    },
+    {
+      "file": "prod_class_relation_matrix_plugins_official.manifest.json",
+      "sha256": "365b2c45e064929a4e65f50a63b07a63d25c1cd89bcd87bdf26cf9e195819ddf"
+    },
+    {
+      "file": "prod_class_relation_matrix_connectors_native.png",
+      "sha256": "3d04e148e57fe8efebf75e6c11d309acfb183a3511894b18ea02651a41f65c76"
+    },
+    {
+      "file": "prod_class_relation_matrix_connectors_native.manifest.json",
+      "sha256": "9385cb4c034225ff69c12dec4a9b4e0dd19ce4a1406b545ca0b226fae48c6bd4"
+    },
+    {
+      "file": "prod_class_relation_matrix_connectors_official.png",
+      "sha256": "c195f8c72a16b189b8c4cd60fdf1ca60ea93144862007eae78b9d3a02322c63d"
+    },
+    {
+      "file": "prod_class_relation_matrix_connectors_official.manifest.json",
+      "sha256": "e4ef3984dba4284e5f09752519b02244069eb44e2e8af21b87dc502a9062a245"
+    },
+    {
+      "file": "prod_class_styled_metadata_policy_native.png",
+      "sha256": "666c5b71365a0cbe162321c0fa1fcf21c3b4fc84d709955786bc6df04567bbad"
+    },
+    {
+      "file": "prod_class_styled_metadata_policy_native.manifest.json",
+      "sha256": "286b61393a344b807af75879ea0d72ca71478b2c4367884760717378279e31f2"
+    },
+    {
+      "file": "prod_class_styled_metadata_policy_official.png",
+      "sha256": "38b7d7b392a649067b5129ef2a8d0e9727d288e1e300e52e6fb263c2e5192c7b"
+    },
+    {
+      "file": "prod_class_styled_metadata_policy_official.manifest.json",
+      "sha256": "b517368632674fbf09cdfa68b83feb98fd8d32b032fb6bf2a6e8bb5b2cd3e9db"
+    },
+    {
+      "file": "prod_class_styled_metadata_routing_native.png",
+      "sha256": "5022f2d938d60d5376959be6917b470af1ded29bed4253d8236f102da7013212"
+    },
+    {
+      "file": "prod_class_styled_metadata_routing_native.manifest.json",
+      "sha256": "e47d32c1b5f427fc5d54f0b698fcc79eac12a7db0ba7f75bc5719080b451c6f4"
+    },
+    {
+      "file": "prod_class_styled_metadata_routing_official.png",
+      "sha256": "f2d05071cf0c5cf5027ac786fd0f4bfbc007c804f5cc087a0eda8d3d351bc2bb"
+    },
+    {
+      "file": "prod_class_styled_metadata_routing_official.manifest.json",
+      "sha256": "2d9cb816679ed21f7086969718d5889751b4922fa673665090acead1363dacef"
+    }
+  ],
+  "topologyScope": "Point/bend counts, direction sequences, port sides, shared tracks, crossings, shared endpoints",
+  "absoluteEndpointCoordinates": "Review: platform text/node dimensions differ"
+}

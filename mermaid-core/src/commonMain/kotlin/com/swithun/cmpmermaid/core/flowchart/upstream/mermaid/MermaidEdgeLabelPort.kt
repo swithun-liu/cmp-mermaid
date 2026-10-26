@@ -4,9 +4,13 @@ import com.swithun.cmpmermaid.core.GMResult
 import com.swithun.cmpmermaid.core.MermaidError
 import com.swithun.cmpmermaid.core.ScenePathCommand
 import com.swithun.cmpmermaid.core.ScenePoint
+import kotlin.math.PI
 import kotlin.math.abs
+import kotlin.math.atan2
+import kotlin.math.cos
 import kotlin.math.floor
 import kotlin.math.pow
+import kotlin.math.sin
 import kotlin.math.sqrt
 
 /** Mermaid.js 12.0.0: edges.js final insertEdge stage and utils.ts label utilities. */
@@ -45,6 +49,55 @@ internal object MermaidEdgeLabelPort {
     // Mermaid.js 12.0.0: utils.ts -> calcLabelPosition.
     fun calcLabelPosition(points: List<ScenePoint>): GMResult<ScenePoint, MermaidError> =
         if (points.size == 1) GMResult.Ok(points[0]) else traverseEdge(points)
+
+    // Mermaid.js 12.0.0: utils.ts -> calcTerminalLabelPosition.
+    fun calcTerminalLabelPosition(
+        terminalMarkerSize: Double,
+        position: TerminalPosition,
+        points: List<ScenePoint>,
+    ): GMResult<ScenePoint, MermaidError> {
+        val oriented = when (position) {
+            TerminalPosition.StartLeft, TerminalPosition.StartRight -> points.toList()
+            TerminalPosition.EndLeft, TerminalPosition.EndRight -> points.reversed()
+        }
+        val center = when (val result = calculatePoint(oriented, 25 + terminalMarkerSize)) {
+            is GMResult.Ok -> result.value
+            is GMResult.Err -> return result
+        }
+        val first = oriented.first()
+        val d = 10 + terminalMarkerSize * 0.5
+        val angle = atan2(
+            first.y.toDouble() - center.y,
+            first.x.toDouble() - center.x,
+        )
+        val baseX = (first.x.toDouble() + center.x) / 2
+        val baseY = (first.y.toDouble() + center.y) / 2
+        val result = when (position) {
+            TerminalPosition.StartLeft ->
+                ScenePoint(
+                    (sin(angle + PI) * d + baseX).toFloat(),
+                    (-cos(angle + PI) * d + baseY).toFloat(),
+                )
+            TerminalPosition.EndRight ->
+                ScenePoint(
+                    (sin(angle - PI) * d + baseX - 5).toFloat(),
+                    (-cos(angle - PI) * d + baseY - 5).toFloat(),
+                )
+            TerminalPosition.EndLeft ->
+                ScenePoint(
+                    (sin(angle) * d + baseX - 5).toFloat(),
+                    (-cos(angle) * d + baseY - 5).toFloat(),
+                )
+            TerminalPosition.StartRight ->
+                ScenePoint(
+                    (sin(angle) * d + baseX).toFloat(),
+                    (-cos(angle) * d + baseY).toFloat(),
+                )
+        }
+        return GMResult.Ok(result)
+    }
+
+    enum class TerminalPosition { StartLeft, StartRight, EndLeft, EndRight }
 
     // Mermaid.js 12.0.0: utils.ts -> traverseEdge.
     private fun traverseEdge(points: List<ScenePoint>): GMResult<ScenePoint, MermaidError> {

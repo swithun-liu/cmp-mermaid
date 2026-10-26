@@ -62,6 +62,12 @@ arbitrary URLs or JavaScript.
 
 ## Validation Corpus
 
+- The 0.1.20 [terminal-label repair](class-terminal-report.md) adds 13 fresh
+  Class sources, 26 screenshots and one contact sheet. Detail, geometry and
+  route-topology gates each pass 13 cases; overall visual status remains
+  13 Review for independent text/node dimensions and absolute endpoint
+  differences. Terminal placement preserves official clipping without
+  obstacle avoidance and uses the complete upstream calculation.
 - The current 0.1.19 [label repair audit](label-compatibility-report.md)
   verifies member sanitization before generic/method parsing from identical
   Native/Official input. Both Class cases preserve label content; compartment

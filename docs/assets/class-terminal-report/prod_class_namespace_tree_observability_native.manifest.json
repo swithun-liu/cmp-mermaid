@@ -1,0 +1,673 @@
+{
+  "schemaVersion": 1,
+  "renderer": "native",
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "width": 646,
+    "height": 202,
+    "background": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
+  },
+  "title": null,
+  "accessibilityTitle": null,
+  "accessibilityDescription": null,
+  "elements": [
+    {
+      "order": 0,
+      "zIndex": 0,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "namespace-observability",
+      "bounds": {
+        "x": 212,
+        "y": 8,
+        "width": 426,
+        "height": 186
+      },
+      "fill": {
+        "r": 249,
+        "g": 249,
+        "b": 251,
+        "a": 255
+      },
+      "stroke": {
+        "r": 189,
+        "g": 188,
+        "b": 204,
+        "a": 255
+      },
+      "strokeWidth": 1,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 1,
+      "zIndex": 1,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 385.5,
+        "y": 12,
+        "width": 79,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 385.5,
+          "y": 12
+        },
+        {
+          "x": 464.5,
+          "y": 12
+        },
+        {
+          "x": 464.5,
+          "y": 28
+        },
+        {
+          "x": 385.5,
+          "y": 28
+        }
+      ],
+      "text": "observability",
+      "fill": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 2,
+      "zIndex": 1,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "namespace-observability.collection",
+      "bounds": {
+        "x": 237,
+        "y": 28,
+        "width": 171,
+        "height": 146
+      },
+      "fill": {
+        "r": 249,
+        "g": 249,
+        "b": 251,
+        "a": 255
+      },
+      "stroke": {
+        "r": 189,
+        "g": 188,
+        "b": 204,
+        "a": 255
+      },
+      "strokeWidth": 1,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 3,
+      "zIndex": 2,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 293,
+        "y": 32,
+        "width": 59,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 293,
+          "y": 32
+        },
+        {
+          "x": 352,
+          "y": 32
+        },
+        {
+          "x": 352,
+          "y": 48
+        },
+        {
+          "x": 293,
+          "y": 48
+        }
+      ],
+      "text": "collection",
+      "fill": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 4,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "edgeNote0",
+      "edgeId": "edgeNote0",
+      "bounds": {
+        "x": 162,
+        "y": 101,
+        "width": 100,
+        "height": 0
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Dashed",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "None",
+      "markerStartPoint": null,
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 162,
+          "y": 101
+        },
+        {
+          "x": 187,
+          "y": 101
+        },
+        {
+          "x": 212,
+          "y": 101
+        },
+        {
+          "x": 237,
+          "y": 101
+        },
+        {
+          "x": 262,
+          "y": 101
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 162,
+          "y": 101
+        },
+        {
+          "x": 262,
+          "y": 101
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "R"
+      ],
+      "sourcePortSide": "Right",
+      "destinationPortSide": "Left",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 5,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idTraceReceiver-SpanStore-1",
+      "edgeId": "idTraceReceiver-SpanStore-1",
+      "bounds": {
+        "x": 383,
+        "y": 101,
+        "width": 135,
+        "height": 0
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 512,
+        "y": 101
+      },
+      "routePoints": [
+        {
+          "x": 383,
+          "y": 101
+        },
+        {
+          "x": 408,
+          "y": 101
+        },
+        {
+          "x": 463,
+          "y": 101
+        },
+        {
+          "x": 518,
+          "y": 101
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 383,
+          "y": 101
+        },
+        {
+          "x": 518,
+          "y": 101
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "R"
+      ],
+      "sourcePortSide": "Right",
+      "destinationPortSide": "Left",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 6,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idTraceReceiver-SpanStore-1-label-background",
+      "bounds": {
+        "x": 427,
+        "y": 90,
+        "width": 72,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 7,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 433,
+        "y": 93,
+        "width": 60,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 433,
+          "y": 93
+        },
+        {
+          "x": 493,
+          "y": 93
+        },
+        {
+          "x": 493,
+          "y": 109
+        },
+        {
+          "x": 433,
+          "y": 109
+        }
+      ],
+      "text": "publishes",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 8,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "TraceReceiver",
+      "bounds": {
+        "x": 262,
+        "y": 63,
+        "width": 121,
+        "height": 76
+      },
+      "fill": {
+        "r": 253,
+        "g": 244,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 232,
+        "g": 121,
+        "b": 249,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 262,
+          "y": 63
+        },
+        {
+          "x": 383,
+          "y": 63
+        },
+        {
+          "x": 383,
+          "y": 139
+        },
+        {
+          "x": 262,
+          "y": 139
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 9,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "SpanStore",
+      "bounds": {
+        "x": 518,
+        "y": 63,
+        "width": 95,
+        "height": 76
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 250,
+        "a": 255
+      },
+      "stroke": {
+        "r": 45,
+        "g": 212,
+        "b": 191,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 518,
+          "y": 63
+        },
+        {
+          "x": 613,
+          "y": 63
+        },
+        {
+          "x": 613,
+          "y": 139
+        },
+        {
+          "x": 518,
+          "y": 139
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 10,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "note0",
+      "bounds": {
+        "x": 8,
+        "y": 87,
+        "width": 154,
+        "height": 28
+      },
+      "fill": {
+        "r": 255,
+        "g": 245,
+        "b": 173,
+        "a": 255
+      },
+      "stroke": {
+        "r": 250,
+        "g": 204,
+        "b": 21,
+        "a": 255
+      },
+      "strokeWidth": 1,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 1,
+      "outlinePoints": [
+        {
+          "x": 8,
+          "y": 87
+        },
+        {
+          "x": 162,
+          "y": 87
+        },
+        {
+          "x": 162,
+          "y": 115
+        },
+        {
+          "x": 8,
+          "y": 115
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 11,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 274,
+        "y": 75,
+        "width": 97,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 274,
+          "y": 75
+        },
+        {
+          "x": 371,
+          "y": 75
+        },
+        {
+          "x": 371,
+          "y": 91
+        },
+        {
+          "x": 274,
+          "y": 91
+        }
+      ],
+      "text": "TraceReceiver",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 12,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 530,
+        "y": 75,
+        "width": 71,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 530,
+          "y": 75
+        },
+        {
+          "x": 601,
+          "y": 75
+        },
+        {
+          "x": 601,
+          "y": 91
+        },
+        {
+          "x": 530,
+          "y": 91
+        }
+      ],
+      "text": "SpanStore",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 13,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 18,
+        "y": 93,
+        "width": 142,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 18,
+          "y": 93
+        },
+        {
+          "x": 160,
+          "y": 93
+        },
+        {
+          "x": 160,
+          "y": 109
+        },
+        {
+          "x": 18,
+          "y": 109
+        }
+      ],
+      "text": "Owns request lifecycle",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    }
+  ],
+  "outcome": "success",
+  "auditCaseId": "prod_class_namespace_tree_observability",
+  "auditSource": "production",
+  "sourceSha256": "a9ace9f7e3c22ca84b03da9ea1625f22c68d9aa54b7dfcc6b8bcd4ac3b9b3d5e"
+}

@@ -1,0 +1,2689 @@
+{
+  "schemaVersion": 1,
+  "renderer": "native",
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "width": 1361.75,
+    "height": 530,
+    "background": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
+  },
+  "title": null,
+  "accessibilityTitle": null,
+  "accessibilityDescription": null,
+  "elements": [
+    {
+      "order": 0,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idBlock-TextBlock-1",
+      "edgeId": "idBlock-TextBlock-1",
+      "bounds": {
+        "x": 97.5,
+        "y": 349,
+        "width": 33.10417,
+        "height": 53
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassExtension",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 117.433556,
+        "y": 360.1399
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 130.60417,
+          "y": 349
+        },
+        {
+          "x": 97.5,
+          "y": 377
+        },
+        {
+          "x": 97.5,
+          "y": 402
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 130.60417,
+          "y": 349
+        },
+        {
+          "x": 97.5,
+          "y": 377
+        },
+        {
+          "x": 97.5,
+          "y": 402
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 97.5,
+          "y": 377
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 1,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idBlock-MediaBlock-2",
+      "edgeId": "idBlock-MediaBlock-2",
+      "bounds": {
+        "x": 291.39584,
+        "y": 349,
+        "width": 33.104156,
+        "height": 53
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassExtension",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 304.56647,
+        "y": 360.1399
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 291.39584,
+          "y": 349
+        },
+        {
+          "x": 324.5,
+          "y": 377
+        },
+        {
+          "x": 324.5,
+          "y": 402
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 291.39584,
+          "y": 349
+        },
+        {
+          "x": 324.5,
+          "y": 377
+        },
+        {
+          "x": 324.5,
+          "y": 402
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 324.5,
+          "y": 377
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 2,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idDocument-Block-3",
+      "edgeId": "idDocument-Block-3",
+      "bounds": {
+        "x": 211,
+        "y": 124.4885,
+        "width": 136.75,
+        "height": 88.5115
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassComposition",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 331.97537,
+        "y": 131.46873
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 347.75,
+          "y": 124.4885
+        },
+        {
+          "x": 211,
+          "y": 185
+        },
+        {
+          "x": 211,
+          "y": 213
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 347.75,
+          "y": 124.4885
+        },
+        {
+          "x": 211,
+          "y": 185
+        },
+        {
+          "x": 211,
+          "y": 213
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 211,
+          "y": 185
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 3,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idDocument-Revision-4",
+      "edgeId": "idDocument-Revision-4",
+      "bounds": {
+        "x": 439.25,
+        "y": 160,
+        "width": 0,
+        "height": 61
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassAggregation",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 439.25,
+        "y": 177.25
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 439.25,
+          "y": 160
+        },
+        {
+          "x": 439.25,
+          "y": 185
+        },
+        {
+          "x": 439.25,
+          "y": 221
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 439.25,
+          "y": 160
+        },
+        {
+          "x": 439.25,
+          "y": 221
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "D"
+      ],
+      "sourcePortSide": "Bottom",
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 4,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idDocument-Session-5",
+      "edgeId": "idDocument-Session-5",
+      "bounds": {
+        "x": 530.75,
+        "y": 126.53855,
+        "width": 125.75,
+        "height": 86.46145
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassAggregation",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 546.3922,
+        "y": 133.81065
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 530.75,
+          "y": 126.53855
+        },
+        {
+          "x": 656.5,
+          "y": 185
+        },
+        {
+          "x": 656.5,
+          "y": 213
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 530.75,
+          "y": 126.53855
+        },
+        {
+          "x": 656.5,
+          "y": 185
+        },
+        {
+          "x": 656.5,
+          "y": 213
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 656.5,
+          "y": 185
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 5,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idSyncEngine-Operation-6",
+      "edgeId": "idSyncEngine-Operation-6",
+      "bounds": {
+        "x": 902.25,
+        "y": 139,
+        "width": 71.0495,
+        "height": 74
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 902.25,
+        "y": 207
+      },
+      "routePoints": [
+        {
+          "x": 973.2995,
+          "y": 139
+        },
+        {
+          "x": 902.25,
+          "y": 185
+        },
+        {
+          "x": 902.25,
+          "y": 213
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 973.2995,
+          "y": 139
+        },
+        {
+          "x": 902.25,
+          "y": 185
+        },
+        {
+          "x": 902.25,
+          "y": 213
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 902.25,
+          "y": 185
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 6,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idSyncEngine-DocumentStore-7",
+      "edgeId": "idSyncEngine-DocumentStore-7",
+      "bounds": {
+        "x": 1143.2004,
+        "y": 139,
+        "width": 71.04956,
+        "height": 71
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 1214.25,
+        "y": 204
+      },
+      "routePoints": [
+        {
+          "x": 1143.2004,
+          "y": 139
+        },
+        {
+          "x": 1214.25,
+          "y": 185
+        },
+        {
+          "x": 1214.25,
+          "y": 210
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 1143.2004,
+          "y": 139
+        },
+        {
+          "x": 1214.25,
+          "y": 185
+        },
+        {
+          "x": 1214.25,
+          "y": 210
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 1214.25,
+          "y": 185
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 7,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 322.67697,
+        "y": 111.85283,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 322.67697,
+          "y": 111.85283
+        },
+        {
+          "x": 328.67697,
+          "y": 111.85283
+        },
+        {
+          "x": 328.67697,
+          "y": 123.85283
+        },
+        {
+          "x": 322.67697,
+          "y": 123.85283
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 8,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 223.88747,
+        "y": 195.63292,
+        "width": 16,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 223.88747,
+          "y": 195.63292
+        },
+        {
+          "x": 239.88747,
+          "y": 195.63292
+        },
+        {
+          "x": 239.88747,
+          "y": 207.63292
+        },
+        {
+          "x": 223.88747,
+          "y": 207.63292
+        }
+      ],
+      "text": "1..*",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 9,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 421.25,
+        "y": 171.5,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 421.25,
+          "y": 171.5
+        },
+        {
+          "x": 427.25,
+          "y": 171.5
+        },
+        {
+          "x": 427.25,
+          "y": 183.5
+        },
+        {
+          "x": 421.25,
+          "y": 183.5
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 10,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 449.25,
+        "y": 198.5,
+        "width": 16,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 449.25,
+          "y": 198.5
+        },
+        {
+          "x": 465.25,
+          "y": 198.5
+        },
+        {
+          "x": 465.25,
+          "y": 210.5
+        },
+        {
+          "x": 449.25,
+          "y": 210.5
+        }
+      ],
+      "text": "0..*",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 11,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 537.29535,
+        "y": 141.51797,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 537.29535,
+          "y": 141.51797
+        },
+        {
+          "x": 543.29535,
+          "y": 141.51797
+        },
+        {
+          "x": 543.29535,
+          "y": 153.51797
+        },
+        {
+          "x": 537.29535,
+          "y": 153.51797
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 12,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 663.0204,
+        "y": 189.51094,
+        "width": 16,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 663.0204,
+          "y": 189.51094
+        },
+        {
+          "x": 679.0204,
+          "y": 189.51094
+        },
+        {
+          "x": 679.0204,
+          "y": 201.51094
+        },
+        {
+          "x": 663.0204,
+          "y": 201.51094
+        }
+      ],
+      "text": "0..*",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 13,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Document",
+      "bounds": {
+        "x": 347.75,
+        "y": 8,
+        "width": 183,
+        "height": 152
+      },
+      "fill": {
+        "r": 253,
+        "g": 244,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 232,
+        "g": 121,
+        "b": 249,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 347.75,
+          "y": 8
+        },
+        {
+          "x": 530.75,
+          "y": 8
+        },
+        {
+          "x": 530.75,
+          "y": 160
+        },
+        {
+          "x": 347.75,
+          "y": 160
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 14,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Block",
+      "bounds": {
+        "x": 126.75,
+        "y": 213,
+        "width": 168.5,
+        "height": 136
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 250,
+        "a": 255
+      },
+      "stroke": {
+        "r": 45,
+        "g": 212,
+        "b": 191,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 126.75,
+          "y": 213
+        },
+        {
+          "x": 295.25,
+          "y": 213
+        },
+        {
+          "x": 295.25,
+          "y": 349
+        },
+        {
+          "x": 126.75,
+          "y": 349
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 15,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "TextBlock",
+      "bounds": {
+        "x": 8,
+        "y": 402,
+        "width": 179,
+        "height": 120
+      },
+      "fill": {
+        "r": 255,
+        "g": 247,
+        "b": 237,
+        "a": 255
+      },
+      "stroke": {
+        "r": 251,
+        "g": 146,
+        "b": 60,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 8,
+          "y": 402
+        },
+        {
+          "x": 187,
+          "y": 402
+        },
+        {
+          "x": 187,
+          "y": 522
+        },
+        {
+          "x": 8,
+          "y": 522
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 16,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "MediaBlock",
+      "bounds": {
+        "x": 237,
+        "y": 402,
+        "width": 175,
+        "height": 120
+      },
+      "fill": {
+        "r": 236,
+        "g": 254,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 34,
+        "g": 211,
+        "b": 238,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 237,
+          "y": 402
+        },
+        {
+          "x": 412,
+          "y": 402
+        },
+        {
+          "x": 412,
+          "y": 522
+        },
+        {
+          "x": 237,
+          "y": 522
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 17,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Operation",
+      "bounds": {
+        "x": 779.75,
+        "y": 213,
+        "width": 245,
+        "height": 136
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 244,
+        "a": 255
+      },
+      "stroke": {
+        "r": 74,
+        "g": 222,
+        "b": 128,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 779.75,
+          "y": 213
+        },
+        {
+          "x": 1024.75,
+          "y": 213
+        },
+        {
+          "x": 1024.75,
+          "y": 349
+        },
+        {
+          "x": 779.75,
+          "y": 349
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 18,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Revision",
+      "bounds": {
+        "x": 345.25,
+        "y": 221,
+        "width": 188,
+        "height": 120
+      },
+      "fill": {
+        "r": 245,
+        "g": 243,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 167,
+        "g": 139,
+        "b": 250,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 345.25,
+          "y": 221
+        },
+        {
+          "x": 533.25,
+          "y": 221
+        },
+        {
+          "x": 533.25,
+          "y": 341
+        },
+        {
+          "x": 345.25,
+          "y": 341
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 19,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Session",
+      "bounds": {
+        "x": 583.25,
+        "y": 213,
+        "width": 146.5,
+        "height": 136
+      },
+      "fill": {
+        "r": 254,
+        "g": 242,
+        "b": 242,
+        "a": 255
+      },
+      "stroke": {
+        "r": 248,
+        "g": 113,
+        "b": 113,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 583.25,
+          "y": 213
+        },
+        {
+          "x": 729.75,
+          "y": 213
+        },
+        {
+          "x": 729.75,
+          "y": 349
+        },
+        {
+          "x": 583.25,
+          "y": 349
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 20,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "SyncEngine",
+      "bounds": {
+        "x": 908.75,
+        "y": 29,
+        "width": 299,
+        "height": 110
+      },
+      "fill": {
+        "r": 254,
+        "g": 252,
+        "b": 232,
+        "a": 255
+      },
+      "stroke": {
+        "r": 250,
+        "g": 204,
+        "b": 21,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 908.75,
+          "y": 29
+        },
+        {
+          "x": 1207.75,
+          "y": 29
+        },
+        {
+          "x": 1207.75,
+          "y": 139
+        },
+        {
+          "x": 908.75,
+          "y": 139
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 21,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "DocumentStore",
+      "bounds": {
+        "x": 1074.75,
+        "y": 210,
+        "width": 279,
+        "height": 142
+      },
+      "fill": {
+        "r": 238,
+        "g": 242,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 129,
+        "g": 140,
+        "b": 248,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 1074.75,
+          "y": 210
+        },
+        {
+          "x": 1353.75,
+          "y": 210
+        },
+        {
+          "x": 1353.75,
+          "y": 352
+        },
+        {
+          "x": 1074.75,
+          "y": 352
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 22,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 404.25,
+        "y": 20,
+        "width": 70,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 404.25,
+          "y": 20
+        },
+        {
+          "x": 474.25,
+          "y": 20
+        },
+        {
+          "x": 474.25,
+          "y": 36
+        },
+        {
+          "x": 404.25,
+          "y": 36
+        }
+      ],
+      "text": "Document",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 23,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 363.75,
+        "y": 60,
+        "width": 100,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 363.75,
+          "y": 60
+        },
+        {
+          "x": 463.75,
+          "y": 60
+        },
+        {
+          "x": 463.75,
+          "y": 76
+        },
+        {
+          "x": 363.75,
+          "y": 76
+        }
+      ],
+      "text": "+DocumentId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 24,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 363.75,
+        "y": 76,
+        "width": 115,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 363.75,
+          "y": 76
+        },
+        {
+          "x": 478.75,
+          "y": 76
+        },
+        {
+          "x": 478.75,
+          "y": 92
+        },
+        {
+          "x": 363.75,
+          "y": 92
+        }
+      ],
+      "text": "+Revision revision",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 25,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 363.75,
+        "y": 92,
+        "width": 124,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 363.75,
+          "y": 92
+        },
+        {
+          "x": 487.75,
+          "y": 92
+        },
+        {
+          "x": 487.75,
+          "y": 108
+        },
+        {
+          "x": 363.75,
+          "y": 108
+        }
+      ],
+      "text": "+List<Block> blocks",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 26,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 363.75,
+        "y": 132,
+        "width": 112,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 363.75,
+          "y": 132
+        },
+        {
+          "x": 475.75,
+          "y": 132
+        },
+        {
+          "x": 475.75,
+          "y": 148
+        },
+        {
+          "x": 363.75,
+          "y": 148
+        }
+      ],
+      "text": "+apply(operation)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 27,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 177.5,
+        "y": 225,
+        "width": 67,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 177.5,
+          "y": 225
+        },
+        {
+          "x": 244.5,
+          "y": 225
+        },
+        {
+          "x": 244.5,
+          "y": 241
+        },
+        {
+          "x": 177.5,
+          "y": 241
+        }
+      ],
+      "text": "«abstract»",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 28,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 191.5,
+        "y": 241,
+        "width": 39,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 191.5,
+          "y": 241
+        },
+        {
+          "x": 230.5,
+          "y": 241
+        },
+        {
+          "x": 230.5,
+          "y": 257
+        },
+        {
+          "x": 191.5,
+          "y": 257
+        }
+      ],
+      "text": "Block",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 29,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 142.75,
+        "y": 281,
+        "width": 69,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 142.75,
+          "y": 281
+        },
+        {
+          "x": 211.75,
+          "y": 281
+        },
+        {
+          "x": 211.75,
+          "y": 297
+        },
+        {
+          "x": 142.75,
+          "y": 297
+        }
+      ],
+      "text": "+BlockId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 30,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 142.75,
+        "y": 297,
+        "width": 111,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 142.75,
+          "y": 297
+        },
+        {
+          "x": 253.75,
+          "y": 297
+        },
+        {
+          "x": 253.75,
+          "y": 313
+        },
+        {
+          "x": 142.75,
+          "y": 313
+        }
+      ],
+      "text": "+Position position",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 31,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 63.5,
+        "y": 414,
+        "width": 68,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 63.5,
+          "y": 414
+        },
+        {
+          "x": 131.5,
+          "y": 414
+        },
+        {
+          "x": 131.5,
+          "y": 430
+        },
+        {
+          "x": 63.5,
+          "y": 430
+        }
+      ],
+      "text": "TextBlock",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 32,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 454,
+        "width": 72,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 454
+        },
+        {
+          "x": 96,
+          "y": 454
+        },
+        {
+          "x": 96,
+          "y": 470
+        },
+        {
+          "x": 24,
+          "y": 470
+        }
+      ],
+      "text": "+String text",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 33,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 470,
+        "width": 121,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 470
+        },
+        {
+          "x": 145,
+          "y": 470
+        },
+        {
+          "x": 145,
+          "y": 486
+        },
+        {
+          "x": 24,
+          "y": 486
+        }
+      ],
+      "text": "+List<Mark> marks",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 34,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 284.5,
+        "y": 414,
+        "width": 80,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 284.5,
+          "y": 414
+        },
+        {
+          "x": 364.5,
+          "y": 414
+        },
+        {
+          "x": 364.5,
+          "y": 430
+        },
+        {
+          "x": 284.5,
+          "y": 430
+        }
+      ],
+      "text": "MediaBlock",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 35,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 253,
+        "y": 454,
+        "width": 79,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 253,
+          "y": 454
+        },
+        {
+          "x": 332,
+          "y": 454
+        },
+        {
+          "x": 332,
+          "y": 470
+        },
+        {
+          "x": 253,
+          "y": 470
+        }
+      ],
+      "text": "+URI source",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 36,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 253,
+        "y": 470,
+        "width": 111,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 253,
+          "y": 470
+        },
+        {
+          "x": 364,
+          "y": 470
+        },
+        {
+          "x": 364,
+          "y": 486
+        },
+        {
+          "x": 253,
+          "y": 486
+        }
+      ],
+      "text": "+Dimensions size",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 37,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 868.25,
+        "y": 225,
+        "width": 68,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 868.25,
+          "y": 225
+        },
+        {
+          "x": 936.25,
+          "y": 225
+        },
+        {
+          "x": 936.25,
+          "y": 241
+        },
+        {
+          "x": 868.25,
+          "y": 241
+        }
+      ],
+      "text": "Operation",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 38,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 795.75,
+        "y": 265,
+        "width": 98,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 795.75,
+          "y": 265
+        },
+        {
+          "x": 893.75,
+          "y": 265
+        },
+        {
+          "x": 893.75,
+          "y": 281
+        },
+        {
+          "x": 795.75,
+          "y": 281
+        }
+      ],
+      "text": "+OperationId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 39,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 795.75,
+        "y": 281,
+        "width": 151,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 795.75,
+          "y": 281
+        },
+        {
+          "x": 946.75,
+          "y": 281
+        },
+        {
+          "x": 946.75,
+          "y": 297
+        },
+        {
+          "x": 795.75,
+          "y": 297
+        }
+      ],
+      "text": "+Revision baseRevision",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 40,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 795.75,
+        "y": 321,
+        "width": 187,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 795.75,
+          "y": 321
+        },
+        {
+          "x": 982.75,
+          "y": 321
+        },
+        {
+          "x": 982.75,
+          "y": 337
+        },
+        {
+          "x": 795.75,
+          "y": 337
+        }
+      ],
+      "text": "+transform(other) : Operation",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 41,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 409.25,
+        "y": 233,
+        "width": 60,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 409.25,
+          "y": 233
+        },
+        {
+          "x": 469.25,
+          "y": 233
+        },
+        {
+          "x": 469.25,
+          "y": 249
+        },
+        {
+          "x": 409.25,
+          "y": 249
+        }
+      ],
+      "text": "Revision",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 42,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 361.25,
+        "y": 273,
+        "width": 101,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 361.25,
+          "y": 273
+        },
+        {
+          "x": 462.25,
+          "y": 273
+        },
+        {
+          "x": 462.25,
+          "y": 289
+        },
+        {
+          "x": 361.25,
+          "y": 289
+        }
+      ],
+      "text": "+long sequence",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 43,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 361.25,
+        "y": 289,
+        "width": 134,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 361.25,
+          "y": 289
+        },
+        {
+          "x": 495.25,
+          "y": 289
+        },
+        {
+          "x": 495.25,
+          "y": 305
+        },
+        {
+          "x": 361.25,
+          "y": 305
+        }
+      ],
+      "text": "+Instant committedAt",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 44,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 629,
+        "y": 225,
+        "width": 55,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 629,
+          "y": 225
+        },
+        {
+          "x": 684,
+          "y": 225
+        },
+        {
+          "x": 684,
+          "y": 241
+        },
+        {
+          "x": 629,
+          "y": 241
+        }
+      ],
+      "text": "Session",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 45,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 599.25,
+        "y": 265,
+        "width": 85,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 599.25,
+          "y": 265
+        },
+        {
+          "x": 684.25,
+          "y": 265
+        },
+        {
+          "x": 684.25,
+          "y": 281
+        },
+        {
+          "x": 599.25,
+          "y": 281
+        }
+      ],
+      "text": "+SessionId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 46,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 599.25,
+        "y": 281,
+        "width": 82,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 599.25,
+          "y": 281
+        },
+        {
+          "x": 681.25,
+          "y": 281
+        },
+        {
+          "x": 681.25,
+          "y": 297
+        },
+        {
+          "x": 599.25,
+          "y": 297
+        }
+      ],
+      "text": "+UserId user",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 47,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 599.25,
+        "y": 297,
+        "width": 95,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 599.25,
+          "y": 297
+        },
+        {
+          "x": 694.25,
+          "y": 297
+        },
+        {
+          "x": 694.25,
+          "y": 313
+        },
+        {
+          "x": 599.25,
+          "y": 313
+        }
+      ],
+      "text": "+Cursor cursor",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 48,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1017.25,
+        "y": 41,
+        "width": 82,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1017.25,
+          "y": 41
+        },
+        {
+          "x": 1099.25,
+          "y": 41
+        },
+        {
+          "x": 1099.25,
+          "y": 57
+        },
+        {
+          "x": 1017.25,
+          "y": 57
+        }
+      ],
+      "text": "SyncEngine",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 49,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 924.75,
+        "y": 105,
+        "width": 234,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 924.75,
+          "y": 105
+        },
+        {
+          "x": 1158.75,
+          "y": 105
+        },
+        {
+          "x": 1158.75,
+          "y": 121
+        },
+        {
+          "x": 924.75,
+          "y": 121
+        }
+      ],
+      "text": "+merge(local, remote) : MergeResult",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 50,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1178.75,
+        "y": 222,
+        "width": 71,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1178.75,
+          "y": 222
+        },
+        {
+          "x": 1249.75,
+          "y": 222
+        },
+        {
+          "x": 1249.75,
+          "y": 238
+        },
+        {
+          "x": 1178.75,
+          "y": 238
+        }
+      ],
+      "text": "«interface»",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 51,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1161.25,
+        "y": 238,
+        "width": 106,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1161.25,
+          "y": 238
+        },
+        {
+          "x": 1267.25,
+          "y": 238
+        },
+        {
+          "x": 1267.25,
+          "y": 254
+        },
+        {
+          "x": 1161.25,
+          "y": 254
+        }
+      ],
+      "text": "DocumentStore",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 52,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1090.75,
+        "y": 302,
+        "width": 133,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1090.75,
+          "y": 302
+        },
+        {
+          "x": 1223.75,
+          "y": 302
+        },
+        {
+          "x": 1223.75,
+          "y": 318
+        },
+        {
+          "x": 1090.75,
+          "y": 318
+        }
+      ],
+      "text": "+load(id) : Document",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 53,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1090.75,
+        "y": 318,
+        "width": 202,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1090.75,
+          "y": 318
+        },
+        {
+          "x": 1292.75,
+          "y": 318
+        },
+        {
+          "x": 1292.75,
+          "y": 334
+        },
+        {
+          "x": 1090.75,
+          "y": 334
+        }
+      ],
+      "text": "+commit(document, operations)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    }
+  ],
+  "outcome": "success",
+  "auditCaseId": "rc_class_document_editor",
+  "auditSource": "production",
+  "sourceSha256": "a2ec06f7a12342bf98ddab63ab41abe20227d16b817f343fe2ca5874fcf31998"
+}

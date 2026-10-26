@@ -197,6 +197,11 @@ function analyzeManifest(manifest, thresholds, findings, renderer) {
         order: finite(element.order) ? element.order : index,
         strokePattern: effectiveStrokePattern(element),
         normalizedBounds: bounds,
+        normalizedTextContentRects: Array.isArray(element.textContentRects) &&
+            element.textContentRects.length > 0
+          ? element.textContentRects.map((rectangle) =>
+            normalizeBounds(rectangle, safeViewport))
+          : [bounds],
         normalizedText: element.type === 'text'
           ? normalizeManifestText(element)
           : null,
@@ -1140,16 +1145,18 @@ function occlusionProfiles(analysis, thresholds) {
     const occurrence = occurrences.get(text.normalizedText) ?? 0;
     occurrences.set(text.normalizedText, occurrence + 1);
     const key = `${text.normalizedText}#${occurrence}`;
+    const textRectangles = text.normalizedTextContentRects;
     const intersections = analysis.elements
       .filter((element) =>
         element.order > text.order &&
         isOpaquePaintElement(element)
       )
-      .map((element) =>
-        intersectBounds(text.normalizedBounds, element.normalizedBounds)
+      .flatMap((element) =>
+        textRectangles.map((rectangle) =>
+          intersectBounds(rectangle, element.normalizedBounds))
       )
       .filter((bounds) => bounds != null);
-    const textArea = boundsArea(text.normalizedBounds);
+    const textArea = unionArea(textRectangles);
     const coveredArea = unionArea(intersections);
     const overlaps = intersections
       .map((bounds) => ratio(boundsArea(bounds), textArea))
@@ -1208,14 +1215,11 @@ function hasAxisAlignedRectangleOutline(element) {
 }
 
 function visibleTextElements(analysis, thresholds) {
-  return analysis.texts.filter((text) =>
-    !analysis.elements.some((element) =>
-      element.order > text.order &&
-      isOpaquePaintElement(element) &&
-      overlapRatio(text.normalizedBounds, element.normalizedBounds) >=
-        thresholds.occlusionOverlapRatio
-    )
-  );
+  const profiles = occlusionProfiles(analysis, thresholds);
+  const occurrences = occurrenceKeys(analysis.texts);
+  return analysis.texts.filter((text, index) =>
+    profiles.get(occurrences[index]).coverageRatio <
+      thresholds.occlusionOverlapRatio);
 }
 
 function textOverlapPairs(texts, minimumRatio) {

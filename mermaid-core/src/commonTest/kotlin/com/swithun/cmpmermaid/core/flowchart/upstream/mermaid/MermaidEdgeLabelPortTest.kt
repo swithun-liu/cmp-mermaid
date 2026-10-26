@@ -46,6 +46,69 @@ class MermaidEdgeLabelPortTest {
         assertIs<GMResult.Err<MermaidError>>(MermaidEdgeLabelPort.calcLabelPosition(emptyList()))
     }
 
+    // Coordinates come from unchanged utils.ts bodies in the test-only oracle.
+    @Test
+    fun translatesAllTerminalPositionsAndMarkerSizesWithoutMutatingThePath() {
+        val points = listOf(p(0, 0), p(100, 0))
+        val expectedByMarkerSize = listOf(
+            listOf(p(12.5f, -10f), p(12.5f, 10f), p(82.5f, -15f), p(82.5f, 5f)),
+            listOf(p(17.5f, -15f), p(17.5f, 15f), p(77.5f, -20f), p(77.5f, 10f)),
+        )
+        listOf(0.0, 10.0).forEachIndexed { index, markerSize ->
+            MermaidEdgeLabelPort.TerminalPosition.entries.forEachIndexed { positionIndex, position ->
+                val actual = ok(MermaidEdgeLabelPort.calcTerminalLabelPosition(
+                    markerSize, position, points,
+                ))
+                val expected = expectedByMarkerSize[index][positionIndex]
+                assertEquals(expected.x, actual.x, 0.00001f)
+                assertEquals(expected.y, actual.y, 0.00001f)
+                assertEquals(listOf(p(0, 0), p(100, 0)), points)
+            }
+        }
+    }
+
+    @Test
+    fun terminalTraversalRetainsDuplicateEarlyReturnAndShortPathFailures() {
+        val duplicate = listOf(p(3, 7), p(3, 7), p(103, 7))
+        val start = ok(MermaidEdgeLabelPort.calcTerminalLabelPosition(
+            10.0, MermaidEdgeLabelPort.TerminalPosition.StartRight, duplicate,
+        ))
+        assertEquals(p(3, -8), start)
+        listOf(emptyList(), listOf(p(17, 29)), listOf(p(0, 0), p(10, 0))).forEach { points ->
+            MermaidEdgeLabelPort.TerminalPosition.entries.forEach { position ->
+                val error = assertIs<GMResult.Err<MermaidError>>(
+                    MermaidEdgeLabelPort.calcTerminalLabelPosition(10.0, position, points),
+                ).error
+                assertEquals("Could not find a suitable point for the given distance", error.message)
+            }
+        }
+    }
+
+    @Test
+    fun terminalInterpolationMatchesTheUpstreamBentPathOracle() {
+        val points = listOf(p(-12, 7), p(16, 25), p(90, 60))
+        val expectedByMarkerSize = listOf(
+            listOf(
+                p(3.9223063f, 5.3476853f), p(-6.892846f, 22.171255f),
+                p(77.975784f, 40.61562f), p(69.42456f, 58.69535f),
+            ),
+            listOf(
+                p(10.805808f, 3.697545f), p(-5.256948f, 29.035025f),
+                p(75.59365f, 33.957882f), p(62.76682f, 61.077477f),
+            ),
+        )
+        listOf(0.0, 10.0).forEachIndexed { index, markerSize ->
+            MermaidEdgeLabelPort.TerminalPosition.entries.forEachIndexed { positionIndex, position ->
+                val actual = ok(MermaidEdgeLabelPort.calcTerminalLabelPosition(
+                    markerSize, position, points,
+                ))
+                val expected = expectedByMarkerSize[index][positionIndex]
+                assertEquals(expected.x, actual.x, 0.00001f)
+                assertEquals(expected.y, actual.y, 0.00001f)
+            }
+        }
+    }
+
     @Test
     fun preservesUpstreamSubstringAndSignedDecimalSemantics() {
         assertFalse(MermaidEdgeLabelPort.isLabelCoordinateInPath(p(-1.5f, 42f), "M-1.5,18L13,19"))

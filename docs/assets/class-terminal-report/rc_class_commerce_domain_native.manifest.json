@@ -1,0 +1,3533 @@
+{
+  "schemaVersion": 1,
+  "renderer": "native",
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "width": 1154,
+    "height": 742,
+    "background": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
+  },
+  "title": null,
+  "accessibilityTitle": null,
+  "accessibilityDescription": null,
+  "elements": [
+    {
+      "order": 0,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idCustomer-Order-1",
+      "edgeId": "idCustomer-Order-1",
+      "bounds": {
+        "x": 175.75,
+        "y": 288.5,
+        "width": 112.75,
+        "height": 28.17453
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 283.2855,
+        "y": 313.70654
+      },
+      "routePoints": [
+        {
+          "x": 175.75,
+          "y": 288.5
+        },
+        {
+          "x": 239,
+          "y": 288.5
+        },
+        {
+          "x": 288.5,
+          "y": 316.67453
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 175.75,
+          "y": 288.5
+        },
+        {
+          "x": 239,
+          "y": 288.5
+        },
+        {
+          "x": 288.5,
+          "y": 316.67453
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 239,
+          "y": 288.5
+        }
+      ],
+      "directionSequence": [
+        "R",
+        "Diagonal"
+      ],
+      "sourcePortSide": "Right",
+      "destinationPortSide": null,
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 1,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idOrder-OrderItem-2",
+      "edgeId": "idOrder-OrderItem-2",
+      "bounds": {
+        "x": 447.9472,
+        "y": 76,
+        "width": 178.5528,
+        "height": 211
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassComposition",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 456.17758,
+        "y": 271.8401
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 447.9472,
+          "y": 287
+        },
+        {
+          "x": 562.5,
+          "y": 76
+        },
+        {
+          "x": 626.5,
+          "y": 76
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 447.9472,
+          "y": 287
+        },
+        {
+          "x": 562.5,
+          "y": 76
+        },
+        {
+          "x": 626.5,
+          "y": 76
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 562.5,
+          "y": 76
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "R"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Left",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 2,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idOrder-Payment-3",
+      "edgeId": "idOrder-Payment-3",
+      "bounds": {
+        "x": 507.5,
+        "y": 278,
+        "width": 114.5,
+        "height": 33.768982
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassAggregation",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 522.2003,
+        "y": 302.74326
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 507.5,
+          "y": 311.76898
+        },
+        {
+          "x": 562.5,
+          "y": 278
+        },
+        {
+          "x": 622,
+          "y": 278
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 507.5,
+          "y": 311.76898
+        },
+        {
+          "x": 562.5,
+          "y": 278
+        },
+        {
+          "x": 622,
+          "y": 278
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 562.5,
+          "y": 278
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "R"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Left",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 3,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idOrder-InventoryReservation-4",
+      "edgeId": "idOrder-InventoryReservation-4",
+      "bounds": {
+        "x": 507.5,
+        "y": 446.23102,
+        "width": 110,
+        "height": 33.768982
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassAggregation",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 522.2003,
+        "y": 455.25674
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 507.5,
+          "y": 446.23102
+        },
+        {
+          "x": 562.5,
+          "y": 480
+        },
+        {
+          "x": 617.5,
+          "y": 480
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 507.5,
+          "y": 446.23102
+        },
+        {
+          "x": 562.5,
+          "y": 480
+        },
+        {
+          "x": 617.5,
+          "y": 480
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 562.5,
+          "y": 480
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "R"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Left",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 4,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idOrder-Shipment-5",
+      "edgeId": "idOrder-Shipment-5",
+      "bounds": {
+        "x": 450.73172,
+        "y": 471,
+        "width": 167.26828,
+        "height": 195
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassAggregation",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 459.30975,
+        "y": 485.96594
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 450.73172,
+          "y": 471
+        },
+        {
+          "x": 562.5,
+          "y": 666
+        },
+        {
+          "x": 618,
+          "y": 666
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 450.73172,
+          "y": 471
+        },
+        {
+          "x": 562.5,
+          "y": 666
+        },
+        {
+          "x": 618,
+          "y": 666
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 562.5,
+          "y": 666
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "R"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Left",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 5,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idPayment-PaymentGateway-6",
+      "edgeId": "idPayment-PaymentGateway-6",
+      "bounds": {
+        "x": 821.5,
+        "y": 278,
+        "width": 116.5,
+        "height": 0
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 932,
+        "y": 278
+      },
+      "routePoints": [
+        {
+          "x": 821.5,
+          "y": 278
+        },
+        {
+          "x": 882,
+          "y": 278
+        },
+        {
+          "x": 938,
+          "y": 278
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 821.5,
+          "y": 278
+        },
+        {
+          "x": 938,
+          "y": 278
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "R"
+      ],
+      "sourcePortSide": "Right",
+      "destinationPortSide": "Left",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 6,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idOrderRepository-Order-7",
+      "edgeId": "idOrderRepository-Order-7",
+      "bounds": {
+        "x": 189.5,
+        "y": 441.32547,
+        "width": 99,
+        "height": 28.17453
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Dashed",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 283.2855,
+        "y": 444.29346
+      },
+      "routePoints": [
+        {
+          "x": 189.5,
+          "y": 469.5
+        },
+        {
+          "x": 239,
+          "y": 469.5
+        },
+        {
+          "x": 288.5,
+          "y": 441.32547
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 189.5,
+          "y": 469.5
+        },
+        {
+          "x": 239,
+          "y": 469.5
+        },
+        {
+          "x": 288.5,
+          "y": 441.32547
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 239,
+          "y": 469.5
+        }
+      ],
+      "directionSequence": [
+        "R",
+        "Diagonal"
+      ],
+      "sourcePortSide": "Right",
+      "destinationPortSide": null,
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 7,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idCustomer-Order-1-label-background",
+      "bounds": {
+        "x": 212.5,
+        "y": 277.5,
+        "width": 53,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 8,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idOrder-OrderItem-2-label-background",
+      "bounds": {
+        "x": 530,
+        "y": 65,
+        "width": 65,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 9,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idOrder-Payment-3-label-background",
+      "bounds": {
+        "x": 529,
+        "y": 267,
+        "width": 67,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 10,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idOrder-InventoryReservation-4-label-background",
+      "bounds": {
+        "x": 527.5,
+        "y": 469,
+        "width": 70,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 11,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idOrder-Shipment-5-label-background",
+      "bounds": {
+        "x": 526.5,
+        "y": 655,
+        "width": 72,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 12,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idPayment-PaymentGateway-6-label-background",
+      "bounds": {
+        "x": 845,
+        "y": 267,
+        "width": 74,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 13,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idOrderRepository-Order-7-label-background",
+      "bounds": {
+        "x": 208.5,
+        "y": 458.5,
+        "width": 61,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 14,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 218.5,
+        "y": 280.5,
+        "width": 41,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 218.5,
+          "y": 280.5
+        },
+        {
+          "x": 259.5,
+          "y": 280.5
+        },
+        {
+          "x": 259.5,
+          "y": 296.5
+        },
+        {
+          "x": 218.5,
+          "y": 296.5
+        }
+      ],
+      "text": "places",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 15,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 536,
+        "y": 68,
+        "width": 53,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 536,
+          "y": 68
+        },
+        {
+          "x": 589,
+          "y": 68
+        },
+        {
+          "x": 589,
+          "y": 84
+        },
+        {
+          "x": 536,
+          "y": 84
+        }
+      ],
+      "text": "contains",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 16,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 535,
+        "y": 270,
+        "width": 55,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 535,
+          "y": 270
+        },
+        {
+          "x": 590,
+          "y": 270
+        },
+        {
+          "x": 590,
+          "y": 286
+        },
+        {
+          "x": 535,
+          "y": 286
+        }
+      ],
+      "text": "payment",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 17,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 533.5,
+        "y": 472,
+        "width": 58,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 533.5,
+          "y": 472
+        },
+        {
+          "x": 591.5,
+          "y": 472
+        },
+        {
+          "x": 591.5,
+          "y": 488
+        },
+        {
+          "x": 533.5,
+          "y": 488
+        }
+      ],
+      "text": "inventory",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 18,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 532.5,
+        "y": 658,
+        "width": 60,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 532.5,
+          "y": 658
+        },
+        {
+          "x": 592.5,
+          "y": 658
+        },
+        {
+          "x": 592.5,
+          "y": 674
+        },
+        {
+          "x": 532.5,
+          "y": 674
+        }
+      ],
+      "text": "fulfillment",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 19,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 851,
+        "y": 270,
+        "width": 62,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 851,
+          "y": 270
+        },
+        {
+          "x": 913,
+          "y": 270
+        },
+        {
+          "x": 913,
+          "y": 286
+        },
+        {
+          "x": 851,
+          "y": 286
+        }
+      ],
+      "text": "delegates",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 20,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 214.5,
+        "y": 461.5,
+        "width": 49,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 214.5,
+          "y": 461.5
+        },
+        {
+          "x": 263.5,
+          "y": 461.5
+        },
+        {
+          "x": 263.5,
+          "y": 477.5
+        },
+        {
+          "x": 214.5,
+          "y": 477.5
+        }
+      ],
+      "text": "persists",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 21,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 190.25,
+        "y": 297.5,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 190.25,
+          "y": 297.5
+        },
+        {
+          "x": 196.25,
+          "y": 297.5
+        },
+        {
+          "x": 196.25,
+          "y": 309.5
+        },
+        {
+          "x": 190.25,
+          "y": 309.5
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 22,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 275.71103,
+        "y": 289.98163,
+        "width": 16,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 275.71103,
+          "y": 289.98163
+        },
+        {
+          "x": 291.71103,
+          "y": 289.98163
+        },
+        {
+          "x": 291.71103,
+          "y": 301.98163
+        },
+        {
+          "x": 275.71103,
+          "y": 301.98163
+        }
+      ],
+      "text": "0..*",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 23,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 466.4794,
+        "y": 272.77725,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 466.4794,
+          "y": 272.77725
+        },
+        {
+          "x": 472.4794,
+          "y": 272.77725
+        },
+        {
+          "x": 472.4794,
+          "y": 284.77725
+        },
+        {
+          "x": 466.4794,
+          "y": 284.77725
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 24,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 604,
+        "y": 56,
+        "width": 16,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 604,
+          "y": 56
+        },
+        {
+          "x": 620,
+          "y": 56
+        },
+        {
+          "x": 620,
+          "y": 68
+        },
+        {
+          "x": 604,
+          "y": 68
+        }
+      ],
+      "text": "1..*",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 25,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 527.2618,
+        "y": 309.39532,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 527.2618,
+          "y": 309.39532
+        },
+        {
+          "x": 533.2618,
+          "y": 309.39532
+        },
+        {
+          "x": 533.2618,
+          "y": 321.39532
+        },
+        {
+          "x": 527.2618,
+          "y": 321.39532
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 26,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 599.5,
+        "y": 258,
+        "width": 18,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 599.5,
+          "y": 258
+        },
+        {
+          "x": 617.5,
+          "y": 258
+        },
+        {
+          "x": 617.5,
+          "y": 270
+        },
+        {
+          "x": 599.5,
+          "y": 270
+        }
+      ],
+      "text": "0..1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 27,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 511.56494,
+        "y": 462.1704,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 511.56494,
+          "y": 462.1704
+        },
+        {
+          "x": 517.56494,
+          "y": 462.1704
+        },
+        {
+          "x": 517.56494,
+          "y": 474.1704
+        },
+        {
+          "x": 511.56494,
+          "y": 474.1704
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 28,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 595,
+        "y": 460,
+        "width": 18,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 595,
+          "y": 460
+        },
+        {
+          "x": 613,
+          "y": 460
+        },
+        {
+          "x": 613,
+          "y": 472
+        },
+        {
+          "x": 595,
+          "y": 472
+        }
+      ],
+      "text": "0..1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 29,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 443.42023,
+        "y": 487.64203,
+        "width": 6,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 443.42023,
+          "y": 487.64203
+        },
+        {
+          "x": 449.42023,
+          "y": 487.64203
+        },
+        {
+          "x": 449.42023,
+          "y": 499.64203
+        },
+        {
+          "x": 443.42023,
+          "y": 499.64203
+        }
+      ],
+      "text": "1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 30,
+      "zIndex": 8,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 595.5,
+        "y": 646,
+        "width": 18,
+        "height": 12
+      },
+      "outlinePoints": [
+        {
+          "x": 595.5,
+          "y": 646
+        },
+        {
+          "x": 613.5,
+          "y": 646
+        },
+        {
+          "x": 613.5,
+          "y": 658
+        },
+        {
+          "x": 595.5,
+          "y": 658
+        }
+      ],
+      "text": "0..1",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 11,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 31,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Order",
+      "bounds": {
+        "x": 288.5,
+        "y": 287,
+        "width": 219,
+        "height": 184
+      },
+      "fill": {
+        "r": 253,
+        "g": 244,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 232,
+        "g": 121,
+        "b": 249,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 288.5,
+          "y": 287
+        },
+        {
+          "x": 507.5,
+          "y": 287
+        },
+        {
+          "x": 507.5,
+          "y": 471
+        },
+        {
+          "x": 288.5,
+          "y": 471
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 32,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "OrderItem",
+      "bounds": {
+        "x": 626.5,
+        "y": 8,
+        "width": 190.5,
+        "height": 136
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 250,
+        "a": 255
+      },
+      "stroke": {
+        "r": 45,
+        "g": 212,
+        "b": 191,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 626.5,
+          "y": 8
+        },
+        {
+          "x": 817,
+          "y": 8
+        },
+        {
+          "x": 817,
+          "y": 144
+        },
+        {
+          "x": 626.5,
+          "y": 144
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 33,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Customer",
+      "bounds": {
+        "x": 21.75,
+        "y": 228.5,
+        "width": 154,
+        "height": 120
+      },
+      "fill": {
+        "r": 255,
+        "g": 247,
+        "b": 237,
+        "a": 255
+      },
+      "stroke": {
+        "r": 251,
+        "g": 146,
+        "b": 60,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 21.75,
+          "y": 228.5
+        },
+        {
+          "x": 175.75,
+          "y": 228.5
+        },
+        {
+          "x": 175.75,
+          "y": 348.5
+        },
+        {
+          "x": 21.75,
+          "y": 348.5
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 34,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Payment",
+      "bounds": {
+        "x": 622,
+        "y": 194,
+        "width": 199.5,
+        "height": 168
+      },
+      "fill": {
+        "r": 236,
+        "g": 254,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 34,
+        "g": 211,
+        "b": 238,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 622,
+          "y": 194
+        },
+        {
+          "x": 821.5,
+          "y": 194
+        },
+        {
+          "x": 821.5,
+          "y": 362
+        },
+        {
+          "x": 622,
+          "y": 362
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 35,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "PaymentGateway",
+      "bounds": {
+        "x": 938,
+        "y": 207,
+        "width": 208,
+        "height": 142
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 244,
+        "a": 255
+      },
+      "stroke": {
+        "r": 74,
+        "g": 222,
+        "b": 128,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 938,
+          "y": 207
+        },
+        {
+          "x": 1146,
+          "y": 207
+        },
+        {
+          "x": 1146,
+          "y": 349
+        },
+        {
+          "x": 938,
+          "y": 349
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 36,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "InventoryReservation",
+      "bounds": {
+        "x": 617.5,
+        "y": 412,
+        "width": 208.5,
+        "height": 136
+      },
+      "fill": {
+        "r": 245,
+        "g": 243,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 167,
+        "g": 139,
+        "b": 250,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 617.5,
+          "y": 412
+        },
+        {
+          "x": 826,
+          "y": 412
+        },
+        {
+          "x": 826,
+          "y": 548
+        },
+        {
+          "x": 617.5,
+          "y": 548
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 37,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "Shipment",
+      "bounds": {
+        "x": 618,
+        "y": 598,
+        "width": 207.5,
+        "height": 136
+      },
+      "fill": {
+        "r": 254,
+        "g": 242,
+        "b": 242,
+        "a": 255
+      },
+      "stroke": {
+        "r": 248,
+        "g": 113,
+        "b": 113,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 618,
+          "y": 598
+        },
+        {
+          "x": 825.5,
+          "y": 598
+        },
+        {
+          "x": 825.5,
+          "y": 734
+        },
+        {
+          "x": 618,
+          "y": 734
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 38,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "OrderRepository",
+      "bounds": {
+        "x": 8,
+        "y": 398.5,
+        "width": 181.5,
+        "height": 142
+      },
+      "fill": {
+        "r": 254,
+        "g": 252,
+        "b": 232,
+        "a": 255
+      },
+      "stroke": {
+        "r": 250,
+        "g": 204,
+        "b": 21,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 8,
+          "y": 398.5
+        },
+        {
+          "x": 189.5,
+          "y": 398.5
+        },
+        {
+          "x": 189.5,
+          "y": 540.5
+        },
+        {
+          "x": 8,
+          "y": 540.5
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 39,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 379,
+        "y": 299,
+        "width": 38,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 379,
+          "y": 299
+        },
+        {
+          "x": 417,
+          "y": 299
+        },
+        {
+          "x": 417,
+          "y": 315
+        },
+        {
+          "x": 379,
+          "y": 315
+        }
+      ],
+      "text": "Order",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 40,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 304.5,
+        "y": 339,
+        "width": 72,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 304.5,
+          "y": 339
+        },
+        {
+          "x": 376.5,
+          "y": 339
+        },
+        {
+          "x": 376.5,
+          "y": 355
+        },
+        {
+          "x": 304.5,
+          "y": 355
+        }
+      ],
+      "text": "+OrderId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 41,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 304.5,
+        "y": 355,
+        "width": 127,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 304.5,
+          "y": 355
+        },
+        {
+          "x": 431.5,
+          "y": 355
+        },
+        {
+          "x": 431.5,
+          "y": 371
+        },
+        {
+          "x": 304.5,
+          "y": 371
+        }
+      ],
+      "text": "+OrderStatus status",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 42,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 304.5,
+        "y": 371,
+        "width": 82,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 304.5,
+          "y": 371
+        },
+        {
+          "x": 386.5,
+          "y": 371
+        },
+        {
+          "x": 386.5,
+          "y": 387
+        },
+        {
+          "x": 304.5,
+          "y": 387
+        }
+      ],
+      "text": "+Money total",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 43,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 304.5,
+        "y": 411,
+        "width": 176,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 304.5,
+          "y": 411
+        },
+        {
+          "x": 480.5,
+          "y": 411
+        },
+        {
+          "x": 480.5,
+          "y": 427
+        },
+        {
+          "x": 304.5,
+          "y": 427
+        }
+      ],
+      "text": "+addItem(product, quantity)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 44,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 304.5,
+        "y": 427,
+        "width": 65,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 304.5,
+          "y": 427
+        },
+        {
+          "x": 369.5,
+          "y": 427
+        },
+        {
+          "x": 369.5,
+          "y": 443
+        },
+        {
+          "x": 304.5,
+          "y": 443
+        }
+      ],
+      "text": "+confirm()",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 45,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 304.5,
+        "y": 443,
+        "width": 103,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 304.5,
+          "y": 443
+        },
+        {
+          "x": 407.5,
+          "y": 443
+        },
+        {
+          "x": 407.5,
+          "y": 459
+        },
+        {
+          "x": 304.5,
+          "y": 459
+        }
+      ],
+      "text": "+cancel(reason)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 46,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 688.25,
+        "y": 20,
+        "width": 67,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 688.25,
+          "y": 20
+        },
+        {
+          "x": 755.25,
+          "y": 20
+        },
+        {
+          "x": 755.25,
+          "y": 36
+        },
+        {
+          "x": 688.25,
+          "y": 36
+        }
+      ],
+      "text": "OrderItem",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 47,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 642.5,
+        "y": 60,
+        "width": 133,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 642.5,
+          "y": 60
+        },
+        {
+          "x": 775.5,
+          "y": 60
+        },
+        {
+          "x": 775.5,
+          "y": 76
+        },
+        {
+          "x": 642.5,
+          "y": 76
+        }
+      ],
+      "text": "+ProductId productId",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 48,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 642.5,
+        "y": 76,
+        "width": 77,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 642.5,
+          "y": 76
+        },
+        {
+          "x": 719.5,
+          "y": 76
+        },
+        {
+          "x": 719.5,
+          "y": 92
+        },
+        {
+          "x": 642.5,
+          "y": 92
+        }
+      ],
+      "text": "+int quantity",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 49,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 642.5,
+        "y": 92,
+        "width": 110,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 642.5,
+          "y": 92
+        },
+        {
+          "x": 752.5,
+          "y": 92
+        },
+        {
+          "x": 752.5,
+          "y": 108
+        },
+        {
+          "x": 642.5,
+          "y": 108
+        }
+      ],
+      "text": "+Money unitPrice",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 50,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 65.75,
+        "y": 240.5,
+        "width": 66,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 65.75,
+          "y": 240.5
+        },
+        {
+          "x": 131.75,
+          "y": 240.5
+        },
+        {
+          "x": 131.75,
+          "y": 256.5
+        },
+        {
+          "x": 65.75,
+          "y": 256.5
+        }
+      ],
+      "text": "Customer",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 51,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 37.75,
+        "y": 280.5,
+        "width": 97,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 37.75,
+          "y": 280.5
+        },
+        {
+          "x": 134.75,
+          "y": 280.5
+        },
+        {
+          "x": 134.75,
+          "y": 296.5
+        },
+        {
+          "x": 37.75,
+          "y": 296.5
+        }
+      ],
+      "text": "+CustomerId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 52,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 37.75,
+        "y": 296.5,
+        "width": 81,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 37.75,
+          "y": 296.5
+        },
+        {
+          "x": 118.75,
+          "y": 296.5
+        },
+        {
+          "x": 118.75,
+          "y": 312.5
+        },
+        {
+          "x": 37.75,
+          "y": 312.5
+        }
+      ],
+      "text": "+Email email",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 53,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 692.25,
+        "y": 206,
+        "width": 59,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 692.25,
+          "y": 206
+        },
+        {
+          "x": 751.25,
+          "y": 206
+        },
+        {
+          "x": 751.25,
+          "y": 222
+        },
+        {
+          "x": 692.25,
+          "y": 222
+        }
+      ],
+      "text": "Payment",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 54,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 638,
+        "y": 246,
+        "width": 91,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 638,
+          "y": 246
+        },
+        {
+          "x": 729,
+          "y": 246
+        },
+        {
+          "x": 729,
+          "y": 262
+        },
+        {
+          "x": 638,
+          "y": 262
+        }
+      ],
+      "text": "+PaymentId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 55,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 638,
+        "y": 262,
+        "width": 146,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 638,
+          "y": 262
+        },
+        {
+          "x": 784,
+          "y": 262
+        },
+        {
+          "x": 784,
+          "y": 278
+        },
+        {
+          "x": 638,
+          "y": 278
+        }
+      ],
+      "text": "+PaymentStatus status",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 56,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 638,
+        "y": 302,
+        "width": 77,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 638,
+          "y": 302
+        },
+        {
+          "x": 715,
+          "y": 302
+        },
+        {
+          "x": 715,
+          "y": 318
+        },
+        {
+          "x": 638,
+          "y": 318
+        }
+      ],
+      "text": "+authorize()",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 57,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 638,
+        "y": 318,
+        "width": 66,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 638,
+          "y": 318
+        },
+        {
+          "x": 704,
+          "y": 318
+        },
+        {
+          "x": 704,
+          "y": 334
+        },
+        {
+          "x": 638,
+          "y": 334
+        }
+      ],
+      "text": "+capture()",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 58,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 638,
+        "y": 334,
+        "width": 44,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 638,
+          "y": 334
+        },
+        {
+          "x": 682,
+          "y": 334
+        },
+        {
+          "x": 682,
+          "y": 350
+        },
+        {
+          "x": 638,
+          "y": 350
+        }
+      ],
+      "text": "+void()",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 59,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 1006.5,
+        "y": 219,
+        "width": 71,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 1006.5,
+          "y": 219
+        },
+        {
+          "x": 1077.5,
+          "y": 219
+        },
+        {
+          "x": 1077.5,
+          "y": 235
+        },
+        {
+          "x": 1006.5,
+          "y": 235
+        }
+      ],
+      "text": "«interface»",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 60,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 983,
+        "y": 235,
+        "width": 118,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 983,
+          "y": 235
+        },
+        {
+          "x": 1101,
+          "y": 235
+        },
+        {
+          "x": 1101,
+          "y": 251
+        },
+        {
+          "x": 983,
+          "y": 251
+        }
+      ],
+      "text": "PaymentGateway",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 61,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 954,
+        "y": 299,
+        "width": 125,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 954,
+          "y": 299
+        },
+        {
+          "x": 1079,
+          "y": 299
+        },
+        {
+          "x": 1079,
+          "y": 315
+        },
+        {
+          "x": 954,
+          "y": 315
+        }
+      ],
+      "text": "+authorize(request)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 62,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 954,
+        "y": 315,
+        "width": 77,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 954,
+          "y": 315
+        },
+        {
+          "x": 1031,
+          "y": 315
+        },
+        {
+          "x": 1031,
+          "y": 331
+        },
+        {
+          "x": 954,
+          "y": 331
+        }
+      ],
+      "text": "+capture(id)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 63,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 648.25,
+        "y": 424,
+        "width": 147,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 648.25,
+          "y": 424
+        },
+        {
+          "x": 795.25,
+          "y": 424
+        },
+        {
+          "x": 795.25,
+          "y": 440
+        },
+        {
+          "x": 648.25,
+          "y": 440
+        }
+      ],
+      "text": "InventoryReservation",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 64,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 633.5,
+        "y": 464,
+        "width": 111,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 633.5,
+          "y": 464
+        },
+        {
+          "x": 744.5,
+          "y": 464
+        },
+        {
+          "x": 744.5,
+          "y": 480
+        },
+        {
+          "x": 633.5,
+          "y": 480
+        }
+      ],
+      "text": "+ReservationId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 65,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 633.5,
+        "y": 504,
+        "width": 66,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 633.5,
+          "y": 504
+        },
+        {
+          "x": 699.5,
+          "y": 504
+        },
+        {
+          "x": 699.5,
+          "y": 520
+        },
+        {
+          "x": 633.5,
+          "y": 520
+        }
+      ],
+      "text": "+reserve()",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 66,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 633.5,
+        "y": 520,
+        "width": 65,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 633.5,
+          "y": 520
+        },
+        {
+          "x": 698.5,
+          "y": 520
+        },
+        {
+          "x": 698.5,
+          "y": 536
+        },
+        {
+          "x": 633.5,
+          "y": 536
+        }
+      ],
+      "text": "+release()",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 67,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 689.25,
+        "y": 610,
+        "width": 65,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 689.25,
+          "y": 610
+        },
+        {
+          "x": 754.25,
+          "y": 610
+        },
+        {
+          "x": 754.25,
+          "y": 626
+        },
+        {
+          "x": 689.25,
+          "y": 626
+        }
+      ],
+      "text": "Shipment",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 68,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 634,
+        "y": 650,
+        "width": 95,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 634,
+          "y": 650
+        },
+        {
+          "x": 729,
+          "y": 650
+        },
+        {
+          "x": 729,
+          "y": 666
+        },
+        {
+          "x": 634,
+          "y": 666
+        }
+      ],
+      "text": "+ShipmentId id",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 69,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 634,
+        "y": 666,
+        "width": 151,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 634,
+          "y": 666
+        },
+        {
+          "x": 785,
+          "y": 666
+        },
+        {
+          "x": 785,
+          "y": 682
+        },
+        {
+          "x": 634,
+          "y": 682
+        }
+      ],
+      "text": "+TrackingCode tracking",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 70,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 634,
+        "y": 706,
+        "width": 71,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 634,
+          "y": 706
+        },
+        {
+          "x": 705,
+          "y": 706
+        },
+        {
+          "x": 705,
+          "y": 722
+        },
+        {
+          "x": 634,
+          "y": 722
+        }
+      ],
+      "text": "+dispatch()",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 71,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 63.25,
+        "y": 410.5,
+        "width": 71,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 63.25,
+          "y": 410.5
+        },
+        {
+          "x": 134.25,
+          "y": 410.5
+        },
+        {
+          "x": 134.25,
+          "y": 426.5
+        },
+        {
+          "x": 63.25,
+          "y": 426.5
+        }
+      ],
+      "text": "«interface»",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 72,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 42.25,
+        "y": 426.5,
+        "width": 113,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 42.25,
+          "y": 426.5
+        },
+        {
+          "x": 155.25,
+          "y": 426.5
+        },
+        {
+          "x": 155.25,
+          "y": 442.5
+        },
+        {
+          "x": 42.25,
+          "y": 442.5
+        }
+      ],
+      "text": "OrderRepository",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 73,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 490.5,
+        "width": 101,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 490.5
+        },
+        {
+          "x": 125,
+          "y": 490.5
+        },
+        {
+          "x": 125,
+          "y": 506.5
+        },
+        {
+          "x": 24,
+          "y": 506.5
+        }
+      ],
+      "text": "+find(id) : Order",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 74,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 24,
+        "y": 506.5,
+        "width": 82,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 24,
+          "y": 506.5
+        },
+        {
+          "x": 106,
+          "y": 506.5
+        },
+        {
+          "x": 106,
+          "y": 522.5
+        },
+        {
+          "x": 24,
+          "y": 522.5
+        }
+      ],
+      "text": "+save(order)",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    }
+  ],
+  "outcome": "success",
+  "auditCaseId": "rc_class_commerce_domain",
+  "auditSource": "production",
+  "sourceSha256": "5aa704a9be29835d7c3059d903a464b6c9870160870224424882f2a1ed67db2e"
+}

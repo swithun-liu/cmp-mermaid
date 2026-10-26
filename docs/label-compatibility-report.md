@@ -7,6 +7,10 @@ The edge-label production code and its 32-source evidence were captured at
 a geometry audit false positive. The
 [SVG rectangle occlusion audit repair](rectangle-occlusion-audit.md)
 records the cause, corrected detection and a separate two-image reproduction.
+The separate 0.1.20 [Class terminal repair](class-terminal-report.md) translates
+terminal positions and removes non-upstream obstacle avoidance; its 13 sources,
+26 screenshots and one contact sheet are additional evidence. Existing
+center-label code and the 32-source evidence below remain unchanged.
 
 The current repair follows the [final edge-label source inventory](upstream-edge-label-map.md).
 Flowchart and ER now execute `insertEdge`'s final SVG-path coordinate check;

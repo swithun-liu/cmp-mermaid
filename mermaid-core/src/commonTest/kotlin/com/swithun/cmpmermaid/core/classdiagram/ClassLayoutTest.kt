@@ -127,22 +127,7 @@ class ClassLayoutTest {
         assertTrue(labels.any { it.text == "places" })
         assertTrue(labels.any { it.text == "1" })
         assertTrue(labels.any { it.text == "0..*" })
-        val order = scene.elements.filterIsInstance<SceneShape>().single { it.id == "Order" }
-        val endCardinality = labels.single { it.text == "0..*" }
-        assertTrue(
-            !endCardinality.bounds.overlaps(order.bounds),
-            "Expected end cardinality outside Order: " +
-                "${endCardinality.bounds} versus ${order.bounds}",
-        )
         val relationLabel = labels.single { it.text == "places" }
-        assertTrue(
-            labels.filter { it.text == "1" || it.text == "0..*" }
-                .none { cardinality -> cardinality.bounds.overlaps(relationLabel.bounds) },
-            "Expected cardinalities outside relation label: " +
-                labels.filter { it.text == "1" || it.text == "0..*" }
-                    .joinToString { "${it.text}=${it.bounds}" } +
-                ", places=${relationLabel.bounds}",
-        )
         val labelBackground = scene.elements.filterIsInstance<SceneShape>()
             .single { it.id.endsWith("-label-background") }
         assertEquals(context.theme.nodeFill, labelBackground.fill)
@@ -159,7 +144,7 @@ class ClassLayoutTest {
     }
 
     @Test
-    fun keepsHorizontalEndCardinalityOutsideTargetClass() {
+    fun preservesOfficialHorizontalTerminalCoordinatesIncludingNodeOcclusion() {
         val scene = render(
             """
             classDiagram
@@ -181,11 +166,18 @@ class ClassLayoutTest {
         val order = scene.elements.filterIsInstance<SceneShape>().single { it.id == "Order" }
         val endCardinality = scene.elements.filterIsInstance<SceneText>()
             .single { it.text == "0..*" }
-
+        val startCardinality = scene.elements.filterIsInstance<SceneText>()
+            .single { it.text == "1" }
+        val points = scene.elements.filterIsInstance<ScenePath>().single().points
+        // utils.ts -> calcTerminalLabelPosition on the horizontal path:
+        // all Class marker strings are truthy, including the start's "none".
+        assertEquals(points.first().x + 17.5f, startCardinality.bounds.center.x, 0.001f)
+        assertEquals(points.first().y + 15f, startCardinality.bounds.center.y, 0.001f)
+        assertEquals(points.last().x - 22.5f, endCardinality.bounds.left, 0.001f)
+        assertEquals(points.last().y - 20f, endCardinality.bounds.top, 0.001f)
         assertTrue(
-            endCardinality.bounds.right <= order.bounds.left,
-            "Expected end cardinality before Order: " +
-                "${endCardinality.bounds} versus ${order.bounds}",
+            endCardinality.bounds.overlaps(order.bounds),
+            "Official terminal overlap must not be displaced: ${endCardinality.bounds}",
         )
     }
 

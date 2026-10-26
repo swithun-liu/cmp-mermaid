@@ -22,7 +22,9 @@ normal, singleton, duplicate-point, signed-rounding and failure cases. A test-on
 oracle executes extracted, unchanged upstream function bodies and D3 path
 serialization. Production remains pure Kotlin.
 
-Terminal labels, hand-drawn path mutation and other unrelated renderer stages
+Terminal labels are covered by the separate
+[Class terminal-label inventory](upstream-class-terminal-map.md).
+Hand-drawn path mutation and other unrelated renderer stages
 are outside this repair. This inventory does not establish full-family Stable
 status. Fresh same-source evidence and unresolved differences are recorded in
 the repair report.

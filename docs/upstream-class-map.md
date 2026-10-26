@@ -37,6 +37,7 @@ production so an upstream grammar diff can be translated incrementally.
 | `classdiagram/ClassLayout.kt` | `rendering-elements/shapes/classBox.ts` and `diagrams/class/shapeUtil.ts` | Class measurement, annotations, compartments, dividers, empty boxes, members, and methods |
 | `classdiagram/ClassLayout.kt` | `rendering-util/rendering-elements/shapes/note.ts` | Rectangular notes, attached note edges, and note colors |
 | `classdiagram/ClassLayout.kt` | `rendering-elements/edges.js`, `utils/lineWithOffset.ts` | Relations, center labels, terminal cardinalities, self-relations, and marker-aware offsets |
+| `flowchart/upstream/mermaid/MermaidEdgeLabelPort.kt` | `utils.ts -> calcTerminalLabelPosition`, `calculatePoint` | Full four-position terminal coordinate calculation; safe traversal failure |
 | `flowchart/upstream/mermaid/MermaidTextPort.kt` | `createText.ts` and `handle-markdown-text.ts` | Shared Mermaid/Marked Markdown, HTML spans, sanitization, and structured unsupported detection |
 | `flowchart/FlowDagreLayout.kt` | Mermaid's unified Dagre path | Default Class and namespace placement using translated Graphlib/Dagre |
 | `flowchart/FlowElkLayout.kt` | Mermaid's unified ELK path | Retained mapping boundary that returns structured `UnsupportedFeature` |
@@ -58,6 +59,12 @@ production so an upstream grammar diff can be translated incrementally.
 | `classDiagram.md` | `bb594432ec833b06a4f81395dc26dc17be99a9e07ae8620346e023a0a6b2ad3b` |
 
 ## Intentional Kotlin Adaptations
+
+The 0.1.20 [terminal-label inventory](upstream-class-terminal-map.md) records
+each repaired stage. Class terminal markers retain upstream string truthiness,
+including `"none"`. Labels retain official node occlusion without obstacle
+avoidance; short terminal paths return a safe layout error rather than an
+invented endpoint coordinate.
 
 - JavaScript missing properties map to nullable Kotlin fields.
 - JavaScript insertion order maps to linked Kotlin collections.

@@ -48,17 +48,14 @@ import com.swithun.cmpmermaid.core.flowchart.FlowStyleAdapter
 import com.swithun.cmpmermaid.core.flowchart.FlowSubgraph
 import com.swithun.cmpmermaid.core.flowchart.FlowchartDocument
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.FlowLabelType
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgeLabelPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidHtmlEntityDecoder
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidRenderedText
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidTextPort
-import kotlin.math.atan2
-import kotlin.math.cos
-import kotlin.math.hypot
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.math.sin
 
 /**
  * Native translation of Mermaid 12.0.0 classDb.getData(), classBox.ts,
@@ -1045,7 +1042,6 @@ internal class ClassLayout {
                         points = routed.points,
                         labelAnchor = routed.labelAnchor,
                         labelVisual = edgeLabelVisuals[index],
-                        nodeBounds = nodeBounds,
                         context = context,
                         elements = elements,
                     )
@@ -1064,7 +1060,6 @@ internal class ClassLayout {
         points: List<ScenePoint>,
         labelAnchor: ScenePoint,
         labelVisual: EdgeLabelVisual?,
-        nodeBounds: Map<String, SceneRect>,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ): GMResult<Unit, MermaidError> {
@@ -1112,17 +1107,21 @@ internal class ClassLayout {
         relation.relationTitle1
             .takeUnless { it == "none" || it.isBlank() }
             ?.let { cardinality ->
+                // Mermaid.js 12.0.0: classDb.getArrowMarker always returns a
+                // nonempty string, including "none"; edges.js tests truthiness.
+                val position = when (val result = MermaidEdgeLabelPort.calcTerminalLabelPosition(
+                    terminalMarkerSize = 10.0,
+                    position = MermaidEdgeLabelPort.TerminalPosition.StartRight,
+                    points = points,
+                )) {
+                    is GMResult.Ok -> result.value
+                    is GMResult.Err -> return result
+                }
                 when (
                     val label = addTerminalLabel(
-                        id = "$edgeId-start-cardinality",
                         text = decode(cardinality),
-                        position = terminalLabelPosition(
-                            points = points,
-                            marker = relation.relation.type1 != ClassRelationType.NONE,
-                            start = true,
-                        ),
+                        position = position,
                         centered = true,
-                        avoidBounds = nodeBounds[relation.id1],
                         context = context,
                         elements = elements,
                     )
@@ -1134,17 +1133,19 @@ internal class ClassLayout {
         relation.relationTitle2
             .takeUnless { it == "none" || it.isBlank() }
             ?.let { cardinality ->
+                val position = when (val result = MermaidEdgeLabelPort.calcTerminalLabelPosition(
+                    terminalMarkerSize = 10.0,
+                    position = MermaidEdgeLabelPort.TerminalPosition.EndLeft,
+                    points = points,
+                )) {
+                    is GMResult.Ok -> result.value
+                    is GMResult.Err -> return result
+                }
                 when (
                     val label = addTerminalLabel(
-                        id = "$edgeId-end-cardinality",
                         text = decode(cardinality),
-                        position = terminalLabelPosition(
-                            points = points,
-                            marker = relation.relation.type2 != ClassRelationType.NONE,
-                            start = false,
-                        ),
+                        position = position,
                         centered = false,
-                        avoidBounds = nodeBounds[relation.id2],
                         context = context,
                         elements = elements,
                     )
@@ -1157,15 +1158,12 @@ internal class ClassLayout {
     }
 
     private fun addTerminalLabel(
-        id: String,
         text: String,
-        position: ScenePoint?,
+        position: ScenePoint,
         centered: Boolean,
-        avoidBounds: SceneRect?,
         context: MermaidRenderContext,
         elements: MutableList<SceneElement>,
     ): GMResult<Unit, MermaidError> {
-        if (position == null) return GMResult.Ok(Unit)
         val rendered = when (
             val result = MermaidTextPort.render(
                 source = text,
@@ -1189,7 +1187,7 @@ internal class ClassLayout {
                 spans = rendered.spans,
             ),
         )
-        val rawBounds = if (centered) {
+        val bounds = if (centered) {
             SceneRect(
                 left = position.x - metrics.width / 2f,
                 top = position.y - metrics.height / 2f,
@@ -1207,9 +1205,6 @@ internal class ClassLayout {
                 bottom = position.y + metrics.height,
             )
         }
-        val bounds = avoidBounds
-            ?.let { obstacle -> rawBounds.translatedOutside(obstacle) }
-            ?: rawBounds
         elements += SceneText(
             text = rendered.text,
             bounds = bounds,
@@ -1222,74 +1217,6 @@ internal class ClassLayout {
             zIndex = 8,
         ).withFormula(metrics.formula).withFormulaLayout(metrics.formulaLayout)
         return GMResult.Ok(Unit)
-    }
-
-    private fun SceneRect.translatedOutside(
-        obstacle: SceneRect,
-    ): SceneRect {
-        if (!overlaps(obstacle)) return this
-        val candidates = listOf(
-            ScenePoint(obstacle.left - right - TERMINAL_LABEL_GAP, 0f),
-            ScenePoint(obstacle.right - left + TERMINAL_LABEL_GAP, 0f),
-            ScenePoint(0f, obstacle.top - bottom - TERMINAL_LABEL_GAP),
-            ScenePoint(0f, obstacle.bottom - top + TERMINAL_LABEL_GAP),
-        )
-        val translation = candidates.minBy { point ->
-            kotlin.math.abs(point.x) + kotlin.math.abs(point.y)
-        }
-        return translate(translation.x, translation.y)
-    }
-
-    private fun SceneRect.overlaps(other: SceneRect): Boolean =
-        left < other.right &&
-            right > other.left &&
-            top < other.bottom &&
-            bottom > other.top
-
-    private fun terminalLabelPosition(
-        points: List<ScenePoint>,
-        marker: Boolean,
-        start: Boolean,
-    ): ScenePoint? {
-        if (points.size < 2) return null
-        val oriented = if (start) points else points.asReversed()
-        val markerSize = if (marker) 10f else 0f
-        val center = pointAtDistance(oriented, 25f + markerSize) ?: return null
-        val first = oriented.first()
-        val offset = 10f + markerSize * 0.5f
-        val angle = atan2(first.y - center.y, first.x - center.x)
-        return if (start) {
-            ScenePoint(
-                x = sin(angle) * offset + (first.x + center.x) / 2f,
-                y = -cos(angle) * offset + (first.y + center.y) / 2f,
-            )
-        } else {
-            ScenePoint(
-                x = sin(angle) * offset + (first.x + center.x) / 2f - 5f,
-                y = -cos(angle) * offset + (first.y + center.y) / 2f - 5f,
-            )
-        }
-    }
-
-    private fun pointAtDistance(
-        points: List<ScenePoint>,
-        distance: Float,
-    ): ScenePoint? {
-        var remaining = distance
-        points.zipWithNext().forEach { (start, end) ->
-            val length = hypot(end.x - start.x, end.y - start.y)
-            if (length <= 0f) return@forEach
-            if (length < remaining) {
-                remaining -= length
-            } else {
-                val ratio = (remaining / length).coerceIn(0f, 1f)
-                return ScenePoint(
-                    x = start.x + (end.x - start.x) * ratio,
-                    y = start.y + (end.y - start.y) * ratio,
-                )
-            }
-        }
-        return points.lastOrNull()
     }
 
     private fun addDiagramTitle(
@@ -1701,7 +1628,6 @@ internal class ClassLayout {
         val HTML_BREAK = Regex("""<br\s*/?>""", RegexOption.IGNORE_CASE)
         const val EDGE_FONT_SIZE = 14f
         const val TERMINAL_FONT_SIZE = 11f
-        const val TERMINAL_LABEL_GAP = 1f
         const val TITLE_FONT_SIZE = 18f
         const val DEFAULT_LINE_HEIGHT = 1.2f
         const val INTERFACE_LINE_HEIGHT = 1.5f

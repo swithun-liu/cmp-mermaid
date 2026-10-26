@@ -810,6 +810,43 @@ async function extractOfficialManifest(page, caseId) {
         height: Math.max(...ys) - Math.min(...ys),
       };
     };
+    // DOM Range measures rendered content, independently of foreignObject's
+    // layout box (edges.js -> setTerminalWidth can leave a large blank area).
+    const textContentRects = (element, inverseMatrix) => {
+      if (element.localName !== 'foreignObject') return null;
+      const doc = element.ownerDocument;
+      const walker = doc.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const rectangles = [];
+      for (let node = walker.nextNode(); node != null; node = walker.nextNode()) {
+        const value = node.textContent ?? '';
+        const start = value.search(/\S/);
+        if (start < 0 || node.parentElement == null) continue;
+        const style = doc.defaultView.getComputedStyle(node.parentElement);
+        if (style.display === 'none' || style.visibility === 'hidden') continue;
+        const range = doc.createRange();
+        range.setStart(node, start);
+        range.setEnd(node, value.trimEnd().length);
+        for (const rectangle of range.getClientRects()) {
+          if (rectangle.width <= 0 || rectangle.height <= 0) continue;
+          const corners = [
+            new DOMPoint(rectangle.left, rectangle.top),
+            new DOMPoint(rectangle.right, rectangle.top),
+            new DOMPoint(rectangle.right, rectangle.bottom),
+            new DOMPoint(rectangle.left, rectangle.bottom),
+          ].map((point) => inverseMatrix == null
+            ? point
+            : point.matrixTransform(inverseMatrix));
+          const xs = corners.map((point) => point.x);
+          const ys = corners.map((point) => point.y);
+          rectangles.push({
+            x: Math.min(...xs), y: Math.min(...ys),
+            width: Math.max(...xs) - Math.min(...xs),
+            height: Math.max(...ys) - Math.min(...ys),
+          });
+        }
+      }
+      return rectangles.length > 0 ? rectangles : null;
+    };
     const geometryEndpoints = (element) => {
       if (
         typeof element.getTotalLength !== 'function' ||
@@ -1118,6 +1155,9 @@ async function extractOfficialManifest(page, caseId) {
           : geometryOutlinePoints(element, fill),
         ...(textElement && !usecaseIconFallback ? {
           text,
+          ...(tag === 'foreignObject' ? {
+            textContentRects: textContentRects(element, inverseScreenMatrix),
+          } : {}),
           ...(textSegments.length > 0 ? { textSegments } : {}),
           fontSize: number(style.fontSize, null),
           fontFamily: style.fontFamily || null,

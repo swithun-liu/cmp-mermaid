@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 1,
+  "renderer": "native",
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "width": 323,
+    "height": 279,
+    "background": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
+  },
+  "title": "Policy evaluation model",
+  "accessibilityTitle": null,
+  "accessibilityDescription": null,
+  "elements": [
+    {
+      "order": 0,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idPolicyInput-PolicyDecision-1",
+      "edgeId": "idPolicyInput-PolicyDecision-1",
+      "bounds": {
+        "x": 71,
+        "y": 129,
+        "width": 0,
+        "height": 66
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassDependency",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": {
+        "x": 71,
+        "y": 135
+      },
+      "markerEndPoint": {
+        "x": 71,
+        "y": 189
+      },
+      "routePoints": [
+        {
+          "x": 71,
+          "y": 129
+        },
+        {
+          "x": 71,
+          "y": 162
+        },
+        {
+          "x": 71,
+          "y": 195
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 71,
+          "y": 129
+        },
+        {
+          "x": 71,
+          "y": 195
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "D"
+      ],
+      "sourcePortSide": "Bottom",
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 1,
+      "zIndex": 6,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "idPolicyInput-PolicyDecision-1-label-background",
+      "bounds": {
+        "x": 34.5,
+        "y": 151,
+        "width": 73,
+        "height": 22
+      },
+      "fill": {
+        "r": 255,
+        "g": 255,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "strokeWidth": 0,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 0,
+      "outlinePoints": [],
+      "strokeGradient": null
+    },
+    {
+      "order": 2,
+      "zIndex": 7,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 40.5,
+        "y": 154,
+        "width": 61,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 40.5,
+          "y": 154
+        },
+        {
+          "x": 101.5,
+          "y": 154
+        },
+        {
+          "x": 101.5,
+          "y": 170
+        },
+        {
+          "x": 40.5,
+          "y": 170
+        }
+      ],
+      "text": "evaluates",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 3,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "PolicyInput",
+      "bounds": {
+        "x": 15,
+        "y": 53,
+        "width": 112,
+        "height": 76
+      },
+      "fill": {
+        "r": 253,
+        "g": 244,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 232,
+        "g": 121,
+        "b": 249,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 15,
+          "y": 53
+        },
+        {
+          "x": 127,
+          "y": 53
+        },
+        {
+          "x": 127,
+          "y": 129
+        },
+        {
+          "x": 15,
+          "y": 129
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 4,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "PolicyDecision",
+      "bounds": {
+        "x": 8,
+        "y": 195,
+        "width": 126,
+        "height": 76
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 250,
+        "a": 255
+      },
+      "stroke": {
+        "r": 45,
+        "g": 212,
+        "b": 191,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 8,
+          "y": 195
+        },
+        {
+          "x": 134,
+          "y": 195
+        },
+        {
+          "x": 134,
+          "y": 271
+        },
+        {
+          "x": 8,
+          "y": 271
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 5,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "PolicyInputinput",
+      "bounds": {
+        "x": 177,
+        "y": 53,
+        "width": 138,
+        "height": 76
+      },
+      "fill": {
+        "r": 255,
+        "g": 247,
+        "b": 237,
+        "a": 255
+      },
+      "stroke": {
+        "r": 251,
+        "g": 146,
+        "b": 60,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 177,
+          "y": 53
+        },
+        {
+          "x": 315,
+          "y": 53
+        },
+        {
+          "x": 315,
+          "y": 129
+        },
+        {
+          "x": 177,
+          "y": 129
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 6,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 27,
+        "y": 65,
+        "width": 88,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 27,
+          "y": 65
+        },
+        {
+          "x": 115,
+          "y": 65
+        },
+        {
+          "x": 115,
+          "y": 81
+        },
+        {
+          "x": 27,
+          "y": 81
+        }
+      ],
+      "text": "`PolicyInput`",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 7,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 20,
+        "y": 207,
+        "width": 102,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 20,
+          "y": 207
+        },
+        {
+          "x": 122,
+          "y": 207
+        },
+        {
+          "x": 122,
+          "y": 223
+        },
+        {
+          "x": 20,
+          "y": 223
+        }
+      ],
+      "text": "PolicyDecision",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 8,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 189,
+        "y": 65,
+        "width": 114,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 189,
+          "y": 65
+        },
+        {
+          "x": 303,
+          "y": 65
+        },
+        {
+          "x": 303,
+          "y": 81
+        },
+        {
+          "x": 189,
+          "y": 81
+        }
+      ],
+      "text": "PolicyInputinput",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 9,
+      "zIndex": 30,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 67,
+        "y": 8,
+        "width": 189,
+        "height": 20
+      },
+      "outlinePoints": [
+        {
+          "x": 67,
+          "y": 8
+        },
+        {
+          "x": 256,
+          "y": 8
+        },
+        {
+          "x": 256,
+          "y": 28
+        },
+        {
+          "x": 67,
+          "y": 28
+        }
+      ],
+      "text": "Policy evaluation model",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 18,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    }
+  ],
+  "outcome": "success",
+  "auditCaseId": "prod_class_styled_metadata_policy",
+  "auditSource": "production",
+  "sourceSha256": "5642456703a8f38cffe4964044f5afd45ab1b27ef47b2668eb097104b3e1dda7"
+}

@@ -1,0 +1,1631 @@
+{
+  "caseCount": 13,
+  "cases": [
+    {
+      "id": "rc_class_commerce_domain",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 7,
+      "officialEdgeCount": 7,
+      "edges": [
+        {
+          "edgeId": "idCustomerOrder1",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "R",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "R",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idOrderInventoryReservation4",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idOrderOrderItem2",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idOrderPayment3",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idOrderRepositoryOrder7",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "R",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "R",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idOrderShipment5",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "R"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPaymentPaymentGateway6",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "rc_class_workflow_engine",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 7,
+      "officialEdgeCount": 7,
+      "edges": [
+        {
+          "edgeId": "idSchedulerStateStore5",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idStepDefinitionDecisionStep2",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idStepDefinitionHttpStep1",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idStepExecutionStepDefinition7",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idWorkflowDefinitionStepDefinition3",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idWorkflowInstanceStepExecution4",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idWorkflowInstanceWorkflowDefinition6",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "Diagonal",
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "Diagonal",
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "rc_class_authorization_model",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 10,
+      "officialEdgeCount": 10,
+      "edges": [
+        {
+          "edgeId": "idEvaluatorAuditSink10",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idEvaluatorGrant8",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idEvaluatorPolicy9",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idGrantPrincipal4",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idGrantRole5",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idGroupUser3",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPolicyPermission7",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPrincipalGroup2",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPrincipalUser1",
+          "native": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "Diagonal",
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 4,
+            "bendCount": 2,
+            "directionSequence": [
+              "Diagonal",
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idRolePermission6",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "D",
+              "Diagonal"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": null
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "rc_class_notification_platform",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 8,
+      "officialEdgeCount": 8,
+      "edges": [
+        {
+          "edgeId": "idChannelDeliveryStore8",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idChannelEmailChannel4",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idChannelPushChannel5",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idChannelRetryPolicy7",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idChannelSmsChannel6",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idNotificationTemplate1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idRouterChannel3",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idRouterPreferenceService2",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "rc_class_document_editor",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 7,
+      "officialEdgeCount": 7,
+      "edges": [
+        {
+          "edgeId": "idBlockMediaBlock2",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idBlockTextBlock1",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idDocumentBlock3",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idDocumentRevision4",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idDocumentSession5",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idSyncEngineDocumentStore7",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idSyncEngineOperation6",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "prod_class_domain_model_billing",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 2,
+      "officialEdgeCount": 2,
+      "edges": [
+        {
+          "edgeId": "idInvoiceLineItem1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPaymentServiceInvoice2",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "prod_class_domain_model_learning",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 2,
+      "officialEdgeCount": 2,
+      "edges": [
+        {
+          "edgeId": "idCourseLesson1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idEnrollmentServiceCourse2",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "prod_class_namespace_tree_observability",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 2,
+      "officialEdgeCount": 2,
+      "edges": [
+        {
+          "edgeId": "edgeNote0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idTraceReceiverSpanStore1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "prod_class_namespace_tree_commerce",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 2,
+      "officialEdgeCount": 2,
+      "edges": [
+        {
+          "edgeId": "edgeNote0",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idCheckoutCoordinatorFulfillmentGateway1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "R"
+            ],
+            "sourcePortSide": "Right",
+            "destinationPortSide": "Left"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "prod_class_relation_matrix_plugins",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 5,
+      "officialEdgeCount": 5,
+      "edges": [
+        {
+          "edgeId": "idPluginBasePluginRuntime1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPluginRegistryPluginRuntime3",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPluginRuntimePluginConfig2",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPluginRuntimePluginRegistry4",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idPluginRuntimeinterface05",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "prod_class_relation_matrix_connectors",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 5,
+      "officialEdgeCount": 5,
+      "edges": [
+        {
+          "edgeId": "idConnectorBaseConnectorRuntime1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idConnectorRegistryConnectorRuntime3",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "U"
+            ],
+            "sourcePortSide": "Top",
+            "destinationPortSide": "Bottom"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idConnectorRuntimeConnectorConfig2",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idConnectorRuntimeConnectorRegistry4",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        },
+        {
+          "edgeId": "idConnectorRuntimeinterface05",
+          "native": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 3,
+            "bendCount": 1,
+            "directionSequence": [
+              "Diagonal",
+              "D"
+            ],
+            "sourcePortSide": null,
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "prod_class_styled_metadata_policy",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 1,
+      "officialEdgeCount": 1,
+      "edges": [
+        {
+          "edgeId": "idPolicyInputPolicyDecision1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    },
+    {
+      "id": "prod_class_styled_metadata_routing",
+      "status": "pass",
+      "findings": [],
+      "nativeEdgeCount": 1,
+      "officialEdgeCount": 1,
+      "edges": [
+        {
+          "edgeId": "idRouteInputRouteDecision1",
+          "native": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "official": {
+            "pointCount": 2,
+            "bendCount": 0,
+            "directionSequence": [
+              "D"
+            ],
+            "sourcePortSide": "Bottom",
+            "destinationPortSide": "Top"
+          },
+          "findingCodes": []
+        }
+      ],
+      "nativeRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      },
+      "officialRelationships": {
+        "sharedTracks": [],
+        "strictCrossings": [],
+        "sharedEndpoints": []
+      }
+    }
+  ],
+  "edgeIdAdaptation": "Class separators removed for corresponding Native and Official IDs"
+}

@@ -1,0 +1,301 @@
+{
+  "mermaidVersion": "12.0.0",
+  "corpusSource": "production",
+  "generatedAt": "2026-10-26T05:13:44.928Z",
+  "caseCount": 13,
+  "cases": [
+    {
+      "id": "rc_class_commerce_domain",
+      "kind": "class",
+      "title": "Commerce domain model",
+      "scenario": "Aggregate roots, repositories, payment strategy, inventory, and fulfillment.",
+      "layout": "dagre",
+      "aspectRatio": 1.25,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_class_commerce_domain_native.png",
+      "officialFile": "rc_class_commerce_domain_official.png",
+      "nativeBytes": 89488,
+      "officialBytes": 96907,
+      "nativeSha256": "bc108bd9e5300e72d422087b9ab321e05f38709ecadffa2e3a0b8a89421fbf2a",
+      "officialSha256": "d6c8a952b71ca2759aa28de567eaa90fccc9b636c6d5a7e3736c0b845510aa48",
+      "sourceSha256": "5aa704a9be29835d7c3059d903a464b6c9870160870224424882f2a1ed67db2e"
+    },
+    {
+      "id": "rc_class_workflow_engine",
+      "kind": "class",
+      "title": "Workflow engine architecture",
+      "scenario": "Definitions, executable instances, typed steps, scheduling, and state persistence.",
+      "layout": "dagre",
+      "aspectRatio": 1.25,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_class_workflow_engine_native.png",
+      "officialFile": "rc_class_workflow_engine_official.png",
+      "nativeBytes": 75618,
+      "officialBytes": 80517,
+      "nativeSha256": "f09342de4ad20724243cf38969119c19afdcd21bb3cd49f8e7bc48465cb0ed37",
+      "officialSha256": "e63a627698f28b9fd637b354cc0a79ec1eecdbfd2493dc02c992d4565af179db",
+      "sourceSha256": "6b594b76f4f87d37d1b9395f33f9a6fa268fded88b19c4993b0bb16f0f8b54dd"
+    },
+    {
+      "id": "rc_class_authorization_model",
+      "kind": "class",
+      "title": "Authorization policy model",
+      "scenario": "Users, groups, roles, permissions, scoped grants, and policy evaluation.",
+      "layout": "dagre",
+      "aspectRatio": 1.3,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_class_authorization_model_native.png",
+      "officialFile": "rc_class_authorization_model_official.png",
+      "nativeBytes": 64965,
+      "officialBytes": 66067,
+      "nativeSha256": "313df696922c6343addef149fa8e889140af4cd54ca5dc07a02d40e948dec985",
+      "officialSha256": "3a8b800ae605ff193f10701c99b93717df7eb482e36f31601bae0b757fa3b190",
+      "sourceSha256": "6767f51f161a472af3714d33127cc8ab8dd6d22ef76f541842d7e04eefae1a17"
+    },
+    {
+      "id": "rc_class_notification_platform",
+      "kind": "class",
+      "title": "Notification delivery platform",
+      "scenario": "Templates, channel adapters, preferences, routing, retries, and delivery receipts.",
+      "layout": "dagre",
+      "aspectRatio": 1.25,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_class_notification_platform_native.png",
+      "officialFile": "rc_class_notification_platform_official.png",
+      "nativeBytes": 67045,
+      "officialBytes": 76162,
+      "nativeSha256": "aea0b8d8858b30affdedccf29f4e0960a7746a22cd5692148346a219b23f0f09",
+      "officialSha256": "23ed1a5ac5cbb93bc5738849f3c974bec6155d8f42fb6d9c40c7d3b22bcc751f",
+      "sourceSha256": "0bf05ef0c2a96b58122ff20620857f63701e1bb5f23fd2c63a31b2c0974a0e17"
+    },
+    {
+      "id": "rc_class_document_editor",
+      "kind": "class",
+      "title": "Collaborative document editor",
+      "scenario": "Documents, blocks, operations, revisions, presence, and conflict transformation.",
+      "layout": "dagre",
+      "aspectRatio": 1.25,
+      "features": [],
+      "expectedTexts": [],
+      "nativeFile": "rc_class_document_editor_native.png",
+      "officialFile": "rc_class_document_editor_official.png",
+      "nativeBytes": 64025,
+      "officialBytes": 70875,
+      "nativeSha256": "e06b35e690df871c78383913a5108349e5e2351bfeda8d29501297fef2f1e0e9",
+      "officialSha256": "70bc1919b3b497e7f88ca7e1221a18751d2f3326da70d7a4ecd80146fe8332a3",
+      "sourceSha256": "a2ec06f7a12342bf98ddab63ab41abe20227d16b817f343fe2ca5874fcf31998"
+    },
+    {
+      "id": "prod_class_domain_model_billing",
+      "kind": "class",
+      "title": "Billing domain model",
+      "scenario": "Invoices, line items, and payment attempts form a typed aggregate.",
+      "layout": "dagre",
+      "aspectRatio": 1.45,
+      "features": [
+        "members",
+        "visibility",
+        "generics",
+        "annotations",
+        "relation-labels",
+        "cardinalities"
+      ],
+      "expectedTexts": [
+        "Invoice",
+        "PaymentService"
+      ],
+      "nativeFile": "prod_class_domain_model_billing_native.png",
+      "officialFile": "prod_class_domain_model_billing_official.png",
+      "nativeBytes": 47399,
+      "officialBytes": 42323,
+      "nativeSha256": "184cacff373648cef3cd5a4a15a3f8168b4b4fbf28a1419d243a1876f9cab8ae",
+      "officialSha256": "d2b1fc6bc5c5399c292d439f273cc2a3de34d1f28a67ee5eb84fca2bd22645c5",
+      "sourceSha256": "23710a6e6f78e9870d5e9c275f047b7fa57dd2975e3a8d8f0a12a591839ad9cd"
+    },
+    {
+      "id": "prod_class_domain_model_learning",
+      "kind": "class",
+      "title": "Learning domain model",
+      "scenario": "Courses, lessons, and enrollment services form a typed aggregate.",
+      "layout": "dagre",
+      "aspectRatio": 1.45,
+      "features": [
+        "members",
+        "visibility",
+        "generics",
+        "annotations",
+        "relation-labels",
+        "cardinalities"
+      ],
+      "expectedTexts": [
+        "Course",
+        "EnrollmentService"
+      ],
+      "nativeFile": "prod_class_domain_model_learning_native.png",
+      "officialFile": "prod_class_domain_model_learning_official.png",
+      "nativeBytes": 48640,
+      "officialBytes": 42956,
+      "nativeSha256": "67a0fdbe164c80c9124d75477ad2d8f113ca8a8a8f3da9bc03e969dc2b7197b7",
+      "officialSha256": "c0256ed111c969de07957bc3e4385914c094c9009b5095f829def82eaa560f18",
+      "sourceSha256": "bac697905e5639f04e6dfc4b9221223270a51f2f4a12706f0458d225eddbfaf9"
+    },
+    {
+      "id": "prod_class_namespace_tree_observability",
+      "kind": "class",
+      "title": "Observability namespace tree",
+      "scenario": "Nested namespaces separate collection and storage responsibilities.",
+      "layout": "dagre",
+      "aspectRatio": 1.55,
+      "features": [
+        "namespaces",
+        "nested-namespaces",
+        "direction",
+        "notes"
+      ],
+      "expectedTexts": [
+        "TraceReceiver",
+        "Owns request lifecycle"
+      ],
+      "nativeFile": "prod_class_namespace_tree_observability_native.png",
+      "officialFile": "prod_class_namespace_tree_observability_official.png",
+      "nativeBytes": 28644,
+      "officialBytes": 29248,
+      "nativeSha256": "f6a8036cac9bf557380a2981c2d44b0a4a01267ee8edd80fd2386b5e8505e5f6",
+      "officialSha256": "03c46a3113562700ff3f28a6f13cbc5a1d2cc5e40145cb138a1e33abcef41d3d",
+      "sourceSha256": "a9ace9f7e3c22ca84b03da9ea1625f22c68d9aa54b7dfcc6b8bcd4ac3b9b3d5e"
+    },
+    {
+      "id": "prod_class_namespace_tree_commerce",
+      "kind": "class",
+      "title": "Commerce namespace tree",
+      "scenario": "Nested namespaces separate checkout and fulfillment responsibilities.",
+      "layout": "dagre",
+      "aspectRatio": 1.55,
+      "features": [
+        "namespaces",
+        "nested-namespaces",
+        "direction",
+        "notes"
+      ],
+      "expectedTexts": [
+        "CheckoutCoordinator",
+        "Owns request lifecycle"
+      ],
+      "nativeFile": "prod_class_namespace_tree_commerce_native.png",
+      "officialFile": "prod_class_namespace_tree_commerce_official.png",
+      "nativeBytes": 26398,
+      "officialBytes": 28620,
+      "nativeSha256": "02631daac0e625570961645e3723b7eddd75a98c412cae0a4a08a775692da0df",
+      "officialSha256": "e9c7762ee3fdf22c1f0710246b91d600181ffbdd8958ba88d1f59b4070e746db",
+      "sourceSha256": "bfa9ed196cee117ebd8767a5d8ac729833ee932d23dcfc03020ffb4f703635a5"
+    },
+    {
+      "id": "prod_class_relation_matrix_plugins",
+      "kind": "class",
+      "title": "Plugin relation matrix",
+      "scenario": "Plugin contracts exercise inheritance, composition, aggregation, and interfaces.",
+      "layout": "dagre",
+      "aspectRatio": 1.65,
+      "features": [
+        "relation-markers",
+        "two-way-relations",
+        "lollipop"
+      ],
+      "expectedTexts": [
+        "PluginRuntime",
+        "PluginPort"
+      ],
+      "nativeFile": "prod_class_relation_matrix_plugins_native.png",
+      "officialFile": "prod_class_relation_matrix_plugins_official.png",
+      "nativeBytes": 40599,
+      "officialBytes": 43221,
+      "nativeSha256": "da215d46dc6cdb38d590fe6e5cfb2bb7ff455e29a265af493c63d432b4f2d425",
+      "officialSha256": "87ccc827a155d24afb8287e255075aea8773cd419cb582182da0bb98bdf47deb",
+      "sourceSha256": "9456bb9770e1eaed46966bf851ea2bd052b8a35ae3c1cad2b015b02c5daea2ba"
+    },
+    {
+      "id": "prod_class_relation_matrix_connectors",
+      "kind": "class",
+      "title": "Connector relation matrix",
+      "scenario": "Connector contracts exercise inheritance, composition, aggregation, and interfaces.",
+      "layout": "dagre",
+      "aspectRatio": 1.65,
+      "features": [
+        "relation-markers",
+        "two-way-relations",
+        "lollipop"
+      ],
+      "expectedTexts": [
+        "ConnectorRuntime",
+        "ConnectorPort"
+      ],
+      "nativeFile": "prod_class_relation_matrix_connectors_native.png",
+      "officialFile": "prod_class_relation_matrix_connectors_official.png",
+      "nativeBytes": 46482,
+      "officialBytes": 49762,
+      "nativeSha256": "3d04e148e57fe8efebf75e6c11d309acfb183a3511894b18ea02651a41f65c76",
+      "officialSha256": "c195f8c72a16b189b8c4cd60fdf1ca60ea93144862007eae78b9d3a02322c63d",
+      "sourceSha256": "27b3a5507cd71778f4f415fd7ff8a9c2726a936a0d544e157d0d8f48edeed144"
+    },
+    {
+      "id": "prod_class_styled_metadata_policy",
+      "kind": "class",
+      "title": "Policy metadata model",
+      "scenario": "Styled policy classes include Markdown labels and accessibility metadata.",
+      "layout": "dagre",
+      "aspectRatio": 1.4,
+      "features": [
+        "classes-styles",
+        "markdown",
+        "metadata",
+        "two-way-relations"
+      ],
+      "expectedTexts": [
+        "PolicyInput",
+        "PolicyDecision"
+      ],
+      "nativeFile": "prod_class_styled_metadata_policy_native.png",
+      "officialFile": "prod_class_styled_metadata_policy_official.png",
+      "nativeBytes": 40869,
+      "officialBytes": 33658,
+      "nativeSha256": "666c5b71365a0cbe162321c0fa1fcf21c3b4fc84d709955786bc6df04567bbad",
+      "officialSha256": "38b7d7b392a649067b5129ef2a8d0e9727d288e1e300e52e6fb263c2e5192c7b",
+      "sourceSha256": "5642456703a8f38cffe4964044f5afd45ab1b27ef47b2668eb097104b3e1dda7"
+    },
+    {
+      "id": "prod_class_styled_metadata_routing",
+      "kind": "class",
+      "title": "Routing metadata model",
+      "scenario": "Styled routing classes include Markdown labels and accessibility metadata.",
+      "layout": "dagre",
+      "aspectRatio": 1.4,
+      "features": [
+        "classes-styles",
+        "markdown",
+        "metadata",
+        "two-way-relations"
+      ],
+      "expectedTexts": [
+        "RouteInput",
+        "RouteDecision"
+      ],
+      "nativeFile": "prod_class_styled_metadata_routing_native.png",
+      "officialFile": "prod_class_styled_metadata_routing_official.png",
+      "nativeBytes": 41525,
+      "officialBytes": 34073,
+      "nativeSha256": "5022f2d938d60d5376959be6917b470af1ded29bed4253d8236f102da7013212",
+      "officialSha256": "f2d05071cf0c5cf5027ac786fd0f4bfbc007c804f5cc087a0eda8d3d351bc2bb",
+      "sourceSha256": "78ffba98f94fea4cb4be62073983a737003eaa19b6c956aac76c91f5e6f64e31"
+    }
+  ],
+  "screenshotCount": 26,
+  "visualStatuses": {
+    "Pass": 0,
+    "Review": 13,
+    "Fail": 0
+  }
+}

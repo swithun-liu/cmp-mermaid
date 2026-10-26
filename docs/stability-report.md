@@ -22,6 +22,10 @@
 > at 0.1.19 and corrects a rectangle-path occlusion audit false positive.
 > Its separate [one-source reproduction](rectangle-occlusion-audit.md)
 > has two screenshots and remains visual Review.
+> The separate [0.1.20 Class terminal repair](class-terminal-report.md)
+> adds 13 fresh sources, 26 screenshots and one contact sheet. Detail,
+> geometry and route topology each pass 13 cases; text/node dimensions and
+> absolute endpoint differences retain overall 13 Review.
 > Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS retain separate historical 441-case physical-device matrices. Core soak,
 > iOS Simulator, Desktop, and Web runtime measurements remain explicitly
@@ -38,7 +42,7 @@ stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Not Stable: Architecture `randomize: true`, `look: handDrawn`, and remaining formula stages are unsupported; historical Architecture/Kanban and 18 current label cases remain under review** |
+| Current rating | **Not Stable: Architecture `randomize: true`, `look: handDrawn`, and remaining formula stages are unsupported; historical Architecture/Kanban, 18 current label cases and 13 Class terminal cases remain under review** |
 | Mermaid compatibility baseline | `12.0.0` |
 | Implemented families | 33/33; retained 33-family corpus evidence, separate formula and current label audits |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
@@ -59,10 +63,11 @@ stress inputs.
 | Separate deterministic Native stress inputs | 7,936 |
 | JVM tests | Core: 1,094 passed, 0 failed; Compose: 73 passed, 0 failed |
 | Current container-width JVM tests | Core: 1,100 passed, 0 failed; Compose: 75 passed, 0 failed |
-| Current 0.1.20 edge-label JVM tests | Core: 1,105 passed, 0 failed; Compose: 75 passed, 0 failed; unchanged tests verified from Gradle cache |
-| Unchanged edge-label implementation, tested at 0.1.19 on Wasm | Core: 1,103 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
-| Unchanged edge-label implementation, tested at 0.1.19 on iOS Simulator Arm64 | Core: 1,103 passed, 0 failed; Compose: 76 passed, 0 failed |
-| Current rectangle-path audit | 77 audit tests passed; one public source, two screenshots; both sides occlude one label; no occlusion differences; visual Review for independent geometry/raster differences |
+| Current 0.1.20 JVM tests | Core: 1,108 passed, 0 failed; Compose: 75 passed, 0 failed |
+| Current 0.1.20 Wasm tests | Core: 1,106 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
+| Current 0.1.20 iOS Simulator Arm64 tests | Core: 1,106 passed, 0 failed; Compose: 76 passed, 0 failed |
+| Current rectangle/text-content audit | 79 audit tests passed; true occlusion differences remain failures; separate rectangle and Class reproductions retain visual Review |
+| Current Class terminal evidence | 13 sources, 26 screenshots, one contact sheet; detail/geometry/topology each pass 13; overall 13 Review for text/node and absolute endpoint differences |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |

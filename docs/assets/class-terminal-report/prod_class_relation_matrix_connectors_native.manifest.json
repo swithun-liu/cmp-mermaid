@@ -1,0 +1,888 @@
+{
+  "schemaVersion": 1,
+  "renderer": "native",
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "width": 523.5,
+    "height": 344,
+    "background": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    }
+  },
+  "title": null,
+  "accessibilityTitle": null,
+  "accessibilityDescription": null,
+  "elements": [
+    {
+      "order": 0,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idConnectorBase-ConnectorRuntime-1",
+      "edgeId": "idConnectorBase-ConnectorRuntime-1",
+      "bounds": {
+        "x": 276.5,
+        "y": 84,
+        "width": 0,
+        "height": 50
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassExtension",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 276.5,
+        "y": 101.25
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 276.5,
+          "y": 84
+        },
+        {
+          "x": 276.5,
+          "y": 109
+        },
+        {
+          "x": 276.5,
+          "y": 134
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 276.5,
+          "y": 84
+        },
+        {
+          "x": 276.5,
+          "y": 134
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "D"
+      ],
+      "sourcePortSide": "Bottom",
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 1,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idConnectorRuntime-ConnectorConfig-2",
+      "edgeId": "idConnectorRuntime-ConnectorConfig-2",
+      "bounds": {
+        "x": 79,
+        "y": 196.40253,
+        "width": 121,
+        "height": 63.597473
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassComposition",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 183.56586,
+        "y": 201.6448
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 200,
+          "y": 196.40253
+        },
+        {
+          "x": 79,
+          "y": 235
+        },
+        {
+          "x": 79,
+          "y": 260
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 200,
+          "y": 196.40253
+        },
+        {
+          "x": 79,
+          "y": 235
+        },
+        {
+          "x": 79,
+          "y": 260
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 79,
+          "y": 235
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 2,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idConnectorRegistry-ConnectorRuntime-3",
+      "edgeId": "idConnectorRegistry-ConnectorRuntime-3",
+      "bounds": {
+        "x": 327.31747,
+        "y": 210,
+        "width": 33.432526,
+        "height": 50
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassAggregation",
+      "arrowEnd": "None",
+      "markerStartPoint": {
+        "x": 341.1322,
+        "y": 249.66968
+      },
+      "markerEndPoint": null,
+      "routePoints": [
+        {
+          "x": 327.31747,
+          "y": 260
+        },
+        {
+          "x": 360.75,
+          "y": 235
+        },
+        {
+          "x": 327.31747,
+          "y": 210
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 327.31747,
+          "y": 260
+        },
+        {
+          "x": 327.31747,
+          "y": 210
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "U"
+      ],
+      "sourcePortSide": "Top",
+      "destinationPortSide": "Bottom",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 3,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idConnectorRuntime-ConnectorRegistry-4",
+      "edgeId": "idConnectorRuntime-ConnectorRegistry-4",
+      "bounds": {
+        "x": 187.75,
+        "y": 210,
+        "width": 35.218246,
+        "height": 50
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "ClassDependency",
+      "arrowEnd": "ClassDependency",
+      "markerStartPoint": {
+        "x": 218.07562,
+        "y": 213.47307
+      },
+      "markerEndPoint": {
+        "x": 218.07562,
+        "y": 256.52692
+      },
+      "routePoints": [
+        {
+          "x": 222.96825,
+          "y": 210
+        },
+        {
+          "x": 187.75,
+          "y": 235
+        },
+        {
+          "x": 222.96825,
+          "y": 260
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 222.96825,
+          "y": 210
+        },
+        {
+          "x": 222.96825,
+          "y": 260
+        }
+      ],
+      "bendPoints": [],
+      "directionSequence": [
+        "D"
+      ],
+      "sourcePortSide": "Bottom",
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 4,
+      "zIndex": 5,
+      "type": "path",
+      "role": "path",
+      "id": "idConnectorRuntime-interface0-5",
+      "edgeId": "idConnectorRuntime-interface0-5",
+      "bounds": {
+        "x": 353,
+        "y": 197.56764,
+        "width": 112,
+        "height": 77.93236
+      },
+      "fill": null,
+      "stroke": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "strokeGradient": null,
+      "opacity": 1,
+      "blendMode": "SourceOver",
+      "arrowStart": "None",
+      "arrowEnd": "ClassLollipop",
+      "markerStartPoint": null,
+      "markerEndPoint": {
+        "x": 465,
+        "y": 262
+      },
+      "routePoints": [
+        {
+          "x": 353,
+          "y": 197.56764
+        },
+        {
+          "x": 465,
+          "y": 235
+        },
+        {
+          "x": 465,
+          "y": 275.5
+        }
+      ],
+      "topologyPoints": [
+        {
+          "x": 353,
+          "y": 197.56764
+        },
+        {
+          "x": 465,
+          "y": 235
+        },
+        {
+          "x": 465,
+          "y": 275.5
+        }
+      ],
+      "bendPoints": [
+        {
+          "x": 465,
+          "y": 235
+        }
+      ],
+      "directionSequence": [
+        "Diagonal",
+        "D"
+      ],
+      "sourcePortSide": null,
+      "destinationPortSide": "Top",
+      "curve": "basis",
+      "animated": false
+    },
+    {
+      "order": 5,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "ConnectorBase",
+      "bounds": {
+        "x": 211.5,
+        "y": 8,
+        "width": 130,
+        "height": 76
+      },
+      "fill": {
+        "r": 253,
+        "g": 244,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 232,
+        "g": 121,
+        "b": 249,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 211.5,
+          "y": 8
+        },
+        {
+          "x": 341.5,
+          "y": 8
+        },
+        {
+          "x": 341.5,
+          "y": 84
+        },
+        {
+          "x": 211.5,
+          "y": 84
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 6,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "ConnectorConfig",
+      "bounds": {
+        "x": 8,
+        "y": 260,
+        "width": 142,
+        "height": 76
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 250,
+        "a": 255
+      },
+      "stroke": {
+        "r": 45,
+        "g": 212,
+        "b": 191,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 8,
+          "y": 260
+        },
+        {
+          "x": 150,
+          "y": 260
+        },
+        {
+          "x": 150,
+          "y": 336
+        },
+        {
+          "x": 8,
+          "y": 336
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 7,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "ConnectorRuntime",
+      "bounds": {
+        "x": 200,
+        "y": 134,
+        "width": 153,
+        "height": 76
+      },
+      "fill": {
+        "r": 255,
+        "g": 247,
+        "b": 237,
+        "a": 255
+      },
+      "stroke": {
+        "r": 251,
+        "g": 146,
+        "b": 60,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 200,
+          "y": 134
+        },
+        {
+          "x": 353,
+          "y": 134
+        },
+        {
+          "x": 353,
+          "y": 210
+        },
+        {
+          "x": 200,
+          "y": 210
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 8,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "ConnectorRegistry",
+      "bounds": {
+        "x": 200,
+        "y": 260,
+        "width": 153,
+        "height": 76
+      },
+      "fill": {
+        "r": 236,
+        "g": 254,
+        "b": 255,
+        "a": 255
+      },
+      "stroke": {
+        "r": 34,
+        "g": 211,
+        "b": 238,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 200,
+          "y": 260
+        },
+        {
+          "x": 353,
+          "y": 260
+        },
+        {
+          "x": 353,
+          "y": 336
+        },
+        {
+          "x": 200,
+          "y": 336
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 9,
+      "zIndex": 10,
+      "type": "shape",
+      "role": "Rectangle",
+      "id": "ConnectorPort",
+      "bounds": {
+        "x": 391.5,
+        "y": 8,
+        "width": 124,
+        "height": 76
+      },
+      "fill": {
+        "r": 240,
+        "g": 253,
+        "b": 244,
+        "a": 255
+      },
+      "stroke": {
+        "r": 74,
+        "g": 222,
+        "b": 128,
+        "a": 255
+      },
+      "strokeWidth": 2,
+      "strokePattern": "Solid",
+      "dashIntervals": [],
+      "geometryPathCount": 3,
+      "outlinePoints": [
+        {
+          "x": 391.5,
+          "y": 8
+        },
+        {
+          "x": 515.5,
+          "y": 8
+        },
+        {
+          "x": 515.5,
+          "y": 84
+        },
+        {
+          "x": 391.5,
+          "y": 84
+        }
+      ],
+      "strokeGradient": null
+    },
+    {
+      "order": 10,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 223.5,
+        "y": 20,
+        "width": 106,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 223.5,
+          "y": 20
+        },
+        {
+          "x": 329.5,
+          "y": 20
+        },
+        {
+          "x": 329.5,
+          "y": 36
+        },
+        {
+          "x": 223.5,
+          "y": 36
+        }
+      ],
+      "text": "ConnectorBase",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 11,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 20,
+        "y": 272,
+        "width": 118,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 20,
+          "y": 272
+        },
+        {
+          "x": 138,
+          "y": 272
+        },
+        {
+          "x": 138,
+          "y": 288
+        },
+        {
+          "x": 20,
+          "y": 288
+        }
+      ],
+      "text": "ConnectorConfig",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 12,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 212,
+        "y": 146,
+        "width": 129,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 212,
+          "y": 146
+        },
+        {
+          "x": 341,
+          "y": 146
+        },
+        {
+          "x": 341,
+          "y": 162
+        },
+        {
+          "x": 212,
+          "y": 162
+        }
+      ],
+      "text": "ConnectorRuntime",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 13,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 212,
+        "y": 272,
+        "width": 129,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 212,
+          "y": 272
+        },
+        {
+          "x": 341,
+          "y": 272
+        },
+        {
+          "x": 341,
+          "y": 288
+        },
+        {
+          "x": 212,
+          "y": 288
+        }
+      ],
+      "text": "ConnectorRegistry",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 14,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 403.5,
+        "y": 20,
+        "width": 100,
+        "height": 16
+      },
+      "outlinePoints": [
+        {
+          "x": 403.5,
+          "y": 20
+        },
+        {
+          "x": 503.5,
+          "y": 20
+        },
+        {
+          "x": 503.5,
+          "y": 36
+        },
+        {
+          "x": 403.5,
+          "y": 36
+        }
+      ],
+      "text": "ConnectorPort",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Bold",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    },
+    {
+      "order": 15,
+      "zIndex": 20,
+      "type": "text",
+      "role": "text",
+      "id": null,
+      "bounds": {
+        "x": 419,
+        "y": 287.5,
+        "width": 92,
+        "height": 21
+      },
+      "outlinePoints": [
+        {
+          "x": 419,
+          "y": 287.5
+        },
+        {
+          "x": 511,
+          "y": 287.5
+        },
+        {
+          "x": 511,
+          "y": 308.5
+        },
+        {
+          "x": 419,
+          "y": 308.5
+        }
+      ],
+      "text": "ConnectorPort",
+      "fill": {
+        "r": 40,
+        "g": 37,
+        "b": 61,
+        "a": 255
+      },
+      "stroke": null,
+      "strokeWidth": 0,
+      "fontSize": 14,
+      "fontFamily": "\"Recursive Variable\", arial, sans-serif",
+      "fontWeight": "Normal",
+      "rotationDegrees": 0,
+      "clipToBounds": false
+    }
+  ],
+  "outcome": "success",
+  "auditCaseId": "prod_class_relation_matrix_connectors",
+  "auditSource": "production",
+  "sourceSha256": "27b3a5507cd71778f4f415fd7ff8a9c2726a936a0d544e157d0d8f48edeed144"
+}
