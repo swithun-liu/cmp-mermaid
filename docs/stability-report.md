@@ -14,8 +14,9 @@
 > formatting remain unsupported. A separate 28-source composition audit is
 > linked below; the large corpus and physical-device matrices predate this
 > formula change, the 0.1.17 label repairs and the subsequent container-width
-> repair and were not regenerated for those changes. The fresh label repair audit covers 23 sources, 46 screenshots and
-> four contact sheets: 13 Pass, 10 Review, 0 Fail. The full JVM and
+> and 0.1.19 edge-label repairs and were not regenerated for those changes.
+> The fresh label repair audit covers 32 sources, 64 screenshots and
+> five contact sheets: 14 Pass, 18 Review, 0 Fail. The full JVM and
 > Wasm core suites pass.
 > Kotlin 2.3.20 Android, Kotlin 1.7.21 Android,
 > and iOS retain separate historical 441-case physical-device matrices. Core soak,
@@ -33,7 +34,7 @@ stress inputs.
 
 | Item | Result |
 | --- | --- |
-| Current rating | **Not Stable: Architecture `randomize: true`, `look: handDrawn`, and remaining formula stages are unsupported; historical Architecture/Kanban and 10 current label cases remain under review** |
+| Current rating | **Not Stable: Architecture `randomize: true`, `look: handDrawn`, and remaining formula stages are unsupported; historical Architecture/Kanban and 18 current label cases remain under review** |
 | Mermaid compatibility baseline | `12.0.0` |
 | Implemented families | 33/33; retained 33-family corpus evidence, separate formula and current label audits |
 | Independent production scenarios | 441: 167 release-candidate cases plus 274 additional conformance cases |
@@ -54,8 +55,9 @@ stress inputs.
 | Separate deterministic Native stress inputs | 7,936 |
 | JVM tests | Core: 1,094 passed, 0 failed; Compose: 73 passed, 0 failed |
 | Current container-width JVM tests | Core: 1,100 passed, 0 failed; Compose: 75 passed, 0 failed |
-| Wasm tests | Core: 1,092 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
-| iOS Simulator Arm64 tests | Core: 1,092 passed, 0 failed; Compose: 76 passed, 0 failed |
+| Current 0.1.19 edge-label JVM tests | Core: 1,105 passed, 0 failed; Compose: 75 passed, 0 failed |
+| Current 0.1.19 Wasm tests | Core: 1,103 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
+| Current 0.1.19 iOS Simulator Arm64 tests | Core: 1,103 passed, 0 failed; Compose: 76 passed, 0 failed |
 | Core production soak | 2,075 renders; 674ms total; 1ms P95; 63,968 bytes retained heap |
 | Physical-device runtime matrix | Kotlin 2.3.20 Android 8/8, Kotlin 1.7.21 Android 8/8, and iOS 6/6 passed; 9,702 corpus renders; 198 reviewed sentinels plus 22 completion screenshots; 0 crashes or Android ANRs |
 | Runtime load matrix | All three physical-device tracks passed the complete 441-case corpus; Web retains the preceding 397-scenario baseline; iOS Simulator and Desktop retain the prior 236-scenario baseline |
@@ -63,15 +65,17 @@ stress inputs.
 | Android Internet permission | Not declared in debug or release APK |
 | Public-source safety scan | No organization-specific endpoint or credential pattern found |
 | Formula renderer evidence | Unit-tested shared-label composition and provider contract; separate 28-source / 56-screenshot Native/Official audit; physical-device formula parity not established; non-Stable |
-| Current label repair evidence | 2 families, 23 unique sources, 46 screenshots, 4 contact sheets; 13 Pass / 10 Review / 0 Fail; all label content and cluster-boundary path/topology checks pass |
+| Current label repair evidence | 4 families, 32 unique sources, 64 screenshots, 5 contact sheets; 14 Pass / 18 Review / 0 Fail; all label content and cluster-boundary path/topology checks pass; two generic cases improve six label anchors against 0.1.18, with all 32 edge-path sets unchanged |
 | Current container-width repair evidence | 2 families, 3 unique sources, 9 configuration scenarios, 18 screenshots, 3 contact sheets; 0 Pass / 9 Review / 0 Fail; Gantt sizing, rounded task geometry and label-side checks pass; Mindmap paint/topology match under equal config; raster and subpixel geometry remain Review |
 
 **Current conclusion:** the [container-width repair](container-width-report.md)
 restores Gantt parent-width and label-side semantics. Its fresh evidence is
 separate from the retained full-family matrix; all nine scenarios remain
-Review for declared text/raster or subpixel differences. The 0.1.17
+Review for declared text/raster or subpixel differences. The 0.1.19
 [label repair audit](label-compatibility-report.md) passes label content and
-the cluster-boundary geometry, path and topology checks; ten visual cases
+the cluster-boundary geometry, path and topology checks, and restores the
+final SVG-path label check. Its 0.1.18 artifact comparison records six
+improved label anchors without edge-path changes; 18 visual cases
 remain Review. The retained 256-case Flowchart and full 8,448-pair matrix
 predate this change. The full JVM suites pass. The overall
 Mermaid `12.0.0` contract remains **not Stable** because Architecture's legal

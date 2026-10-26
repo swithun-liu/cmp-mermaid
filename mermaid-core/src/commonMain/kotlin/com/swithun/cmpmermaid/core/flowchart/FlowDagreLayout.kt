@@ -544,15 +544,17 @@ internal object FlowDagreLayout {
                 .asReversed()
             pointsChanged = true
         }
-        val labelAnchor = if (pointsChanged && renderPoints.isNotEmpty()) {
-            // positionEdgeLabel -> utils.calcLabelPosition(updatedPath).
-            renderPoints.halfLengthPoint()
-        } else {
-            edge.x?.let { x ->
-                edge.y?.let { y -> ScenePoint(x + offsetX, y + offsetY) }
-            } ?: routedPoints.halfLengthPoint()
-        }
-        result[index] = FlowRoutedEdge(routedPoints, labelAnchor, renderPoints = renderPoints)
+        val labelAnchor = edge.x?.let { x ->
+            edge.y?.let { y -> ScenePoint(x + offsetX, y + offsetY) }
+        } ?: routedPoints.halfLengthPoint()
+        // edges.js -> positionEdgeLabel runs after insertEdge has generated d.
+        // Keep the layout anchor until that final stage decides on updatedPath.
+        result[index] = FlowRoutedEdge(
+            routedPoints,
+            labelAnchor,
+            renderPoints = renderPoints,
+            pathUpdated = pointsChanged,
+        )
     }
 
     private fun selfLoopSide(

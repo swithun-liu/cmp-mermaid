@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T03:34:31.417Z",
+  "baselineVersion": "0.1.18",
+  "currentVersion": "0.1.19",
+  "mermaidVersion": "12.0.0",
+  "baselineArtifacts": [
+    {
+      "file": "mermaid-core-jvm-0.1.18.jar",
+      "sha256": "2dee17a2b883cc3e8c1f57d31a2d5d3b7c7691cd86e6d8040aea618cc59aaffd"
+    },
+    {
+      "file": "mermaid-compose-jvm-0.1.18.jar",
+      "sha256": "4494f9613a172b8798d17ccd7572d483d1597eb46361ca92216ac5033ff1c86d"
+    }
+  ],
+  "inputs": {
+    "baselineNative": "06024e81b0c62d0bf592d4ca7605cb5cb1f7ffd5387de05efea97c4fadad6344",
+    "native": "a9faef17eaaee53317bdfbc1becc10d8cba9802f606998feac94530ec5ace3e3",
+    "official": "42cad23e742d6c11e5d92769731af8313ac82c7c2c3ffb4f477e35abfa100a7d"
+  },
+  "caseCount": 32,
+  "changedCaseCount": 2,
+  "unchangedPathCount": 32,
+  "cases": [
+    {
+      "id": "direction-v",
+      "sourceSha256": "19a7021ea6f47f54684dc1bb78a80491c0ea96f926f6e4136170bb1688d670c7",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "comparison-negative",
+      "sourceSha256": "ae8776fb3ebe465b4028f7668a8ada3e8321834f39e9e1e7f7a2dcb9d109243f",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "comparison-positive",
+      "sourceSha256": "d1241f0aa3dd57547cfdda3e643f2c5076e150a7570d57ad7614022ca315f712",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "long-prose",
+      "sourceSha256": "917c9eea50ef6ef9218c32e16a3e9b23951bf05fa226aeb394a2d82d39c1da08",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "twelve-lines",
+      "sourceSha256": "1b77b198dfe22e905ae26d67cac1052c91df89be855d45c004f492bf06a01700",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "accented-lines",
+      "sourceSha256": "b7a5856af1f6714babc2df30312c126502144cefbb10319163c11476e97e6a75",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "empty-round",
+      "sourceSha256": "e5b9769002ba85d154f1be29c587e158e1459372a2b47dfcd8ae7e0a01e2e038",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "empty-circle",
+      "sourceSha256": "77f7f4dac76bacfc87a6ce494034f591c6d548ccb5dbfbc673552d580f9be45b",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "empty-rect",
+      "sourceSha256": "05b349922fa35c6897baac2ac00dcec0699610181371da805bf0f2578cdedab4",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "explicit-breaks",
+      "sourceSha256": "8fd4920c8e38b71f8572fbba36288ad384878381dc64d2bfbdf887089701f7e1",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "transparent-node",
+      "sourceSha256": "6e83744334ab445c5ebb7e16664c8289c5ec3de6f88b3206676da0566aadd9aa",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "empty-group",
+      "sourceSha256": "52c90d0e8d91f603b4538e4ecb44dbc807f448067bc0411fac34ad9eb4d91ce8",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "mixed-groups",
+      "sourceSha256": "a8242ffbb9670d7e05a70991aca452165a5c091c3c1c58f955b28ca39b691484",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "bare-comment",
+      "sourceSha256": "17bd96adbb318b1cbfb652cccd32f784799d9d670f1ddf358ce30d02683ff740",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "class-raw-angle",
+      "sourceSha256": "b865d1a496a8dd583bfeae876a39b49f0e6e6d6fc10f11dc7a486b35ba56b917",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "class-tilde-generic",
+      "sourceSha256": "79f4513bf5b3d1527bc5194d9667abc7e3a191316af805df08a3d49e362ba6df",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "rounded-default",
+      "sourceSha256": "5ee754dfbe935403135b99e3fde0faa654d089504803bd2c7de6a4456c2070fd",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "rounded-forest",
+      "sourceSha256": "fddcce0cd0c2ce7f12a8f1b1fa4903a29d9f0d4ab520c9a26090c00e38c46196",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "rounded-neo",
+      "sourceSha256": "ef16b1a29b4be903720d8ea518baa56ff5df387a365986c5c82a79edbb85bf2c",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "rounded-redux-color",
+      "sourceSha256": "ea51a1c78a207d945eb3b6ee337007e7d542d62dba9d0991aa58e1f67b031a3c",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "rounded-redux-dark",
+      "sourceSha256": "544f97342b71e75029c6fa950629615329dfa0bbd8447ff9c2854a8aefa4228a",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "rounded-override",
+      "sourceSha256": "a6fdd8a906e413051f50a888ec6e7b7e1fde99001f91181c8735415afd635bda",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "cluster-boundary",
+      "sourceSha256": "64406b3d4e27af7a6e1b19d286c93827c63047a291514feb7423f6da0f739381",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "crossing-labels",
+      "sourceSha256": "9cea9247f39e6b984de5969853bfaf3e6d4e35bd785e01dd402fa2da94006f7d",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "basis-feedback",
+      "sourceSha256": "963158021743636222776a73289d038c0c5b2e2a0fca5ba920d971506c728bca",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "linear-feedback",
+      "sourceSha256": "79978584db818039f315a460fd0540449d9ae165cd83ad8996b89f8e9b5d1648",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "rounded-feedback",
+      "sourceSha256": "75eba56bef0cbd675e9e4de4b35fe1e3df288ecfd85dec121c1fd44c8287692e",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "er-crossing-labels",
+      "sourceSha256": "bec960e012390dc71af2546eb100a32f7e56d0831e272056e6d0a8045570c79c",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "self-loop-labels",
+      "sourceSha256": "787789acee95a72374f05cc850f9daf335f9cc7a6f1bd58f6165534fff7b23df",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "state-feedback",
+      "sourceSha256": "1ffd12b2646b9799e2e764832a42d5cd7eaf5aec52fad64f4182f449fdb700e2",
+      "pathsUnchanged": true,
+      "labelsChanged": 0,
+      "labels": []
+    },
+    {
+      "id": "merged-decision-labels",
+      "sourceSha256": "223f5c2dd43974409192d677803c959be5bac7f4a2d98586ee456b8c37eca684",
+      "pathsUnchanged": true,
+      "labelsChanged": 4,
+      "labels": [
+        {
+          "text": "Confirm",
+          "before": [
+            48.7070315,
+            688.5
+          ],
+          "after": [
+            57.270583,
+            672.41455
+          ],
+          "official": [
+            57.26975440979004,
+            672.4104309082031
+          ],
+          "beforeDistance": 18.22620248953546,
+          "afterDistance": 0.0042016043324929675
+        },
+        {
+          "text": "Decline",
+          "before": [
+            355.4296825,
+            688.5
+          ],
+          "after": [
+            325.2280225,
+            671.72235
+          ],
+          "official": [
+            325.2233123779297,
+            671.7182312011719
+          ],
+          "beforeDistance": 34.55506561951263,
+          "afterDistance": 0.0062569764026995075
+        },
+        {
+          "text": "Approve",
+          "before": [
+            286.000005,
+            688.5
+          ],
+          "after": [
+            316.201665,
+            671.72235
+          ],
+          "official": [
+            316.19703674316406,
+            671.7182312011719
+          ],
+          "beforeDistance": 34.54690275719344,
+          "afterDistance": 0.006195584324818258
+        },
+        {
+          "text": "Reject",
+          "before": [
+            589.02735,
+            688.5
+          ],
+          "after": [
+            581.06342,
+            672.7072
+          ],
+          "official": [
+            581.0549926757812,
+            672.7030944824219
+          ],
+          "beforeDistance": 17.694651882315,
+          "afterDistance": 0.009374170260398124
+        }
+      ]
+    },
+    {
+      "id": "cluster-return-labels",
+      "sourceSha256": "0f68012ea864615e73b7caf6ae3a06b3c26a3b4854f79666fd185d53435f8947",
+      "pathsUnchanged": true,
+      "labelsChanged": 2,
+      "labels": [
+        {
+          "text": "Outbound",
+          "before": [
+            275.33925999999997,
+            216.11424
+          ],
+          "after": [
+            318.7084,
+            298.0453
+          ],
+          "official": [
+            318.73451232910156,
+            298.2827606201172
+          ],
+          "beforeDistance": 92.923698299223,
+          "afterDistance": 0.2388920254791893
+        },
+        {
+          "text": "Inbound",
+          "before": [
+            275.3392675,
+            326.8427
+          ],
+          "after": [
+            307.3251875,
+            360.54208
+          ],
+          "official": [
+            307.38746643066406,
+            360.90380859375
+          ],
+          "beforeDistance": 46.768003734761315,
+          "afterDistance": 0.3670507331977548
+        }
+      ]
+    }
+  ]
+}

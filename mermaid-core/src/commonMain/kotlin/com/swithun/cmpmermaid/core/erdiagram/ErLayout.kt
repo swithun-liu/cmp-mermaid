@@ -48,6 +48,7 @@ import com.swithun.cmpmermaid.core.flowchart.FlowStyleAdapter
 import com.swithun.cmpmermaid.core.flowchart.FlowSubgraph
 import com.swithun.cmpmermaid.core.flowchart.FlowchartDocument
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.FlowLabelType
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgeLabelPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidHtmlEntityDecoder
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidRenderedText
@@ -645,11 +646,21 @@ internal class ErLayout {
                 zIndex = 5,
             )
             edgeVisuals[index]?.let { visual ->
+                val anchor = when (val positioned = MermaidEdgeLabelPort.positionEdgeLabel(
+                    layoutAnchor = routed.labelAnchor,
+                    points = routed.renderPoints,
+                    commands = commands,
+                    curve = ER_CURVE,
+                    pathUpdated = routed.pathUpdated,
+                )) {
+                    is GMResult.Ok -> positioned.value
+                    is GMResult.Err -> return positioned
+                }
                 val backgroundBounds = SceneRect(
-                    left = routed.labelAnchor.x - visual.size.width / 2f - EDGE_LABEL_PADDING_X,
-                    top = routed.labelAnchor.y - visual.size.height / 2f - EDGE_LABEL_PADDING_Y,
-                    right = routed.labelAnchor.x + visual.size.width / 2f + EDGE_LABEL_PADDING_X,
-                    bottom = routed.labelAnchor.y + visual.size.height / 2f + EDGE_LABEL_PADDING_Y,
+                    left = anchor.x - visual.size.width / 2f - EDGE_LABEL_PADDING_X,
+                    top = anchor.y - visual.size.height / 2f - EDGE_LABEL_PADDING_Y,
+                    right = anchor.x + visual.size.width / 2f + EDGE_LABEL_PADDING_X,
+                    bottom = anchor.y + visual.size.height / 2f + EDGE_LABEL_PADDING_Y,
                 )
                 elements += SceneShape(
                     id = "$edgeId-label-background",
@@ -667,10 +678,10 @@ internal class ErLayout {
                 elements += SceneText(
                     text = visual.text,
                     bounds = SceneRect(
-                        left = routed.labelAnchor.x - visual.size.width / 2f,
-                        top = routed.labelAnchor.y - visual.size.height / 2f,
-                        right = routed.labelAnchor.x + visual.size.width / 2f,
-                        bottom = routed.labelAnchor.y + visual.size.height / 2f,
+                        left = anchor.x - visual.size.width / 2f,
+                        top = anchor.y - visual.size.height / 2f,
+                        right = anchor.x + visual.size.width / 2f,
+                        bottom = anchor.y + visual.size.height / 2f,
                     ),
                     color = context.theme.nodeText,
                     fontSize = EDGE_FONT_SIZE,

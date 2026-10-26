@@ -22,4 +22,13 @@ export const labelCompatibilityCases = [
   })),
   { id: 'rounded-override', family: 'flowchart', source: '---\nconfig:\n  theme: redux-color\n  themeVariables:\n    radius: 7\n---\nflowchart TD\nA(Rounded label)' },
   { id: 'cluster-boundary', family: 'flowchart', source: 'flowchart TD\nsubgraph Box[Group]\nA[Alpha]\nB[Beta]\nC[Gamma]\nend\nA -->|Down| Box\nB -->|Up| Box\nC -->|Left| Box' },
+  { id: 'crossing-labels', family: 'flowchart', source: 'flowchart TD\nA[Start] --> B[Left]\nA --> C[Right]\nB -->|Accept| C\nC -->|Retry| B\nB --> D[Finish]\nC --> D' },
+  { id: 'basis-feedback', family: 'flowchart', source: '---\nconfig:\n  flowchart:\n    curve: basis\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A' },
+  { id: 'linear-feedback', family: 'flowchart', source: '---\nconfig:\n  flowchart:\n    curve: linear\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A' },
+  { id: 'rounded-feedback', family: 'flowchart', source: '---\nconfig:\n  flowchart:\n    curve: rounded\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A' },
+  { id: 'er-crossing-labels', family: 'er', source: 'erDiagram\nTEAM ||--o{ PERSON : includes\nTEAM ||--o{ TASK : owns\nPERSON ||--o{ TASK : creates\nTASK }o--|| PERSON : assigned' },
+  { id: 'self-loop-labels', family: 'flowchart', source: 'flowchart TD\nA[Ready] -->|Repeat| A\nA -->|Proceed| B[Done]' },
+  { id: 'state-feedback', family: 'state', source: 'stateDiagram-v2\n[*] --> Ready\nReady --> Working: Begin\nWorking --> Done: Finish\nDone --> Ready: Reset' },
+  { id: 'merged-decision-labels', family: 'flowchart', source: 'flowchart TD\nA[First route] --> B{Continue first route?}\nB -->|Advance| C[First check]\nB -->|Stop| D[First stopped]\nC --> E{First check accepted?}\nE -->|Confirm| F[Complete]\nE -->|Decline| G[Deferred]\nH[Second route] --> I{Continue second route?}\nI -->|Proceed| J[Second check]\nI -->|Halt| K[Second stopped]\nJ --> L{Second check accepted?}\nL -->|Approve| F\nL -->|Reject| G' },
+  { id: 'cluster-return-labels', family: 'flowchart', source: 'flowchart LR\nA(First value) -->|Outbound| B(Second value)\nB -->|Inbound| A\nsubgraph Group[Value group]\ndirection LR\nX[First axis]\nY[Second axis]\nP -->|Horizontal| X\nP -->|Vertical| Y\nA((A))\nend\nstyle P fill:none,stroke:#000,stroke-width:2px' },
 ];

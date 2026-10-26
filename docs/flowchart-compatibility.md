@@ -87,10 +87,12 @@ Additional platform limitations:
 
 ## Validation Corpus
 
-- The current 0.1.17 [label repair audit](label-compatibility-report.md) uses
-  23 sources across Flowchart/Class, with 46 screenshots and four contact
-  sheets: 13 Pass, 10 Review, 0 Fail. All label content and the cluster-boundary
-  per-edge checks pass. Wrapping, line boxes, outline and theme raster
+- The current 0.1.19 [label repair audit](label-compatibility-report.md) uses
+  32 sources across Flowchart/Class/ER/State, with 64 screenshots and five contact
+  sheets: 14 Pass, 18 Review, 0 Fail. Two generic cases improve six edge-label
+  anchors against 0.1.18; all 32 edge-path sets remain identical. All label
+  content and the cluster-boundary per-edge checks pass. Wrapping, line boxes,
+  outline, subpixel geometry and theme raster
   differences remain Review. The larger matrices listed below are retained
   historical evidence and were not regenerated for this repair.
 - 45 curated gallery cases are rendered from identical source by Native

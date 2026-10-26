@@ -36,6 +36,7 @@ import com.swithun.cmpmermaid.core.flowchart.FlowNodeStyle
 import com.swithun.cmpmermaid.core.flowchart.FlowStyleAdapter
 import com.swithun.cmpmermaid.core.flowchart.FlowchartDocument
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.FlowLabelType
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgeLabelPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidRenderedText
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
@@ -538,11 +539,16 @@ internal class RequirementLayout {
                 ?: return GMResult.Err(
                     MermaidError.Layout("Requirement relation $edgeId has no label"),
                 )
-            val labelAnchor = MermaidEdgePathPort.positionEdgeLabel(
+            val labelAnchor = when (val positioned = MermaidEdgeLabelPort.positionEdgeLabel(
                 layoutAnchor = routed.labelAnchor,
-                points = routed.points,
+                points = routed.renderPoints,
                 commands = commands,
-            )
+                curve = curve,
+                pathUpdated = routed.pathUpdated,
+            )) {
+                is GMResult.Ok -> positioned.value
+                is GMResult.Err -> return positioned
+            }
             val labelBounds = SceneRect(
                 left = labelAnchor.x - label.metrics.width / 2f - EDGE_LABEL_PADDING_X,
                 top = labelAnchor.y - label.metrics.height / 2f - EDGE_LABEL_PADDING_Y,

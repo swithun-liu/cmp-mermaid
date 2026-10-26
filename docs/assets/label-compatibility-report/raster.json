@@ -1,18 +1,19 @@
 {
-  "officialGeneratedAt": "2026-10-25T07:12:59.894Z",
-  "nativeGeneratedAt": "2026-10-25T07:13:43.054575Z",
-  "caseCount": 23,
-  "screenshotCount": 46,
+  "officialGeneratedAt": "2026-10-26T03:30:54.764Z",
+  "nativeGeneratedAt": "2026-10-26T03:32:05.193841Z",
+  "caseCount": 32,
+  "screenshotCount": 64,
   "contactSheets": [
     "contact-sheet-1.png",
     "contact-sheet-2.png",
     "contact-sheet-3.png",
-    "contact-sheet-4.png"
+    "contact-sheet-4.png",
+    "contact-sheet-5.png"
   ],
   "cases": [
     {
       "id": "direction-v",
-      "ssim": 0.9967589247974445,
+      "ssim": 0.9965297447585512,
       "nativeSize": [
         168,
         156
@@ -24,7 +25,7 @@
     },
     {
       "id": "comparison-negative",
-      "ssim": 0.9967586599648676,
+      "ssim": 0.9965294799259743,
       "nativeSize": [
         168,
         156
@@ -48,7 +49,7 @@
     },
     {
       "id": "long-prose",
-      "ssim": 0.5863678946856813,
+      "ssim": 0.5863622086529116,
       "nativeSize": [
         168,
         744
@@ -156,7 +157,7 @@
     },
     {
       "id": "mixed-groups",
-      "ssim": 0.9819812759243756,
+      "ssim": 0.9819162098460349,
       "nativeSize": [
         632,
         131
@@ -168,7 +169,7 @@
     },
     {
       "id": "bare-comment",
-      "ssim": 0.9973152483632918,
+      "ssim": 0.9972132506536746,
       "nativeSize": [
         370,
         156
@@ -204,7 +205,7 @@
     },
     {
       "id": "rounded-default",
-      "ssim": 0.9283232116321076,
+      "ssim": 0.9282312597624051,
       "nativeSize": [
         368,
         70
@@ -216,7 +217,7 @@
     },
     {
       "id": "rounded-forest",
-      "ssim": 0.7989305016571548,
+      "ssim": 0.7988389349598396,
       "nativeSize": [
         368,
         70
@@ -228,7 +229,7 @@
     },
     {
       "id": "rounded-neo",
-      "ssim": 0.9221279367039719,
+      "ssim": 0.9221761225938278,
       "nativeSize": [
         368,
         67
@@ -240,7 +241,7 @@
     },
     {
       "id": "rounded-redux-color",
-      "ssim": 0.9927622508046886,
+      "ssim": 0.9928062419526675,
       "nativeSize": [
         368,
         67
@@ -252,7 +253,7 @@
     },
     {
       "id": "rounded-redux-dark",
-      "ssim": 0.6967546347144986,
+      "ssim": 0.6966980247927167,
       "nativeSize": [
         368,
         67
@@ -276,7 +277,7 @@
     },
     {
       "id": "cluster-boundary",
-      "ssim": 0.9879197340041607,
+      "ssim": 0.9879243436658038,
       "nativeSize": [
         462,
         227
@@ -284,6 +285,114 @@
       "officialSize": [
         462,
         227
+      ]
+    },
+    {
+      "id": "crossing-labels",
+      "ssim": 0.9780554365526198,
+      "nativeSize": [
+        263,
+        367
+      ],
+      "officialSize": [
+        263,
+        367
+      ]
+    },
+    {
+      "id": "basis-feedback",
+      "ssim": 0.9641348323573636,
+      "nativeSize": [
+        624,
+        119
+      ],
+      "officialSize": [
+        623,
+        117
+      ]
+    },
+    {
+      "id": "linear-feedback",
+      "ssim": 0.964981576407601,
+      "nativeSize": [
+        624,
+        119
+      ],
+      "officialSize": [
+        623,
+        117
+      ]
+    },
+    {
+      "id": "rounded-feedback",
+      "ssim": 0.9646264371651232,
+      "nativeSize": [
+        624,
+        119
+      ],
+      "officialSize": [
+        623,
+        117
+      ]
+    },
+    {
+      "id": "er-crossing-labels",
+      "ssim": 0.7953226337805309,
+      "nativeSize": [
+        256,
+        461
+      ],
+      "officialSize": [
+        242,
+        461
+      ]
+    },
+    {
+      "id": "self-loop-labels",
+      "ssim": 0.9652543108191315,
+      "nativeSize": [
+        295,
+        177
+      ],
+      "officialSize": [
+        294,
+        248
+      ]
+    },
+    {
+      "id": "state-feedback",
+      "ssim": 0.944470727108599,
+      "nativeSize": [
+        228,
+        333
+      ],
+      "officialSize": [
+        224,
+        333
+      ]
+    },
+    {
+      "id": "merged-decision-labels",
+      "ssim": 0.9768279584823615,
+      "nativeSize": [
+        809,
+        777
+      ],
+      "officialSize": [
+        809,
+        777
+      ]
+    },
+    {
+      "id": "cluster-return-labels",
+      "ssim": 0.9807933582029387,
+      "nativeSize": [
+        517,
+        500
+      ],
+      "officialSize": [
+        517,
+        500
       ]
     }
   ]

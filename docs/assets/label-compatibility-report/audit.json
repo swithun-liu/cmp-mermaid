@@ -1,19 +1,19 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-25T07:15:45.193Z",
+  "generatedAt": "2026-10-26T03:32:52.171Z",
   "mermaidVersion": "12.0.0",
   "inputs": {
     "official": {
-      "generatedAt": "2026-10-25T07:12:59.894Z",
-      "sha256": "7357467f4c26496643cc0610f8164cf93a7ae18cd6e079a81b6f615e2c14da90"
+      "generatedAt": "2026-10-26T03:30:54.764Z",
+      "sha256": "42cad23e742d6c11e5d92769731af8313ac82c7c2c3ffb4f477e35abfa100a7d"
     },
     "native": {
-      "generatedAt": "2026-10-25T07:13:43.054575Z",
-      "sha256": "a28effe51bbdb29fe8e4bcea77a5adcaf37e464c33ac52a5ef58bab1f61a4fc6"
+      "generatedAt": "2026-10-26T03:32:05.193841Z",
+      "sha256": "a9faef17eaaee53317bdfbc1becc10d8cba9802f606998feac94530ec5ace3e3"
     },
     "raster": {
       "generatedAt": null,
-      "sha256": "799b0983b5903a4c6e828297a1c281c9d5c7c0c6552670b9a407f036a05e2a51"
+      "sha256": "8f3689674fa5813c5db426c614684f97d1f4b7933109fa6778eda43c41b27b15"
     }
   },
   "evidence": [
@@ -23,7 +23,7 @@
     },
     {
       "file": "direction-v-official.png",
-      "sha256": "70b444fd7c641176b471a907e6241fc5f348b97647f2c441a2966d2f5a8ac48f"
+      "sha256": "fd762ef75f5f8cc4f2142b373693ebab9e7df266f7401324e7074a8bffee79d1"
     },
     {
       "file": "comparison-negative-native.png",
@@ -31,7 +31,7 @@
     },
     {
       "file": "comparison-negative-official.png",
-      "sha256": "5cc807226eb0cf37420125c059901912c8f9eeaa307d6148af0d794ff0838475"
+      "sha256": "cda7586bf9702c3da23b2b231b871c5a0546f0c77006df2e800e1f2d40304145"
     },
     {
       "file": "comparison-positive-native.png",
@@ -47,7 +47,7 @@
     },
     {
       "file": "long-prose-official.png",
-      "sha256": "a51268198710b57fe1ef49b817356d4b9a52b9516e04e09bc0daf3d9cb18456b"
+      "sha256": "19fb3e6bf46ff2620e82ddd74867ff149216bede7ba6b1cda67caf60e43b977f"
     },
     {
       "file": "twelve-lines-native.png",
@@ -119,7 +119,7 @@
     },
     {
       "file": "mixed-groups-official.png",
-      "sha256": "7018dac11ea6fc5f3e993a82abdef9fe213d25d35a1ad9c82b6e7bc017db1f8b"
+      "sha256": "36e03e1661015a928d0ca22ac4320bf37128485b229faa726d6ba4779bce7ce4"
     },
     {
       "file": "bare-comment-native.png",
@@ -127,7 +127,7 @@
     },
     {
       "file": "bare-comment-official.png",
-      "sha256": "09edf55c822c3c69437b74c32cc59207f188940e20a989cb0ca6dae428f9c5e4"
+      "sha256": "9a69d88c4f8f4f1f7f8b28296540d5d6ba6ebb44dee6b71383c9402df768bc86"
     },
     {
       "file": "class-raw-angle-native.png",
@@ -151,7 +151,7 @@
     },
     {
       "file": "rounded-default-official.png",
-      "sha256": "6d93cfcc8869febc614858ac39e5f4fed803db3bd094591147da1faa35de1175"
+      "sha256": "48c9b7fd4b0fdc928eb5e0d51a3a7089194bb5532e74e221549a0d2170f033cc"
     },
     {
       "file": "rounded-forest-native.png",
@@ -159,7 +159,7 @@
     },
     {
       "file": "rounded-forest-official.png",
-      "sha256": "c404bda1e3fb31ab2581bea972107e6ce525558ef5e71759bfe9481322c3860e"
+      "sha256": "cbb9fb8a3623d7fd08fc3fd912c44cb2f3f72300751c26e343d05dc8b9c036a9"
     },
     {
       "file": "rounded-neo-native.png",
@@ -167,7 +167,7 @@
     },
     {
       "file": "rounded-neo-official.png",
-      "sha256": "b96a73ad724cf6655c2ccc85f3fe6b40e80a23c09c1ff4c0edf08ed5cad51c59"
+      "sha256": "65d8475ff5bb5e5192aeea77343d2802ce27036fa4e7a92b02e882c74ae64fb3"
     },
     {
       "file": "rounded-redux-color-native.png",
@@ -175,7 +175,7 @@
     },
     {
       "file": "rounded-redux-color-official.png",
-      "sha256": "ba9982bfb9f415f0fe01c93d0e73c989f5ed33dad32902eb905574986324fdd9"
+      "sha256": "52ef4cc2026d444d30007e9db8f0947f3b33e81042c3f92b831d2d5e9a2b7f09"
     },
     {
       "file": "rounded-redux-dark-native.png",
@@ -183,7 +183,7 @@
     },
     {
       "file": "rounded-redux-dark-official.png",
-      "sha256": "a2d599250a661be679c76706cf3a22d3277dd45010e09344b6b2941697d5b38d"
+      "sha256": "493d0059c08612730b4c2263e3f30fcd576062df3837c776ff3627bcba60f023"
     },
     {
       "file": "rounded-override-native.png",
@@ -199,40 +199,117 @@
     },
     {
       "file": "cluster-boundary-official.png",
-      "sha256": "cefa2e227cd26a1cb75a5be08d5d84141682b4fb1489ef03a6a32515a13b586b"
+      "sha256": "ba505de8968588abdc8bf7ed6d7e273bb83c35f87d93dd54c9b7e666a308393f"
+    },
+    {
+      "file": "crossing-labels-native.png",
+      "sha256": "65bf4ecc2c50f6b645ed2410ea69b9f23181cd08c555ced602de8bfb69711002"
+    },
+    {
+      "file": "crossing-labels-official.png",
+      "sha256": "d89502274c7a899e9c413ba0d80f2dbcd4679ca1debf0b37c9c8fac56532d943"
+    },
+    {
+      "file": "basis-feedback-native.png",
+      "sha256": "b089fa7205429726f00da4b45db0a58f5489eab3aa3f69732ee1306a66ab57d8"
+    },
+    {
+      "file": "basis-feedback-official.png",
+      "sha256": "02faa7f0869db20f86bbe68942e0c979fb3557dfde399c6acf25661a4815b639"
+    },
+    {
+      "file": "linear-feedback-native.png",
+      "sha256": "36b789515e4757e6313d6e99201dd73d27f2e576bba06c521eab356b13717cd9"
+    },
+    {
+      "file": "linear-feedback-official.png",
+      "sha256": "a1f1eda01e6375ab9bc9c974501f10307962ff55a41784112642dd0435e5fc5f"
+    },
+    {
+      "file": "rounded-feedback-native.png",
+      "sha256": "ec7598eb74c031ec64ab47f9155ad3a9f1ef1d894a319660d50209bc15c304e9"
+    },
+    {
+      "file": "rounded-feedback-official.png",
+      "sha256": "9774f185eea50a355d2754e616e61c3419e2f8c4ffb683afaed7fcda037d2421"
+    },
+    {
+      "file": "er-crossing-labels-native.png",
+      "sha256": "b9fd0b29e863cedcc811fef03120b0ed1e5d7107f62bed8b0c8d07cd58ac3b54"
+    },
+    {
+      "file": "er-crossing-labels-official.png",
+      "sha256": "fc6e1532e86fc4b3e71c5aab296c04976467de9aa18e60c64b128e6ab531a4c1"
+    },
+    {
+      "file": "self-loop-labels-native.png",
+      "sha256": "d43ef6359dd78e49122ea47f25fd262cd371f8fb92152e5e777b94f166ec1dcb"
+    },
+    {
+      "file": "self-loop-labels-official.png",
+      "sha256": "45a83f2dcdffddce09d4a91cb7941d1408f5a718cdb4bccbf265d7f64957a8bb"
+    },
+    {
+      "file": "state-feedback-native.png",
+      "sha256": "716c3141d6be2be04bf667f5384c3bdabf9629cb4745b6c791cd7d1af3e5a3cb"
+    },
+    {
+      "file": "state-feedback-official.png",
+      "sha256": "713dcea7af73a41d0ae35754040bc59c03aacd009edd67228d0d9c072063ca64"
+    },
+    {
+      "file": "merged-decision-labels-native.png",
+      "sha256": "979bdc0e0534238edc944a6c781522ba7d65d0d1de84055e25ca9418e6a69fa1"
+    },
+    {
+      "file": "merged-decision-labels-official.png",
+      "sha256": "bdaf313e4074a3064f726cadd592f3aace94670eaf9d968033c65928a224eeff"
+    },
+    {
+      "file": "cluster-return-labels-native.png",
+      "sha256": "832968c3ffb0f8f5831574bbf50793ea47c1a1776711f91fcd2d21ce01ceb8c3"
+    },
+    {
+      "file": "cluster-return-labels-official.png",
+      "sha256": "e338e692b627555522a7e81e3b0f08b4072c03f35e15ad7ef441d05814ac5639"
     },
     {
       "file": "contact-sheet-1.png",
-      "sha256": "b89de766004e037ff1f2576ea75d0c6e89395748bdd66c192e56e9c7d4ef7ed7"
+      "sha256": "887a29b90d47b437e18b4c744b826bc44d420c1491cba954213c1e814e68cd08"
     },
     {
       "file": "contact-sheet-2.png",
-      "sha256": "d4a2d5201d625d80cbdc3eb51898ed4849fabe72103f54e3e10a8654e11dcd7e"
+      "sha256": "2dd75c1edfcf2515adaba2b7840ed52441161c59ed3bfba3c1c2ffa2125ebd2e"
     },
     {
       "file": "contact-sheet-3.png",
-      "sha256": "67eb21786de134a83e3327d593a27b7a5922174437f4227e53d0201510866e5e"
+      "sha256": "842c73f5486996ca43fec22c6cb8cbb0d91d8fd87575ca9641ef3a34c4fca856"
     },
     {
       "file": "contact-sheet-4.png",
-      "sha256": "b0b2486c6e838d2ce61ffc65017bfe73c94e28f20f8fc40b929c41fcd97c7bcb"
+      "sha256": "810d2fac9d9f6c6a34aae3c7067cf2b8330a791595245133d668a870581f2ad8"
+    },
+    {
+      "file": "contact-sheet-5.png",
+      "sha256": "ec28ac9598cbea76ba34a8c7f67c010632423f748e1ad68b778ef95b60abdff7"
     }
   ],
-  "officialGeneratedAt": "2026-10-25T07:12:59.894Z",
-  "nativeGeneratedAt": "2026-10-25T07:13:43.054575Z",
+  "officialGeneratedAt": "2026-10-26T03:30:54.764Z",
+  "nativeGeneratedAt": "2026-10-26T03:32:05.193841Z",
   "layout": "dagre",
-  "familyCount": 2,
-  "caseCount": 23,
-  "screenshotCount": 46,
+  "familyCount": 4,
+  "caseCount": 32,
+  "screenshotCount": 64,
   "contactSheets": [
     "contact-sheet-1.png",
     "contact-sheet-2.png",
     "contact-sheet-3.png",
-    "contact-sheet-4.png"
+    "contact-sheet-4.png",
+    "contact-sheet-5.png"
   ],
   "counts": {
-    "pass": 13,
-    "review": 10,
+    "pass": 14,
+    "review": 18,
     "fail": 0
   },
   "cases": [
@@ -245,7 +322,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.9967589247974445,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.9965297447585512,
       "nodeComparisons": [
         {
           "id": "v",
@@ -361,7 +440,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.9967586599648676,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.9965294799259743,
       "nodeComparisons": [
         {
           "id": "A",
@@ -477,6 +558,8 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.9967558007146176,
       "nodeComparisons": [
         {
@@ -525,7 +608,9 @@
       "contentPass": true,
       "geometryPass": false,
       "pathsPass": false,
-      "ssim": 0.5863678946856813,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.5863622086529116,
       "nodeComparisons": [
         {
           "id": "A",
@@ -639,7 +724,7 @@
         },
         {
           "code": "raster-review",
-          "ssim": 0.5863678946856813
+          "ssim": 0.5863622086529116
         }
       ]
     },
@@ -652,6 +737,8 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.9981976438242007,
       "nodeComparisons": [
         {
@@ -700,6 +787,8 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.9988564252259944,
       "nodeComparisons": [
         {
@@ -748,6 +837,8 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.9895877228663569,
       "nodeComparisons": [
         {
@@ -796,6 +887,8 @@
       "contentPass": true,
       "geometryPass": false,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.9953785558001497,
       "nodeComparisons": [
         {
@@ -848,6 +941,8 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.9948906325201703,
       "nodeComparisons": [
         {
@@ -896,6 +991,8 @@
       "contentPass": true,
       "geometryPass": false,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.8054027369843345,
       "nodeComparisons": [
         {
@@ -952,6 +1049,8 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 1,
       "nodeComparisons": [
         {
@@ -1000,6 +1099,8 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.9574543539764871,
       "nodeComparisons": [
         {
@@ -1053,7 +1154,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.9819812759243756,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.9819162098460349,
       "nodeComparisons": [
         {
           "id": "subgraph_Full",
@@ -1201,7 +1304,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.9973152483632918,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.9972132506536746,
       "nodeComparisons": [
         {
           "id": "%%",
@@ -1333,6 +1438,8 @@
       "contentPass": true,
       "geometryPass": false,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.6072555470689527,
       "nodeComparisons": [
         {
@@ -1384,6 +1491,8 @@
       "contentPass": true,
       "geometryPass": false,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.5643741746362337,
       "nodeComparisons": [
         {
@@ -1435,7 +1544,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.9283232116321076,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.9282312597624051,
       "nodeComparisons": [
         {
           "id": "A",
@@ -1543,7 +1654,7 @@
       "findings": [
         {
           "code": "raster-review",
-          "ssim": 0.9283232116321076
+          "ssim": 0.9282312597624051
         }
       ]
     },
@@ -1556,7 +1667,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.7989305016571548,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.7988389349598396,
       "nodeComparisons": [
         {
           "id": "A",
@@ -1664,7 +1777,7 @@
       "findings": [
         {
           "code": "raster-review",
-          "ssim": 0.7989305016571548
+          "ssim": 0.7988389349598396
         }
       ]
     },
@@ -1677,7 +1790,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.9221279367039719,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.9221761225938278,
       "nodeComparisons": [
         {
           "id": "A",
@@ -1785,7 +1900,7 @@
       "findings": [
         {
           "code": "raster-review",
-          "ssim": 0.9221279367039719
+          "ssim": 0.9221761225938278
         }
       ]
     },
@@ -1798,7 +1913,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.9927622508046886,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.9928062419526675,
       "nodeComparisons": [
         {
           "id": "A",
@@ -1914,7 +2031,9 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.6967546347144986,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
+      "ssim": 0.6966980247927167,
       "nodeComparisons": [
         {
           "id": "A",
@@ -2022,7 +2141,7 @@
       "findings": [
         {
           "code": "raster-review",
-          "ssim": 0.6967546347144986
+          "ssim": 0.6966980247927167
         }
       ]
     },
@@ -2035,6 +2154,8 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [],
       "ssim": 0.9867517636939466,
       "nodeComparisons": [
         {
@@ -2083,7 +2204,46 @@
       "contentPass": true,
       "geometryPass": true,
       "pathsPass": true,
-      "ssim": 0.9879197340041607,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [
+        {
+          "text": "Down",
+          "official": [
+            118.99798583984375,
+            78.0005989074707
+          ],
+          "native": [
+            118.9999975,
+            78
+          ],
+          "matches": true
+        },
+        {
+          "text": "Up",
+          "official": [
+            320.99456787109375,
+            78.0005989074707
+          ],
+          "native": [
+            321.000005,
+            78
+          ],
+          "matches": true
+        },
+        {
+          "text": "Left",
+          "official": [
+            295.99497985839844,
+            160.81169891357422
+          ],
+          "native": [
+            295.9999875,
+            160.8125
+          ],
+          "matches": true
+        }
+      ],
+      "ssim": 0.9879243436658038,
       "nodeComparisons": [
         {
           "id": "subgraph_Box",
@@ -2329,6 +2489,3434 @@
         }
       ],
       "findings": []
+    },
+    {
+      "id": "crossing-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[Start] --> B[Left]\nA --> C[Right]\nB -->|Accept| C\nC -->|Retry| B\nB --> D[Finish]\nC --> D",
+      "sourceSha256": "9cea9247f39e6b984de5969853bfaf3e6d4e35bd785e01dd402fa2da94006f7d",
+      "status": "pass",
+      "contentPass": true,
+      "geometryPass": true,
+      "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [
+        {
+          "text": "Accept",
+          "official": [
+            149.49777221679688,
+            183.5
+          ],
+          "native": [
+            149.5,
+            183.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Retry",
+          "official": [
+            207.62972259521484,
+            183.5
+          ],
+          "native": [
+            207.6328125,
+            183.5
+          ],
+          "matches": true
+        }
+      ],
+      "ssim": 0.9780554365526198,
+      "nodeComparisons": [
+        {
+          "id": "A",
+          "native": {
+            "x": 63.5,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 63.499053955078125,
+            "y": 8.00261116027832,
+            "width": 151.99774169921875,
+            "height": 44.99932861328125
+          },
+          "matches": true
+        },
+        {
+          "id": "B",
+          "native": {
+            "x": 102.56641,
+            "y": 103,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 102.56488037109375,
+            "y": 103.0011978149414,
+            "width": 151.99774169921875,
+            "height": 44.99933624267578
+          },
+          "matches": true
+        },
+        {
+          "id": "C",
+          "native": {
+            "x": 73.5,
+            "y": 219,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 73.49890899658203,
+            "y": 218.9994659423828,
+            "width": 151.99774169921875,
+            "height": 44.99934387207031
+          },
+          "matches": true
+        },
+        {
+          "id": "D",
+          "native": {
+            "x": 8,
+            "y": 314,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 7.999880790710449,
+            "y": 313.998046875,
+            "width": 151.99774169921875,
+            "height": 44.99932861328125
+          },
+          "matches": true
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 6,
+        "officialEdgeCount": 6,
+        "edges": [
+          {
+            "edgeId": "L_A_B_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_A_C_0",
+            "native": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "D",
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "D",
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_B_C_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_B_D_0",
+            "native": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "D",
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "D",
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_C_B_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_C_D_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "L_A_B_0",
+          "native": {
+            "length": 51.98566818237305,
+            "start": [
+              158.00514221191406,
+              53
+            ],
+            "end": [
+              178.56640625,
+              99
+            ]
+          },
+          "official": {
+            "length": 51.985809326171875,
+            "start": [
+              158.0050048828125,
+              53
+            ],
+            "end": [
+              178.5659942626953,
+              99
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_A_C_0",
+          "native": {
+            "length": 212.495849609375,
+            "start": [
+              96.39473724365234,
+              53
+            ],
+            "end": [
+              106.85022735595703,
+              217.008056640625
+            ]
+          },
+          "official": {
+            "length": 212.49598693847656,
+            "start": [
+              96.3949966430664,
+              53
+            ],
+            "end": [
+              106.8499984741211,
+              217.00799560546875
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_B_C_0",
+          "native": {
+            "length": 70.3377914428711,
+            "start": [
+              167.2906494140625,
+              148
+            ],
+            "end": [
+              149.5,
+              215
+            ]
+          },
+          "official": {
+            "length": 70.33799743652344,
+            "start": [
+              167.29100036621094,
+              148
+            ],
+            "end": [
+              149.5,
+              215
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_C_B_0",
+          "native": {
+            "length": 78.8166732788086,
+            "start": [
+              172.05152893066406,
+              219
+            ],
+            "end": [
+              191.63429260253906,
+              151.57606506347656
+            ]
+          },
+          "official": {
+            "length": 78.81639099121094,
+            "start": [
+              172.052001953125,
+              219
+            ],
+            "end": [
+              191.63400268554688,
+              151.5760040283203
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_B_D_0",
+          "native": {
+            "length": 223.25665283203125,
+            "start": [
+              120.35099029541016,
+              148
+            ],
+            "end": [
+              54.671566009521484,
+              311.3990783691406
+            ]
+          },
+          "official": {
+            "length": 223.257080078125,
+            "start": [
+              120.35099792480469,
+              148
+            ],
+            "end": [
+              54.672000885009766,
+              311.39898681640625
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_C_D_0",
+          "native": {
+            "length": 60.53723907470703,
+            "start": [
+              149.5,
+              264
+            ],
+            "end": [
+              118.26446533203125,
+              311.6517333984375
+            ]
+          },
+          "official": {
+            "length": 60.53781509399414,
+            "start": [
+              149.5,
+              264
+            ],
+            "end": [
+              118.26399993896484,
+              311.6520080566406
+            ]
+          },
+          "matches": true
+        }
+      ],
+      "findings": []
+    },
+    {
+      "id": "basis-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: basis\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "sourceSha256": "963158021743636222776a73289d038c0c5b2e2a0fca5ba920d971506c728bca",
+      "status": "review",
+      "contentPass": true,
+      "geometryPass": true,
+      "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [
+        {
+          "text": "Forward",
+          "official": [
+            412.6796875,
+            30.5
+          ],
+          "native": [
+            412.6796875,
+            30.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Feedback",
+          "official": [
+            286,
+            98.5
+          ],
+          "native": [
+            285.9999975,
+            98.5
+          ],
+          "matches": true
+        }
+      ],
+      "ssim": 0.9641348323573636,
+      "nodeComparisons": [
+        {
+          "id": "A",
+          "native": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        },
+        {
+          "id": "B",
+          "native": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        },
+        {
+          "id": "C",
+          "native": {
+            "x": 463.35938,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 463.359375,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 3,
+        "officialEdgeCount": 3,
+        "edges": [
+          {
+            "edgeId": "L_A_B_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_B_C_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "R",
+                "Diagonal"
+              ],
+              "sourcePortSide": "R",
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "R",
+                "Diagonal"
+              ],
+              "sourcePortSide": "R",
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_C_A_0",
+            "native": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "L",
+                "L",
+                "Diagonal"
+              ],
+              "sourcePortSide": "L",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "L",
+                "L",
+                "Diagonal"
+              ],
+              "sourcePortSide": "L",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "L_A_B_0",
+          "native": {
+            "length": 56.718177795410156,
+            "start": [
+              150.83824157714844,
+              42
+            ],
+            "end": [
+              206,
+              30.5
+            ]
+          },
+          "official": {
+            "length": 56.718387603759766,
+            "start": [
+              150.83799743652344,
+              42
+            ],
+            "end": [
+              206,
+              30.5
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_B_C_0",
+          "native": {
+            "length": 98.76091766357422,
+            "start": [
+              362,
+              30.5
+            ],
+            "end": [
+              459.49609375,
+              43.06521987915039
+            ]
+          },
+          "official": {
+            "length": 98.76079559326172,
+            "start": [
+              362,
+              30.5
+            ],
+            "end": [
+              459.4960021972656,
+              43.064998626708984
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_C_A_0",
+          "native": {
+            "length": 310.94708251953125,
+            "start": [
+              463.359375,
+              84.89790344238281
+            ],
+            "end": [
+              154.62921142578125,
+              88.27616882324219
+            ]
+          },
+          "official": {
+            "length": 310.94696044921875,
+            "start": [
+              463.3590087890625,
+              84.89800262451172
+            ],
+            "end": [
+              154.62899780273438,
+              88.2760009765625
+            ]
+          },
+          "matches": true
+        }
+      ],
+      "findings": [
+        {
+          "code": "raster-review",
+          "ssim": 0.9641348323573636
+        }
+      ]
+    },
+    {
+      "id": "linear-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: linear\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "sourceSha256": "79978584db818039f315a460fd0540449d9ae165cd83ad8996b89f8e9b5d1648",
+      "status": "review",
+      "contentPass": true,
+      "geometryPass": true,
+      "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [
+        {
+          "text": "Forward",
+          "official": [
+            412.6796875,
+            30.5
+          ],
+          "native": [
+            412.6796875,
+            30.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Feedback",
+          "official": [
+            286,
+            98.5
+          ],
+          "native": [
+            285.9999975,
+            98.5
+          ],
+          "matches": true
+        }
+      ],
+      "ssim": 0.964981576407601,
+      "nodeComparisons": [
+        {
+          "id": "A",
+          "native": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        },
+        {
+          "id": "B",
+          "native": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        },
+        {
+          "id": "C",
+          "native": {
+            "x": 463.35938,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 463.359375,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 3,
+        "officialEdgeCount": 3,
+        "edges": [
+          {
+            "edgeId": "L_A_B_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_B_C_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "R",
+                "Diagonal"
+              ],
+              "sourcePortSide": "R",
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "R",
+                "Diagonal"
+              ],
+              "sourcePortSide": "R",
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_C_A_0",
+            "native": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "L",
+                "L",
+                "Diagonal"
+              ],
+              "sourcePortSide": "L",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "L",
+                "L",
+                "Diagonal"
+              ],
+              "sourcePortSide": "L",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "L_A_B_0",
+          "native": {
+            "length": 57.045467376708984,
+            "start": [
+              150.83824157714844,
+              42
+            ],
+            "end": [
+              206,
+              30.5
+            ]
+          },
+          "official": {
+            "length": 57.04570007324219,
+            "start": [
+              150.83799743652344,
+              42
+            ],
+            "end": [
+              206,
+              30.5
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_B_C_0",
+          "native": {
+            "length": 99.15298461914062,
+            "start": [
+              362,
+              30.5
+            ],
+            "end": [
+              459.49609375,
+              43.06521987915039
+            ]
+          },
+          "official": {
+            "length": 99.15284729003906,
+            "start": [
+              362,
+              30.5
+            ],
+            "end": [
+              459.4960021972656,
+              43.064998626708984
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_C_A_0",
+          "native": {
+            "length": 312.1984558105469,
+            "start": [
+              463.359375,
+              84.89790344238281
+            ],
+            "end": [
+              154.62921142578125,
+              88.27616882324219
+            ]
+          },
+          "official": {
+            "length": 312.1983337402344,
+            "start": [
+              463.3590087890625,
+              84.89800262451172
+            ],
+            "end": [
+              154.62899780273438,
+              88.2760009765625
+            ]
+          },
+          "matches": true
+        }
+      ],
+      "findings": [
+        {
+          "code": "raster-review",
+          "ssim": 0.964981576407601
+        }
+      ]
+    },
+    {
+      "id": "rounded-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: rounded\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "sourceSha256": "75eba56bef0cbd675e9e4de4b35fe1e3df288ecfd85dec121c1fd44c8287692e",
+      "status": "review",
+      "contentPass": true,
+      "geometryPass": true,
+      "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [
+        {
+          "text": "Forward",
+          "official": [
+            412.6796875,
+            30.5
+          ],
+          "native": [
+            412.6796875,
+            30.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Feedback",
+          "official": [
+            286,
+            98.5
+          ],
+          "native": [
+            285.9999975,
+            98.5
+          ],
+          "matches": true
+        }
+      ],
+      "ssim": 0.9646264371651232,
+      "nodeComparisons": [
+        {
+          "id": "A",
+          "native": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        },
+        {
+          "id": "B",
+          "native": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        },
+        {
+          "id": "C",
+          "native": {
+            "x": 463.35938,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 463.359375,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "matches": true
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 3,
+        "officialEdgeCount": 3,
+        "edges": [
+          {
+            "edgeId": "L_A_B_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_B_C_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "R",
+                "Diagonal"
+              ],
+              "sourcePortSide": "R",
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "R",
+                "Diagonal"
+              ],
+              "sourcePortSide": "R",
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_C_A_0",
+            "native": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "L",
+                "L",
+                "Diagonal"
+              ],
+              "sourcePortSide": "L",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "L",
+                "L",
+                "Diagonal"
+              ],
+              "sourcePortSide": "L",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "L_A_B_0",
+          "native": {
+            "length": 56.86161422729492,
+            "start": [
+              150.83824157714844,
+              42
+            ],
+            "end": [
+              206,
+              30.5
+            ]
+          },
+          "official": {
+            "length": 56.86161804199219,
+            "start": [
+              150.83824157714844,
+              42
+            ],
+            "end": [
+              206,
+              30.5
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_B_C_0",
+          "native": {
+            "length": 98.87591552734375,
+            "start": [
+              362,
+              30.5
+            ],
+            "end": [
+              459.49609375,
+              43.06521987915039
+            ]
+          },
+          "official": {
+            "length": 98.87591552734375,
+            "start": [
+              362,
+              30.5
+            ],
+            "end": [
+              459.49609375,
+              43.06521987915039
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_C_A_0",
+          "native": {
+            "length": 311.6179504394531,
+            "start": [
+              463.359375,
+              84.89790344238281
+            ],
+            "end": [
+              154.62921142578125,
+              88.27616882324219
+            ]
+          },
+          "official": {
+            "length": 311.6179504394531,
+            "start": [
+              463.359375,
+              84.89790344238281
+            ],
+            "end": [
+              154.6291961669922,
+              88.27616882324219
+            ]
+          },
+          "matches": true
+        }
+      ],
+      "findings": [
+        {
+          "code": "raster-review",
+          "ssim": 0.9646264371651232
+        }
+      ]
+    },
+    {
+      "id": "er-crossing-labels",
+      "family": "er",
+      "source": "erDiagram\nTEAM ||--o{ PERSON : includes\nTEAM ||--o{ TASK : owns\nPERSON ||--o{ TASK : creates\nTASK }o--|| PERSON : assigned",
+      "sourceSha256": "bec960e012390dc71af2546eb100a32f7e56d0831e272056e6d0a8045570c79c",
+      "status": "review",
+      "contentPass": true,
+      "geometryPass": false,
+      "pathsPass": false,
+      "edgeLabelsPass": false,
+      "edgeLabelComparisons": [
+        {
+          "text": "includes",
+          "official": [
+            170.25,
+            139.5
+          ],
+          "native": [
+            177,
+            139.5
+          ],
+          "matches": false
+        },
+        {
+          "text": "owns",
+          "official": [
+            24.34375,
+            230.5
+          ],
+          "native": [
+            30.5,
+            230.5
+          ],
+          "matches": false
+        },
+        {
+          "text": "creates",
+          "official": [
+            118.77734375,
+            321.5
+          ],
+          "native": [
+            125.25,
+            321.5
+          ],
+          "matches": false
+        },
+        {
+          "text": "assigned",
+          "official": [
+            205.7421875,
+            321.5
+          ],
+          "native": [
+            212.75,
+            321.5
+          ],
+          "matches": false
+        }
+      ],
+      "ssim": 0.7953226337805309,
+      "nodeComparisons": [
+        {
+          "id": "entity-TEAM-0",
+          "native": {
+            "x": 53.75,
+            "y": 8,
+            "width": 100,
+            "height": 81
+          },
+          "official": null,
+          "matches": false
+        },
+        {
+          "id": "entity-PERSON-1",
+          "native": {
+            "x": 127,
+            "y": 190,
+            "width": 100,
+            "height": 81
+          },
+          "official": null,
+          "matches": false
+        },
+        {
+          "id": "entity-TASK-2",
+          "native": {
+            "x": 75.25,
+            "y": 372,
+            "width": 100,
+            "height": 81
+          },
+          "official": null,
+          "matches": false
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 4,
+        "officialEdgeCount": 4,
+        "edges": [
+          {
+            "edgeId": "idPERSON-TASK-3",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "idTASK-PERSON-4",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "idTEAM-PERSON-1",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "idTEAM-TASK-2",
+            "native": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "D",
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "D",
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "idTEAM-PERSON-1",
+          "native": {
+            "length": 112.35861206054688,
+            "start": [
+              136.35028076171875,
+              89
+            ],
+            "end": [
+              177,
+              190
+            ]
+          },
+          "official": {
+            "length": 112.27483367919922,
+            "start": [
+              129.76499938964844,
+              89
+            ],
+            "end": [
+              170.25,
+              190
+            ]
+          },
+          "matches": false
+        },
+        {
+          "id": "idTEAM-TASK-2",
+          "native": {
+            "length": 309.7870178222656,
+            "start": [
+              71.14972686767578,
+              89
+            ],
+            "end": [
+              83.08104705810547,
+              372
+            ]
+          },
+          "official": {
+            "length": 309.6131591796875,
+            "start": [
+              64.8290023803711,
+              89
+            ],
+            "end": [
+              76.7490005493164,
+              372
+            ]
+          },
+          "matches": false
+        },
+        {
+          "id": "idPERSON-TASK-3",
+          "native": {
+            "length": 106.94248962402344,
+            "start": [
+              153.96839904785156,
+              271
+            ],
+            "end": [
+              125.25,
+              372
+            ]
+          },
+          "official": {
+            "length": 106.88230895996094,
+            "start": [
+              147.3419952392578,
+              271
+            ],
+            "end": [
+              118.7770004272461,
+              372
+            ]
+          },
+          "matches": false
+        },
+        {
+          "id": "idTASK-PERSON-4",
+          "native": {
+            "length": 115.548583984375,
+            "start": [
+              164.1923065185547,
+              372
+            ],
+            "end": [
+              192.9107208251953,
+              271
+            ]
+          },
+          "official": {
+            "length": 115.38792419433594,
+            "start": [
+              157.4810028076172,
+              372
+            ],
+            "end": [
+              186.04600524902344,
+              271
+            ]
+          },
+          "matches": false
+        }
+      ],
+      "findings": [
+        {
+          "code": "node-geometry"
+        },
+        {
+          "code": "edge-label-anchor"
+        },
+        {
+          "code": "rendered-path-endpoints"
+        },
+        {
+          "code": "raster-review",
+          "ssim": 0.7953226337805309
+        }
+      ]
+    },
+    {
+      "id": "self-loop-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[Ready] -->|Repeat| A\nA -->|Proceed| B[Done]",
+      "sourceSha256": "787789acee95a72374f05cc850f9daf335f9cc7a6f1bd58f6165534fff7b23df",
+      "status": "review",
+      "contentPass": true,
+      "geometryPass": true,
+      "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [
+        {
+          "text": "Repeat",
+          "official": [
+            210.0460662841797,
+            91.49654006958008
+          ],
+          "native": [
+            210.050005,
+            91.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Proceed",
+          "official": [
+            84.00082588195801,
+            88.49665069580078
+          ],
+          "native": [
+            84,
+            88.5
+          ],
+          "matches": true
+        }
+      ],
+      "ssim": 0.9652543108191315,
+      "nodeComparisons": [
+        {
+          "id": "A",
+          "native": {
+            "x": 134.05,
+            "y": 8,
+            "width": 151.99998,
+            "height": 45
+          },
+          "official": {
+            "x": 134.04893493652344,
+            "y": 7.999697685241699,
+            "width": 151.99424743652344,
+            "height": 44.99829864501953
+          },
+          "matches": true
+        },
+        {
+          "id": "B",
+          "native": {
+            "x": 8,
+            "y": 124,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 8.003701210021973,
+            "y": 123.99530792236328,
+            "width": 151.99424743652344,
+            "height": 44.99829864501953
+          },
+          "matches": true
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 2,
+        "officialEdgeCount": 2,
+        "edges": [
+          {
+            "edgeId": "L_A_A_0",
+            "native": {
+              "pointCount": 4,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "R",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 4,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "R",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_A_B_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "L_A_A_0",
+          "native": {
+            "length": 74.4934310913086,
+            "start": [
+              197.1790313720703,
+              53
+            ],
+            "end": [
+              224.90711975097656,
+              56.47205352783203
+            ]
+          },
+          "official": {
+            "length": 74.49352264404297,
+            "start": [
+              197.1790008544922,
+              53
+            ],
+            "end": [
+              224.90699768066406,
+              56.47200012207031
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_A_B_0",
+          "native": {
+            "length": 109.50909423828125,
+            "start": [
+              161.1512908935547,
+              53
+            ],
+            "end": [
+              84,
+              120
+            ]
+          },
+          "official": {
+            "length": 109.50875854492188,
+            "start": [
+              161.1510009765625,
+              53
+            ],
+            "end": [
+              84,
+              120
+            ]
+          },
+          "matches": true
+        }
+      ],
+      "findings": [
+        {
+          "code": "raster-review",
+          "ssim": 0.9652543108191315
+        }
+      ]
+    },
+    {
+      "id": "state-feedback",
+      "family": "state",
+      "source": "stateDiagram-v2\n[*] --> Ready\nReady --> Working: Begin\nWorking --> Done: Finish\nDone --> Ready: Reset",
+      "sourceSha256": "1ffd12b2646b9799e2e764832a42d5cd7eaf5aec52fad64f4182f449fdb700e2",
+      "status": "review",
+      "contentPass": true,
+      "geometryPass": false,
+      "pathsPass": false,
+      "edgeLabelsPass": false,
+      "edgeLabelComparisons": [
+        {
+          "text": "Begin",
+          "official": [
+            76,
+            144.5
+          ],
+          "native": [
+            76,
+            144.47238
+          ],
+          "matches": false
+        },
+        {
+          "text": "Finish",
+          "official": [
+            76,
+            252.5
+          ],
+          "native": [
+            76,
+            252.47238
+          ],
+          "matches": false
+        },
+        {
+          "text": "Reset",
+          "official": [
+            197.2890625,
+            198.5
+          ],
+          "native": [
+            197.5,
+            198.47238
+          ],
+          "matches": false
+        }
+      ],
+      "ssim": 0.944470727108599,
+      "nodeComparisons": [
+        {
+          "id": "root_start",
+          "native": {
+            "x": 129.75,
+            "y": 8,
+            "width": 14,
+            "height": 13.972374
+          },
+          "official": null,
+          "matches": false
+        },
+        {
+          "id": "Ready",
+          "native": {
+            "x": 68.75,
+            "y": 71.972374,
+            "width": 136,
+            "height": 37
+          },
+          "official": null,
+          "matches": false
+        },
+        {
+          "id": "Working",
+          "native": {
+            "x": 8,
+            "y": 179.97238,
+            "width": 136,
+            "height": 37
+          },
+          "official": null,
+          "matches": false
+        },
+        {
+          "id": "Done",
+          "native": {
+            "x": 68.75,
+            "y": 287.97238,
+            "width": 136,
+            "height": 37
+          },
+          "official": null,
+          "matches": false
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 4,
+        "officialEdgeCount": 4,
+        "edges": [
+          {
+            "edgeId": "edge0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge1",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge2",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "D",
+                "Diagonal"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "edge3",
+            "native": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "U",
+                "U",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "official": {
+              "pointCount": 5,
+              "bendCount": 2,
+              "directionSequence": [
+                "Diagonal",
+                "U",
+                "U",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "D"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "edge0",
+          "native": {
+            "length": 46,
+            "start": [
+              136.75,
+              21.972373962402344
+            ],
+            "end": [
+              136.75,
+              67.97237396240234
+            ]
+          },
+          "official": {
+            "length": 44.5,
+            "start": [
+              136.64500427246094,
+              22
+            ],
+            "end": [
+              136.64500427246094,
+              66.5
+            ]
+          },
+          "matches": false
+        },
+        {
+          "id": "edge1",
+          "native": {
+            "length": 81.70838165283203,
+            "start": [
+              115.9375,
+              108.97237396240234
+            ],
+            "end": [
+              76,
+              175.97238159179688
+            ]
+          },
+          "official": {
+            "length": 80.25260925292969,
+            "start": [
+              115.86799621582031,
+              109
+            ],
+            "end": [
+              76,
+              174.5
+            ]
+          },
+          "matches": false
+        },
+        {
+          "id": "edge2",
+          "native": {
+            "length": 81.60420227050781,
+            "start": [
+              76,
+              216.97238159179688
+            ],
+            "end": [
+              112.94786071777344,
+              285.31494140625
+            ]
+          },
+          "official": {
+            "length": 80.10739135742188,
+            "start": [
+              76,
+              217
+            ],
+            "end": [
+              111.76100158691406,
+              284.3420104980469
+            ]
+          },
+          "matches": false
+        },
+        {
+          "id": "edge3",
+          "native": {
+            "length": 202.39288330078125,
+            "start": [
+              157.5625,
+              287.9723815917969
+            ],
+            "end": [
+              160.55213928222656,
+              111.62982940673828
+            ]
+          },
+          "official": {
+            "length": 200.87619018554688,
+            "start": [
+              157.42100524902344,
+              288
+            ],
+            "end": [
+              161.5279998779297,
+              112.65799713134766
+            ]
+          },
+          "matches": false
+        }
+      ],
+      "findings": [
+        {
+          "code": "node-geometry"
+        },
+        {
+          "code": "edge-label-anchor"
+        },
+        {
+          "code": "rendered-path-endpoints"
+        },
+        {
+          "code": "raster-review",
+          "ssim": 0.944470727108599
+        }
+      ]
+    },
+    {
+      "id": "merged-decision-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[First route] --> B{Continue first route?}\nB -->|Advance| C[First check]\nB -->|Stop| D[First stopped]\nC --> E{First check accepted?}\nE -->|Confirm| F[Complete]\nE -->|Decline| G[Deferred]\nH[Second route] --> I{Continue second route?}\nI -->|Proceed| J[Second check]\nI -->|Halt| K[Second stopped]\nJ --> L{Second check accepted?}\nL -->|Approve| F\nL -->|Reject| G",
+      "sourceSha256": "223f5c2dd43974409192d677803c959be5bac7f4a2d98586ee456b8c37eca684",
+      "status": "review",
+      "contentPass": true,
+      "geometryPass": false,
+      "pathsPass": true,
+      "edgeLabelsPass": true,
+      "edgeLabelComparisons": [
+        {
+          "text": "Advance",
+          "official": [
+            118.71311950683594,
+            330.5008544921875
+          ],
+          "native": [
+            118.7148475,
+            330.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Stop",
+          "official": [
+            320.710205078125,
+            330.5008544921875
+          ],
+          "native": [
+            320.71485,
+            330.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Confirm",
+          "official": [
+            57.26975440979004,
+            672.4104309082031
+          ],
+          "native": [
+            57.270583,
+            672.41455
+          ],
+          "matches": true
+        },
+        {
+          "text": "Decline",
+          "official": [
+            325.2233123779297,
+            671.7182312011719
+          ],
+          "native": [
+            325.2280225,
+            671.72235
+          ],
+          "matches": true
+        },
+        {
+          "text": "Proceed",
+          "official": [
+            522.707275390625,
+            330.5008544921875
+          ],
+          "native": [
+            522.714845,
+            330.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Halt",
+          "official": [
+            724.704345703125,
+            330.5008544921875
+          ],
+          "native": [
+            724.714825,
+            330.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Approve",
+          "official": [
+            316.19703674316406,
+            671.7182312011719
+          ],
+          "native": [
+            316.201665,
+            671.72235
+          ],
+          "matches": true
+        },
+        {
+          "text": "Reject",
+          "official": [
+            581.0549926757812,
+            672.7030944824219
+          ],
+          "native": [
+            581.06342,
+            672.7072
+          ],
+          "matches": true
+        }
+      ],
+      "ssim": 0.9768279584823615,
+      "nodeComparisons": [
+        {
+          "id": "A",
+          "native": {
+            "x": 143.71484,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 143.7127685546875,
+            "y": 8.005513191223145,
+            "width": 151.997802734375,
+            "height": 44.99934768676758
+          },
+          "matches": true
+        },
+        {
+          "id": "B",
+          "native": {
+            "x": 123.71484,
+            "y": 103,
+            "width": 192,
+            "height": 192
+          },
+          "official": {
+            "x": 124.21304321289062,
+            "y": 103.00413513183594,
+            "width": 191.99722290039062,
+            "height": 191.99720764160156
+          },
+          "matches": false
+        },
+        {
+          "id": "C",
+          "native": {
+            "x": 42.714844,
+            "y": 366,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 42.71422576904297,
+            "y": 366.0003356933594,
+            "width": 151.997802734375,
+            "height": 44.99932861328125
+          },
+          "matches": true
+        },
+        {
+          "id": "D",
+          "native": {
+            "x": 244.71484,
+            "y": 366,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 244.7113037109375,
+            "y": 366.0003356933594,
+            "width": 151.997802734375,
+            "height": 44.99932861328125
+          },
+          "matches": true
+        },
+        {
+          "id": "E",
+          "native": {
+            "x": 22.714844,
+            "y": 461,
+            "width": 192,
+            "height": 192
+          },
+          "official": {
+            "x": 23.214508056640625,
+            "y": 460.99896240234375,
+            "width": 191.99722290039062,
+            "height": 191.9971923828125
+          },
+          "matches": false
+        },
+        {
+          "id": "F",
+          "native": {
+            "x": 8,
+            "y": 724,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 7.999884128570557,
+            "y": 723.9951171875,
+            "width": 151.997802734375,
+            "height": 44.9993896484375
+          },
+          "matches": true
+        },
+        {
+          "id": "G",
+          "native": {
+            "x": 481.4297,
+            "y": 724,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 481.4226989746094,
+            "y": 723.9951171875,
+            "width": 151.99783325195312,
+            "height": 44.9993896484375
+          },
+          "matches": true
+        },
+        {
+          "id": "H",
+          "native": {
+            "x": 547.71484,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 547.7069091796875,
+            "y": 8.005513191223145,
+            "width": 151.997802734375,
+            "height": 44.99934768676758
+          },
+          "matches": true
+        },
+        {
+          "id": "I",
+          "native": {
+            "x": 527.71484,
+            "y": 103,
+            "width": 192,
+            "height": 192
+          },
+          "official": {
+            "x": 528.2072143554688,
+            "y": 103.00413513183594,
+            "width": 191.9971923828125,
+            "height": 191.99720764160156
+          },
+          "matches": false
+        },
+        {
+          "id": "J",
+          "native": {
+            "x": 446.71484,
+            "y": 366,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 446.7083740234375,
+            "y": 366.0003356933594,
+            "width": 151.997802734375,
+            "height": 44.99932861328125
+          },
+          "matches": true
+        },
+        {
+          "id": "K",
+          "native": {
+            "x": 648.71484,
+            "y": 366,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 648.7054443359375,
+            "y": 366.0003356933594,
+            "width": 151.997802734375,
+            "height": 44.99932861328125
+          },
+          "matches": true
+        },
+        {
+          "id": "L",
+          "native": {
+            "x": 426.71484,
+            "y": 461,
+            "width": 192,
+            "height": 192
+          },
+          "official": {
+            "x": 427.2086486816406,
+            "y": 460.99896240234375,
+            "width": 191.99722290039062,
+            "height": 191.9971923828125
+          },
+          "matches": false
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 12,
+        "officialEdgeCount": 12,
+        "edges": [
+          {
+            "edgeId": "L_A_B_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_B_C_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_B_D_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_C_E_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_E_F_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_E_G_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_H_I_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_I_J_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_I_K_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "D"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_J_L_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "D",
+                "D"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_L_F_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "R"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "R"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_L_G_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "L_A_B_0",
+          "native": {
+            "length": 46,
+            "start": [
+              219.71484375,
+              53
+            ],
+            "end": [
+              219.71484375,
+              99
+            ]
+          },
+          "official": {
+            "length": 46,
+            "start": [
+              219.71499633789062,
+              53
+            ],
+            "end": [
+              219.71499633789062,
+              99
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_B_C_0",
+          "native": {
+            "length": 126.35868072509766,
+            "start": [
+              178.01161193847656,
+              253.29676818847656
+            ],
+            "end": [
+              118.71484375,
+              362
+            ]
+          },
+          "official": {
+            "length": 126.35858154296875,
+            "start": [
+              178.01199340820312,
+              253.2969970703125
+            ],
+            "end": [
+              118.71499633789062,
+              362
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_B_D_0",
+          "native": {
+            "length": 126.35867309570312,
+            "start": [
+              261.4180603027344,
+              253.29676818847656
+            ],
+            "end": [
+              320.71484375,
+              362
+            ]
+          },
+          "official": {
+            "length": 126.35855865478516,
+            "start": [
+              261.4179992675781,
+              253.2969970703125
+            ],
+            "end": [
+              320.7149963378906,
+              362
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_C_E_0",
+          "native": {
+            "length": 46,
+            "start": [
+              118.71484375,
+              411
+            ],
+            "end": [
+              118.71484375,
+              457
+            ]
+          },
+          "official": {
+            "length": 46,
+            "start": [
+              118.71499633789062,
+              411
+            ],
+            "end": [
+              118.71499633789062,
+              457
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_E_F_0",
+          "native": {
+            "length": 109.34162139892578,
+            "start": [
+              85.36254119873047,
+              619.647705078125
+            ],
+            "end": [
+              68.22946166992188,
+              720.5828857421875
+            ]
+          },
+          "official": {
+            "length": 109.34132385253906,
+            "start": [
+              85.36299896240234,
+              619.6480102539062
+            ],
+            "end": [
+              68.22899627685547,
+              720.5830078125
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_E_G_0",
+          "native": {
+            "length": 326.34197998046875,
+            "start": [
+              180.43051147460938,
+              591.2843017578125
+            ],
+            "end": [
+              477.58502197265625,
+              723.5743408203125
+            ]
+          },
+          "official": {
+            "length": 326.34161376953125,
+            "start": [
+              180.43099975585938,
+              591.2839965820312
+            ],
+            "end": [
+              477.5849914550781,
+              723.573974609375
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_H_I_0",
+          "native": {
+            "length": 46,
+            "start": [
+              623.71484375,
+              53
+            ],
+            "end": [
+              623.71484375,
+              99
+            ]
+          },
+          "official": {
+            "length": 46,
+            "start": [
+              623.7150268554688,
+              53
+            ],
+            "end": [
+              623.7150268554688,
+              99
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_I_J_0",
+          "native": {
+            "length": 126.35868835449219,
+            "start": [
+              582.0115966796875,
+              253.29676818847656
+            ],
+            "end": [
+              522.71484375,
+              362
+            ]
+          },
+          "official": {
+            "length": 126.35861206054688,
+            "start": [
+              582.0120239257812,
+              253.2969970703125
+            ],
+            "end": [
+              522.7150268554688,
+              362
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_I_K_0",
+          "native": {
+            "length": 126.35868835449219,
+            "start": [
+              665.4180908203125,
+              253.29676818847656
+            ],
+            "end": [
+              724.71484375,
+              362
+            ]
+          },
+          "official": {
+            "length": 126.35857391357422,
+            "start": [
+              665.4180297851562,
+              253.2969970703125
+            ],
+            "end": [
+              724.7150268554688,
+              362
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_J_L_0",
+          "native": {
+            "length": 46,
+            "start": [
+              522.71484375,
+              411
+            ],
+            "end": [
+              522.71484375,
+              457
+            ]
+          },
+          "official": {
+            "length": 46,
+            "start": [
+              522.7150268554688,
+              411
+            ],
+            "end": [
+              522.7150268554688,
+              457
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_L_F_0",
+          "native": {
+            "length": 326.3420104980469,
+            "start": [
+              460.9991760253906,
+              591.2843017578125
+            ],
+            "end": [
+              163.8446502685547,
+              723.5743408203125
+            ]
+          },
+          "official": {
+            "length": 326.3415832519531,
+            "start": [
+              460.9989929199219,
+              591.2839965820312
+            ],
+            "end": [
+              163.84500122070312,
+              723.573974609375
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_L_G_0",
+          "native": {
+            "length": 106.95174407958984,
+            "start": [
+              554.8968505859375,
+              620.8179931640625
+            ],
+            "end": [
+              571.6009521484375,
+              720.4874267578125
+            ]
+          },
+          "official": {
+            "length": 106.95159149169922,
+            "start": [
+              554.89697265625,
+              620.8179931640625
+            ],
+            "end": [
+              571.6010131835938,
+              720.4869995117188
+            ]
+          },
+          "matches": true
+        }
+      ],
+      "findings": [
+        {
+          "code": "node-geometry"
+        }
+      ]
+    },
+    {
+      "id": "cluster-return-labels",
+      "family": "flowchart",
+      "source": "flowchart LR\nA(First value) -->|Outbound| B(Second value)\nB -->|Inbound| A\nsubgraph Group[Value group]\ndirection LR\nX[First axis]\nY[Second axis]\nP -->|Horizontal| X\nP -->|Vertical| Y\nA((A))\nend\nstyle P fill:none,stroke:#000,stroke-width:2px",
+      "sourceSha256": "0f68012ea864615e73b7caf6ae3a06b3c26a3b4854f79666fd185d53435f8947",
+      "status": "review",
+      "contentPass": true,
+      "geometryPass": false,
+      "pathsPass": false,
+      "edgeLabelsPass": false,
+      "edgeLabelComparisons": [
+        {
+          "text": "Outbound",
+          "official": [
+            318.73451232910156,
+            298.2827606201172
+          ],
+          "native": [
+            318.7084,
+            298.0453
+          ],
+          "matches": false
+        },
+        {
+          "text": "Inbound",
+          "official": [
+            307.38746643066406,
+            360.90380859375
+          ],
+          "native": [
+            307.3251875,
+            360.54208
+          ],
+          "matches": false
+        },
+        {
+          "text": "Horizontal",
+          "official": [
+            275.33333587646484,
+            65.49853897094727
+          ],
+          "native": [
+            275.339265,
+            65.5
+          ],
+          "matches": true
+        },
+        {
+          "text": "Vertical",
+          "official": [
+            275.33333587646484,
+            175.20198822021484
+          ],
+          "native": [
+            275.3392675,
+            175.11424
+          ],
+          "matches": false
+        }
+      ],
+      "ssim": 0.9807933582029387,
+      "nodeComparisons": [
+        {
+          "id": "subgraph_Group",
+          "native": {
+            "x": 8,
+            "y": 8,
+            "width": 500.85486,
+            "height": 397.95697
+          },
+          "official": {
+            "x": 8.000036239624023,
+            "y": 7.999821186065674,
+            "width": 500.8437194824219,
+            "height": 398.31475830078125
+          },
+          "matches": false
+        },
+        {
+          "id": "A",
+          "native": {
+            "x": 33,
+            "y": 185.5,
+            "width": 185.82364,
+            "height": 185.45697
+          },
+          "official": {
+            "x": 32.99947738647461,
+            "y": 185.495849609375,
+            "width": 185.81948852539062,
+            "height": 185.8194580078125
+          },
+          "matches": false
+        },
+        {
+          "id": "B",
+          "native": {
+            "x": 332.8549,
+            "y": 440.95697,
+            "width": 150,
+            "height": 51
+          },
+          "official": {
+            "x": 332.8476867675781,
+            "y": 441.31378173828125,
+            "width": 149.99664306640625,
+            "height": 50.998870849609375
+          },
+          "matches": false
+        },
+        {
+          "id": "X",
+          "native": {
+            "x": 331.8549,
+            "y": 43,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 331.8476867675781,
+            "y": 42.99903869628906,
+            "width": 151.99661254882812,
+            "height": 44.999000549316406
+          },
+          "matches": true
+        },
+        {
+          "id": "Y",
+          "native": {
+            "x": 331.8549,
+            "y": 152.61424,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 331.8476867675781,
+            "y": 152.70249938964844,
+            "width": 151.99661254882812,
+            "height": 44.998992919921875
+          },
+          "matches": false
+        },
+        {
+          "id": "P",
+          "native": {
+            "x": 49.91182,
+            "y": 90.5,
+            "width": 152,
+            "height": 45
+          },
+          "official": {
+            "x": 49.910919189453125,
+            "y": 90.49797821044922,
+            "width": 151.99661254882812,
+            "height": 44.999000549316406
+          },
+          "matches": true
+        }
+      ],
+      "topology": {
+        "status": "pass",
+        "findings": [],
+        "nativeEdgeCount": 4,
+        "officialEdgeCount": 4,
+        "edges": [
+          {
+            "edgeId": "L_A_B_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": null,
+              "destinationPortSide": "U"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_B_A_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": null
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 0,
+              "directionSequence": [
+                "Diagonal",
+                "Diagonal"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": null
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_P_X_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "U",
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          },
+          {
+            "edgeId": "L_P_Y_0",
+            "native": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "L"
+            },
+            "official": {
+              "pointCount": 3,
+              "bendCount": 1,
+              "directionSequence": [
+                "Diagonal",
+                "R"
+              ],
+              "sourcePortSide": "D",
+              "destinationPortSide": "L"
+            },
+            "findingCodes": []
+          }
+        ],
+        "nativeRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        },
+        "officialRelationships": {
+          "sharedTracks": [],
+          "strictCrossings": [],
+          "sharedEndpoints": []
+        }
+      },
+      "renderedPaths": [
+        {
+          "id": "L_A_B_0",
+          "native": {
+            "length": 292.18359375,
+            "start": [
+              211.62742614746094,
+              242.59808349609375
+            ],
+            "end": [
+              392.4854736328125,
+              437.4217224121094
+            ]
+          },
+          "official": {
+            "length": 292.356201171875,
+            "start": [
+              211.68800354003906,
+              242.70399475097656
+            ],
+            "end": [
+              392.50201416015625,
+              437.7879943847656
+            ]
+          },
+          "matches": false
+        },
+        {
+          "id": "L_B_A_0",
+          "native": {
+            "length": 215.14305114746094,
+            "start": [
+              383.65142822265625,
+              440.95697021484375
+            ],
+            "end": [
+              217.89479064941406,
+              308.1539001464844
+            ]
+          },
+          "official": {
+            "length": 215.07205200195312,
+            "start": [
+              383.6669921875,
+              441.3240051269531
+            ],
+            "end": [
+              218.052001953125,
+              308.44500732421875
+            ]
+          },
+          "matches": false
+        },
+        {
+          "id": "L_P_X_0",
+          "native": {
+            "length": 134.33181762695312,
+            "start": [
+              196.6932373046875,
+              90.5
+            ],
+            "end": [
+              327.8548889160156,
+              65.5
+            ]
+          },
+          "official": {
+            "length": 134.3321533203125,
+            "start": [
+              196.6929931640625,
+              90.5
+            ],
+            "end": [
+              327.8550109863281,
+              65.5
+            ]
+          },
+          "matches": true
+        },
+        {
+          "id": "L_P_Y_0",
+          "native": {
+            "length": 154.4472198486328,
+            "start": [
+              180.03977966308594,
+              135.5
+            ],
+            "end": [
+              327.8548889160156,
+              175.11424255371094
+            ]
+          },
+          "official": {
+            "length": 154.55227661132812,
+            "start": [
+              179.9600067138672,
+              135.5
+            ],
+            "end": [
+              327.8550109863281,
+              175.20599365234375
+            ]
+          },
+          "matches": false
+        }
+      ],
+      "findings": [
+        {
+          "code": "node-geometry"
+        },
+        {
+          "code": "edge-label-anchor"
+        },
+        {
+          "code": "rendered-path-endpoints"
+        }
+      ]
     }
   ]
 }

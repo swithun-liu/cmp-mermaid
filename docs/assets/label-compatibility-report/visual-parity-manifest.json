@@ -1,41 +1,50 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-25T07:17:14.758Z",
+  "generatedAt": "2026-10-26T03:34:39.211Z",
   "mermaidVersion": "12.0.0",
   "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
   "layout": "dagre",
-  "officialGeneratedAt": "2026-10-25T07:12:59.894Z",
-  "nativeGeneratedAt": "2026-10-25T07:13:43.054575Z",
-  "auditGeneratedAt": "2026-10-25T07:15:45.193Z",
+  "officialGeneratedAt": "2026-10-26T03:30:54.764Z",
+  "nativeGeneratedAt": "2026-10-26T03:32:05.193841Z",
+  "auditGeneratedAt": "2026-10-26T03:32:52.171Z",
   "inputs": {
     "official": {
-      "generatedAt": "2026-10-25T07:12:59.894Z",
-      "sha256": "7357467f4c26496643cc0610f8164cf93a7ae18cd6e079a81b6f615e2c14da90"
+      "generatedAt": "2026-10-26T03:30:54.764Z",
+      "sha256": "42cad23e742d6c11e5d92769731af8313ac82c7c2c3ffb4f477e35abfa100a7d"
     },
     "native": {
-      "generatedAt": "2026-10-25T07:13:43.054575Z",
-      "sha256": "a28effe51bbdb29fe8e4bcea77a5adcaf37e464c33ac52a5ef58bab1f61a4fc6"
+      "generatedAt": "2026-10-26T03:32:05.193841Z",
+      "sha256": "a9faef17eaaee53317bdfbc1becc10d8cba9802f606998feac94530ec5ace3e3"
     },
     "raster": {
       "generatedAt": null,
-      "sha256": "799b0983b5903a4c6e828297a1c281c9d5c7c0c6552670b9a407f036a05e2a51"
+      "sha256": "8f3689674fa5813c5db426c614684f97d1f4b7933109fa6778eda43c41b27b15"
     },
     "audit": {
-      "sha256": "51ffbec9e4e00af1649f8c1fb21a17339db1a4a478b1e6e0106bbc405e886d49"
+      "sha256": "e0442b113afe696f876b232aafc5c3cefa3ca4d31e5584c66225d307f037b78b"
     }
   },
-  "familyCount": 2,
-  "caseCount": 23,
-  "screenshotCount": 46,
+  "baselineComparison": {
+    "baselineVersion": "0.1.18",
+    "currentVersion": "0.1.19",
+    "sha256": "f6b3a4c8019b986e41c6e9fa57d74f3b8199f4affa960a16b16f49a2f2b86835",
+    "baselineNativeSha256": "06024e81b0c62d0bf592d4ca7605cb5cb1f7ffd5387de05efea97c4fadad6344",
+    "changedCaseCount": 2,
+    "unchangedPathCount": 32
+  },
+  "familyCount": 4,
+  "caseCount": 32,
+  "screenshotCount": 64,
   "contactSheets": [
     "contact-sheet-1.png",
     "contact-sheet-2.png",
     "contact-sheet-3.png",
-    "contact-sheet-4.png"
+    "contact-sheet-4.png",
+    "contact-sheet-5.png"
   ],
   "counts": {
-    "pass": 13,
-    "review": 10,
+    "pass": 14,
+    "review": 18,
     "fail": 0
   },
   "records": [
@@ -54,7 +63,7 @@
         {
           "side": "official",
           "file": "direction-v-official.png",
-          "sha256": "70b444fd7c641176b471a907e6241fc5f348b97647f2c441a2966d2f5a8ac48f"
+          "sha256": "fd762ef75f5f8cc4f2142b373693ebab9e7df266f7401324e7074a8bffee79d1"
         }
       ]
     },
@@ -73,7 +82,7 @@
         {
           "side": "official",
           "file": "comparison-negative-official.png",
-          "sha256": "5cc807226eb0cf37420125c059901912c8f9eeaa307d6148af0d794ff0838475"
+          "sha256": "cda7586bf9702c3da23b2b231b871c5a0546f0c77006df2e800e1f2d40304145"
         }
       ]
     },
@@ -111,7 +120,7 @@
         {
           "side": "official",
           "file": "long-prose-official.png",
-          "sha256": "a51268198710b57fe1ef49b817356d4b9a52b9516e04e09bc0daf3d9cb18456b"
+          "sha256": "19fb3e6bf46ff2620e82ddd74867ff149216bede7ba6b1cda67caf60e43b977f"
         }
       ]
     },
@@ -282,7 +291,7 @@
         {
           "side": "official",
           "file": "mixed-groups-official.png",
-          "sha256": "7018dac11ea6fc5f3e993a82abdef9fe213d25d35a1ad9c82b6e7bc017db1f8b"
+          "sha256": "36e03e1661015a928d0ca22ac4320bf37128485b229faa726d6ba4779bce7ce4"
         }
       ]
     },
@@ -301,7 +310,7 @@
         {
           "side": "official",
           "file": "bare-comment-official.png",
-          "sha256": "09edf55c822c3c69437b74c32cc59207f188940e20a989cb0ca6dae428f9c5e4"
+          "sha256": "9a69d88c4f8f4f1f7f8b28296540d5d6ba6ebb44dee6b71383c9402df768bc86"
         }
       ]
     },
@@ -358,7 +367,7 @@
         {
           "side": "official",
           "file": "rounded-default-official.png",
-          "sha256": "6d93cfcc8869febc614858ac39e5f4fed803db3bd094591147da1faa35de1175"
+          "sha256": "48c9b7fd4b0fdc928eb5e0d51a3a7089194bb5532e74e221549a0d2170f033cc"
         }
       ]
     },
@@ -377,7 +386,7 @@
         {
           "side": "official",
           "file": "rounded-forest-official.png",
-          "sha256": "c404bda1e3fb31ab2581bea972107e6ce525558ef5e71759bfe9481322c3860e"
+          "sha256": "cbb9fb8a3623d7fd08fc3fd912c44cb2f3f72300751c26e343d05dc8b9c036a9"
         }
       ]
     },
@@ -396,7 +405,7 @@
         {
           "side": "official",
           "file": "rounded-neo-official.png",
-          "sha256": "b96a73ad724cf6655c2ccc85f3fe6b40e80a23c09c1ff4c0edf08ed5cad51c59"
+          "sha256": "65d8475ff5bb5e5192aeea77343d2802ce27036fa4e7a92b02e882c74ae64fb3"
         }
       ]
     },
@@ -415,7 +424,7 @@
         {
           "side": "official",
           "file": "rounded-redux-color-official.png",
-          "sha256": "ba9982bfb9f415f0fe01c93d0e73c989f5ed33dad32902eb905574986324fdd9"
+          "sha256": "52ef4cc2026d444d30007e9db8f0947f3b33e81042c3f92b831d2d5e9a2b7f09"
         }
       ]
     },
@@ -434,7 +443,7 @@
         {
           "side": "official",
           "file": "rounded-redux-dark-official.png",
-          "sha256": "a2d599250a661be679c76706cf3a22d3277dd45010e09344b6b2941697d5b38d"
+          "sha256": "493d0059c08612730b4c2263e3f30fcd576062df3837c776ff3627bcba60f023"
         }
       ]
     },
@@ -472,7 +481,178 @@
         {
           "side": "official",
           "file": "cluster-boundary-official.png",
-          "sha256": "cefa2e227cd26a1cb75a5be08d5d84141682b4fb1489ef03a6a32515a13b586b"
+          "sha256": "ba505de8968588abdc8bf7ed6d7e273bb83c35f87d93dd54c9b7e666a308393f"
+        }
+      ]
+    },
+    {
+      "id": "crossing-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[Start] --> B[Left]\nA --> C[Right]\nB -->|Accept| C\nC -->|Retry| B\nB --> D[Finish]\nC --> D",
+      "sourceSha256": "9cea9247f39e6b984de5969853bfaf3e6d4e35bd785e01dd402fa2da94006f7d",
+      "status": "pass",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "crossing-labels-native.png",
+          "sha256": "65bf4ecc2c50f6b645ed2410ea69b9f23181cd08c555ced602de8bfb69711002"
+        },
+        {
+          "side": "official",
+          "file": "crossing-labels-official.png",
+          "sha256": "d89502274c7a899e9c413ba0d80f2dbcd4679ca1debf0b37c9c8fac56532d943"
+        }
+      ]
+    },
+    {
+      "id": "basis-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: basis\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "sourceSha256": "963158021743636222776a73289d038c0c5b2e2a0fca5ba920d971506c728bca",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "basis-feedback-native.png",
+          "sha256": "b089fa7205429726f00da4b45db0a58f5489eab3aa3f69732ee1306a66ab57d8"
+        },
+        {
+          "side": "official",
+          "file": "basis-feedback-official.png",
+          "sha256": "02faa7f0869db20f86bbe68942e0c979fb3557dfde399c6acf25661a4815b639"
+        }
+      ]
+    },
+    {
+      "id": "linear-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: linear\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "sourceSha256": "79978584db818039f315a460fd0540449d9ae165cd83ad8996b89f8e9b5d1648",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "linear-feedback-native.png",
+          "sha256": "36b789515e4757e6313d6e99201dd73d27f2e576bba06c521eab356b13717cd9"
+        },
+        {
+          "side": "official",
+          "file": "linear-feedback-official.png",
+          "sha256": "a1f1eda01e6375ab9bc9c974501f10307962ff55a41784112642dd0435e5fc5f"
+        }
+      ]
+    },
+    {
+      "id": "rounded-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: rounded\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "sourceSha256": "75eba56bef0cbd675e9e4de4b35fe1e3df288ecfd85dec121c1fd44c8287692e",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "rounded-feedback-native.png",
+          "sha256": "ec7598eb74c031ec64ab47f9155ad3a9f1ef1d894a319660d50209bc15c304e9"
+        },
+        {
+          "side": "official",
+          "file": "rounded-feedback-official.png",
+          "sha256": "9774f185eea50a355d2754e616e61c3419e2f8c4ffb683afaed7fcda037d2421"
+        }
+      ]
+    },
+    {
+      "id": "er-crossing-labels",
+      "family": "er",
+      "source": "erDiagram\nTEAM ||--o{ PERSON : includes\nTEAM ||--o{ TASK : owns\nPERSON ||--o{ TASK : creates\nTASK }o--|| PERSON : assigned",
+      "sourceSha256": "bec960e012390dc71af2546eb100a32f7e56d0831e272056e6d0a8045570c79c",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "er-crossing-labels-native.png",
+          "sha256": "b9fd0b29e863cedcc811fef03120b0ed1e5d7107f62bed8b0c8d07cd58ac3b54"
+        },
+        {
+          "side": "official",
+          "file": "er-crossing-labels-official.png",
+          "sha256": "fc6e1532e86fc4b3e71c5aab296c04976467de9aa18e60c64b128e6ab531a4c1"
+        }
+      ]
+    },
+    {
+      "id": "self-loop-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[Ready] -->|Repeat| A\nA -->|Proceed| B[Done]",
+      "sourceSha256": "787789acee95a72374f05cc850f9daf335f9cc7a6f1bd58f6165534fff7b23df",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "self-loop-labels-native.png",
+          "sha256": "d43ef6359dd78e49122ea47f25fd262cd371f8fb92152e5e777b94f166ec1dcb"
+        },
+        {
+          "side": "official",
+          "file": "self-loop-labels-official.png",
+          "sha256": "45a83f2dcdffddce09d4a91cb7941d1408f5a718cdb4bccbf265d7f64957a8bb"
+        }
+      ]
+    },
+    {
+      "id": "state-feedback",
+      "family": "state",
+      "source": "stateDiagram-v2\n[*] --> Ready\nReady --> Working: Begin\nWorking --> Done: Finish\nDone --> Ready: Reset",
+      "sourceSha256": "1ffd12b2646b9799e2e764832a42d5cd7eaf5aec52fad64f4182f449fdb700e2",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "state-feedback-native.png",
+          "sha256": "716c3141d6be2be04bf667f5384c3bdabf9629cb4745b6c791cd7d1af3e5a3cb"
+        },
+        {
+          "side": "official",
+          "file": "state-feedback-official.png",
+          "sha256": "713dcea7af73a41d0ae35754040bc59c03aacd009edd67228d0d9c072063ca64"
+        }
+      ]
+    },
+    {
+      "id": "merged-decision-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[First route] --> B{Continue first route?}\nB -->|Advance| C[First check]\nB -->|Stop| D[First stopped]\nC --> E{First check accepted?}\nE -->|Confirm| F[Complete]\nE -->|Decline| G[Deferred]\nH[Second route] --> I{Continue second route?}\nI -->|Proceed| J[Second check]\nI -->|Halt| K[Second stopped]\nJ --> L{Second check accepted?}\nL -->|Approve| F\nL -->|Reject| G",
+      "sourceSha256": "223f5c2dd43974409192d677803c959be5bac7f4a2d98586ee456b8c37eca684",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "merged-decision-labels-native.png",
+          "sha256": "979bdc0e0534238edc944a6c781522ba7d65d0d1de84055e25ca9418e6a69fa1"
+        },
+        {
+          "side": "official",
+          "file": "merged-decision-labels-official.png",
+          "sha256": "bdaf313e4074a3064f726cadd592f3aace94670eaf9d968033c65928a224eeff"
+        }
+      ]
+    },
+    {
+      "id": "cluster-return-labels",
+      "family": "flowchart",
+      "source": "flowchart LR\nA(First value) -->|Outbound| B(Second value)\nB -->|Inbound| A\nsubgraph Group[Value group]\ndirection LR\nX[First axis]\nY[Second axis]\nP -->|Horizontal| X\nP -->|Vertical| Y\nA((A))\nend\nstyle P fill:none,stroke:#000,stroke-width:2px",
+      "sourceSha256": "0f68012ea864615e73b7caf6ae3a06b3c26a3b4854f79666fd185d53435f8947",
+      "status": "review",
+      "screenshots": [
+        {
+          "side": "native",
+          "file": "cluster-return-labels-native.png",
+          "sha256": "832968c3ffb0f8f5831574bbf50793ea47c1a1776711f91fcd2d21ce01ceb8c3"
+        },
+        {
+          "side": "official",
+          "file": "cluster-return-labels-official.png",
+          "sha256": "e338e692b627555522a7e81e3b0f08b4072c03f35e15ad7ef441d05814ac5639"
         }
       ]
     }

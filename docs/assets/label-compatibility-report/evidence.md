@@ -3,9 +3,9 @@
 Mermaid.js **12.0.0**, explicit **Dagre**, bundled Arimo/Arial, default
 `redux-color` with source-defined theme overrides. Native uses Compose JVM.
 
-2 families, 23 unique same-source inputs,
-46 screenshots, 4 contact sheets:
-**13 Pass / 10 Review / 0 Fail**.
+4 families, 32 unique same-source inputs,
+64 screenshots, 5 contact sheets:
+**14 Pass / 18 Review / 0 Fail**.
 All label content checks pass. Review findings remain visible in the audit;
 they are not promoted to Pass. This evidence does not establish mobile parity
 or full-family Stable status.
@@ -15,6 +15,13 @@ or full-family Stable status.
 - [Raster scores](raster.json)
 - [Native capture](native.json)
 - [Official capture](official.json)
+- [0.1.18 to 0.1.19 label comparison](baseline-comparison.json)
+- [0.1.18 Native capture](baseline-native.json)
+
+The baseline comparison uses the published 0.1.18 JVM artifacts with identical
+sources and font resources. 2 cases change label
+anchors; all 32 edge-path sets remain identical.
+This numerical comparison adds no screenshots to the current capture count.
 
 ## Contact sheets
 
@@ -25,6 +32,8 @@ or full-family Stable status.
 ![Native and Official comparison](contact-sheet-3.png)
 
 ![Native and Official comparison](contact-sheet-4.png)
+
+![Native and Official comparison](contact-sheet-5.png)
 
 ## Individual captures
 
@@ -53,3 +62,12 @@ or full-family Stable status.
 | rounded-redux-dark | flowchart | review | [PNG](rounded-redux-dark-native.png) | [PNG](rounded-redux-dark-official.png) |
 | rounded-override | flowchart | pass | [PNG](rounded-override-native.png) | [PNG](rounded-override-official.png) |
 | cluster-boundary | flowchart | pass | [PNG](cluster-boundary-native.png) | [PNG](cluster-boundary-official.png) |
+| crossing-labels | flowchart | pass | [PNG](crossing-labels-native.png) | [PNG](crossing-labels-official.png) |
+| basis-feedback | flowchart | review | [PNG](basis-feedback-native.png) | [PNG](basis-feedback-official.png) |
+| linear-feedback | flowchart | review | [PNG](linear-feedback-native.png) | [PNG](linear-feedback-official.png) |
+| rounded-feedback | flowchart | review | [PNG](rounded-feedback-native.png) | [PNG](rounded-feedback-official.png) |
+| er-crossing-labels | er | review | [PNG](er-crossing-labels-native.png) | [PNG](er-crossing-labels-official.png) |
+| self-loop-labels | flowchart | review | [PNG](self-loop-labels-native.png) | [PNG](self-loop-labels-official.png) |
+| state-feedback | state | review | [PNG](state-feedback-native.png) | [PNG](state-feedback-official.png) |
+| merged-decision-labels | flowchart | review | [PNG](merged-decision-labels-native.png) | [PNG](merged-decision-labels-official.png) |
+| cluster-return-labels | flowchart | review | [PNG](cluster-return-labels-native.png) | [PNG](cluster-return-labels-official.png) |

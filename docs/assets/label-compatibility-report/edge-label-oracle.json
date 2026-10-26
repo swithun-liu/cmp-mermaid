@@ -1,0 +1,446 @@
+{
+  "mermaidVersion": "12.0.0",
+  "generatedAt": "2026-10-26T03:34:48.592Z",
+  "sourceSha256": "f4986f79c581f4c026ebaeea4f33809eaaec888111f96498ae79004b61c9d94c",
+  "calculatePoint": [
+    {
+      "id": "straight",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 10
+        },
+        {
+          "x": 0,
+          "y": 20
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "straight",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 10
+        },
+        {
+          "x": 0,
+          "y": 20
+        }
+      ],
+      "distance": 5,
+      "expected": {
+        "x": 0,
+        "y": 5
+      }
+    },
+    {
+      "id": "straight",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 10
+        },
+        {
+          "x": 0,
+          "y": 20
+        }
+      ],
+      "distance": 10,
+      "expected": {
+        "x": 0,
+        "y": 10
+      }
+    },
+    {
+      "id": "slope",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 20
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "slope",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 20
+        }
+      ],
+      "distance": 5,
+      "expected": {
+        "x": 3.53553,
+        "y": 3.53553
+      }
+    },
+    {
+      "id": "slope",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 20
+        }
+      ],
+      "distance": 10,
+      "expected": {
+        "x": 7.07107,
+        "y": 7.07107
+      }
+    },
+    {
+      "id": "negative-slope",
+      "points": [
+        {
+          "x": 20,
+          "y": 20
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 20,
+        "y": 20
+      }
+    },
+    {
+      "id": "negative-slope",
+      "points": [
+        {
+          "x": 20,
+          "y": 20
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "distance": 5,
+      "expected": {
+        "x": 16.46447,
+        "y": 16.46447
+      }
+    },
+    {
+      "id": "negative-slope",
+      "points": [
+        {
+          "x": 20,
+          "y": 20
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "distance": 10,
+      "expected": {
+        "x": 12.92893,
+        "y": 12.92893
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 0
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 0
+        }
+      ],
+      "distance": 15,
+      "expected": {
+        "x": 10.6066,
+        "y": 9.3934
+      }
+    },
+    {
+      "id": "bent",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 0
+        }
+      ],
+      "distance": 20,
+      "expected": {
+        "x": 14.14214,
+        "y": 5.85786
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "distance": 0,
+      "expected": {
+        "x": 3,
+        "y": 7
+      }
+    },
+    {
+      "id": "duplicate",
+      "points": [
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 103,
+          "y": 7
+        }
+      ],
+      "distance": 50,
+      "expected": {
+        "x": 3,
+        "y": 7
+      }
+    },
+    {
+      "id": "signed",
+      "points": [
+        {
+          "x": -5,
+          "y": -10
+        },
+        {
+          "x": 5,
+          "y": 10
+        }
+      ],
+      "distance": 5,
+      "expected": {
+        "x": -2.76393,
+        "y": -5.52786
+      }
+    },
+    {
+      "id": "too-far",
+      "points": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 20
+        }
+      ],
+      "distance": 30,
+      "error": "Could not find a suitable point for the given distance"
+    },
+    {
+      "id": "empty",
+      "points": [],
+      "distance": 0,
+      "error": "Could not find a suitable point for the given distance"
+    }
+  ],
+  "pathChecks": [
+    {
+      "point": {
+        "x": -1.5,
+        "y": 42
+      },
+      "d": "M-1.5,18L13,19",
+      "expected": false
+    },
+    {
+      "point": {
+        "x": -1.5,
+        "y": 42
+      },
+      "d": "M-1,18L13,19",
+      "expected": true
+    },
+    {
+      "point": {
+        "x": 12,
+        "y": 999
+      },
+      "d": "M312,8L100,20",
+      "expected": true
+    },
+    {
+      "point": {
+        "x": 97,
+        "y": 57
+      },
+      "d": "M1,2L3,4",
+      "expected": false
+    },
+    {
+      "point": {
+        "x": 97,
+        "y": 57
+      },
+      "d": "M97.4,2L3,4",
+      "expected": true
+    }
+  ],
+  "basis": {
+    "points": [
+      {
+        "x": 23,
+        "y": 19
+      },
+      {
+        "x": 97,
+        "y": 57
+      },
+      {
+        "x": 163,
+        "y": 149
+      }
+    ],
+    "d": "M23,19L35.333,25.333C47.667,31.667,72.333,44.333,95.667,66C119,87.667,141,118.333,152,133.667L163,149",
+    "coordinatePresent": false,
+    "expected": {
+      "x": 105.75496,
+      "y": 69.20388
+    }
+  },
+  "singleton": {
+    "points": [
+      {
+        "x": 17,
+        "y": 29
+      }
+    ],
+    "expected": {
+      "x": 17,
+      "y": 29
+    }
+  }
+}

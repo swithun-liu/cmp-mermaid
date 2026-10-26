@@ -5,6 +5,9 @@ import { labelCompatibilityCases } from './label-compatibility-corpus.mjs';
 import { mermaidBaseline } from './diagram-inventory.mjs';
 
 const output = path.resolve(process.argv[2] ?? 'build/label-compatibility');
+const selectedCases = process.argv[3]
+  ? JSON.parse(fs.readFileSync(process.argv[3], 'utf8'))
+  : labelCompatibilityCases;
 fs.mkdirSync(output, { recursive: true });
 const installed = JSON.parse(fs.readFileSync('tools/official-reference/node_modules/mermaid/package.json'));
 if (installed.version !== mermaidBaseline.version) throw new Error('Mermaid baseline mismatch');
@@ -28,7 +31,7 @@ try {
   }
   await page.addScriptTag({ path: 'tools/official-reference/node_modules/mermaid/dist/mermaid.min.js' });
   const cases = [];
-  for (const entry of labelCompatibilityCases) {
+  for (const entry of selectedCases) {
     const captured = await page.evaluate(async entry => {
       const { id, source } = entry;
       mermaid.initialize({ startOnLoad: false, securityLevel: 'strict',
@@ -60,6 +63,7 @@ try {
         text: node.firstElementChild?.innerText ?? node.textContent,
         bounds: rect(node.firstElementChild),
         owner: node.closest('g.node, g.cluster') && nodeId(node.closest('g.node, g.cluster')),
+        edgeLabel: Boolean(node.closest('g.edgeLabel')),
       }));
       const edges = [...svg.querySelectorAll('path[data-points]')].map(node => {
         const matrix = node.getScreenCTM();

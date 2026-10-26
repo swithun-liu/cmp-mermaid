@@ -39,6 +39,7 @@ import com.swithun.cmpmermaid.core.flowchart.FlowStyleAdapter
 import com.swithun.cmpmermaid.core.flowchart.FlowSubgraph
 import com.swithun.cmpmermaid.core.flowchart.FlowchartDocument
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.FlowLabelType
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgeLabelPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidHtmlEntityDecoder
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidRenderedText
@@ -774,11 +775,16 @@ internal class StateLayout {
                 val labelPadding = EDGE_LABEL_PADDING.takeUnless {
                     visual.formula != null || visual.formulaLayout != null
                 } ?: 0f
-                val labelAnchor = MermaidEdgePathPort.positionEdgeLabel(
+                val labelAnchor = when (val positioned = MermaidEdgeLabelPort.positionEdgeLabel(
                     layoutAnchor = route.labelAnchor,
-                    points = route.points,
+                    points = route.renderPoints,
                     commands = commands,
-                )
+                    curve = curve,
+                    pathUpdated = route.pathUpdated,
+                )) {
+                    is GMResult.Ok -> positioned.value
+                    is GMResult.Err -> return positioned
+                }
                 val bounds = SceneRect(
                     left = labelAnchor.x - visual.size.width / 2f - labelPadding,
                     top = labelAnchor.y - visual.size.height / 2f - labelPadding,

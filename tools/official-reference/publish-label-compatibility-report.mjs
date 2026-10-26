@@ -15,6 +15,20 @@ const official = read('official.json');
 const native = read('native.json');
 const audit = read('audit.json');
 const raster = read('raster.json');
+const baseline = read('baseline-native.json');
+const comparison = read('baseline-comparison.json');
+if (comparison.caseCount !== native.cases.length ||
+    comparison.unchangedPathCount !== native.cases.length ||
+    comparison.inputs.baselineNative !== sha256(inputBytes['baseline-native.json']) ||
+    comparison.inputs.native !== sha256(inputBytes['native.json']) ||
+    comparison.inputs.official !== sha256(inputBytes['official.json'])) {
+  throw new Error('Edge-label baseline comparison is stale or paths changed');
+}
+const baselineById = new Map(baseline.cases.map(entry => [entry.id, entry]));
+if (baselineById.size !== native.cases.length || native.cases.some(entry =>
+    baselineById.get(entry.id)?.source !== entry.source)) {
+  throw new Error('Edge-label baseline source coverage differs');
+}
 for (const [name, evidence] of [['official', official], ['native', native], ['raster', raster]]) {
   if (audit.inputs?.[name]?.sha256 !== sha256(inputBytes[`${name}.json`]) ||
       audit.inputs[name].generatedAt !== (evidence.generatedAt ?? null)) {
@@ -96,6 +110,12 @@ const manifest = {
   layout: audit.layout, officialGeneratedAt: official.generatedAt,
   nativeGeneratedAt: native.generatedAt, auditGeneratedAt: audit.generatedAt,
   inputs: { ...audit.inputs, audit: { sha256: sha256(inputBytes['audit.json']) } },
+  baselineComparison: {
+    baselineVersion: comparison.baselineVersion, currentVersion: comparison.currentVersion,
+    sha256: sha256(inputBytes['baseline-comparison.json']),
+    baselineNativeSha256: sha256(inputBytes['baseline-native.json']),
+    changedCaseCount: comparison.changedCaseCount, unchangedPathCount: comparison.unchangedPathCount,
+  },
   familyCount: audit.familyCount, caseCount: records.length,
   screenshotCount: records.length * 2, contactSheets: raster.contactSheets,
   counts, records,
@@ -118,6 +138,13 @@ or full-family Stable status.
 - [Raster scores](raster.json)
 - [Native capture](native.json)
 - [Official capture](official.json)
+- [0.1.18 to 0.1.19 label comparison](baseline-comparison.json)
+- [0.1.18 Native capture](baseline-native.json)
+
+The baseline comparison uses the published 0.1.18 JVM artifacts with identical
+sources and font resources. ${comparison.changedCaseCount} cases change label
+anchors; all ${comparison.unchangedPathCount} edge-path sets remain identical.
+This numerical comparison adds no screenshots to the current capture count.
 
 ## Contact sheets
 

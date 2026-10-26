@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "mermaidVersion": "12.0.0",
   "mermaidSourceCommit": "98a0945418c76238f15df2afaddbba4272656c3b",
-  "generatedAt": "2026-10-25T07:12:59.894Z",
+  "generatedAt": "2026-10-26T03:30:54.764Z",
   "fontFamily": "Arial (bundled Arimo)",
   "deviceScaleFactor": 1,
   "cases": [
@@ -44,7 +44,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Value",
@@ -54,7 +55,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-direction-v-flowchart-v"
+          "owner": "label-direction-v-flowchart-v",
+          "edgeLabel": false
         },
         {
           "text": "Result",
@@ -64,7 +66,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-direction-v-flowchart-A"
+          "owner": "label-direction-v-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -148,7 +151,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "x < -2 or x > 2",
@@ -158,7 +162,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-comparison-negative-flowchart-A"
+          "owner": "label-comparison-negative-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Result",
@@ -168,7 +173,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-comparison-negative-flowchart-B"
+          "owner": "label-comparison-negative-flowchart-B",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -241,7 +247,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-comparison-positive-flowchart-A"
+          "owner": "label-comparison-positive-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -296,7 +303,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete.",
@@ -306,7 +314,8 @@
             "width": 120,
             "height": 630
           },
-          "owner": "label-long-prose-flowchart-A"
+          "owner": "label-long-prose-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Complete",
@@ -316,7 +325,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-long-prose-flowchart-B"
+          "owner": "label-long-prose-flowchart-B",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -389,7 +399,8 @@
             "width": 120,
             "height": 252
           },
-          "owner": "label-twelve-lines-flowchart-A"
+          "owner": "label-twelve-lines-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -433,7 +444,8 @@
             "width": 120,
             "height": 231
           },
-          "owner": "label-accented-lines-flowchart-A"
+          "owner": "label-accented-lines-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -477,7 +489,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": "label-empty-round-flowchart-A"
+          "owner": "label-empty-round-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -521,7 +534,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": "label-empty-circle-flowchart-A"
+          "owner": "label-empty-circle-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -565,7 +579,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": "label-empty-rect-flowchart-A"
+          "owner": "label-empty-rect-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -609,7 +624,8 @@
             "width": 120,
             "height": 42
           },
-          "owner": "label-explicit-breaks-flowchart-A"
+          "owner": "label-explicit-breaks-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -653,7 +669,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": "label-transparent-node-flowchart-A"
+          "owner": "label-transparent-node-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -697,7 +714,8 @@
             "width": 79.375,
             "height": 21
           },
-          "owner": "label-empty-group-Empty"
+          "owner": "label-empty-group-Empty",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -774,7 +792,8 @@
             "width": 62.265625,
             "height": 21
           },
-          "owner": "label-mixed-groups-Full"
+          "owner": "label-mixed-groups-Full",
+          "edgeLabel": false
         },
         {
           "text": "",
@@ -784,7 +803,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Alpha",
@@ -794,7 +814,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-mixed-groups-flowchart-A"
+          "owner": "label-mixed-groups-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Beta",
@@ -804,7 +825,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-mixed-groups-flowchart-B"
+          "owner": "label-mixed-groups-flowchart-B",
+          "edgeLabel": false
         },
         {
           "text": "Empty group",
@@ -814,7 +836,8 @@
             "width": 79.375,
             "height": 21
           },
-          "owner": "label-mixed-groups-Empty"
+          "owner": "label-mixed-groups-Empty",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -909,7 +932,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "%%",
@@ -919,7 +943,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-bare-comment-flowchart-%%"
+          "owner": "label-bare-comment-flowchart-%%",
+          "edgeLabel": false
         },
         {
           "text": "Alpha",
@@ -929,7 +954,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-bare-comment-flowchart-A"
+          "owner": "label-bare-comment-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Beta",
@@ -939,7 +965,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-bare-comment-flowchart-B"
+          "owner": "label-bare-comment-flowchart-B",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -1010,7 +1037,8 @@
             "width": 35.79557800292969,
             "height": 20.999237060546875
           },
-          "owner": "label-class-raw-angle-classId-Store"
+          "owner": "label-class-raw-angle-classId-Store",
+          "edgeLabel": false
         },
         {
           "text": "+Map raw",
@@ -1020,7 +1048,8 @@
             "width": 61.85712814331055,
             "height": 20.999237060546875
           },
-          "owner": "label-class-raw-angle-classId-Store"
+          "owner": "label-class-raw-angle-classId-Store",
+          "edgeLabel": false
         },
         {
           "text": "+load(Map input) : Result",
@@ -1030,7 +1059,8 @@
             "width": 156.80679321289062,
             "height": 20.999237060546875
           },
-          "owner": "label-class-raw-angle-classId-Store"
+          "owner": "label-class-raw-angle-classId-Store",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -1072,7 +1102,8 @@
             "width": 35.795928955078125,
             "height": 20.999441146850586
           },
-          "owner": "label-class-tilde-generic-classId-Store"
+          "owner": "label-class-tilde-generic-classId-Store",
+          "edgeLabel": false
         },
         {
           "text": "+Map<Key,Value> typed",
@@ -1082,7 +1113,8 @@
             "width": 151.65220642089844,
             "height": 20.99944305419922
           },
-          "owner": "label-class-tilde-generic-classId-Store"
+          "owner": "label-class-tilde-generic-classId-Store",
+          "edgeLabel": false
         },
         {
           "text": "+load(Map<Key,Value> input) : Result",
@@ -1092,7 +1124,8 @@
             "width": 234.8999786376953,
             "height": 20.999435424804688
           },
-          "owner": "label-class-tilde-generic-classId-Store"
+          "owner": "label-class-tilde-generic-classId-Store",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -1147,7 +1180,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Rounded label",
@@ -1157,7 +1191,8 @@
             "width": 120,
             "height": 24
           },
-          "owner": "label-rounded-default-flowchart-A"
+          "owner": "label-rounded-default-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Rectangle",
@@ -1167,7 +1202,8 @@
             "width": 120,
             "height": 24
           },
-          "owner": "label-rounded-default-flowchart-B"
+          "owner": "label-rounded-default-flowchart-B",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -1251,7 +1287,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Rounded label",
@@ -1261,7 +1298,8 @@
             "width": 120,
             "height": 24
           },
-          "owner": "label-rounded-forest-flowchart-A"
+          "owner": "label-rounded-forest-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Rectangle",
@@ -1271,7 +1309,8 @@
             "width": 120,
             "height": 24
           },
-          "owner": "label-rounded-forest-flowchart-B"
+          "owner": "label-rounded-forest-flowchart-B",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -1355,7 +1394,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Rounded label",
@@ -1365,7 +1405,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-rounded-neo-flowchart-A"
+          "owner": "label-rounded-neo-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Rectangle",
@@ -1375,7 +1416,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-rounded-neo-flowchart-B"
+          "owner": "label-rounded-neo-flowchart-B",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -1459,7 +1501,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Rounded label",
@@ -1469,7 +1512,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-rounded-redux-color-flowchart-A"
+          "owner": "label-rounded-redux-color-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Rectangle",
@@ -1479,7 +1523,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-rounded-redux-color-flowchart-B"
+          "owner": "label-rounded-redux-color-flowchart-B",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -1563,7 +1608,8 @@
             "width": 0,
             "height": 0
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Rounded label",
@@ -1573,7 +1619,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-rounded-redux-dark-flowchart-A"
+          "owner": "label-rounded-redux-dark-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Rectangle",
@@ -1583,7 +1630,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-rounded-redux-dark-flowchart-B"
+          "owner": "label-rounded-redux-dark-flowchart-B",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -1656,7 +1704,8 @@
             "width": 120,
             "height": 21
           },
-          "owner": "label-rounded-override-flowchart-A"
+          "owner": "label-rounded-override-flowchart-A",
+          "edgeLabel": false
         }
       ],
       "edges": [],
@@ -1733,7 +1782,8 @@
             "width": 38.92120361328125,
             "height": 20.999645233154297
           },
-          "owner": "label-cluster-boundary-Box"
+          "owner": "label-cluster-boundary-Box",
+          "edgeLabel": false
         },
         {
           "text": "Down",
@@ -1743,7 +1793,8 @@
             "width": 35.7962646484375,
             "height": 20.99964141845703
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Up",
@@ -1753,7 +1804,8 @@
             "width": 17.90594482421875,
             "height": 20.99964141845703
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Left",
@@ -1763,7 +1815,8 @@
             "width": 23.358978271484375,
             "height": 20.999649047851562
           },
-          "owner": null
+          "owner": null,
+          "edgeLabel": true
         },
         {
           "text": "Alpha",
@@ -1773,7 +1826,8 @@
             "width": 119.99796295166016,
             "height": 20.99964141845703
           },
-          "owner": "label-cluster-boundary-flowchart-A"
+          "owner": "label-cluster-boundary-flowchart-A",
+          "edgeLabel": false
         },
         {
           "text": "Beta",
@@ -1783,7 +1837,8 @@
             "width": 119.99798583984375,
             "height": 20.99964141845703
           },
-          "owner": "label-cluster-boundary-flowchart-B"
+          "owner": "label-cluster-boundary-flowchart-B",
+          "edgeLabel": false
         },
         {
           "text": "Gamma",
@@ -1793,7 +1848,8 @@
             "width": 119.99797058105469,
             "height": 20.999649047851562
           },
-          "owner": "label-cluster-boundary-flowchart-C"
+          "owner": "label-cluster-boundary-flowchart-C",
+          "edgeLabel": false
         }
       ],
       "edges": [
@@ -1909,6 +1965,2772 @@
         "y": 0,
         "width": 461.6796875,
         "height": 227
+      }
+    },
+    {
+      "id": "crossing-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[Start] --> B[Left]\nA --> C[Right]\nB -->|Accept| C\nC -->|Retry| B\nB --> D[Finish]\nC --> D",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-crossing-labels-flowchart-A",
+          "bounds": {
+            "x": 63.499053955078125,
+            "y": 8.00261116027832,
+            "width": 151.99774169921875,
+            "height": 44.99932861328125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-crossing-labels-flowchart-B",
+          "bounds": {
+            "x": 102.56488037109375,
+            "y": 103.0011978149414,
+            "width": 151.99774169921875,
+            "height": 44.99933624267578
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-crossing-labels-flowchart-C",
+          "bounds": {
+            "x": 73.49890899658203,
+            "y": 218.9994659423828,
+            "width": 151.99774169921875,
+            "height": 44.99934387207031
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-crossing-labels-flowchart-D",
+          "bounds": {
+            "x": 7.999880790710449,
+            "y": 313.998046875,
+            "width": 151.99774169921875,
+            "height": 44.99932861328125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0.0027299642097204924,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0.0027299642097204924,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Accept",
+          "bounds": {
+            "x": 128.0918426513672,
+            "y": 173.00015258789062,
+            "width": 42.811859130859375,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Retry",
+          "bounds": {
+            "x": 190.90341186523438,
+            "y": 173.00015258789062,
+            "width": 33.45262145996094,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0.0027299642097204924,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0.0027299642097204924,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Start",
+          "bounds": {
+            "x": 79.49881744384766,
+            "y": 20.002431869506836,
+            "width": 119.99820709228516,
+            "height": 20.99968910217285
+          },
+          "owner": "label-crossing-labels-flowchart-A",
+          "edgeLabel": false
+        },
+        {
+          "text": "Left",
+          "bounds": {
+            "x": 118.56464385986328,
+            "y": 115.00102233886719,
+            "width": 119.99820709228516,
+            "height": 20.999679565429688
+          },
+          "owner": "label-crossing-labels-flowchart-B",
+          "edgeLabel": false
+        },
+        {
+          "text": "Right",
+          "bounds": {
+            "x": 89.49866485595703,
+            "y": 230.99929809570312,
+            "width": 119.99822235107422,
+            "height": 20.999679565429688
+          },
+          "owner": "label-crossing-labels-flowchart-C",
+          "edgeLabel": false
+        },
+        {
+          "text": "Finish",
+          "bounds": {
+            "x": 23.999643325805664,
+            "y": 325.9978942871094,
+            "width": 119.99822235107422,
+            "height": 20.999664306640625
+          },
+          "owner": "label-crossing-labels-flowchart-D",
+          "edgeLabel": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-crossing-labels-L_A_B_0",
+          "d": "M158.005,53L161.432,57.167C164.859,61.333,171.713,69.667,175.14,77.333C178.566,85,178.566,92,178.566,95.5L178.566,99",
+          "points": [
+            [
+              158.0051398026316,
+              53
+            ],
+            [
+              178.56640625,
+              78
+            ],
+            [
+              178.56640625,
+              103
+            ]
+          ],
+          "start": [
+            158.0050048828125,
+            53
+          ],
+          "end": [
+            178.5659942626953,
+            99
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-crossing-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-crossing-labels-L_A_C_0",
+          "d": "M96.395,53L88.412,57.167C80.43,61.333,64.465,69.667,56.482,81.75C48.5,93.833,48.5,109.667,48.5,127.25C48.5,144.833,48.5,164.167,58.225,179.418C67.95,194.669,87.4,205.839,97.125,211.423L106.85,217.008",
+          "points": [
+            [
+              96.39473684210526,
+              53
+            ],
+            [
+              48.5,
+              78
+            ],
+            [
+              48.5,
+              125.5
+            ],
+            [
+              48.5,
+              183.50000000000003
+            ],
+            [
+              110.3189655172414,
+              219
+            ]
+          ],
+          "start": [
+            96.3949966430664,
+            53
+          ],
+          "end": [
+            106.8499984741211,
+            217.00799560546875
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-crossing-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-crossing-labels-L_B_C_0",
+          "d": "M167.291,148L164.326,153.917C161.36,159.833,155.43,171.667,152.465,182.833C149.5,194,149.5,204.5,149.5,209.75L149.5,215",
+          "points": [
+            [
+              167.29064520474137,
+              148
+            ],
+            [
+              149.5,
+              183.50000000000003
+            ],
+            [
+              149.5,
+              219
+            ]
+          ],
+          "start": [
+            167.29100036621094,
+            148
+          ],
+          "end": [
+            149.5,
+            215.00000000000003
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-crossing-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-crossing-labels-L_C_B_0",
+          "d": "M172.052,219L177.982,213.083C183.912,207.167,195.772,195.333,199.036,184.096C202.3,172.859,196.967,162.217,194.301,156.897L191.634,151.576",
+          "points": [
+            [
+              172.05152209051724,
+              219
+            ],
+            [
+              207.6328125,
+              183.50000000000003
+            ],
+            [
+              189.84216729525863,
+              148
+            ]
+          ],
+          "start": [
+            172.052001953125,
+            219
+          ],
+          "end": [
+            191.63400268554688,
+            151.57600402832034
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-crossing-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-crossing-labels-L_B_D_0",
+          "d": "M120.351,148L105.042,153.917C89.734,159.833,59.117,171.667,43.808,187.25C28.5,202.833,28.5,222.167,28.5,239.75C28.5,257.333,28.5,273.167,32.862,284.817C37.224,296.466,45.948,303.933,50.31,307.666L54.672,311.399",
+          "points": [
+            [
+              120.35099003232759,
+              148
+            ],
+            [
+              28.5,
+              183.50000000000003
+            ],
+            [
+              28.5,
+              241.50000000000003
+            ],
+            [
+              28.5,
+              289
+            ],
+            [
+              57.71052631578947,
+              314
+            ]
+          ],
+          "start": [
+            120.35099792480469,
+            148
+          ],
+          "end": [
+            54.672000885009766,
+            311.39898681640625
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-crossing-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-crossing-labels-L_C_D_0",
+          "d": "M149.5,264L149.5,268.167C149.5,272.333,149.5,280.667,144.294,288.609C139.088,296.551,128.676,304.101,123.47,307.876L118.264,311.652",
+          "points": [
+            [
+              149.5,
+              264
+            ],
+            [
+              149.5,
+              289
+            ],
+            [
+              115.0263157894737,
+              314
+            ]
+          ],
+          "start": [
+            149.5,
+            264
+          ],
+          "end": [
+            118.26399993896484,
+            311.6520080566406
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-crossing-labels_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 262.5625,
+        "height": 367
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 262.56640625,
+        "height": 367
+      }
+    },
+    {
+      "id": "basis-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: basis\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-basis-feedback-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-basis-feedback-flowchart-B",
+          "bounds": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-basis-feedback-flowchart-C",
+          "bounds": {
+            "x": 463.359375,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Forward",
+          "bounds": {
+            "x": 387,
+            "y": 20,
+            "width": 51.359375,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Feedback",
+          "bounds": {
+            "x": 255.2578125,
+            "y": 88,
+            "width": 61.484375,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Input",
+          "bounds": {
+            "x": 24,
+            "y": 54,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-basis-feedback-flowchart-A",
+          "edgeLabel": false
+        },
+        {
+          "text": "Process",
+          "bounds": {
+            "x": 226,
+            "y": 20,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-basis-feedback-flowchart-B",
+          "edgeLabel": false
+        },
+        {
+          "text": "Output",
+          "bounds": {
+            "x": 479.359375,
+            "y": 54,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-basis-feedback-flowchart-C",
+          "edgeLabel": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-basis-feedback-L_A_B_0",
+          "d": "M150.838,42L156.532,40.083C162.225,38.167,173.613,34.333,182.806,32.417C192,30.5,199,30.5,202.5,30.5L206,30.5",
+          "points": [
+            [
+              150.83823529411765,
+              42
+            ],
+            [
+              185,
+              30.5
+            ],
+            [
+              210,
+              30.5
+            ]
+          ],
+          "start": [
+            150.83799743652344,
+            42
+          ],
+          "end": [
+            206,
+            30.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-basis-feedback_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-basis-feedback-L_B_C_0",
+          "d": "M362,30.5L370.447,30.5C378.893,30.5,395.786,30.5,412.036,32.594C428.285,34.688,443.891,38.877,451.693,40.971L459.496,43.065",
+          "points": [
+            [
+              362,
+              30.5
+            ],
+            [
+              412.6796875,
+              30.5
+            ],
+            [
+              463.359375,
+              44.10209682392846
+            ]
+          ],
+          "start": [
+            362,
+            30.5
+          ],
+          "end": [
+            459.4960021972656,
+            43.064998626708984
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-basis-feedback_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-basis-feedback-L_C_A_0",
+          "d": "M463.359,84.898L454.913,87.165C446.466,89.432,429.573,93.966,400.013,96.233C370.453,98.5,328.227,98.5,290.28,98.5C252.333,98.5,218.667,98.5,196.772,96.796C174.876,95.092,164.753,91.684,159.691,89.98L154.629,88.276",
+          "points": [
+            [
+              463.359375,
+              84.89790317607154
+            ],
+            [
+              412.6796875,
+              98.5
+            ],
+            [
+              286,
+              98.5
+            ],
+            [
+              185,
+              98.5
+            ],
+            [
+              150.83823529411765,
+              87
+            ]
+          ],
+          "start": [
+            463.3590087890625,
+            84.89800262451172
+          ],
+          "end": [
+            154.62899780273438,
+            88.2760009765625
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-basis-feedback_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 623.359375,
+        "height": 117
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 623.359375,
+        "height": 117
+      }
+    },
+    {
+      "id": "linear-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: linear\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-linear-feedback-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-linear-feedback-flowchart-B",
+          "bounds": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-linear-feedback-flowchart-C",
+          "bounds": {
+            "x": 463.359375,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Forward",
+          "bounds": {
+            "x": 387,
+            "y": 20,
+            "width": 51.359375,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Feedback",
+          "bounds": {
+            "x": 255.2578125,
+            "y": 88,
+            "width": 61.484375,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Input",
+          "bounds": {
+            "x": 24,
+            "y": 54,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-linear-feedback-flowchart-A",
+          "edgeLabel": false
+        },
+        {
+          "text": "Process",
+          "bounds": {
+            "x": 226,
+            "y": 20,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-linear-feedback-flowchart-B",
+          "edgeLabel": false
+        },
+        {
+          "text": "Output",
+          "bounds": {
+            "x": 479.359375,
+            "y": 54,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-linear-feedback-flowchart-C",
+          "edgeLabel": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-linear-feedback-L_A_B_0",
+          "d": "M150.838,42L185,30.5L206,30.5",
+          "points": [
+            [
+              150.83823529411765,
+              42
+            ],
+            [
+              185,
+              30.5
+            ],
+            [
+              210,
+              30.5
+            ]
+          ],
+          "start": [
+            150.83799743652344,
+            42
+          ],
+          "end": [
+            206,
+            30.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-linear-feedback_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-linear-feedback-L_B_C_0",
+          "d": "M362,30.5L412.68,30.5L459.496,43.065",
+          "points": [
+            [
+              362,
+              30.5
+            ],
+            [
+              412.6796875,
+              30.5
+            ],
+            [
+              463.359375,
+              44.10209682392846
+            ]
+          ],
+          "start": [
+            362,
+            30.5
+          ],
+          "end": [
+            459.4960021972656,
+            43.064998626708984
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-linear-feedback_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-linear-feedback-L_C_A_0",
+          "d": "M463.359,84.898L412.68,98.5L286,98.5L185,98.5L154.629,88.276",
+          "points": [
+            [
+              463.359375,
+              84.89790317607154
+            ],
+            [
+              412.6796875,
+              98.5
+            ],
+            [
+              286,
+              98.5
+            ],
+            [
+              185,
+              98.5
+            ],
+            [
+              150.83823529411765,
+              87
+            ]
+          ],
+          "start": [
+            463.3590087890625,
+            84.89800262451172
+          ],
+          "end": [
+            154.62899780273438,
+            88.2760009765625
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-linear-feedback_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 623.359375,
+        "height": 117
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 623.359375,
+        "height": 117
+      }
+    },
+    {
+      "id": "rounded-feedback",
+      "family": "flowchart",
+      "source": "---\nconfig:\n  flowchart:\n    curve: rounded\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-rounded-feedback-flowchart-A",
+          "bounds": {
+            "x": 8,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-rounded-feedback-flowchart-B",
+          "bounds": {
+            "x": 210,
+            "y": 8,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-rounded-feedback-flowchart-C",
+          "bounds": {
+            "x": 463.359375,
+            "y": 42,
+            "width": 152,
+            "height": 45
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Forward",
+          "bounds": {
+            "x": 387,
+            "y": 20,
+            "width": 51.359375,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Feedback",
+          "bounds": {
+            "x": 255.2578125,
+            "y": 88,
+            "width": 61.484375,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Input",
+          "bounds": {
+            "x": 24,
+            "y": 54,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-feedback-flowchart-A",
+          "edgeLabel": false
+        },
+        {
+          "text": "Process",
+          "bounds": {
+            "x": 226,
+            "y": 20,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-feedback-flowchart-B",
+          "edgeLabel": false
+        },
+        {
+          "text": "Output",
+          "bounds": {
+            "x": 479.359375,
+            "y": 54,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-rounded-feedback-flowchart-C",
+          "edgeLabel": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-rounded-feedback-L_A_B_0",
+          "d": "M150.83823529411765,42L175.04872197586465,33.849935176441605Q185,30.5 195.5,30.5L206,30.5",
+          "points": [
+            [
+              150.83823529411765,
+              42
+            ],
+            [
+              185,
+              30.5
+            ],
+            [
+              210,
+              30.5
+            ]
+          ],
+          "start": [
+            150.83824157714844,
+            42
+          ],
+          "end": [
+            206,
+            30.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-rounded-feedback_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-rounded-feedback-L_B_C_0",
+          "d": "M362,30.5L388.4430348785947,30.5Q412.6796875,30.5 436.0878943056341,36.782609683510316L459.4961011112683,43.06521936702063",
+          "points": [
+            [
+              362,
+              30.5
+            ],
+            [
+              412.6796875,
+              30.5
+            ],
+            [
+              463.359375,
+              44.10209682392846
+            ]
+          ],
+          "start": [
+            362,
+            30.5
+          ],
+          "end": [
+            459.49609375,
+            43.06521987915039
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-rounded-feedback_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-rounded-feedback-L_C_A_0",
+          "d": "M463.359375,84.89790317607154L438.01953125,91.69895158803577Q412.6796875,98.5 386.4430348785947,98.5L286,98.5L201.02273680535276,98.5Q185,98.5 169.81459917546556,93.38808289075078L154.62919835093112,88.27616578150156",
+          "points": [
+            [
+              463.359375,
+              84.89790317607154
+            ],
+            [
+              412.6796875,
+              98.5
+            ],
+            [
+              286,
+              98.5
+            ],
+            [
+              185,
+              98.5
+            ],
+            [
+              150.83823529411765,
+              87
+            ]
+          ],
+          "start": [
+            463.359375,
+            84.89790344238281
+          ],
+          "end": [
+            154.6291961669922,
+            88.27616882324219
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-rounded-feedback_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 623.359375,
+        "height": 117
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 623.359375,
+        "height": 117
+      }
+    },
+    {
+      "id": "er-crossing-labels",
+      "family": "er",
+      "source": "erDiagram\nTEAM ||--o{ PERSON : includes\nTEAM ||--o{ TASK : owns\nPERSON ||--o{ TASK : creates\nTASK }o--|| PERSON : assigned",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-er-crossing-labels-entity-TEAM",
+          "bounds": {
+            "x": 47.296875,
+            "y": 8,
+            "width": 100,
+            "height": 81
+          },
+          "radius": null,
+          "fill": "rgb(253, 244, 255)"
+        },
+        {
+          "id": "label-er-crossing-labels-entity-PERSON",
+          "bounds": {
+            "x": 120.6875,
+            "y": 190,
+            "width": 99.125,
+            "height": 81
+          },
+          "radius": null,
+          "fill": "rgb(240, 253, 250)"
+        },
+        {
+          "id": "label-er-crossing-labels-entity-TASK",
+          "bounds": {
+            "x": 68.77734375,
+            "y": 372,
+            "width": 100,
+            "height": 81
+          },
+          "radius": null,
+          "fill": "rgb(255, 247, 237)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "includes",
+          "bounds": {
+            "x": 144.5625,
+            "y": 129,
+            "width": 51.375,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "owns",
+          "bounds": {
+            "x": 8,
+            "y": 220,
+            "width": 32.6875,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "creates",
+          "bounds": {
+            "x": 95.81640625,
+            "y": 311,
+            "width": 45.921875,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "assigned",
+          "bounds": {
+            "x": 177.71875,
+            "y": 311,
+            "width": 56.046875,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "TEAM",
+          "bounds": {
+            "x": 77.8515625,
+            "y": 38,
+            "width": 38.890625,
+            "height": 21
+          },
+          "owner": "label-er-crossing-labels-entity-TEAM",
+          "edgeLabel": false
+        },
+        {
+          "text": "PERSON",
+          "bounds": {
+            "x": 140.6875,
+            "y": 220,
+            "width": 59.125,
+            "height": 21
+          },
+          "owner": "label-er-crossing-labels-entity-PERSON",
+          "edgeLabel": false
+        },
+        {
+          "text": "TASK",
+          "bounds": {
+            "x": 101.01171875,
+            "y": 402,
+            "width": 35.53125,
+            "height": 21
+          },
+          "owner": "label-er-crossing-labels-entity-TASK",
+          "edgeLabel": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-er-crossing-labels-id_entity-TEAM-0_entity-PERSON-1_0",
+          "d": "M129.765,89L136.513,97.417C143.26,105.833,156.755,122.667,163.503,139.5C170.25,156.333,170.25,173.167,170.25,181.583L170.25,190",
+          "points": [
+            [
+              129.76502403846155,
+              89
+            ],
+            [
+              170.25,
+              139.5
+            ],
+            [
+              170.25,
+              190
+            ]
+          ],
+          "start": [
+            129.76499938964844,
+            89
+          ],
+          "end": [
+            170.25,
+            190
+          ],
+          "markerStart": "url(#label-er-crossing-labels_er-onlyOneStart)",
+          "markerEnd": "url(#label-er-crossing-labels_er-zeroOrMoreEnd)"
+        },
+        {
+          "id": "label-er-crossing-labels-id_entity-TEAM-0_entity-TASK-2_1",
+          "d": "M64.829,89L58.081,97.417C51.334,105.833,37.839,122.667,31.091,146.25C24.344,169.833,24.344,200.167,24.344,230.5C24.344,260.833,24.344,291.167,33.078,314.75C41.812,338.333,59.281,355.167,68.015,363.583L76.749,372",
+          "points": [
+            [
+              64.82872596153845,
+              89
+            ],
+            [
+              24.34375,
+              139.5
+            ],
+            [
+              24.34375,
+              230.5
+            ],
+            [
+              24.34375,
+              321.5
+            ],
+            [
+              76.74920587225274,
+              372
+            ]
+          ],
+          "start": [
+            64.8290023803711,
+            89
+          ],
+          "end": [
+            76.7490005493164,
+            372
+          ],
+          "markerStart": "url(#label-er-crossing-labels_er-onlyOneStart)",
+          "markerEnd": "url(#label-er-crossing-labels_er-zeroOrMoreEnd)"
+        },
+        {
+          "id": "label-er-crossing-labels-id_entity-PERSON-1_entity-TASK-2_2",
+          "d": "M147.342,271L142.581,279.417C137.82,287.833,128.299,304.667,123.538,321.5C118.777,338.333,118.777,355.167,118.777,363.583L118.777,372",
+          "points": [
+            [
+              147.34183980082418,
+              271
+            ],
+            [
+              118.77734375,
+              321.5
+            ],
+            [
+              118.77734375,
+              372
+            ]
+          ],
+          "start": [
+            147.3419952392578,
+            271
+          ],
+          "end": [
+            118.7770004272461,
+            372
+          ],
+          "markerStart": "url(#label-er-crossing-labels_er-onlyOneStart)",
+          "markerEnd": "url(#label-er-crossing-labels_er-zeroOrMoreEnd)"
+        },
+        {
+          "id": "label-er-crossing-labels-id_entity-TASK-2_entity-PERSON-1_3",
+          "d": "M157.481,372L165.525,363.583C173.568,355.167,189.655,338.333,194.416,321.5C199.177,304.667,192.611,287.833,189.329,279.417L186.046,271",
+          "points": [
+            [
+              157.48147750686815,
+              372
+            ],
+            [
+              205.7421875,
+              321.5
+            ],
+            [
+              186.04597355769232,
+              271
+            ]
+          ],
+          "start": [
+            157.4810028076172,
+            372
+          ],
+          "end": [
+            186.04600524902344,
+            271
+          ],
+          "markerStart": "url(#label-er-crossing-labels_er-zeroOrMoreStart)",
+          "markerEnd": "url(#label-er-crossing-labels_er-onlyOneEnd)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 241.765625,
+        "height": 461
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 241.765625,
+        "height": 461
+      }
+    },
+    {
+      "id": "self-loop-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[Ready] -->|Repeat| A\nA -->|Proceed| B[Done]",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-self-loop-labels-flowchart-A",
+          "bounds": {
+            "x": 134.04893493652344,
+            "y": 7.999697685241699,
+            "width": 151.99424743652344,
+            "height": 44.99829864501953
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-self-loop-labels-flowchart-B",
+          "bounds": {
+            "x": 8.003701210021973,
+            "y": 123.99530792236328,
+            "width": 151.99424743652344,
+            "height": 44.99829864501953
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Repeat",
+          "bounds": {
+            "x": 187.4687957763672,
+            "y": 80.99694061279297,
+            "width": 45.154541015625,
+            "height": 20.99919891357422
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Proceed",
+          "bounds": {
+            "x": 57.92368698120117,
+            "y": 77.9970474243164,
+            "width": 52.15427780151367,
+            "height": 20.99920654296875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Ready",
+          "bounds": {
+            "x": 150.04833984375,
+            "y": 19.999242782592773,
+            "width": 119.99545288085938,
+            "height": 20.999208450317383
+          },
+          "owner": "label-self-loop-labels-flowchart-A",
+          "edgeLabel": false
+        },
+        {
+          "text": "Done",
+          "bounds": {
+            "x": 24.003095626831055,
+            "y": 135.99485778808594,
+            "width": 119.99545288085938,
+            "height": 20.99920654296875
+          },
+          "owner": "label-self-loop-labels-flowchart-B",
+          "edgeLabel": false
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 210.0460662841797,
+            "y": 146.4944610595703,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 231.33432006835938,
+            "y": 240.04092407226562,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-self-loop-labels-L_A_B_0",
+          "d": "M161.151,53L148.293,58.917C135.434,64.833,109.717,76.667,96.859,87.833C84,99,84,109.5,84,114.75L84,120",
+          "points": [
+            [
+              161.1512931039043,
+              52.99999999999999
+            ],
+            [
+              84,
+              88.49999999999999
+            ],
+            [
+              84,
+              124
+            ]
+          ],
+          "start": [
+            161.1510009765625,
+            52.99999999999999
+          ],
+          "end": [
+            84,
+            120
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-self-loop-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-self-loop-labels-L_A_A_0",
+          "d": "M197.179,53L194.891,57C192.603,61,188.026,69,194.605,73C201.183,77,218.917,77,225.826,73.579C232.736,70.157,228.821,63.315,226.864,59.893L224.907,56.472",
+          "points": [
+            [
+              197.17903225880957,
+              52.99999999999999
+            ],
+            [
+              183.45000000074506,
+              76.99999999999999
+            ],
+            [
+              236.65000000074505,
+              76.99999999999999
+            ],
+            [
+              222.92096774268055,
+              52.99999999999999
+            ]
+          ],
+          "start": [
+            197.1790008544922,
+            52.99999999999999
+          ],
+          "end": [
+            224.90699768066406,
+            56.47200012207031
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-self-loop-labels_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 294.046875,
+        "height": 248.140625
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 294.04998779296875,
+        "height": 248.15000915527344
+      }
+    },
+    {
+      "id": "state-feedback",
+      "family": "state",
+      "source": "stateDiagram-v2\n[*] --> Ready\nReady --> Working: Begin\nWorking --> Done: Finish\nDone --> Ready: Reset",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-state-feedback-state-root_start",
+          "bounds": {
+            "x": 129.64453125,
+            "y": 8,
+            "width": 14,
+            "height": 14
+          },
+          "radius": null,
+          "fill": "rgb(0, 0, 0)"
+        },
+        {
+          "id": "label-state-feedback-state-Ready",
+          "bounds": {
+            "x": 68.64453125,
+            "y": 72,
+            "width": 136,
+            "height": 37
+          },
+          "radius": "12",
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-state-feedback-state-Working",
+          "bounds": {
+            "x": 8,
+            "y": 180,
+            "width": 136,
+            "height": 37
+          },
+          "radius": "12",
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-state-feedback-state-Done",
+          "bounds": {
+            "x": 68.64453125,
+            "y": 288,
+            "width": 136,
+            "height": 37
+          },
+          "radius": "12",
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Begin",
+          "bounds": {
+            "x": 58.09375,
+            "y": 134,
+            "width": 35.8125,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Finish",
+          "bounds": {
+            "x": 57.3203125,
+            "y": 242,
+            "width": 37.359375,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Reset",
+          "bounds": {
+            "x": 179,
+            "y": 188,
+            "width": 36.578125,
+            "height": 21
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Ready",
+          "bounds": {
+            "x": 76.64453125,
+            "y": 80,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-state-feedback-state-Ready",
+          "edgeLabel": false
+        },
+        {
+          "text": "Working",
+          "bounds": {
+            "x": 16,
+            "y": 188,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-state-feedback-state-Working",
+          "edgeLabel": false
+        },
+        {
+          "text": "Done",
+          "bounds": {
+            "x": 76.64453125,
+            "y": 296,
+            "width": 120,
+            "height": 21
+          },
+          "owner": "label-state-feedback-state-Done",
+          "edgeLabel": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-state-feedback-edge0",
+          "d": "M136.645,22L136.645,26.167C136.645,30.333,136.645,38.667,136.645,46.083C136.645,53.5,136.645,60,136.645,63.25L136.645,66.5",
+          "points": [
+            [
+              136.64453125,
+              22
+            ],
+            [
+              136.64453125,
+              47
+            ],
+            [
+              136.64453125,
+              72
+            ]
+          ],
+          "start": [
+            136.64500427246094,
+            22
+          ],
+          "end": [
+            136.64500427246094,
+            66.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-state-feedback_stateDiagram-barbEnd-margin)"
+        },
+        {
+          "id": "label-state-feedback-edge1",
+          "d": "M115.868,109L109.223,114.917C102.579,120.833,89.289,132.667,82.645,143.583C76,154.5,76,164.5,76,169.5L76,174.5",
+          "points": [
+            [
+              115.8681640625,
+              109
+            ],
+            [
+              76,
+              144.5
+            ],
+            [
+              76,
+              180
+            ]
+          ],
+          "start": [
+            115.86799621582031,
+            109
+          ],
+          "end": [
+            76,
+            174.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-state-feedback_stateDiagram-barbEnd-margin)"
+        },
+        {
+          "id": "label-state-feedback-edge2",
+          "d": "M76,217L76,222.917C76,228.833,76,240.667,81.96,251.89C87.92,263.114,99.84,273.728,105.8,279.035L111.761,284.342",
+          "points": [
+            [
+              76,
+              217
+            ],
+            [
+              76,
+              252.5
+            ],
+            [
+              115.8681640625,
+              288
+            ]
+          ],
+          "start": [
+            76,
+            217
+          ],
+          "end": [
+            111.76100158691406,
+            284.3420104980469
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-state-feedback_stateDiagram-barbEnd-margin)"
+        },
+        {
+          "id": "label-state-feedback-edge3",
+          "d": "M157.421,288L164.066,282.083C170.71,276.167,184,264.333,190.644,249.417C197.289,234.5,197.289,216.5,197.289,198.5C197.289,180.5,197.289,162.5,191.329,148.193C185.369,133.886,173.449,123.272,167.489,117.965L161.528,112.658",
+          "points": [
+            [
+              157.4208984375,
+              288
+            ],
+            [
+              197.2890625,
+              252.5
+            ],
+            [
+              197.2890625,
+              198.5
+            ],
+            [
+              197.2890625,
+              144.5
+            ],
+            [
+              157.4208984375,
+              109
+            ]
+          ],
+          "start": [
+            157.42100524902344,
+            288
+          ],
+          "end": [
+            161.5279998779297,
+            112.65799713134766
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-state-feedback_stateDiagram-barbEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 223.578125,
+        "height": 333
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 223.578125,
+        "height": 333
+      }
+    },
+    {
+      "id": "merged-decision-labels",
+      "family": "flowchart",
+      "source": "flowchart TD\nA[First route] --> B{Continue first route?}\nB -->|Advance| C[First check]\nB -->|Stop| D[First stopped]\nC --> E{First check accepted?}\nE -->|Confirm| F[Complete]\nE -->|Decline| G[Deferred]\nH[Second route] --> I{Continue second route?}\nI -->|Proceed| J[Second check]\nI -->|Halt| K[Second stopped]\nJ --> L{Second check accepted?}\nL -->|Approve| F\nL -->|Reject| G",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-merged-decision-labels-flowchart-A",
+          "bounds": {
+            "x": 143.7127685546875,
+            "y": 8.005513191223145,
+            "width": 151.997802734375,
+            "height": 44.99934768676758
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-B",
+          "bounds": {
+            "x": 124.21304321289062,
+            "y": 103.00413513183594,
+            "width": 191.99722290039062,
+            "height": 191.99720764160156
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-C",
+          "bounds": {
+            "x": 42.71422576904297,
+            "y": 366.0003356933594,
+            "width": 151.997802734375,
+            "height": 44.99932861328125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-D",
+          "bounds": {
+            "x": 244.7113037109375,
+            "y": 366.0003356933594,
+            "width": 151.997802734375,
+            "height": 44.99932861328125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-E",
+          "bounds": {
+            "x": 23.214508056640625,
+            "y": 460.99896240234375,
+            "width": 191.99722290039062,
+            "height": 191.9971923828125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-F",
+          "bounds": {
+            "x": 7.999884128570557,
+            "y": 723.9951171875,
+            "width": 151.997802734375,
+            "height": 44.9993896484375
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-G",
+          "bounds": {
+            "x": 481.4226989746094,
+            "y": 723.9951171875,
+            "width": 151.99783325195312,
+            "height": 44.9993896484375
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-H",
+          "bounds": {
+            "x": 547.7069091796875,
+            "y": 8.005513191223145,
+            "width": 151.997802734375,
+            "height": 44.99934768676758
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-I",
+          "bounds": {
+            "x": 528.2072143554688,
+            "y": 103.00413513183594,
+            "width": 191.9971923828125,
+            "height": 191.99720764160156
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-J",
+          "bounds": {
+            "x": 446.7083740234375,
+            "y": 366.0003356933594,
+            "width": 151.997802734375,
+            "height": 44.99932861328125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-K",
+          "bounds": {
+            "x": 648.7054443359375,
+            "y": 366.0003356933594,
+            "width": 151.997802734375,
+            "height": 44.99932861328125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-merged-decision-labels-flowchart-L",
+          "bounds": {
+            "x": 427.2086486816406,
+            "y": 460.99896240234375,
+            "width": 191.99722290039062,
+            "height": 191.9971923828125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "labels": [
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0.005629591643810272,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Advance",
+          "bounds": {
+            "x": 91.47132873535156,
+            "y": 320.0010070800781,
+            "width": 54.48358154296875,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Stop",
+          "bounds": {
+            "x": 306.3041687011719,
+            "y": 320.0010070800781,
+            "width": 28.81207275390625,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0.005629591643810272,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Confirm",
+          "bounds": {
+            "x": 32.76229476928711,
+            "y": 661.9105834960938,
+            "width": 49.01491928100586,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Decline",
+          "bounds": {
+            "x": 301.8721008300781,
+            "y": 661.2183837890625,
+            "width": 46.702423095703125,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0.005629591643810272,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Proceed",
+          "bounds": {
+            "x": 496.6295166015625,
+            "y": 320.0010070800781,
+            "width": 52.155517578125,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Halt",
+          "bounds": {
+            "x": 712.2514038085938,
+            "y": 320.0010070800781,
+            "width": 24.9058837890625,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "",
+          "bounds": {
+            "x": 0,
+            "y": 0.005629591643810272,
+            "width": 0,
+            "height": 0
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Approve",
+          "bounds": {
+            "x": 290.1192932128906,
+            "y": 661.2183837890625,
+            "width": 52.155487060546875,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Reject",
+          "bounds": {
+            "x": 561.2115478515625,
+            "y": 662.2032470703125,
+            "width": 39.6868896484375,
+            "height": 20.99969482421875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "First route",
+          "bounds": {
+            "x": 159.7125244140625,
+            "y": 20.005340576171875,
+            "width": 119.99826049804688,
+            "height": 20.99969482421875
+          },
+          "owner": "label-merged-decision-labels-flowchart-A",
+          "edgeLabel": false
+        },
+        {
+          "text": "Continue first route?",
+          "bounds": {
+            "x": 159.7125244140625,
+            "y": 178.0030517578125,
+            "width": 119.99826049804688,
+            "height": 41.9993896484375
+          },
+          "owner": "label-merged-decision-labels-flowchart-B",
+          "edgeLabel": false
+        },
+        {
+          "text": "First check",
+          "bounds": {
+            "x": 58.713993072509766,
+            "y": 378.0001525878906,
+            "width": 119.99826049804688,
+            "height": 20.99969482421875
+          },
+          "owner": "label-merged-decision-labels-flowchart-C",
+          "edgeLabel": false
+        },
+        {
+          "text": "First stopped",
+          "bounds": {
+            "x": 260.7110595703125,
+            "y": 378.0001525878906,
+            "width": 119.99826049804688,
+            "height": 20.99969482421875
+          },
+          "owner": "label-merged-decision-labels-flowchart-D",
+          "edgeLabel": false
+        },
+        {
+          "text": "First check accepted?",
+          "bounds": {
+            "x": 58.713993072509766,
+            "y": 535.9978637695312,
+            "width": 119.99826049804688,
+            "height": 41.9993896484375
+          },
+          "owner": "label-merged-decision-labels-flowchart-E",
+          "edgeLabel": false
+        },
+        {
+          "text": "Complete",
+          "bounds": {
+            "x": 23.999652862548828,
+            "y": 735.9949340820312,
+            "width": 119.99826049804688,
+            "height": 20.999755859375
+          },
+          "owner": "label-merged-decision-labels-flowchart-F",
+          "edgeLabel": false
+        },
+        {
+          "text": "Deferred",
+          "bounds": {
+            "x": 497.4224853515625,
+            "y": 735.9949340820312,
+            "width": 119.99822998046875,
+            "height": 20.999755859375
+          },
+          "owner": "label-merged-decision-labels-flowchart-G",
+          "edgeLabel": false
+        },
+        {
+          "text": "Second route",
+          "bounds": {
+            "x": 563.7066650390625,
+            "y": 20.005340576171875,
+            "width": 119.998291015625,
+            "height": 20.99969482421875
+          },
+          "owner": "label-merged-decision-labels-flowchart-H",
+          "edgeLabel": false
+        },
+        {
+          "text": "Continue second route?",
+          "bounds": {
+            "x": 563.7066650390625,
+            "y": 178.0030517578125,
+            "width": 119.998291015625,
+            "height": 41.9993896484375
+          },
+          "owner": "label-merged-decision-labels-flowchart-I",
+          "edgeLabel": false
+        },
+        {
+          "text": "Second check",
+          "bounds": {
+            "x": 462.7081298828125,
+            "y": 378.0001525878906,
+            "width": 119.998291015625,
+            "height": 20.99969482421875
+          },
+          "owner": "label-merged-decision-labels-flowchart-J",
+          "edgeLabel": false
+        },
+        {
+          "text": "Second stopped",
+          "bounds": {
+            "x": 664.7052001953125,
+            "y": 378.0001525878906,
+            "width": 119.998291015625,
+            "height": 20.99969482421875
+          },
+          "owner": "label-merged-decision-labels-flowchart-K",
+          "edgeLabel": false
+        },
+        {
+          "text": "Second check accepted?",
+          "bounds": {
+            "x": 462.7081298828125,
+            "y": 535.9978637695312,
+            "width": 119.998291015625,
+            "height": 41.9993896484375
+          },
+          "owner": "label-merged-decision-labels-flowchart-L",
+          "edgeLabel": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-merged-decision-labels-L_A_B_0",
+          "d": "M219.715,53L219.715,57.167C219.715,61.333,219.715,69.667,219.715,77.333C219.715,85,219.715,92,219.715,95.5L219.715,99",
+          "points": [
+            [
+              219.71484375,
+              53
+            ],
+            [
+              219.71484375,
+              78
+            ],
+            [
+              219.71484375,
+              102.99999999999999
+            ]
+          ],
+          "start": [
+            219.7149963378906,
+            53
+          ],
+          "end": [
+            219.7149963378906,
+            99
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_B_C_0",
+          "d": "M178.012,253.297L168.129,266.164C158.246,279.031,138.48,304.766,128.598,322.883C118.715,341,118.715,351.5,118.715,356.75L118.715,362",
+          "points": [
+            [
+              178.01161794354837,
+              253.29677419354837
+            ],
+            [
+              118.71484375,
+              330.5
+            ],
+            [
+              118.71484375,
+              366
+            ]
+          ],
+          "start": [
+            178.0119934082031,
+            253.2969970703125
+          ],
+          "end": [
+            118.71499633789062,
+            362
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_B_D_0",
+          "d": "M261.418,253.297L271.301,266.164C281.184,279.031,300.949,304.766,310.832,322.883C320.715,341,320.715,351.5,320.715,356.75L320.715,362",
+          "points": [
+            [
+              261.4180695564516,
+              253.29677419354837
+            ],
+            [
+              320.71484375,
+              330.5
+            ],
+            [
+              320.71484375,
+              366
+            ]
+          ],
+          "start": [
+            261.4179992675781,
+            253.2969970703125
+          ],
+          "end": [
+            320.7149963378906,
+            362
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_C_E_0",
+          "d": "M118.715,411L118.715,415.167C118.715,419.333,118.715,427.667,118.715,435.333C118.715,443,118.715,450,118.715,453.5L118.715,457",
+          "points": [
+            [
+              118.71484375,
+              411
+            ],
+            [
+              118.71484375,
+              436
+            ],
+            [
+              118.71484375,
+              461
+            ]
+          ],
+          "start": [
+            118.71499633789062,
+            411
+          ],
+          "end": [
+            118.71499633789062,
+            457
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_E_F_0",
+          "d": "M85.363,619.648L79.253,631.123C73.144,642.598,60.926,665.549,58.07,682.372C55.215,699.194,61.722,709.889,64.976,715.236L68.229,720.583",
+          "points": [
+            [
+              85.36253886107664,
+              619.6476951110767
+            ],
+            [
+              48.70703125,
+              688.5
+            ],
+            [
+              70.30876212284481,
+              724
+            ]
+          ],
+          "start": [
+            85.36299896240234,
+            619.6480102539062
+          ],
+          "end": [
+            68.22899627685547,
+            720.5830078125
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_E_G_0",
+          "d": "M180.431,591.284L209.597,607.487C238.764,623.69,297.097,656.095,346.622,678.143C396.148,700.191,436.867,711.883,457.226,717.729L477.585,723.574",
+          "points": [
+            [
+              180.4305116154403,
+              591.2843321345597
+            ],
+            [
+              355.4296875,
+              688.5
+            ],
+            [
+              481.4296875,
+              724.678217821782
+            ]
+          ],
+          "start": [
+            180.43099975585938,
+            591.2839965820312
+          ],
+          "end": [
+            477.5849914550781,
+            723.573974609375
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_H_I_0",
+          "d": "M623.715,53L623.715,57.167C623.715,61.333,623.715,69.667,623.715,77.333C623.715,85,623.715,92,623.715,95.5L623.715,99",
+          "points": [
+            [
+              623.71484375,
+              53
+            ],
+            [
+              623.71484375,
+              78
+            ],
+            [
+              623.71484375,
+              102.99999999999999
+            ]
+          ],
+          "start": [
+            623.7150268554688,
+            53
+          ],
+          "end": [
+            623.7150268554688,
+            99
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_I_J_0",
+          "d": "M582.012,253.297L572.129,266.164C562.246,279.031,542.48,304.766,532.598,322.883C522.715,341,522.715,351.5,522.715,356.75L522.715,362",
+          "points": [
+            [
+              582.0116179435483,
+              253.29677419354837
+            ],
+            [
+              522.71484375,
+              330.5
+            ],
+            [
+              522.71484375,
+              366
+            ]
+          ],
+          "start": [
+            582.0120239257812,
+            253.2969970703125
+          ],
+          "end": [
+            522.7150268554688,
+            362
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_I_K_0",
+          "d": "M665.418,253.297L675.301,266.164C685.184,279.031,704.949,304.766,714.832,322.883C724.715,341,724.715,351.5,724.715,356.75L724.715,362",
+          "points": [
+            [
+              665.4180695564515,
+              253.29677419354837
+            ],
+            [
+              724.71484375,
+              330.5
+            ],
+            [
+              724.71484375,
+              366
+            ]
+          ],
+          "start": [
+            665.4180297851562,
+            253.2969970703125
+          ],
+          "end": [
+            724.7150268554688,
+            362
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_J_L_0",
+          "d": "M522.715,411L522.715,415.167C522.715,419.333,522.715,427.667,522.715,435.333C522.715,443,522.715,450,522.715,453.5L522.715,457",
+          "points": [
+            [
+              522.71484375,
+              411
+            ],
+            [
+              522.71484375,
+              436
+            ],
+            [
+              522.71484375,
+              461
+            ]
+          ],
+          "start": [
+            522.7150268554688,
+            411
+          ],
+          "end": [
+            522.7150268554688,
+            457
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_L_F_0",
+          "d": "M460.999,591.284L431.833,607.487C402.666,623.69,344.333,656.095,294.807,678.143C245.282,700.191,204.563,711.883,184.204,717.729L163.845,723.574",
+          "points": [
+            [
+              460.99917588455963,
+              591.2843321345597
+            ],
+            [
+              285.99999999999994,
+              688.5
+            ],
+            [
+              160,
+              724.678217821782
+            ]
+          ],
+          "start": [
+            460.9989929199219,
+            591.2839965820312
+          ],
+          "end": [
+            163.84500122070312,
+            723.573974609375
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-merged-decision-labels-L_L_G_0",
+          "d": "M554.897,620.818L560.585,632.098C566.274,643.379,577.651,665.939,580.435,682.551C583.219,699.162,577.41,709.825,574.505,715.156L571.601,720.487",
+          "points": [
+            [
+              554.8968342713271,
+              620.8180094786728
+            ],
+            [
+              589.0273437499999,
+              688.5
+            ],
+            [
+              569.6873989762931,
+              724
+            ]
+          ],
+          "start": [
+            554.89697265625,
+            620.8179931640625
+          ],
+          "end": [
+            571.6010131835938,
+            720.4869995117188
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-merged-decision-labels_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 808.703125,
+        "height": 777
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 808.71484375,
+        "height": 777
+      }
+    },
+    {
+      "id": "cluster-return-labels",
+      "family": "flowchart",
+      "source": "flowchart LR\nA(First value) -->|Outbound| B(Second value)\nB -->|Inbound| A\nsubgraph Group[Value group]\ndirection LR\nX[First axis]\nY[Second axis]\nP -->|Horizontal| X\nP -->|Vertical| Y\nA((A))\nend\nstyle P fill:none,stroke:#000,stroke-width:2px",
+      "layout": "dagre",
+      "nodes": [
+        {
+          "id": "label-cluster-return-labels-Group",
+          "bounds": {
+            "x": 8.000036239624023,
+            "y": 7.999821186065674,
+            "width": 500.8437194824219,
+            "height": 398.31475830078125
+          },
+          "radius": null,
+          "fill": "rgb(253, 244, 255)"
+        },
+        {
+          "id": "label-cluster-return-labels-flowchart-A",
+          "bounds": {
+            "x": 32.99947738647461,
+            "y": 185.495849609375,
+            "width": 185.81948852539062,
+            "height": 185.8194580078125
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-cluster-return-labels-flowchart-B",
+          "bounds": {
+            "x": 332.8476867675781,
+            "y": 441.31378173828125,
+            "width": 149.99664306640625,
+            "height": 50.998870849609375
+          },
+          "radius": "12",
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-cluster-return-labels-flowchart-X",
+          "bounds": {
+            "x": 331.8476867675781,
+            "y": 42.99903869628906,
+            "width": 151.99661254882812,
+            "height": 44.999000549316406
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-cluster-return-labels-flowchart-Y",
+          "bounds": {
+            "x": 331.8476867675781,
+            "y": 152.70249938964844,
+            "width": 151.99661254882812,
+            "height": 44.998992919921875
+          },
+          "radius": null,
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "id": "label-cluster-return-labels-flowchart-P",
+          "bounds": {
+            "x": 49.910919189453125,
+            "y": 90.49797821044922,
+            "width": 151.99661254882812,
+            "height": 44.999000549316406
+          },
+          "radius": null,
+          "fill": "none"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Value group",
+          "bounds": {
+            "x": 221.18833923339844,
+            "y": 7.999821186065674,
+            "width": 74.46708679199219,
+            "height": 20.99953269958496
+          },
+          "owner": "label-cluster-return-labels-Group",
+          "edgeLabel": false
+        },
+        {
+          "text": "Outbound",
+          "bounds": {
+            "x": 287.9851989746094,
+            "y": 287.7829895019531,
+            "width": 61.498626708984375,
+            "height": 20.999542236328125
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Inbound",
+          "bounds": {
+            "x": 282.0833435058594,
+            "y": 350.404052734375,
+            "width": 50.608245849609375,
+            "height": 20.99951171875
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Horizontal",
+          "bounds": {
+            "x": 243.8184051513672,
+            "y": 54.99877166748047,
+            "width": 63.02986145019531,
+            "height": 20.999534606933594
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "Vertical",
+          "bounds": {
+            "x": 252.37290954589844,
+            "y": 164.7022247314453,
+            "width": 45.92085266113281,
+            "height": 20.999526977539062
+          },
+          "owner": null,
+          "edgeLabel": true
+        },
+        {
+          "text": "A",
+          "bounds": {
+            "x": 65.91056060791016,
+            "y": 267.90582275390625,
+            "width": 119.99732208251953,
+            "height": 20.999542236328125
+          },
+          "owner": "label-cluster-return-labels-flowchart-A",
+          "edgeLabel": false
+        },
+        {
+          "text": "Second value",
+          "bounds": {
+            "x": 347.84735107421875,
+            "y": 456.3134460449219,
+            "width": 119.997314453125,
+            "height": 20.999542236328125
+          },
+          "owner": "label-cluster-return-labels-flowchart-B",
+          "edgeLabel": false
+        },
+        {
+          "text": "First axis",
+          "bounds": {
+            "x": 347.84735107421875,
+            "y": 54.99877166748047,
+            "width": 119.997314453125,
+            "height": 20.999534606933594
+          },
+          "owner": "label-cluster-return-labels-flowchart-X",
+          "edgeLabel": false
+        },
+        {
+          "text": "Second axis",
+          "bounds": {
+            "x": 347.84735107421875,
+            "y": 164.7022247314453,
+            "width": 119.997314453125,
+            "height": 20.999526977539062
+          },
+          "owner": "label-cluster-return-labels-flowchart-Y",
+          "edgeLabel": false
+        },
+        {
+          "text": "P",
+          "bounds": {
+            "x": 65.91056060791016,
+            "y": 102.49771118164062,
+            "width": 119.99732208251953,
+            "height": 20.999534606933594
+          },
+          "owner": "label-cluster-return-labels-flowchart-P",
+          "edgeLabel": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "label-cluster-return-labels-L_A_B_0",
+          "d": "M211.688,242.704L222.296,238.287C232.905,233.871,254.122,225.038,284.258,257.552C314.393,290.066,353.448,363.927,372.975,400.857L392.502,437.788",
+          "points": [
+            [
+              211.6878894660385,
+              242.70366365582686
+            ],
+            [
+              275.3392639160155,
+              216.20590972900388
+            ],
+            [
+              394.37161122268657,
+              441.32363891601557
+            ]
+          ],
+          "start": [
+            211.68800354003903,
+            242.70399475097653
+          ],
+          "end": [
+            392.5020141601562,
+            437.78799438476557
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-cluster-return-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-cluster-return-labels-L_B_A_0",
+          "d": "M383.667,441.324L365.613,422.289C347.558,403.255,311.449,365.186,283.846,343.04C256.244,320.894,237.148,314.669,227.6,311.557L218.052,308.445",
+          "points": [
+            [
+              383.66730483990347,
+              441.32363891601557
+            ],
+            [
+              275.3392639160155,
+              327.1177291870117
+            ],
+            [
+              214.24941993161727,
+              307.20548055520703
+            ]
+          ],
+          "start": [
+            383.66699218749994,
+            441.32400512695307
+          ],
+          "end": [
+            218.05200195312497,
+            308.4450073242187
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-cluster-return-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-cluster-return-labels-L_P_X_0",
+          "d": "M196.693,90.5L209.801,86.333C222.909,82.167,249.124,73.833,270.984,69.667C292.844,65.5,310.35,65.5,319.102,65.5L327.855,65.5",
+          "points": [
+            [
+              196.6932405170641,
+              90.49999999999999
+            ],
+            [
+              275.3392639160155,
+              65.5
+            ],
+            [
+              331.85488891601557,
+              65.5
+            ]
+          ],
+          "start": [
+            196.6929931640625,
+            90.49999999999999
+          ],
+          "end": [
+            327.85501098632807,
+            65.5
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-cluster-return-labels_flowchart-v2-pointEnd-margin)"
+        },
+        {
+          "id": "label-cluster-return-labels-L_P_Y_0",
+          "d": "M179.96,135.5L195.857,142.118C211.753,148.735,243.546,161.971,268.195,168.588C292.844,175.206,310.35,175.206,319.102,175.206L327.855,175.206",
+          "points": [
+            [
+              179.9600202632372,
+              135.5
+            ],
+            [
+              275.3392639160155,
+              175.2059097290039
+            ],
+            [
+              331.85488891601557,
+              175.2059097290039
+            ]
+          ],
+          "start": [
+            179.96000671386716,
+            135.5
+          ],
+          "end": [
+            327.85501098632807,
+            175.20599365234372
+          ],
+          "markerStart": null,
+          "markerEnd": "url(#label-cluster-return-labels_flowchart-v2-pointEnd-margin)"
+        }
+      ],
+      "svgRect": {
+        "x": 0,
+        "y": 0,
+        "width": 516.84375,
+        "height": 500.3125
+      },
+      "viewBox": {
+        "x": 0,
+        "y": 0,
+        "width": 516.8548583984375,
+        "height": 500.32366943359375
       }
     }
   ]

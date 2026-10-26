@@ -16,10 +16,19 @@ const native = read('native.json');
 const raster = read('raster.json');
 const normalize = text => text.replace(/\s+/g, ' ').trim();
 const nodeId = (id, caseId) => id.replace(/^subgraph_/, '')
-  .replace(`label-${caseId}-`, '').replace(/^flowchart-/, '');
-const edgeId = id => id.slice(id.indexOf('L_'));
+  .replace(`label-${caseId}-`, '').replace(/^flowchart-/, '')
+  .replace(/^entity-(.+)-\d+$/, '$1');
+const edgeId = id => {
+  if (id.includes('L_')) return id.slice(id.indexOf('L_'));
+  const er = id.match(/id_entity-(.+?)-\d+_entity-(.+?)-\d+_(\d+)$/);
+  if (er) return `id${er[1]}-${er[2]}-${Number(er[3]) + 1}`;
+  const nativeEr = id.match(/^identity-(.+?)-\d+-entity-(.+?)-\d+-(\d+)$/);
+  if (nativeEr) return `id${nativeEr[1]}-${nativeEr[2]}-${nativeEr[3]}`;
+  return id.replace(/^label-.+-(edge\d+)$/, '$1');
+};
 const near = (a, b, tolerance = 0.02) => Math.abs(a - b) <= tolerance;
 const nativeById = new Map(native.cases.map(entry => [entry.id, entry]));
+const isLabelBackground = node => /[_-]label[_-]background$/.test(node.id);
 
 function port(point, nodes) {
   let best = null;
@@ -38,7 +47,7 @@ function port(point, nodes) {
 }
 
 function topology(entry) {
-  const nodes = entry.nodes.filter(node => !node.id.endsWith('_label_background'));
+  const nodes = entry.nodes.filter(node => !isLabelBackground(node));
   return { elements: entry.edges.map(edge => {
     const points = edge.points.map(([x, y]) => ({ x, y }));
     const directions = points.slice(1).map((p, i) => {
@@ -73,13 +82,25 @@ try {
     const officialLabels = (o.labels ?? []).map(label => normalize(label.text)).filter(Boolean).sort();
     const contentPass = JSON.stringify(nativeLabels) === JSON.stringify(officialLabels);
     if (!contentPass) findings.push({ code: 'label-content', nativeLabels, officialLabels });
-    const nodeComparisons = (n.nodes ?? []).filter(node => !node.id.endsWith('_label_background')).map(node => {
+    const nodeComparisons = (n.nodes ?? []).filter(node => !isLabelBackground(node)).map(node => {
       const match = o.nodes?.find(candidate => nodeId(candidate.id, o.id) === nodeId(node.id, o.id));
       return { id: node.id, native: node.bounds, official: match?.bounds ?? null,
         matches: Boolean(match) && ['x', 'y', 'width', 'height'].every(key => near(node.bounds[key], match.bounds[key])) };
     });
     const geometryPass = nodeComparisons.every(node => node.matches);
     if (!geometryPass) findings.push({ code: 'node-geometry' });
+    const edgeLabelComparisons = (o.labels ?? []).filter(label =>
+      label.edgeLabel && normalize(label.text)).map(label => {
+      const candidates = (n.labels ?? []).filter(candidate =>
+        normalize(candidate.text) === normalize(label.text));
+      const center = bounds => [bounds.x + bounds.width / 2, bounds.y + bounds.height / 2];
+      const expected = center(label.bounds);
+      const actual = candidates.length === 1 ? center(candidates[0].bounds) : null;
+      return { text: label.text, official: expected, native: actual,
+        matches: actual !== null && actual.every((value, index) => near(value, expected[index])) };
+    });
+    const edgeLabelsPass = edgeLabelComparisons.every(label => label.matches);
+    if (!edgeLabelsPass) findings.push({ code: 'edge-label-anchor' });
     const topologyResult = o.edges && n.edges ? compareTopologyManifests(topology(n), topology(o)) : null;
     if (topologyResult?.status === 'fail') findings.push({ code: 'edge-topology' });
     if (topologyResult?.status === 'review') findings.push({ code: 'edge-topology-review' });
@@ -113,7 +134,8 @@ try {
     const failed = findings.some(finding => ['render-error', 'label-content'].includes(finding.code));
     cases.push({ id: o.id, family: o.family, source: o.source,
       sourceSha256: sha256(o.source), status: failed ? 'fail' : findings.length ? 'review' : 'pass',
-      contentPass, geometryPass, pathsPass, ssim: score, nodeComparisons,
+      contentPass, geometryPass, pathsPass, edgeLabelsPass, edgeLabelComparisons,
+      ssim: score, nodeComparisons,
       topology: topologyResult, renderedPaths: pathComparisons, findings });
   }
 } finally { await browser.close(); }

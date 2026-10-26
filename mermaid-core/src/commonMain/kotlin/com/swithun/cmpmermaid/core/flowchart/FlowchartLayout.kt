@@ -25,6 +25,7 @@ import com.swithun.cmpmermaid.core.SceneTextWeight
 import com.swithun.cmpmermaid.core.TextMetrics
 import com.swithun.cmpmermaid.core.TextMetricsRequest
 import com.swithun.cmpmermaid.core.subGraphTitleTotalMargin
+import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgeLabelPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidEdgePathPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidLineJumpPort
 import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.MermaidShapeLayout
@@ -551,7 +552,17 @@ internal class FlowchartLayout {
             val label = edge.label ?: return@forEachIndexed
             val textMeasurement = edgeLabelMeasurements[index] ?: return@forEachIndexed
             val labelSize = textMeasurement.size
-            val center = routed.labelAnchor.translate(
+            val anchor = when (val positioned = MermaidEdgeLabelPort.positionEdgeLabel(
+                layoutAnchor = routed.labelAnchor,
+                points = routed.renderPoints,
+                commands = commands,
+                curve = curve,
+                pathUpdated = routed.pathUpdated,
+            )) {
+                is GMResult.Ok -> positioned.value
+                is GMResult.Err -> return positioned
+            }
+            val center = anchor.translate(
                 dx = 0f,
                 dy = context.options.subGraphTitleTotalMargin / 2f,
             )

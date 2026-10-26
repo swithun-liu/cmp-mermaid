@@ -1,0 +1,3623 @@
+{
+    "schemaVersion": 1,
+    "generatedAt": "2026-10-26T03:32:39.521012Z",
+    "cases": [
+        {
+            "id": "direction-v",
+            "source": "flowchart TD\nv[Value] --> A[Result]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 156.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Value",
+                    "bounds": {
+                        "x": 66.609375,
+                        "y": 20.0,
+                        "width": 34.78125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Result",
+                    "bounds": {
+                        "x": 64.15625,
+                        "y": 115.0,
+                        "width": 39.6875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "v",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 103.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_v_A_0",
+                    "points": [
+                        [
+                            84.0,
+                            53.0
+                        ],
+                        [
+                            84.0,
+                            78.0
+                        ],
+                        [
+                            84.0,
+                            103.0
+                        ]
+                    ],
+                    "d": "M84.0,53.0 L84.0,57.166668 C84.0,61.333332 84.0,69.666664 84.0,77.333336 C84.0,85.0 84.0,92.0 84.0,95.5 L84.0,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "comparison-negative",
+            "source": "flowchart TD\nA[\"x < -2 or x > 2\"] --> B[Result]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 156.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "x < -2 or x > 2",
+                    "bounds": {
+                        "x": 40.8125,
+                        "y": 20.0,
+                        "width": 86.375,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Result",
+                    "bounds": {
+                        "x": 64.15625,
+                        "y": 115.0,
+                        "width": 39.6875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 103.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            84.0,
+                            53.0
+                        ],
+                        [
+                            84.0,
+                            78.0
+                        ],
+                        [
+                            84.0,
+                            103.0
+                        ]
+                    ],
+                    "d": "M84.0,53.0 L84.0,57.166668 C84.0,61.333332 84.0,69.666664 84.0,77.333336 C84.0,85.0 84.0,92.0 84.0,95.5 L84.0,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "comparison-positive",
+            "source": "flowchart LR\nA[\"x < 2 and x > -2\"]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 61.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "x < 2 and x > -2",
+                    "bounds": {
+                        "x": 35.351562,
+                        "y": 20.0,
+                        "width": 97.296875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "long-prose",
+            "source": "flowchart TD\nA[\"A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete.\"] --> B[Complete]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 744.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "A careful observer records every measurement before comparing the results. The first sample includes several observations and the second sample adds more information. Repeat the procedure with fresh inputs to verify the complete text remains visible. Every sentence belongs inside the label and none of the final observations should disappear when the label wraps across many lines. The final observation confirms the measurement is complete.",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 120.0,
+                        "height": 609.0
+                    }
+                },
+                {
+                    "text": "Complete",
+                    "bounds": {
+                        "x": 54.039062,
+                        "y": 703.0,
+                        "width": 59.921875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 633.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 691.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            84.0,
+                            641.0
+                        ],
+                        [
+                            84.0,
+                            666.0
+                        ],
+                        [
+                            84.0,
+                            691.0
+                        ]
+                    ],
+                    "d": "M84.0,641.0 L84.0,645.1667 C84.0,649.3333 84.0,657.6667 84.0,665.3333 C84.0,673.0 84.0,680.0 84.0,683.5 L84.0,687.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "twelve-lines",
+            "source": "flowchart TD\nA[\"Observation 1<br/>Observation 2<br/>Observation 3<br/>Observation 4<br/>Observation 5<br/>Observation 6<br/>Observation 7<br/>Observation 8<br/>Observation 9<br/>Observation 10<br/>Observation 11<br/>Observation 12\"]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 292.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Observation 1\nObservation 2\nObservation 3\nObservation 4\nObservation 5\nObservation 6\nObservation 7\nObservation 8\nObservation 9\nObservation 10\nObservation 11\nObservation 12",
+                    "bounds": {
+                        "x": 36.523438,
+                        "y": 20.0,
+                        "width": 94.953125,
+                        "height": 252.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 276.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "accented-lines",
+            "source": "flowchart TD\nA[\"Café numéro 1<br/>Café numéro 2<br/>Café numéro 3<br/>Café numéro 4<br/>Café numéro 5<br/>Café numéro 6<br/>Café numéro 7<br/>Café numéro 8<br/>Café numéro 9<br/>Café numéro 10<br/>Café numéro 11\"]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 271.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Café numéro 1\nCafé numéro 2\nCafé numéro 3\nCafé numéro 4\nCafé numéro 5\nCafé numéro 6\nCafé numéro 7\nCafé numéro 8\nCafé numéro 9\nCafé numéro 10\nCafé numéro 11",
+                    "bounds": {
+                        "x": 33.796875,
+                        "y": 20.0,
+                        "width": 100.40625,
+                        "height": 231.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 255.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "empty-round",
+            "source": "flowchart TD\nA(\" \")",
+            "sceneWidth": 46.0,
+            "sceneHeight": 46.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "",
+                    "bounds": {
+                        "x": 23.0,
+                        "y": 23.0,
+                        "width": 0.0,
+                        "height": 0.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 30.0,
+                        "height": 30.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "empty-circle",
+            "source": "flowchart TD\nA((\" \"))",
+            "sceneWidth": 80.0,
+            "sceneHeight": 79.87371,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "",
+                    "bounds": {
+                        "x": 40.0,
+                        "y": 39.936855,
+                        "width": 0.0,
+                        "height": 0.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 64.0,
+                        "height": 63.87371
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "empty-rect",
+            "source": "flowchart TD\nA[\" \"]",
+            "sceneWidth": 48.0,
+            "sceneHeight": 40.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 0.0,
+                        "height": 0.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 32.0,
+                        "height": 24.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "explicit-breaks",
+            "source": "flowchart TD\nA[\"<br/><br/>\"]",
+            "sceneWidth": 168.0,
+            "sceneHeight": 103.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "\n\n",
+                    "bounds": {
+                        "x": 83.99219,
+                        "y": 20.0,
+                        "width": 0.015625,
+                        "height": 63.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 87.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "transparent-node",
+            "source": "flowchart TD\nA[\" \"]\nstyle A fill:none,stroke:none",
+            "sceneWidth": 48.0,
+            "sceneHeight": 40.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 0.0,
+                        "height": 0.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 32.0,
+                        "height": 24.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "empty-group",
+            "source": "flowchart TD\nsubgraph Empty[Empty group]\nend",
+            "sceneWidth": 127.375,
+            "sceneHeight": 61.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Empty group",
+                    "bounds": {
+                        "x": 24.0,
+                        "y": 20.0,
+                        "width": 79.375,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "Empty",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 111.375,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "mixed-groups",
+            "source": "flowchart TD\nsubgraph Empty[Empty group]\nend\nsubgraph Full[Full group]\nA[Alpha] --> B[Beta]\nend",
+            "sceneWidth": 631.375,
+            "sceneHeight": 131.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Full group",
+                    "bounds": {
+                        "x": 203.86719,
+                        "y": 8.0,
+                        "width": 62.265625,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Empty group",
+                    "bounds": {
+                        "x": 528.0,
+                        "y": 55.0,
+                        "width": 79.375,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Alpha",
+                    "bounds": {
+                        "x": 103.59375,
+                        "y": 55.0,
+                        "width": 35.8125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Beta",
+                    "bounds": {
+                        "x": 334.09375,
+                        "y": 55.0,
+                        "width": 28.8125,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "subgraph_Full",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 454.0,
+                        "height": 115.0
+                    }
+                },
+                {
+                    "id": "Empty",
+                    "bounds": {
+                        "x": 512.0,
+                        "y": 43.0,
+                        "width": 111.375,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 45.5,
+                        "y": 43.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 272.5,
+                        "y": 43.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            197.5,
+                            65.5
+                        ],
+                        [
+                            235.0,
+                            65.5
+                        ],
+                        [
+                            272.5,
+                            65.5
+                        ]
+                    ],
+                    "d": "M197.5,65.5 L203.75,65.5 C210.0,65.5 222.5,65.5 234.33333,65.5 C246.16667,65.5 257.33334,65.5 262.91666,65.5 L268.5,65.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "bare-comment",
+            "source": "flowchart TD\n%%\nA[Alpha] --> B[Beta]",
+            "sceneWidth": 370.0,
+            "sceneHeight": 156.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "%%",
+                    "bounds": {
+                        "x": 71.546875,
+                        "y": 20.0,
+                        "width": 24.90625,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Alpha",
+                    "bounds": {
+                        "x": 268.09375,
+                        "y": 20.0,
+                        "width": 35.8125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Beta",
+                    "bounds": {
+                        "x": 271.59375,
+                        "y": 115.0,
+                        "width": 28.8125,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "%%",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 210.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 210.0,
+                        "y": 103.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            286.0,
+                            53.0
+                        ],
+                        [
+                            286.0,
+                            78.0
+                        ],
+                        [
+                            286.0,
+                            103.0
+                        ]
+                    ],
+                    "d": "M286.0,53.0 L286.0,57.166668 C286.0,61.333332 286.0,69.666664 286.0,77.333336 C286.0,85.0 286.0,92.0 286.0,95.5 L286.0,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "class-raw-angle",
+            "source": "classDiagram\nclass Store {\n+Map<Key,Value> raw\n+load(Map<Key,Value> input) Result\n}",
+            "sceneWidth": 215.0,
+            "sceneHeight": 136.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Store",
+                    "bounds": {
+                        "x": 89.5,
+                        "y": 20.0,
+                        "width": 36.0,
+                        "height": 16.0
+                    }
+                },
+                {
+                    "text": "+Map raw",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 60.0,
+                        "width": 62.0,
+                        "height": 16.0
+                    }
+                },
+                {
+                    "text": "+load(Map input) : Result",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 100.0,
+                        "width": 157.0,
+                        "height": 16.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "Store",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 199.0,
+                        "height": 120.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "class-tilde-generic",
+            "source": "classDiagram\nclass Store {\n+Map~Key,Value~ typed\n+load(Map~Key,Value~ input) Result\n}",
+            "sceneWidth": 293.0,
+            "sceneHeight": 136.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Store",
+                    "bounds": {
+                        "x": 128.5,
+                        "y": 20.0,
+                        "width": 36.0,
+                        "height": 16.0
+                    }
+                },
+                {
+                    "text": "+Map<Key,Value> typed",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 60.0,
+                        "width": 152.0,
+                        "height": 16.0
+                    }
+                },
+                {
+                    "text": "+load(Map<Key,Value> input) : Result",
+                    "bounds": {
+                        "x": 20.0,
+                        "y": 100.0,
+                        "width": 235.0,
+                        "height": 16.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "Store",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 277.0,
+                        "height": 120.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "rounded-default",
+            "source": "---\nconfig:\n  theme: default\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 70.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 31.398438,
+                        "y": 23.0,
+                        "width": 103.203125,
+                        "height": 24.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 247.97656,
+                        "y": 23.0,
+                        "width": 72.046875,
+                        "height": 24.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 54.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 48.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            35.0
+                        ],
+                        [
+                            183.0,
+                            35.0
+                        ],
+                        [
+                            208.0,
+                            35.0
+                        ]
+                    ],
+                    "d": "M158.0,35.0 L162.16667,35.0 C166.33333,35.0 174.66667,35.0 182.33333,35.0 C190.0,35.0 197.0,35.0 200.5,35.0 L204.0,35.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-forest",
+            "source": "---\nconfig:\n  theme: forest\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 70.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 31.398438,
+                        "y": 23.0,
+                        "width": 103.203125,
+                        "height": 24.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 247.97656,
+                        "y": 23.0,
+                        "width": 72.046875,
+                        "height": 24.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 54.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 48.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            35.0
+                        ],
+                        [
+                            183.0,
+                            35.0
+                        ],
+                        [
+                            208.0,
+                            35.0
+                        ]
+                    ],
+                    "d": "M158.0,35.0 L162.16667,35.0 C166.33333,35.0 174.66667,35.0 182.33333,35.0 C190.0,35.0 197.0,35.0 200.5,35.0 L204.0,35.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-neo",
+            "source": "---\nconfig:\n  theme: neo\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 67.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 37.851562,
+                        "y": 23.0,
+                        "width": 90.296875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 252.47656,
+                        "y": 23.0,
+                        "width": 63.046875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            33.5
+                        ],
+                        [
+                            183.0,
+                            33.5
+                        ],
+                        [
+                            208.0,
+                            33.5
+                        ]
+                    ],
+                    "d": "M158.0,33.5 L162.16667,33.5 C166.33333,33.5 174.66667,33.5 182.33333,33.5 C190.0,33.5 197.0,33.5 200.5,33.5 L204.0,33.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-redux-color",
+            "source": "---\nconfig:\n  theme: redux-color\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 67.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 37.851562,
+                        "y": 23.0,
+                        "width": 90.296875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 252.47656,
+                        "y": 23.0,
+                        "width": 63.046875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            33.5
+                        ],
+                        [
+                            183.0,
+                            33.5
+                        ],
+                        [
+                            208.0,
+                            33.5
+                        ]
+                    ],
+                    "d": "M158.0,33.5 L162.16667,33.5 C166.33333,33.5 174.66667,33.5 182.33333,33.5 C190.0,33.5 197.0,33.5 200.5,33.5 L204.0,33.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-redux-dark",
+            "source": "---\nconfig:\n  theme: redux-dark\n---\nflowchart LR\nA(Rounded label) --> B[Rectangle]",
+            "sceneWidth": 368.0,
+            "sceneHeight": 67.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 37.851562,
+                        "y": 23.0,
+                        "width": 90.296875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Rectangle",
+                    "bounds": {
+                        "x": 252.47656,
+                        "y": 23.0,
+                        "width": 63.046875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 208.0,
+                        "y": 11.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.0,
+                            33.5
+                        ],
+                        [
+                            183.0,
+                            33.5
+                        ],
+                        [
+                            208.0,
+                            33.5
+                        ]
+                    ],
+                    "d": "M158.0,33.5 L162.16667,33.5 C166.33333,33.5 174.66667,33.5 182.33333,33.5 C190.0,33.5 197.0,33.5 200.5,33.5 L204.0,33.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-override",
+            "source": "---\nconfig:\n  theme: redux-color\n  themeVariables:\n    radius: 7\n---\nflowchart TD\nA(Rounded label)",
+            "sceneWidth": 166.0,
+            "sceneHeight": 67.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Rounded label",
+                    "bounds": {
+                        "x": 37.851562,
+                        "y": 23.0,
+                        "width": 90.296875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                }
+            ],
+            "edges": []
+        },
+        {
+            "id": "cluster-boundary",
+            "source": "flowchart TD\nsubgraph Box[Group]\nA[Alpha]\nB[Beta]\nC[Gamma]\nend\nA -->|Down| Box\nB -->|Up| Box\nC -->|Left| Box",
+            "sceneWidth": 461.6797,
+            "sceneHeight": 227.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Group",
+                    "bounds": {
+                        "x": 211.3789,
+                        "y": 8.0,
+                        "width": 38.921875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Down",
+                    "bounds": {
+                        "x": 99.10156,
+                        "y": 65.5,
+                        "width": 39.796875,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Up",
+                    "bounds": {
+                        "x": 310.04688,
+                        "y": 65.5,
+                        "width": 21.90625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Left",
+                    "bounds": {
+                        "x": 282.3203,
+                        "y": 148.3125,
+                        "width": 27.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Alpha",
+                    "bounds": {
+                        "x": 101.09375,
+                        "y": 45.0,
+                        "width": 35.8125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Beta",
+                    "bounds": {
+                        "x": 306.59375,
+                        "y": 45.0,
+                        "width": 28.8125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Gamma",
+                    "bounds": {
+                        "x": 195.10156,
+                        "y": 161.0,
+                        "width": 49.796875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "subgraph_Box",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 445.6797,
+                        "height": 211.0
+                    }
+                },
+                {
+                    "id": "L_A_Box_0_label_background",
+                    "bounds": {
+                        "x": 99.10156,
+                        "y": 65.5,
+                        "width": 39.796875,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_B_Box_0_label_background",
+                    "bounds": {
+                        "x": 310.04688,
+                        "y": 65.5,
+                        "width": 21.90625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_C_Box_0_label_background",
+                    "bounds": {
+                        "x": 282.3203,
+                        "y": 148.3125,
+                        "width": 27.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 43.0,
+                        "y": 33.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 245.0,
+                        "y": 33.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "C",
+                    "bounds": {
+                        "x": 144.0,
+                        "y": 149.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_Box_0",
+                    "points": [
+                        [
+                            119.0,
+                            78.0
+                        ],
+                        [
+                            119.0,
+                            113.5
+                        ],
+                        [
+                            8.0,
+                            113.5
+                        ]
+                    ],
+                    "d": "M123.0,78.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_Box_0",
+                    "points": [
+                        [
+                            321.0,
+                            78.0
+                        ],
+                        [
+                            321.0,
+                            113.5
+                        ],
+                        [
+                            453.6797,
+                            113.5
+                        ]
+                    ],
+                    "d": "M325.0,78.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_C_Box_0",
+                    "points": [
+                        [
+                            296.0,
+                            160.8125
+                        ],
+                        [
+                            380.0,
+                            149.0
+                        ],
+                        [
+                            401.0,
+                            149.0
+                        ],
+                        [
+                            422.0,
+                            171.5
+                        ],
+                        [
+                            401.0,
+                            194.0
+                        ],
+                        [
+                            380.0,
+                            194.0
+                        ],
+                        [
+                            426.32303,
+                            219.0
+                        ]
+                    ],
+                    "d": "M300.0,160.8125",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "crossing-labels",
+            "source": "flowchart TD\nA[Start] --> B[Left]\nA --> C[Right]\nB -->|Accept| C\nC -->|Retry| B\nB --> D[Finish]\nC --> D",
+            "sceneWidth": 262.5664,
+            "sceneHeight": 367.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Accept",
+                    "bounds": {
+                        "x": 126.09375,
+                        "y": 171.0,
+                        "width": 46.8125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Retry",
+                    "bounds": {
+                        "x": 188.90625,
+                        "y": 171.0,
+                        "width": 37.453125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Start",
+                    "bounds": {
+                        "x": 124.71094,
+                        "y": 20.0,
+                        "width": 29.578125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Left",
+                    "bounds": {
+                        "x": 166.88672,
+                        "y": 115.0,
+                        "width": 23.359375,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Right",
+                    "bounds": {
+                        "x": 133.15625,
+                        "y": 231.0,
+                        "width": 32.6875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Finish",
+                    "bounds": {
+                        "x": 65.32031,
+                        "y": 326.0,
+                        "width": 37.359375,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "L_B_C_0_label_background",
+                    "bounds": {
+                        "x": 126.09375,
+                        "y": 171.0,
+                        "width": 46.8125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_C_B_0_label_background",
+                    "bounds": {
+                        "x": 188.90625,
+                        "y": 171.0,
+                        "width": 37.453125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 63.5,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 102.56641,
+                        "y": 103.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "C",
+                    "bounds": {
+                        "x": 73.5,
+                        "y": 219.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "D",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 314.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            158.00514,
+                            53.0
+                        ],
+                        [
+                            178.5664,
+                            78.0
+                        ],
+                        [
+                            178.5664,
+                            103.0
+                        ]
+                    ],
+                    "d": "M158.00514,53.0 L161.43202,57.166668 C164.8589,61.333332 171.71265,69.666664 175.13953,77.333336 C178.5664,85.0 178.5664,92.0 178.5664,95.5 L178.5664,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_A_C_0",
+                    "points": [
+                        [
+                            96.39474,
+                            53.0
+                        ],
+                        [
+                            48.5,
+                            78.0
+                        ],
+                        [
+                            48.5,
+                            125.5
+                        ],
+                        [
+                            48.5,
+                            183.5
+                        ],
+                        [
+                            110.31896,
+                            219.0
+                        ]
+                    ],
+                    "d": "M96.39474,53.0 L88.41228,57.166668 C80.429825,61.333332 64.46491,69.666664 56.482456,81.75 C48.5,93.833336 48.5,109.666664 48.5,127.25 C48.5,144.83333 48.5,164.16667 58.225037,179.41801 C67.95007,194.66936 87.400154,205.8387 97.12519,211.42339 L106.85023,217.00806",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_C_0",
+                    "points": [
+                        [
+                            167.29065,
+                            148.0
+                        ],
+                        [
+                            149.5,
+                            183.5
+                        ],
+                        [
+                            149.5,
+                            219.0
+                        ]
+                    ],
+                    "d": "M167.29065,148.0 L164.32555,153.91667 C161.36043,159.83333 155.43022,171.66667 152.4651,182.83333 C149.5,194.0 149.5,204.5 149.5,209.75 L149.5,215.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_C_B_0",
+                    "points": [
+                        [
+                            172.05153,
+                            219.0
+                        ],
+                        [
+                            207.63281,
+                            183.5
+                        ],
+                        [
+                            189.84216,
+                            148.0
+                        ]
+                    ],
+                    "d": "M172.05153,219.0 L177.98175,213.08333 C183.91196,207.16667 195.77238,195.33333 199.03618,184.09601 C202.29997,172.85869 196.96713,162.21738 194.30072,156.89673 L191.6343,151.57607",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_D_0",
+                    "points": [
+                        [
+                            120.35099,
+                            148.0
+                        ],
+                        [
+                            28.5,
+                            183.5
+                        ],
+                        [
+                            28.5,
+                            241.5
+                        ],
+                        [
+                            28.5,
+                            289.0
+                        ],
+                        [
+                            57.710526,
+                            314.0
+                        ]
+                    ],
+                    "d": "M120.35099,148.0 L105.042496,153.91667 C89.73399,159.83333 59.116997,171.66667 43.8085,187.25 C28.5,202.83333 28.5,222.16667 28.5,239.75 C28.5,257.33334 28.5,273.16666 32.861927,284.81653 C37.223854,296.46637 45.947712,303.9327 50.30964,307.6659 L54.671566,311.39908",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_C_D_0",
+                    "points": [
+                        [
+                            149.5,
+                            264.0
+                        ],
+                        [
+                            149.5,
+                            289.0
+                        ],
+                        [
+                            115.02631,
+                            314.0
+                        ]
+                    ],
+                    "d": "M149.5,264.0 L149.5,268.16666 C149.5,272.33334 149.5,280.66666 144.29408,288.6086 C139.08815,296.55057 128.67632,304.10117 123.47039,307.87643 L118.264465,311.65173",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "basis-feedback",
+            "source": "---\nconfig:\n  flowchart:\n    curve: basis\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+            "sceneWidth": 623.3594,
+            "sceneHeight": 119.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Forward",
+                    "bounds": {
+                        "x": 385.0,
+                        "y": 18.0,
+                        "width": 55.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Feedback",
+                    "bounds": {
+                        "x": 253.25781,
+                        "y": 86.0,
+                        "width": 65.484375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Input",
+                    "bounds": {
+                        "x": 68.42969,
+                        "y": 54.0,
+                        "width": 31.140625,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Process",
+                    "bounds": {
+                        "x": 260.71094,
+                        "y": 20.0,
+                        "width": 50.578125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Output",
+                    "bounds": {
+                        "x": 518.34375,
+                        "y": 54.0,
+                        "width": 42.03125,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "L_B_C_0_label_background",
+                    "bounds": {
+                        "x": 385.0,
+                        "y": 18.0,
+                        "width": 55.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_C_A_0_label_background",
+                    "bounds": {
+                        "x": 253.25781,
+                        "y": 86.0,
+                        "width": 65.484375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 42.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 210.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "C",
+                    "bounds": {
+                        "x": 463.35938,
+                        "y": 42.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            150.83824,
+                            42.0
+                        ],
+                        [
+                            185.0,
+                            30.5
+                        ],
+                        [
+                            210.0,
+                            30.5
+                        ]
+                    ],
+                    "d": "M150.83824,42.0 L156.53186,40.083332 C162.2255,38.166668 173.61275,34.333332 182.80637,32.416668 C192.0,30.5 199.0,30.5 202.5,30.5 L206.0,30.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_C_0",
+                    "points": [
+                        [
+                            362.0,
+                            30.5
+                        ],
+                        [
+                            412.6797,
+                            30.5
+                        ],
+                        [
+                            463.35938,
+                            44.102097
+                        ]
+                    ],
+                    "d": "M362.0,30.5 L370.44662,30.5 C378.89322,30.5 395.78647,30.5 412.0358,32.594204 C428.28516,34.688408 443.89062,38.876812 451.69336,40.971016 L459.4961,43.06522",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_C_A_0",
+                    "points": [
+                        [
+                            463.35938,
+                            84.8979
+                        ],
+                        [
+                            412.6797,
+                            98.5
+                        ],
+                        [
+                            286.0,
+                            98.5
+                        ],
+                        [
+                            185.0,
+                            98.5
+                        ],
+                        [
+                            150.83824,
+                            87.0
+                        ]
+                    ],
+                    "d": "M463.35938,84.8979 L454.91275,87.16492 C446.46616,89.43194 429.5729,93.965965 400.01303,96.23299 C370.45312,98.5 328.22656,98.5 290.27994,98.5 C252.33333,98.5 218.66667,98.5 196.77153,96.79603 C174.8764,95.09206 164.7528,91.68411 159.69101,89.98014 L154.62921,88.27617",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "linear-feedback",
+            "source": "---\nconfig:\n  flowchart:\n    curve: linear\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+            "sceneWidth": 623.3594,
+            "sceneHeight": 119.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Forward",
+                    "bounds": {
+                        "x": 385.0,
+                        "y": 18.0,
+                        "width": 55.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Feedback",
+                    "bounds": {
+                        "x": 253.25781,
+                        "y": 86.0,
+                        "width": 65.484375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Input",
+                    "bounds": {
+                        "x": 68.42969,
+                        "y": 54.0,
+                        "width": 31.140625,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Process",
+                    "bounds": {
+                        "x": 260.71094,
+                        "y": 20.0,
+                        "width": 50.578125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Output",
+                    "bounds": {
+                        "x": 518.34375,
+                        "y": 54.0,
+                        "width": 42.03125,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "L_B_C_0_label_background",
+                    "bounds": {
+                        "x": 385.0,
+                        "y": 18.0,
+                        "width": 55.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_C_A_0_label_background",
+                    "bounds": {
+                        "x": 253.25781,
+                        "y": 86.0,
+                        "width": 65.484375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 42.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 210.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "C",
+                    "bounds": {
+                        "x": 463.35938,
+                        "y": 42.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            150.83824,
+                            42.0
+                        ],
+                        [
+                            185.0,
+                            30.5
+                        ],
+                        [
+                            210.0,
+                            30.5
+                        ]
+                    ],
+                    "d": "M150.83824,42.0 L185.0,30.5 L206.0,30.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_C_0",
+                    "points": [
+                        [
+                            362.0,
+                            30.5
+                        ],
+                        [
+                            412.6797,
+                            30.5
+                        ],
+                        [
+                            463.35938,
+                            44.102097
+                        ]
+                    ],
+                    "d": "M362.0,30.5 L412.6797,30.5 L459.4961,43.06522",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_C_A_0",
+                    "points": [
+                        [
+                            463.35938,
+                            84.8979
+                        ],
+                        [
+                            412.6797,
+                            98.5
+                        ],
+                        [
+                            286.0,
+                            98.5
+                        ],
+                        [
+                            185.0,
+                            98.5
+                        ],
+                        [
+                            150.83824,
+                            87.0
+                        ]
+                    ],
+                    "d": "M463.35938,84.8979 L412.6797,98.5 L286.0,98.5 L185.0,98.5 L154.62921,88.27617",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "rounded-feedback",
+            "source": "---\nconfig:\n  flowchart:\n    curve: rounded\n---\nflowchart LR\nA[Input] --> B[Process]\nB -->|Forward| C[Output]\nC -->|Feedback| A",
+            "sceneWidth": 623.3594,
+            "sceneHeight": 119.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Forward",
+                    "bounds": {
+                        "x": 385.0,
+                        "y": 18.0,
+                        "width": 55.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Feedback",
+                    "bounds": {
+                        "x": 253.25781,
+                        "y": 86.0,
+                        "width": 65.484375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Input",
+                    "bounds": {
+                        "x": 68.42969,
+                        "y": 54.0,
+                        "width": 31.140625,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Process",
+                    "bounds": {
+                        "x": 260.71094,
+                        "y": 20.0,
+                        "width": 50.578125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Output",
+                    "bounds": {
+                        "x": 518.34375,
+                        "y": 54.0,
+                        "width": 42.03125,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "L_B_C_0_label_background",
+                    "bounds": {
+                        "x": 385.0,
+                        "y": 18.0,
+                        "width": 55.359375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_C_A_0_label_background",
+                    "bounds": {
+                        "x": 253.25781,
+                        "y": 86.0,
+                        "width": 65.484375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 42.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 210.0,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "C",
+                    "bounds": {
+                        "x": 463.35938,
+                        "y": 42.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            150.83824,
+                            42.0
+                        ],
+                        [
+                            185.0,
+                            30.5
+                        ],
+                        [
+                            210.0,
+                            30.5
+                        ]
+                    ],
+                    "d": "M150.83824,42.0 L175.04872,33.849937 Q185.0,30.5 195.5,30.5 L206.0,30.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_C_0",
+                    "points": [
+                        [
+                            362.0,
+                            30.5
+                        ],
+                        [
+                            412.6797,
+                            30.5
+                        ],
+                        [
+                            463.35938,
+                            44.102097
+                        ]
+                    ],
+                    "d": "M362.0,30.5 L388.44305,30.5 Q412.6797,30.5 436.0879,36.782608 L459.4961,43.06522",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_C_A_0",
+                    "points": [
+                        [
+                            463.35938,
+                            84.8979
+                        ],
+                        [
+                            412.6797,
+                            98.5
+                        ],
+                        [
+                            286.0,
+                            98.5
+                        ],
+                        [
+                            185.0,
+                            98.5
+                        ],
+                        [
+                            150.83824,
+                            87.0
+                        ]
+                    ],
+                    "d": "M463.35938,84.8979 L438.01953,91.69895 Q412.6797,98.5 386.44302,98.5 L286.0,98.5 L201.02274,98.5 Q185.0,98.5 169.8146,93.388084 L154.62921,88.27617",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "er-crossing-labels",
+            "source": "erDiagram\nTEAM ||--o{ PERSON : includes\nTEAM ||--o{ TASK : owns\nPERSON ||--o{ TASK : creates\nTASK }o--|| PERSON : assigned",
+            "sceneWidth": 255.25,
+            "sceneHeight": 461.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "includes",
+                    "bounds": {
+                        "x": 151.0,
+                        "y": 129.0,
+                        "width": 52.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "owns",
+                    "bounds": {
+                        "x": 14.0,
+                        "y": 220.0,
+                        "width": 33.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "creates",
+                    "bounds": {
+                        "x": 102.25,
+                        "y": 311.0,
+                        "width": 46.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "assigned",
+                    "bounds": {
+                        "x": 184.25,
+                        "y": 311.0,
+                        "width": 57.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "TEAM",
+                    "bounds": {
+                        "x": 84.25,
+                        "y": 38.0,
+                        "width": 39.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "PERSON",
+                    "bounds": {
+                        "x": 147.0,
+                        "y": 220.0,
+                        "width": 60.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "TASK",
+                    "bounds": {
+                        "x": 107.25,
+                        "y": 402.0,
+                        "width": 36.0,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "identity-TEAM-0-entity-PERSON-1-1-label-background",
+                    "bounds": {
+                        "x": 145.0,
+                        "y": 126.0,
+                        "width": 64.0,
+                        "height": 27.0
+                    }
+                },
+                {
+                    "id": "identity-TEAM-0-entity-TASK-2-2-label-background",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 217.0,
+                        "width": 45.0,
+                        "height": 27.0
+                    }
+                },
+                {
+                    "id": "identity-PERSON-1-entity-TASK-2-3-label-background",
+                    "bounds": {
+                        "x": 96.25,
+                        "y": 308.0,
+                        "width": 58.0,
+                        "height": 27.0
+                    }
+                },
+                {
+                    "id": "identity-TASK-2-entity-PERSON-1-4-label-background",
+                    "bounds": {
+                        "x": 178.25,
+                        "y": 308.0,
+                        "width": 69.0,
+                        "height": 27.0
+                    }
+                },
+                {
+                    "id": "entity-TEAM-0",
+                    "bounds": {
+                        "x": 53.75,
+                        "y": 8.0,
+                        "width": 100.0,
+                        "height": 81.0
+                    }
+                },
+                {
+                    "id": "entity-PERSON-1",
+                    "bounds": {
+                        "x": 127.0,
+                        "y": 190.0,
+                        "width": 100.0,
+                        "height": 81.0
+                    }
+                },
+                {
+                    "id": "entity-TASK-2",
+                    "bounds": {
+                        "x": 75.25,
+                        "y": 372.0,
+                        "width": 100.0,
+                        "height": 81.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "identity-TEAM-0-entity-PERSON-1-1",
+                    "points": [
+                        [
+                            136.35028,
+                            89.0
+                        ],
+                        [
+                            177.0,
+                            139.5
+                        ],
+                        [
+                            177.0,
+                            190.0
+                        ]
+                    ],
+                    "d": "M136.35028,89.0 L143.12523,97.416664 C149.90019,105.833336 163.45009,122.666664 170.22505,139.5 C177.0,156.33333 177.0,173.16667 177.0,181.58333 L177.0,190.0",
+                    "arrowStart": "ErOnlyOne",
+                    "arrowEnd": "ErZeroOrMore"
+                },
+                {
+                    "id": "identity-TEAM-0-entity-TASK-2-2",
+                    "points": [
+                        [
+                            71.14973,
+                            89.0
+                        ],
+                        [
+                            30.5,
+                            139.5
+                        ],
+                        [
+                            30.5,
+                            230.5
+                        ],
+                        [
+                            30.5,
+                            321.5
+                        ],
+                        [
+                            83.08105,
+                            372.0
+                        ]
+                    ],
+                    "d": "M71.14973,89.0 L64.37477,97.416664 C57.59982,105.833336 44.049908,122.666664 37.274956,146.25 C30.5,169.83333 30.5,200.16667 30.5,230.5 C30.5,260.83334 30.5,291.16666 39.263508,314.75 C48.027016,338.33334 65.55403,355.16666 74.317535,363.58334 L83.08105,372.0",
+                    "arrowStart": "ErOnlyOne",
+                    "arrowEnd": "ErZeroOrMore"
+                },
+                {
+                    "id": "identity-PERSON-1-entity-TASK-2-3",
+                    "points": [
+                        [
+                            153.9684,
+                            271.0
+                        ],
+                        [
+                            125.25,
+                            321.5
+                        ],
+                        [
+                            125.25,
+                            372.0
+                        ]
+                    ],
+                    "d": "M153.9684,271.0 L149.182,279.41666 C144.3956,287.83334 134.8228,304.66666 130.0364,321.5 C125.25,338.33334 125.25,355.16666 125.25,363.58334 L125.25,372.0",
+                    "arrowStart": "ErOnlyOne",
+                    "arrowEnd": "ErZeroOrMore"
+                },
+                {
+                    "id": "identity-TASK-2-entity-PERSON-1-4",
+                    "points": [
+                        [
+                            164.1923,
+                            372.0
+                        ],
+                        [
+                            212.75,
+                            321.5
+                        ],
+                        [
+                            192.91072,
+                            271.0
+                        ]
+                    ],
+                    "d": "M164.1923,372.0 L172.28525,363.58334 C180.3782,355.16666 196.5641,338.33334 201.35051,321.5 C206.1369,304.66666 199.52382,287.83334 196.21727,279.41666 L192.91072,271.0",
+                    "arrowStart": "ErZeroOrMore",
+                    "arrowEnd": "ErOnlyOne"
+                }
+            ]
+        },
+        {
+            "id": "self-loop-labels",
+            "source": "flowchart TD\nA[Ready] -->|Repeat| A\nA -->|Proceed| B[Done]",
+            "sceneWidth": 294.05,
+            "sceneHeight": 177.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Repeat",
+                    "bounds": {
+                        "x": 185.47188,
+                        "y": 79.0,
+                        "width": 49.15625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Proceed",
+                    "bounds": {
+                        "x": 55.921875,
+                        "y": 76.0,
+                        "width": 56.15625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Ready",
+                    "bounds": {
+                        "x": 189.81561,
+                        "y": 20.0,
+                        "width": 40.46875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Done",
+                    "bounds": {
+                        "x": 67.265625,
+                        "y": 136.0,
+                        "width": 33.46875,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "L_A_A_0_label_background",
+                    "bounds": {
+                        "x": 185.47188,
+                        "y": 79.0,
+                        "width": 49.15625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_A_B_0_label_background",
+                    "bounds": {
+                        "x": 55.921875,
+                        "y": 76.0,
+                        "width": 56.15625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 134.05,
+                        "y": 8.0,
+                        "width": 151.99998,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 124.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_A_0",
+                    "points": [
+                        [
+                            197.17903,
+                            53.0
+                        ],
+                        [
+                            183.45,
+                            77.0
+                        ],
+                        [
+                            236.65001,
+                            77.0
+                        ],
+                        [
+                            222.92096,
+                            53.0
+                        ]
+                    ],
+                    "d": "M197.17903,53.0 L194.89085,57.0 C192.60269,61.0 188.02634,69.0 194.60484,73.0 C201.18333,77.0 218.91667,77.0 225.82619,73.578674 C232.73572,70.15735 228.82141,63.3147 226.86427,59.89338 L224.90712,56.472054",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            161.15129,
+                            53.0
+                        ],
+                        [
+                            84.0,
+                            88.5
+                        ],
+                        [
+                            84.0,
+                            124.0
+                        ]
+                    ],
+                    "d": "M161.15129,53.0 L148.29274,58.916668 C135.43419,64.833336 109.717094,76.666664 96.85855,87.833336 C84.0,99.0 84.0,109.5 84.0,114.75 L84.0,120.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "state-feedback",
+            "source": "stateDiagram-v2\n[*] --> Ready\nReady --> Working: Begin\nWorking --> Done: Finish\nDone --> Ready: Reset",
+            "sceneWidth": 228.0,
+            "sceneHeight": 332.97238,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Begin",
+                    "bounds": {
+                        "x": 54.0,
+                        "y": 129.97238,
+                        "width": 44.0,
+                        "height": 29.0
+                    }
+                },
+                {
+                    "text": "Finish",
+                    "bounds": {
+                        "x": 53.0,
+                        "y": 237.97238,
+                        "width": 46.0,
+                        "height": 29.0
+                    }
+                },
+                {
+                    "text": "Reset",
+                    "bounds": {
+                        "x": 175.0,
+                        "y": 183.97238,
+                        "width": 45.0,
+                        "height": 29.0
+                    }
+                },
+                {
+                    "text": "Ready",
+                    "bounds": {
+                        "x": 76.75,
+                        "y": 79.972374,
+                        "width": 120.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Working",
+                    "bounds": {
+                        "x": 16.0,
+                        "y": 187.97238,
+                        "width": 120.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Done",
+                    "bounds": {
+                        "x": 76.75,
+                        "y": 295.97238,
+                        "width": 120.0,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "edge1-label-background",
+                    "bounds": {
+                        "x": 54.0,
+                        "y": 129.97238,
+                        "width": 44.0,
+                        "height": 29.0
+                    }
+                },
+                {
+                    "id": "edge2-label-background",
+                    "bounds": {
+                        "x": 53.0,
+                        "y": 237.97238,
+                        "width": 46.0,
+                        "height": 29.0
+                    }
+                },
+                {
+                    "id": "edge3-label-background",
+                    "bounds": {
+                        "x": 175.0,
+                        "y": 183.97238,
+                        "width": 45.0,
+                        "height": 29.0
+                    }
+                },
+                {
+                    "id": "root_start",
+                    "bounds": {
+                        "x": 129.75,
+                        "y": 8.0,
+                        "width": 14.0,
+                        "height": 13.972374
+                    }
+                },
+                {
+                    "id": "Ready",
+                    "bounds": {
+                        "x": 68.75,
+                        "y": 71.972374,
+                        "width": 136.0,
+                        "height": 37.0
+                    }
+                },
+                {
+                    "id": "Working",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 179.97238,
+                        "width": 136.0,
+                        "height": 37.0
+                    }
+                },
+                {
+                    "id": "Done",
+                    "bounds": {
+                        "x": 68.75,
+                        "y": 287.97238,
+                        "width": 136.0,
+                        "height": 37.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "edge0",
+                    "points": [
+                        [
+                            136.75,
+                            21.972374
+                        ],
+                        [
+                            136.75,
+                            46.972374
+                        ],
+                        [
+                            136.75,
+                            71.972374
+                        ]
+                    ],
+                    "d": "M136.75,21.972374 L136.75,26.13904 C136.75,30.305708 136.75,38.63904 136.75,46.305706 C136.75,53.972374 136.75,60.972374 136.75,64.472374 L136.75,67.972374",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "edge1",
+                    "points": [
+                        [
+                            115.9375,
+                            108.972374
+                        ],
+                        [
+                            76.0,
+                            144.47238
+                        ],
+                        [
+                            76.0,
+                            179.97238
+                        ]
+                    ],
+                    "d": "M115.9375,108.972374 L109.28125,114.88904 C102.625,120.80571 89.3125,132.63904 82.65625,143.80571 C76.0,154.97238 76.0,165.47238 76.0,170.72238 L76.0,175.97238",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "edge2",
+                    "points": [
+                        [
+                            76.0,
+                            216.97238
+                        ],
+                        [
+                            76.0,
+                            252.47238
+                        ],
+                        [
+                            115.9375,
+                            287.97238
+                        ]
+                    ],
+                    "d": "M76.0,216.97238 L76.0,222.88905 C76.0,228.80571 76.0,240.63905 82.157974,252.02948 C88.315956,263.4199 100.631905,274.36743 106.78989,279.8412 L112.94786,285.31494",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "edge3",
+                    "points": [
+                        [
+                            157.5625,
+                            287.97238
+                        ],
+                        [
+                            197.5,
+                            252.47238
+                        ],
+                        [
+                            197.5,
+                            198.47238
+                        ],
+                        [
+                            197.5,
+                            144.47238
+                        ],
+                        [
+                            157.5625,
+                            108.972374
+                        ]
+                    ],
+                    "d": "M157.5625,287.97238 L164.21875,282.05573 C170.875,276.13904 184.1875,264.30573 190.84375,249.38905 C197.5,234.47238 197.5,216.47238 197.5,198.47238 C197.5,180.47238 197.5,162.47238 191.34203,147.99863 C185.18405,133.52487 172.86809,122.57735 166.71011,117.10359 L160.55214,111.62983",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "merged-decision-labels",
+            "source": "flowchart TD\nA[First route] --> B{Continue first route?}\nB -->|Advance| C[First check]\nB -->|Stop| D[First stopped]\nC --> E{First check accepted?}\nE -->|Confirm| F[Complete]\nE -->|Decline| G[Deferred]\nH[Second route] --> I{Continue second route?}\nI -->|Proceed| J[Second check]\nI -->|Halt| K[Second stopped]\nJ --> L{Second check accepted?}\nL -->|Approve| F\nL -->|Reject| G",
+            "sceneWidth": 808.71484,
+            "sceneHeight": 777.0,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Advance",
+                    "bounds": {
+                        "x": 89.47266,
+                        "y": 318.0,
+                        "width": 58.484375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Stop",
+                    "bounds": {
+                        "x": 304.3086,
+                        "y": 318.0,
+                        "width": 32.8125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Confirm",
+                    "bounds": {
+                        "x": 22.199219,
+                        "y": 676.0,
+                        "width": 53.015625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Decline",
+                    "bounds": {
+                        "x": 330.07812,
+                        "y": 676.0,
+                        "width": 50.703125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Proceed",
+                    "bounds": {
+                        "x": 494.63672,
+                        "y": 318.0,
+                        "width": 56.15625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Halt",
+                    "bounds": {
+                        "x": 710.2617,
+                        "y": 318.0,
+                        "width": 28.90625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Approve",
+                    "bounds": {
+                        "x": 257.92188,
+                        "y": 676.0,
+                        "width": 56.15625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Reject",
+                    "bounds": {
+                        "x": 567.1836,
+                        "y": 676.0,
+                        "width": 43.6875,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "First route",
+                    "bounds": {
+                        "x": 188.20703,
+                        "y": 20.0,
+                        "width": 63.015625,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Continue first route?",
+                    "bounds": {
+                        "x": 159.71484,
+                        "y": 178.0,
+                        "width": 120.0,
+                        "height": 42.0
+                    }
+                },
+                {
+                    "text": "First check",
+                    "bounds": {
+                        "x": 84.87109,
+                        "y": 378.0,
+                        "width": 67.6875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "First stopped",
+                    "bounds": {
+                        "x": 280.2461,
+                        "y": 378.0,
+                        "width": 80.9375,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "First check accepted?",
+                    "bounds": {
+                        "x": 58.714844,
+                        "y": 536.0,
+                        "width": 120.0,
+                        "height": 42.0
+                    }
+                },
+                {
+                    "text": "Complete",
+                    "bounds": {
+                        "x": 54.039062,
+                        "y": 736.0,
+                        "width": 59.921875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Deferred",
+                    "bounds": {
+                        "x": 530.1953,
+                        "y": 736.0,
+                        "width": 54.46875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Second route",
+                    "bounds": {
+                        "x": 582.0664,
+                        "y": 20.0,
+                        "width": 83.296875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Continue second route?",
+                    "bounds": {
+                        "x": 563.71484,
+                        "y": 178.0,
+                        "width": 120.0,
+                        "height": 42.0
+                    }
+                },
+                {
+                    "text": "Second check",
+                    "bounds": {
+                        "x": 478.73828,
+                        "y": 378.0,
+                        "width": 87.953125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Second stopped",
+                    "bounds": {
+                        "x": 674.1133,
+                        "y": 378.0,
+                        "width": 101.203125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Second check accepted?",
+                    "bounds": {
+                        "x": 462.71484,
+                        "y": 536.0,
+                        "width": 120.0,
+                        "height": 42.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "L_B_C_0_label_background",
+                    "bounds": {
+                        "x": 89.47266,
+                        "y": 318.0,
+                        "width": 58.484375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_B_D_0_label_background",
+                    "bounds": {
+                        "x": 304.3086,
+                        "y": 318.0,
+                        "width": 32.8125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_E_F_0_label_background",
+                    "bounds": {
+                        "x": 22.199219,
+                        "y": 676.0,
+                        "width": 53.015625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_E_G_0_label_background",
+                    "bounds": {
+                        "x": 330.07812,
+                        "y": 676.0,
+                        "width": 50.703125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_I_J_0_label_background",
+                    "bounds": {
+                        "x": 494.63672,
+                        "y": 318.0,
+                        "width": 56.15625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_I_K_0_label_background",
+                    "bounds": {
+                        "x": 710.2617,
+                        "y": 318.0,
+                        "width": 28.90625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_L_F_0_label_background",
+                    "bounds": {
+                        "x": 257.92188,
+                        "y": 676.0,
+                        "width": 56.15625,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_L_G_0_label_background",
+                    "bounds": {
+                        "x": 567.1836,
+                        "y": 676.0,
+                        "width": 43.6875,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 143.71484,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 123.71484,
+                        "y": 103.0,
+                        "width": 192.0,
+                        "height": 192.0
+                    }
+                },
+                {
+                    "id": "C",
+                    "bounds": {
+                        "x": 42.714844,
+                        "y": 366.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "D",
+                    "bounds": {
+                        "x": 244.71484,
+                        "y": 366.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "E",
+                    "bounds": {
+                        "x": 22.714844,
+                        "y": 461.0,
+                        "width": 192.0,
+                        "height": 192.0
+                    }
+                },
+                {
+                    "id": "F",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 724.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "G",
+                    "bounds": {
+                        "x": 481.4297,
+                        "y": 724.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "H",
+                    "bounds": {
+                        "x": 547.71484,
+                        "y": 8.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "I",
+                    "bounds": {
+                        "x": 527.71484,
+                        "y": 103.0,
+                        "width": 192.0,
+                        "height": 192.0
+                    }
+                },
+                {
+                    "id": "J",
+                    "bounds": {
+                        "x": 446.71484,
+                        "y": 366.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "K",
+                    "bounds": {
+                        "x": 648.71484,
+                        "y": 366.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "L",
+                    "bounds": {
+                        "x": 426.71484,
+                        "y": 461.0,
+                        "width": 192.0,
+                        "height": 192.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            219.71484,
+                            53.0
+                        ],
+                        [
+                            219.71484,
+                            78.0
+                        ],
+                        [
+                            219.71484,
+                            103.0
+                        ]
+                    ],
+                    "d": "M219.71484,53.0 L219.71484,57.166668 C219.71484,61.333332 219.71484,69.666664 219.71484,77.333336 C219.71484,85.0 219.71484,92.0 219.71484,95.5 L219.71484,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_C_0",
+                    "points": [
+                        [
+                            178.01161,
+                            253.29677
+                        ],
+                        [
+                            118.71484,
+                            330.5
+                        ],
+                        [
+                            118.71484,
+                            366.0
+                        ]
+                    ],
+                    "d": "M178.01161,253.29677 L168.12881,266.16397 C158.24602,279.0312 138.48044,304.7656 128.59764,322.88278 C118.71484,341.0 118.71484,351.5 118.71484,356.75 L118.71484,362.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_D_0",
+                    "points": [
+                        [
+                            261.41806,
+                            253.29677
+                        ],
+                        [
+                            320.71484,
+                            330.5
+                        ],
+                        [
+                            320.71484,
+                            366.0
+                        ]
+                    ],
+                    "d": "M261.41806,253.29677 L271.30084,266.16397 C281.18365,279.0312 300.94925,304.7656 310.83203,322.88278 C320.71484,341.0 320.71484,351.5 320.71484,356.75 L320.71484,362.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_C_E_0",
+                    "points": [
+                        [
+                            118.71484,
+                            411.0
+                        ],
+                        [
+                            118.71484,
+                            436.0
+                        ],
+                        [
+                            118.71484,
+                            461.0
+                        ]
+                    ],
+                    "d": "M118.71484,411.0 L118.71484,415.16666 C118.71484,419.33334 118.71484,427.66666 118.71484,435.33334 C118.71484,443.0 118.71484,450.0 118.71484,453.5 L118.71484,457.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_E_F_0",
+                    "points": [
+                        [
+                            85.36254,
+                            619.6477
+                        ],
+                        [
+                            48.70703,
+                            688.5
+                        ],
+                        [
+                            70.30876,
+                            724.0
+                        ]
+                    ],
+                    "d": "M85.36254,619.6477 L79.25329,631.1231 C73.144035,642.59845 60.925533,665.54926 58.070023,682.37177 C55.214508,699.1943 61.721985,709.8886 64.97572,715.2357 L68.22946,720.5829",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_E_G_0",
+                    "points": [
+                        [
+                            180.43051,
+                            591.2843
+                        ],
+                        [
+                            355.4297,
+                            688.5
+                        ],
+                        [
+                            481.4297,
+                            724.6782
+                        ]
+                    ],
+                    "d": "M180.43051,591.2843 L209.59705,607.48694 C238.76357,623.6895 297.09662,656.0948 346.62238,678.1431 C396.14813,700.19147 436.86658,711.8829 457.2258,717.72864 L477.58502,723.57434",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_H_I_0",
+                    "points": [
+                        [
+                            623.71484,
+                            53.0
+                        ],
+                        [
+                            623.71484,
+                            78.0
+                        ],
+                        [
+                            623.71484,
+                            103.0
+                        ]
+                    ],
+                    "d": "M623.71484,53.0 L623.71484,57.166668 C623.71484,61.333332 623.71484,69.666664 623.71484,77.333336 C623.71484,85.0 623.71484,92.0 623.71484,95.5 L623.71484,99.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_I_J_0",
+                    "points": [
+                        [
+                            582.0116,
+                            253.29677
+                        ],
+                        [
+                            522.71484,
+                            330.5
+                        ],
+                        [
+                            522.71484,
+                            366.0
+                        ]
+                    ],
+                    "d": "M582.0116,253.29677 L572.1288,266.16397 C562.24603,279.0312 542.4804,304.7656 532.59766,322.88278 C522.71484,341.0 522.71484,351.5 522.71484,356.75 L522.71484,362.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_I_K_0",
+                    "points": [
+                        [
+                            665.4181,
+                            253.29677
+                        ],
+                        [
+                            724.71484,
+                            330.5
+                        ],
+                        [
+                            724.71484,
+                            366.0
+                        ]
+                    ],
+                    "d": "M665.4181,253.29677 L675.3009,266.16397 C685.18365,279.0312 704.9493,304.7656 714.83203,322.88278 C724.71484,341.0 724.71484,351.5 724.71484,356.75 L724.71484,362.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_J_L_0",
+                    "points": [
+                        [
+                            522.71484,
+                            411.0
+                        ],
+                        [
+                            522.71484,
+                            436.0
+                        ],
+                        [
+                            522.71484,
+                            461.0
+                        ]
+                    ],
+                    "d": "M522.71484,411.0 L522.71484,415.16666 C522.71484,419.33334 522.71484,427.66666 522.71484,435.33334 C522.71484,443.0 522.71484,450.0 522.71484,453.5 L522.71484,457.0",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_L_F_0",
+                    "points": [
+                        [
+                            460.99918,
+                            591.2843
+                        ],
+                        [
+                            286.0,
+                            688.5
+                        ],
+                        [
+                            160.0,
+                            724.6782
+                        ]
+                    ],
+                    "d": "M460.99918,591.2843 L431.83264,607.48694 C402.6661,623.6895 344.33307,656.0948 294.8073,678.1431 C245.28156,700.19147 204.5631,711.8829 184.20387,717.72864 L163.84465,723.57434",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_L_G_0",
+                    "points": [
+                        [
+                            554.89685,
+                            620.818
+                        ],
+                        [
+                            589.02734,
+                            688.5
+                        ],
+                        [
+                            569.6874,
+                            724.0
+                        ]
+                    ],
+                    "d": "M554.89685,620.818 L560.58527,632.0983 C566.2737,643.37866 577.6505,665.93933 580.4345,682.5509 C583.21857,699.1625 577.4097,709.82495 574.5054,715.1562 L571.60095,720.4874",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        },
+        {
+            "id": "cluster-return-labels",
+            "source": "flowchart LR\nA(First value) -->|Outbound| B(Second value)\nB -->|Inbound| A\nsubgraph Group[Value group]\ndirection LR\nX[First axis]\nY[Second axis]\nP -->|Horizontal| X\nP -->|Vertical| Y\nA((A))\nend\nstyle P fill:none,stroke:#000,stroke-width:2px",
+            "sceneWidth": 516.85486,
+            "sceneHeight": 499.95697,
+            "viewportPadding": 0.0,
+            "diagnostics": "",
+            "labels": [
+                {
+                    "text": "Value group",
+                    "bounds": {
+                        "x": 221.19305,
+                        "y": 8.0,
+                        "width": 74.46875,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Outbound",
+                    "bounds": {
+                        "x": 242.58926,
+                        "y": 203.61424,
+                        "width": 65.5,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Inbound",
+                    "bounds": {
+                        "x": 248.03458,
+                        "y": 314.3427,
+                        "width": 54.609375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Horizontal",
+                    "bounds": {
+                        "x": 241.82364,
+                        "y": 53.0,
+                        "width": 67.03125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "Vertical",
+                    "bounds": {
+                        "x": 250.37833,
+                        "y": 162.61424,
+                        "width": 49.921875,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "text": "A",
+                    "bounds": {
+                        "x": 121.239944,
+                        "y": 267.7285,
+                        "width": 9.34375,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Second value",
+                    "bounds": {
+                        "x": 365.433,
+                        "y": 455.95697,
+                        "width": 84.84375,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "First axis",
+                    "bounds": {
+                        "x": 379.8549,
+                        "y": 55.0,
+                        "width": 56.0,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "Second axis",
+                    "bounds": {
+                        "x": 369.71426,
+                        "y": 164.61424,
+                        "width": 76.28125,
+                        "height": 21.0
+                    }
+                },
+                {
+                    "text": "P",
+                    "bounds": {
+                        "x": 121.239944,
+                        "y": 102.5,
+                        "width": 9.34375,
+                        "height": 21.0
+                    }
+                }
+            ],
+            "nodes": [
+                {
+                    "id": "subgraph_Group",
+                    "bounds": {
+                        "x": 8.0,
+                        "y": 8.0,
+                        "width": 500.85486,
+                        "height": 397.95697
+                    }
+                },
+                {
+                    "id": "L_A_B_0_label_background",
+                    "bounds": {
+                        "x": 242.58926,
+                        "y": 203.61424,
+                        "width": 65.5,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_B_A_0_label_background",
+                    "bounds": {
+                        "x": 248.03458,
+                        "y": 314.3427,
+                        "width": 54.609375,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_P_X_0_label_background",
+                    "bounds": {
+                        "x": 241.82364,
+                        "y": 53.0,
+                        "width": 67.03125,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "L_P_Y_0_label_background",
+                    "bounds": {
+                        "x": 250.37833,
+                        "y": 162.61424,
+                        "width": 49.921875,
+                        "height": 25.0
+                    }
+                },
+                {
+                    "id": "A",
+                    "bounds": {
+                        "x": 33.0,
+                        "y": 185.5,
+                        "width": 185.82364,
+                        "height": 185.45697
+                    }
+                },
+                {
+                    "id": "B",
+                    "bounds": {
+                        "x": 332.8549,
+                        "y": 440.95697,
+                        "width": 150.0,
+                        "height": 51.0
+                    }
+                },
+                {
+                    "id": "X",
+                    "bounds": {
+                        "x": 331.8549,
+                        "y": 43.0,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "Y",
+                    "bounds": {
+                        "x": 331.8549,
+                        "y": 152.61424,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                },
+                {
+                    "id": "P",
+                    "bounds": {
+                        "x": 49.91182,
+                        "y": 90.5,
+                        "width": 152.0,
+                        "height": 45.0
+                    }
+                }
+            ],
+            "edges": [
+                {
+                    "id": "L_A_B_0",
+                    "points": [
+                        [
+                            211.62743,
+                            242.59808
+                        ],
+                        [
+                            275.33926,
+                            216.11424
+                        ],
+                        [
+                            394.3568,
+                            440.95697
+                        ]
+                    ],
+                    "d": "M211.62743,242.59808 L222.24606,238.18411 C232.8647,233.77014 254.10199,224.94218 284.245,257.41278 C314.388,289.8834 353.43674,363.65256 372.96112,400.53714 L392.48547,437.42172",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_B_A_0",
+                    "points": [
+                        [
+                            383.65143,
+                            440.95697
+                        ],
+                        [
+                            275.33926,
+                            326.8427
+                        ],
+                        [
+                            214.09103,
+                            306.9164
+                        ]
+                    ],
+                    "d": "M383.65143,440.95697 L365.5994,421.93793 C347.54736,402.91888 311.44333,364.8808 283.8172,342.74695 C256.1911,320.6131 237.04295,314.3835 227.46887,311.2687 L217.89479,308.1539",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_P_X_0",
+                    "points": [
+                        [
+                            196.69324,
+                            90.5
+                        ],
+                        [
+                            275.33926,
+                            65.5
+                        ],
+                        [
+                            331.8549,
+                            65.5
+                        ]
+                    ],
+                    "d": "M196.69324,90.5 L209.8009,86.333336 C222.90858,82.166664 249.12392,73.833336 270.9842,69.666664 C292.84448,65.5 310.34967,65.5 319.1023,65.5 L327.8549,65.5",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                },
+                {
+                    "id": "L_P_Y_0",
+                    "points": [
+                        [
+                            180.03978,
+                            135.5
+                        ],
+                        [
+                            275.33926,
+                            175.11424
+                        ],
+                        [
+                            331.8549,
+                            175.11424
+                        ]
+                    ],
+                    "d": "M180.03978,135.5 L195.92303,142.10237 C211.80627,148.70474 243.57277,161.9095 268.20862,168.51187 C292.84448,175.11424 310.34967,175.11424 319.1023,175.11424 L327.8549,175.11424",
+                    "arrowStart": "None",
+                    "arrowEnd": "Triangle"
+                }
+            ]
+        }
+    ]
+}

@@ -18,4 +18,6 @@ internal data class FlowRoutedEdge(
     val curveOverride: String? = null,
     // edges.js -> insertEdge keeps data-points before cluster clipping.
     val renderPoints: List<ScenePoint> = points,
+    // edges.js -> insertEdge marks cluster-clipped paths as updated.
+    val pathUpdated: Boolean = false,
 )
