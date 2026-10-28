@@ -624,6 +624,7 @@ jobs:
             "CMPMermaid.podspec" \
             "LICENSE" \
             "THIRD_PARTY_NOTICES.md" \
+            "cmp-mermaid-licenses-$version.zip" \
             "cmp-mermaid-$version.cdx.json" \
             "cmp-mermaid-android-kotlin17-central-$version.zip" \
             "cmp-mermaid-maven-central-$version.zip" \

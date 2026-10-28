@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { emitJisonStates } from './jison-table-construction.mjs';
 
 const MERMAID_VERSION = '12.0.0';
 const AGENTFLOW_JISON_SHA256 = '8bb23d09c1dcdf4a3d3139c4ba29b8a823d726b755c69067010a74cb621fd2a6';
@@ -78,6 +79,7 @@ const cellSource = (cell) => {
 const lines = [];
 lines.push('package com.swithun.cmpmermaid.core.agentflow.upstream.mermaid');
 lines.push('');
+lines.push('import com.swithun.cmpmermaid.core.buildJisonState');
 lines.push('import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.JisonCell');
 lines.push('import com.swithun.cmpmermaid.core.flowchart.upstream.mermaid.JisonProduction');
 lines.push('');
@@ -114,35 +116,7 @@ for (const production of parser.productions_) {
 }
 lines.push('    )');
 lines.push('');
-const stateChunks = [];
-for (let index = 0; index < parser.table.length; index += STATE_CHUNK_SIZE) {
-  stateChunks.push(parser.table.slice(index, index + STATE_CHUNK_SIZE));
-}
-lines.push('    val states: Array<Map<Int, JisonCell>> = buildList {');
-for (let index = 0; index < stateChunks.length; index += 1) {
-  lines.push(`        addAll(stateChunk${index}())`);
-}
-lines.push('    }.toTypedArray()');
-lines.push('');
-for (let chunkIndex = 0; chunkIndex < stateChunks.length; chunkIndex += 1) {
-  lines.push(
-    `    private fun stateChunk${chunkIndex}(): Array<Map<Int, JisonCell>> = arrayOf(`,
-  );
-  for (const state of stateChunks[chunkIndex]) {
-    const entries = Object.entries(state);
-    if (entries.length === 0) {
-      lines.push('        emptyMap(),');
-      continue;
-    }
-    lines.push('        mapOf(');
-    for (const [symbol, cell] of entries) {
-      lines.push(`            ${symbol} to ${cellSource(cell)},`);
-    }
-    lines.push('        ),');
-  }
-  lines.push('    )');
-  lines.push('');
-}
+lines.push(...emitJisonStates(parser.table, cellSource, STATE_CHUNK_SIZE));
 const lexerChunks = [];
 for (let index = 0; index < parser.lexer.rules.length; index += LEXER_CHUNK_SIZE) {
   lexerChunks.push(parser.lexer.rules.slice(index, index + LEXER_CHUNK_SIZE));

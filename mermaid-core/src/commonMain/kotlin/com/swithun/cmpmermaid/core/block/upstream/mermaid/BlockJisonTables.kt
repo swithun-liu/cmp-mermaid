@@ -1,5 +1,7 @@
 package com.swithun.cmpmermaid.core.block.upstream.mermaid
 
+import com.swithun.cmpmermaid.core.buildJisonState
+
 /**
  * Generated from Mermaid 12.0.0 block.jison.
  * Upstream block.jison SHA-256: 323acca843736b66334fa088b97519ef96c22aa5a1a1eed4f468379ebecf09f2
@@ -137,6 +139,94 @@ internal object BlockJisonTables {
         BlockJisonProduction(symbol = 25, length = 3),
     )
 
+    // Mermaid.js 12.0.0: generated shared action arrays ($V*) and o(k, v, o2, l).
+    private val action0: BlockJisonCell = BlockJisonCell.Goto(1)
+    private val action1: BlockJisonCell = BlockJisonCell.Shift(2)
+    private val action2: BlockJisonCell = BlockJisonCell.Accept
+    private val action3: BlockJisonCell = BlockJisonCell.Shift(15)
+    private val action4: BlockJisonCell = BlockJisonCell.Goto(3)
+    private val action5: BlockJisonCell = BlockJisonCell.Goto(4)
+    private val action6: BlockJisonCell = BlockJisonCell.Goto(5)
+    private val action7: BlockJisonCell = BlockJisonCell.Goto(6)
+    private val action8: BlockJisonCell = BlockJisonCell.Shift(7)
+    private val action9: BlockJisonCell = BlockJisonCell.Goto(8)
+    private val action10: BlockJisonCell = BlockJisonCell.Goto(9)
+    private val action11: BlockJisonCell = BlockJisonCell.Goto(10)
+    private val action12: BlockJisonCell = BlockJisonCell.Goto(11)
+    private val action13: BlockJisonCell = BlockJisonCell.Goto(12)
+    private val action14: BlockJisonCell = BlockJisonCell.Shift(13)
+    private val action15: BlockJisonCell = BlockJisonCell.Shift(14)
+    private val action16: BlockJisonCell = BlockJisonCell.Shift(19)
+    private val action17: BlockJisonCell = BlockJisonCell.Shift(16)
+    private val action18: BlockJisonCell = BlockJisonCell.Shift(17)
+    private val action19: BlockJisonCell = BlockJisonCell.Shift(18)
+    private val action20: BlockJisonCell = BlockJisonCell.Shift(20)
+    private val action21: BlockJisonCell = BlockJisonCell.Reduce(12)
+    private val action22: BlockJisonCell = BlockJisonCell.Goto(21)
+    private val action23: BlockJisonCell = BlockJisonCell.Reduce(16)
+    private val action24: BlockJisonCell = BlockJisonCell.Goto(22)
+    private val action25: BlockJisonCell = BlockJisonCell.Shift(23)
+    private val action26: BlockJisonCell = BlockJisonCell.Shift(24)
+    private val action27: BlockJisonCell = BlockJisonCell.Reduce(17)
+    private val action28: BlockJisonCell = BlockJisonCell.Reduce(18)
+    private val action29: BlockJisonCell = BlockJisonCell.Reduce(19)
+    private val action30: BlockJisonCell = BlockJisonCell.Reduce(20)
+    private val action31: BlockJisonCell = BlockJisonCell.Reduce(21)
+    private val action32: BlockJisonCell = BlockJisonCell.Reduce(22)
+    private val action33: BlockJisonCell = BlockJisonCell.Reduce(25)
+    private val action34: BlockJisonCell = BlockJisonCell.Shift(25)
+    private val action35: BlockJisonCell = BlockJisonCell.Reduce(26)
+    private val action36: BlockJisonCell = BlockJisonCell.Goto(26)
+    private val action37: BlockJisonCell = BlockJisonCell.Goto(27)
+    private val action38: BlockJisonCell = BlockJisonCell.Shift(28)
+    private val action39: BlockJisonCell = BlockJisonCell.Shift(29)
+    private val action40: BlockJisonCell = BlockJisonCell.Shift(30)
+    private val action41: BlockJisonCell = BlockJisonCell.Shift(31)
+    private val action42: BlockJisonCell = BlockJisonCell.Reduce(29)
+    private val action43: BlockJisonCell = BlockJisonCell.Goto(32)
+    private val action44: BlockJisonCell = BlockJisonCell.Shift(33)
+    private val action45: BlockJisonCell = BlockJisonCell.Shift(34)
+    private val action46: BlockJisonCell = BlockJisonCell.Reduce(7)
+    private val action47: BlockJisonCell = BlockJisonCell.Reduce(13)
+    private val action48: BlockJisonCell = BlockJisonCell.Goto(35)
+    private val action49: BlockJisonCell = BlockJisonCell.Reduce(14)
+    private val action50: BlockJisonCell = BlockJisonCell.Shift(36)
+    private val action51: BlockJisonCell = BlockJisonCell.Reduce(24)
+    private val action52: BlockJisonCell = BlockJisonCell.Goto(37)
+    private val action53: BlockJisonCell = BlockJisonCell.Shift(38)
+    private val action54: BlockJisonCell = BlockJisonCell.Shift(39)
+    private val action55: BlockJisonCell = BlockJisonCell.Shift(40)
+    private val action56: BlockJisonCell = BlockJisonCell.Shift(41)
+    private val action57: BlockJisonCell = BlockJisonCell.Shift(42)
+    private val action58: BlockJisonCell = BlockJisonCell.Reduce(30)
+    private val action59: BlockJisonCell = BlockJisonCell.Shift(43)
+    private val action60: BlockJisonCell = BlockJisonCell.Shift(44)
+    private val action61: BlockJisonCell = BlockJisonCell.Reduce(23)
+    private val action62: BlockJisonCell = BlockJisonCell.Shift(45)
+    private val action63: BlockJisonCell = BlockJisonCell.Shift(46)
+    private val action64: BlockJisonCell = BlockJisonCell.Reduce(28)
+    private val action65: BlockJisonCell = BlockJisonCell.Reduce(35)
+    private val action66: BlockJisonCell = BlockJisonCell.Reduce(36)
+    private val action67: BlockJisonCell = BlockJisonCell.Reduce(37)
+    private val action68: BlockJisonCell = BlockJisonCell.Reduce(38)
+    private val action69: BlockJisonCell = BlockJisonCell.Shift(47)
+    private val action70: BlockJisonCell = BlockJisonCell.Goto(48)
+    private val action71: BlockJisonCell = BlockJisonCell.Shift(49)
+    private val action72: BlockJisonCell = BlockJisonCell.Shift(50)
+    private val action73: BlockJisonCell = BlockJisonCell.Reduce(27)
+    private val action74: BlockJisonCell = BlockJisonCell.Reduce(33)
+    private val action75: BlockJisonCell = BlockJisonCell.Shift(51)
+    private val action76: BlockJisonCell = BlockJisonCell.Goto(52)
+    private val action77: BlockJisonCell = BlockJisonCell.Reduce(31)
+    private val action78: BlockJisonCell = BlockJisonCell.Reduce(15)
+    private val action79: BlockJisonCell = BlockJisonCell.Reduce(34)
+    private val action80: BlockJisonCell = BlockJisonCell.Reduce(32)
+    private val symbols0 = intArrayOf(8, 10, 14, 15, 16, 21, 28, 29, 30, 31, 39, 43, 46)
+    private val symbols1 = intArrayOf(8, 10, 21, 28, 29, 30, 31, 39, 43, 46)
+    private val symbols2 = intArrayOf(8, 10, 15, 16, 21, 27, 28, 29, 30, 31, 39, 43, 46)
+    private val symbols3 = intArrayOf(8, 10, 15, 16, 21, 27, 28, 29, 30, 31, 32, 35, 37, 39, 43, 46)
+    private val symbols4 = intArrayOf(8, 10, 15, 16, 21, 28, 29, 30, 31, 39, 43, 46)
+
     val states: Array<Map<Int, BlockJisonCell>> = buildList {
         addAll(stateChunk0())
         addAll(stateChunk1())
@@ -145,461 +235,215 @@ internal object BlockJisonTables {
 
     private fun stateChunk0(): Array<Map<Int, BlockJisonCell>> = arrayOf(
         mapOf(
-            9 to BlockJisonCell.Goto(1),
-            10 to BlockJisonCell.Shift(2),
+            9 to action0,
+            10 to action1,
         ),
         mapOf(
-            1 to BlockJisonCell.Accept,
+            1 to action2,
         ),
         mapOf(
-            10 to BlockJisonCell.Shift(15),
-            11 to BlockJisonCell.Goto(3),
-            13 to BlockJisonCell.Goto(4),
-            19 to BlockJisonCell.Goto(5),
-            20 to BlockJisonCell.Goto(6),
-            21 to BlockJisonCell.Shift(7),
-            22 to BlockJisonCell.Goto(8),
-            23 to BlockJisonCell.Goto(9),
-            24 to BlockJisonCell.Goto(10),
-            25 to BlockJisonCell.Goto(11),
-            26 to BlockJisonCell.Goto(12),
-            28 to BlockJisonCell.Shift(13),
-            29 to BlockJisonCell.Shift(14),
-            31 to BlockJisonCell.Shift(19),
-            39 to BlockJisonCell.Shift(16),
-            43 to BlockJisonCell.Shift(17),
-            46 to BlockJisonCell.Shift(18),
+            10 to action3,
+            11 to action4,
+            13 to action5,
+            19 to action6,
+            20 to action7,
+            21 to action8,
+            22 to action9,
+            23 to action10,
+            24 to action11,
+            25 to action12,
+            26 to action13,
+            28 to action14,
+            29 to action15,
+            31 to action16,
+            39 to action17,
+            43 to action18,
+            46 to action19,
         ),
         mapOf(
-            8 to BlockJisonCell.Shift(20),
+            8 to action20,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(12),
-            10 to BlockJisonCell.Shift(15),
-            11 to BlockJisonCell.Goto(21),
-            13 to BlockJisonCell.Goto(4),
-            19 to BlockJisonCell.Goto(5),
-            20 to BlockJisonCell.Goto(6),
-            21 to BlockJisonCell.Shift(7),
-            22 to BlockJisonCell.Goto(8),
-            23 to BlockJisonCell.Goto(9),
-            24 to BlockJisonCell.Goto(10),
-            25 to BlockJisonCell.Goto(11),
-            26 to BlockJisonCell.Goto(12),
-            28 to BlockJisonCell.Shift(13),
-            29 to BlockJisonCell.Shift(14),
-            30 to BlockJisonCell.Reduce(12),
-            31 to BlockJisonCell.Shift(19),
-            39 to BlockJisonCell.Shift(16),
-            43 to BlockJisonCell.Shift(17),
-            46 to BlockJisonCell.Shift(18),
+            8 to action21,
+            10 to action3,
+            11 to action22,
+            13 to action5,
+            19 to action6,
+            20 to action7,
+            21 to action8,
+            22 to action9,
+            23 to action10,
+            24 to action11,
+            25 to action12,
+            26 to action13,
+            28 to action14,
+            29 to action15,
+            30 to action21,
+            31 to action16,
+            39 to action17,
+            43 to action18,
+            46 to action19,
+        ),
+        buildJisonState(symbols0, action23, mapOf(
+            14 to action24,
+            15 to action25,
+            16 to action26,
+        )),
+        buildJisonState(symbols1, action27),
+        buildJisonState(symbols1, action28),
+        buildJisonState(symbols1, action29),
+        buildJisonState(symbols1, action30),
+        buildJisonState(symbols1, action31),
+        buildJisonState(symbols1, action32),
+        buildJisonState(symbols2, action33, mapOf(
+            27 to action34,
+        )),
+        buildJisonState(symbols1, action35),
+        mapOf(
+            19 to action36,
+            26 to action13,
+            31 to action16,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(16),
-            10 to BlockJisonCell.Reduce(16),
-            14 to BlockJisonCell.Goto(22),
-            15 to BlockJisonCell.Shift(23),
-            16 to BlockJisonCell.Shift(24),
-            21 to BlockJisonCell.Reduce(16),
-            28 to BlockJisonCell.Reduce(16),
-            29 to BlockJisonCell.Reduce(16),
-            30 to BlockJisonCell.Reduce(16),
-            31 to BlockJisonCell.Reduce(16),
-            39 to BlockJisonCell.Reduce(16),
-            43 to BlockJisonCell.Reduce(16),
-            46 to BlockJisonCell.Reduce(16),
+            10 to action3,
+            11 to action37,
+            13 to action5,
+            19 to action6,
+            20 to action7,
+            21 to action8,
+            22 to action9,
+            23 to action10,
+            24 to action11,
+            25 to action12,
+            26 to action13,
+            28 to action14,
+            29 to action15,
+            31 to action16,
+            39 to action17,
+            43 to action18,
+            46 to action19,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(17),
-            10 to BlockJisonCell.Reduce(17),
-            21 to BlockJisonCell.Reduce(17),
-            28 to BlockJisonCell.Reduce(17),
-            29 to BlockJisonCell.Reduce(17),
-            30 to BlockJisonCell.Reduce(17),
-            31 to BlockJisonCell.Reduce(17),
-            39 to BlockJisonCell.Reduce(17),
-            43 to BlockJisonCell.Reduce(17),
-            46 to BlockJisonCell.Reduce(17),
+            40 to action38,
+            42 to action39,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(18),
-            10 to BlockJisonCell.Reduce(18),
-            21 to BlockJisonCell.Reduce(18),
-            28 to BlockJisonCell.Reduce(18),
-            29 to BlockJisonCell.Reduce(18),
-            30 to BlockJisonCell.Reduce(18),
-            31 to BlockJisonCell.Reduce(18),
-            39 to BlockJisonCell.Reduce(18),
-            43 to BlockJisonCell.Reduce(18),
-            46 to BlockJisonCell.Reduce(18),
+            44 to action40,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(19),
-            10 to BlockJisonCell.Reduce(19),
-            21 to BlockJisonCell.Reduce(19),
-            28 to BlockJisonCell.Reduce(19),
-            29 to BlockJisonCell.Reduce(19),
-            30 to BlockJisonCell.Reduce(19),
-            31 to BlockJisonCell.Reduce(19),
-            39 to BlockJisonCell.Reduce(19),
-            43 to BlockJisonCell.Reduce(19),
-            46 to BlockJisonCell.Reduce(19),
+            47 to action41,
         ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(20),
-            10 to BlockJisonCell.Reduce(20),
-            21 to BlockJisonCell.Reduce(20),
-            28 to BlockJisonCell.Reduce(20),
-            29 to BlockJisonCell.Reduce(20),
-            30 to BlockJisonCell.Reduce(20),
-            31 to BlockJisonCell.Reduce(20),
-            39 to BlockJisonCell.Reduce(20),
-            43 to BlockJisonCell.Reduce(20),
-            46 to BlockJisonCell.Reduce(20),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(21),
-            10 to BlockJisonCell.Reduce(21),
-            21 to BlockJisonCell.Reduce(21),
-            28 to BlockJisonCell.Reduce(21),
-            29 to BlockJisonCell.Reduce(21),
-            30 to BlockJisonCell.Reduce(21),
-            31 to BlockJisonCell.Reduce(21),
-            39 to BlockJisonCell.Reduce(21),
-            43 to BlockJisonCell.Reduce(21),
-            46 to BlockJisonCell.Reduce(21),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(22),
-            10 to BlockJisonCell.Reduce(22),
-            21 to BlockJisonCell.Reduce(22),
-            28 to BlockJisonCell.Reduce(22),
-            29 to BlockJisonCell.Reduce(22),
-            30 to BlockJisonCell.Reduce(22),
-            31 to BlockJisonCell.Reduce(22),
-            39 to BlockJisonCell.Reduce(22),
-            43 to BlockJisonCell.Reduce(22),
-            46 to BlockJisonCell.Reduce(22),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(25),
-            10 to BlockJisonCell.Reduce(25),
-            15 to BlockJisonCell.Reduce(25),
-            16 to BlockJisonCell.Reduce(25),
-            21 to BlockJisonCell.Reduce(25),
-            27 to BlockJisonCell.Shift(25),
-            28 to BlockJisonCell.Reduce(25),
-            29 to BlockJisonCell.Reduce(25),
-            30 to BlockJisonCell.Reduce(25),
-            31 to BlockJisonCell.Reduce(25),
-            39 to BlockJisonCell.Reduce(25),
-            43 to BlockJisonCell.Reduce(25),
-            46 to BlockJisonCell.Reduce(25),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(26),
-            10 to BlockJisonCell.Reduce(26),
-            21 to BlockJisonCell.Reduce(26),
-            28 to BlockJisonCell.Reduce(26),
-            29 to BlockJisonCell.Reduce(26),
-            30 to BlockJisonCell.Reduce(26),
-            31 to BlockJisonCell.Reduce(26),
-            39 to BlockJisonCell.Reduce(26),
-            43 to BlockJisonCell.Reduce(26),
-            46 to BlockJisonCell.Reduce(26),
-        ),
-        mapOf(
-            19 to BlockJisonCell.Goto(26),
-            26 to BlockJisonCell.Goto(12),
-            31 to BlockJisonCell.Shift(19),
-        ),
-        mapOf(
-            10 to BlockJisonCell.Shift(15),
-            11 to BlockJisonCell.Goto(27),
-            13 to BlockJisonCell.Goto(4),
-            19 to BlockJisonCell.Goto(5),
-            20 to BlockJisonCell.Goto(6),
-            21 to BlockJisonCell.Shift(7),
-            22 to BlockJisonCell.Goto(8),
-            23 to BlockJisonCell.Goto(9),
-            24 to BlockJisonCell.Goto(10),
-            25 to BlockJisonCell.Goto(11),
-            26 to BlockJisonCell.Goto(12),
-            28 to BlockJisonCell.Shift(13),
-            29 to BlockJisonCell.Shift(14),
-            31 to BlockJisonCell.Shift(19),
-            39 to BlockJisonCell.Shift(16),
-            43 to BlockJisonCell.Shift(17),
-            46 to BlockJisonCell.Shift(18),
-        ),
-        mapOf(
-            40 to BlockJisonCell.Shift(28),
-            42 to BlockJisonCell.Shift(29),
-        ),
-        mapOf(
-            44 to BlockJisonCell.Shift(30),
-        ),
-        mapOf(
-            47 to BlockJisonCell.Shift(31),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(29),
-            10 to BlockJisonCell.Reduce(29),
-            15 to BlockJisonCell.Reduce(29),
-            16 to BlockJisonCell.Reduce(29),
-            21 to BlockJisonCell.Reduce(29),
-            27 to BlockJisonCell.Reduce(29),
-            28 to BlockJisonCell.Reduce(29),
-            29 to BlockJisonCell.Reduce(29),
-            30 to BlockJisonCell.Reduce(29),
-            31 to BlockJisonCell.Reduce(29),
-            32 to BlockJisonCell.Goto(32),
-            35 to BlockJisonCell.Shift(33),
-            37 to BlockJisonCell.Shift(34),
-            39 to BlockJisonCell.Reduce(29),
-            43 to BlockJisonCell.Reduce(29),
-            46 to BlockJisonCell.Reduce(29),
-        ),
+        buildJisonState(symbols3, action42, mapOf(
+            32 to action43,
+            35 to action44,
+            37 to action45,
+        )),
     )
 
     private fun stateChunk1(): Array<Map<Int, BlockJisonCell>> = arrayOf(
         mapOf(
-            1 to BlockJisonCell.Reduce(7),
+            1 to action46,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(13),
-            30 to BlockJisonCell.Reduce(13),
+            8 to action47,
+            30 to action47,
         ),
         mapOf(
-            26 to BlockJisonCell.Goto(35),
-            31 to BlockJisonCell.Shift(19),
+            26 to action48,
+            31 to action16,
         ),
         mapOf(
-            31 to BlockJisonCell.Reduce(14),
+            31 to action49,
         ),
         mapOf(
-            17 to BlockJisonCell.Shift(36),
+            17 to action50,
+        ),
+        buildJisonState(symbols4, action51),
+        mapOf(
+            10 to action3,
+            11 to action52,
+            13 to action5,
+            14 to action24,
+            15 to action25,
+            16 to action26,
+            19 to action6,
+            20 to action7,
+            21 to action8,
+            22 to action9,
+            23 to action10,
+            24 to action11,
+            25 to action12,
+            26 to action13,
+            28 to action14,
+            29 to action15,
+            31 to action16,
+            39 to action17,
+            43 to action18,
+            46 to action19,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(24),
-            10 to BlockJisonCell.Reduce(24),
-            15 to BlockJisonCell.Reduce(24),
-            16 to BlockJisonCell.Reduce(24),
-            21 to BlockJisonCell.Reduce(24),
-            28 to BlockJisonCell.Reduce(24),
-            29 to BlockJisonCell.Reduce(24),
-            30 to BlockJisonCell.Reduce(24),
-            31 to BlockJisonCell.Reduce(24),
-            39 to BlockJisonCell.Reduce(24),
-            43 to BlockJisonCell.Reduce(24),
-            46 to BlockJisonCell.Reduce(24),
+            30 to action53,
         ),
         mapOf(
-            10 to BlockJisonCell.Shift(15),
-            11 to BlockJisonCell.Goto(37),
-            13 to BlockJisonCell.Goto(4),
-            14 to BlockJisonCell.Goto(22),
-            15 to BlockJisonCell.Shift(23),
-            16 to BlockJisonCell.Shift(24),
-            19 to BlockJisonCell.Goto(5),
-            20 to BlockJisonCell.Goto(6),
-            21 to BlockJisonCell.Shift(7),
-            22 to BlockJisonCell.Goto(8),
-            23 to BlockJisonCell.Goto(9),
-            24 to BlockJisonCell.Goto(10),
-            25 to BlockJisonCell.Goto(11),
-            26 to BlockJisonCell.Goto(12),
-            28 to BlockJisonCell.Shift(13),
-            29 to BlockJisonCell.Shift(14),
-            31 to BlockJisonCell.Shift(19),
-            39 to BlockJisonCell.Shift(16),
-            43 to BlockJisonCell.Shift(17),
-            46 to BlockJisonCell.Shift(18),
+            41 to action54,
         ),
         mapOf(
-            30 to BlockJisonCell.Shift(38),
+            41 to action55,
         ),
         mapOf(
-            41 to BlockJisonCell.Shift(39),
+            45 to action56,
         ),
         mapOf(
-            41 to BlockJisonCell.Shift(40),
+            48 to action57,
+        ),
+        buildJisonState(symbols2, action58),
+        mapOf(
+            18 to action59,
         ),
         mapOf(
-            45 to BlockJisonCell.Shift(41),
+            18 to action60,
+        ),
+        buildJisonState(symbols4, action61),
+        mapOf(
+            18 to action62,
         ),
         mapOf(
-            48 to BlockJisonCell.Shift(42),
+            30 to action63,
         ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(30),
-            10 to BlockJisonCell.Reduce(30),
-            15 to BlockJisonCell.Reduce(30),
-            16 to BlockJisonCell.Reduce(30),
-            21 to BlockJisonCell.Reduce(30),
-            27 to BlockJisonCell.Reduce(30),
-            28 to BlockJisonCell.Reduce(30),
-            29 to BlockJisonCell.Reduce(30),
-            30 to BlockJisonCell.Reduce(30),
-            31 to BlockJisonCell.Reduce(30),
-            39 to BlockJisonCell.Reduce(30),
-            43 to BlockJisonCell.Reduce(30),
-            46 to BlockJisonCell.Reduce(30),
-        ),
-        mapOf(
-            18 to BlockJisonCell.Shift(43),
-        ),
-        mapOf(
-            18 to BlockJisonCell.Shift(44),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(23),
-            10 to BlockJisonCell.Reduce(23),
-            15 to BlockJisonCell.Reduce(23),
-            16 to BlockJisonCell.Reduce(23),
-            21 to BlockJisonCell.Reduce(23),
-            28 to BlockJisonCell.Reduce(23),
-            29 to BlockJisonCell.Reduce(23),
-            30 to BlockJisonCell.Reduce(23),
-            31 to BlockJisonCell.Reduce(23),
-            39 to BlockJisonCell.Reduce(23),
-            43 to BlockJisonCell.Reduce(23),
-            46 to BlockJisonCell.Reduce(23),
-        ),
-        mapOf(
-            18 to BlockJisonCell.Shift(45),
-        ),
-        mapOf(
-            30 to BlockJisonCell.Shift(46),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(28),
-            10 to BlockJisonCell.Reduce(28),
-            21 to BlockJisonCell.Reduce(28),
-            28 to BlockJisonCell.Reduce(28),
-            29 to BlockJisonCell.Reduce(28),
-            30 to BlockJisonCell.Reduce(28),
-            31 to BlockJisonCell.Reduce(28),
-            39 to BlockJisonCell.Reduce(28),
-            43 to BlockJisonCell.Reduce(28),
-            46 to BlockJisonCell.Reduce(28),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(35),
-            10 to BlockJisonCell.Reduce(35),
-            21 to BlockJisonCell.Reduce(35),
-            28 to BlockJisonCell.Reduce(35),
-            29 to BlockJisonCell.Reduce(35),
-            30 to BlockJisonCell.Reduce(35),
-            31 to BlockJisonCell.Reduce(35),
-            39 to BlockJisonCell.Reduce(35),
-            43 to BlockJisonCell.Reduce(35),
-            46 to BlockJisonCell.Reduce(35),
-        ),
+        buildJisonState(symbols1, action64),
+        buildJisonState(symbols1, action65),
     )
 
     private fun stateChunk2(): Array<Map<Int, BlockJisonCell>> = arrayOf(
+        buildJisonState(symbols1, action66),
+        buildJisonState(symbols1, action67),
+        buildJisonState(symbols1, action68),
         mapOf(
-            8 to BlockJisonCell.Reduce(36),
-            10 to BlockJisonCell.Reduce(36),
-            21 to BlockJisonCell.Reduce(36),
-            28 to BlockJisonCell.Reduce(36),
-            29 to BlockJisonCell.Reduce(36),
-            30 to BlockJisonCell.Reduce(36),
-            31 to BlockJisonCell.Reduce(36),
-            39 to BlockJisonCell.Reduce(36),
-            43 to BlockJisonCell.Reduce(36),
-            46 to BlockJisonCell.Reduce(36),
+            36 to action69,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(37),
-            10 to BlockJisonCell.Reduce(37),
-            21 to BlockJisonCell.Reduce(37),
-            28 to BlockJisonCell.Reduce(37),
-            29 to BlockJisonCell.Reduce(37),
-            30 to BlockJisonCell.Reduce(37),
-            31 to BlockJisonCell.Reduce(37),
-            39 to BlockJisonCell.Reduce(37),
-            43 to BlockJisonCell.Reduce(37),
-            46 to BlockJisonCell.Reduce(37),
+            33 to action70,
+            34 to action71,
         ),
         mapOf(
-            8 to BlockJisonCell.Reduce(38),
-            10 to BlockJisonCell.Reduce(38),
-            21 to BlockJisonCell.Reduce(38),
-            28 to BlockJisonCell.Reduce(38),
-            29 to BlockJisonCell.Reduce(38),
-            30 to BlockJisonCell.Reduce(38),
-            31 to BlockJisonCell.Reduce(38),
-            39 to BlockJisonCell.Reduce(38),
-            43 to BlockJisonCell.Reduce(38),
-            46 to BlockJisonCell.Reduce(38),
+            15 to action72,
+        ),
+        buildJisonState(symbols1, action73),
+        buildJisonState(symbols2, action74),
+        mapOf(
+            38 to action75,
         ),
         mapOf(
-            36 to BlockJisonCell.Shift(47),
+            33 to action76,
+            34 to action71,
+            38 to action77,
         ),
         mapOf(
-            33 to BlockJisonCell.Goto(48),
-            34 to BlockJisonCell.Shift(49),
+            31 to action78,
         ),
+        buildJisonState(symbols2, action79),
         mapOf(
-            15 to BlockJisonCell.Shift(50),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(27),
-            10 to BlockJisonCell.Reduce(27),
-            21 to BlockJisonCell.Reduce(27),
-            28 to BlockJisonCell.Reduce(27),
-            29 to BlockJisonCell.Reduce(27),
-            30 to BlockJisonCell.Reduce(27),
-            31 to BlockJisonCell.Reduce(27),
-            39 to BlockJisonCell.Reduce(27),
-            43 to BlockJisonCell.Reduce(27),
-            46 to BlockJisonCell.Reduce(27),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(33),
-            10 to BlockJisonCell.Reduce(33),
-            15 to BlockJisonCell.Reduce(33),
-            16 to BlockJisonCell.Reduce(33),
-            21 to BlockJisonCell.Reduce(33),
-            27 to BlockJisonCell.Reduce(33),
-            28 to BlockJisonCell.Reduce(33),
-            29 to BlockJisonCell.Reduce(33),
-            30 to BlockJisonCell.Reduce(33),
-            31 to BlockJisonCell.Reduce(33),
-            39 to BlockJisonCell.Reduce(33),
-            43 to BlockJisonCell.Reduce(33),
-            46 to BlockJisonCell.Reduce(33),
-        ),
-        mapOf(
-            38 to BlockJisonCell.Shift(51),
-        ),
-        mapOf(
-            33 to BlockJisonCell.Goto(52),
-            34 to BlockJisonCell.Shift(49),
-            38 to BlockJisonCell.Reduce(31),
-        ),
-        mapOf(
-            31 to BlockJisonCell.Reduce(15),
-        ),
-        mapOf(
-            8 to BlockJisonCell.Reduce(34),
-            10 to BlockJisonCell.Reduce(34),
-            15 to BlockJisonCell.Reduce(34),
-            16 to BlockJisonCell.Reduce(34),
-            21 to BlockJisonCell.Reduce(34),
-            27 to BlockJisonCell.Reduce(34),
-            28 to BlockJisonCell.Reduce(34),
-            29 to BlockJisonCell.Reduce(34),
-            30 to BlockJisonCell.Reduce(34),
-            31 to BlockJisonCell.Reduce(34),
-            39 to BlockJisonCell.Reduce(34),
-            43 to BlockJisonCell.Reduce(34),
-            46 to BlockJisonCell.Reduce(34),
-        ),
-        mapOf(
-            38 to BlockJisonCell.Reduce(32),
+            38 to action80,
         ),
     )
 

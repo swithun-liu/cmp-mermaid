@@ -75,9 +75,11 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | 确定性 SceneGraph 重放 | 441 个通过，0 个不一致 |
 | 内置主题矩阵 | 363/363 |
 | 独立生成的 Native 压力输入 | 保留的历史基线 7,936 个 |
-| 0.1.18 当前 JVM 测试 | Core：1,100 个通过、0 个失败；Compose：75 个通过、0 个失败 |
+| 0.1.21 当前 JVM 测试 | Core：1,123 个通过、0 个失败；Compose：75 个通过、0 个失败 |
+| 当前 Jison 解析表等价性 | 12 个家族、1,611 个状态和 20,857 个条目与官方 JS 完全一致，包括键顺序 |
 | 当前容器宽度专项审计 | 2 个家族、3 份唯一源码、9 个配置场景、18 张截图和 3 页 contact sheet；0 Pass / 9 Review / 0 Fail |
-| Wasm 测试 | Core：1,017 个通过、0 个失败；Compose：37 个通过、0 个失败；debug UI：9 个通过、0 个失败 |
+| 0.1.21 当前 Wasm 测试 | Core：1,109 个通过、0 个失败；Compose：62 个通过、0 个失败；debug UI：保留历史 9 个通过 |
+| 0.1.21 当前 iOS Simulator Arm64 测试 | Core：1,109 个通过、0 个失败；Compose：76 个通过、0 个失败 |
 | Core 生产场景压力测试 | 历史 415 场景基线：2,075 次渲染，总耗时 674ms，P95 为 1ms，保留堆 63,968 bytes |
 | 物理设备运行时矩阵 | Kotlin 2.3.20 Android 8/8、Kotlin 1.7.21 Android 8/8、iOS 6/6 通过；9,702 次语料渲染；人工审阅 198 张代表图和 22 张完成截图；0 崩溃、0 Android ANR |
 | 运行时负载矩阵 | 三条物理设备轨道均完整通过 441 个场景；Web 保留此前 397 场景基线；iOS 模拟器和 Desktop 保留此前 236 场景基线 |
@@ -86,6 +88,7 @@ Native/Official 截图，以及通过的替换版细节与几何门禁。
 | --- | --- |
 | **[全图表路线](docs/full-diagram-roadmap.md)** | 官方 33 家族清单和已完成的 33/33 家族门禁 |
 | **[稳定性测试报告](docs/stability-report.md)** | 当前判定、视觉对比图、测试、压力指标、运行时负载证据和复现步骤 |
+| **[0.1.21 解析表体积优化报告](docs/jison-table-size-report.md)** | 相同最小宿主的 iOS 测量：库符号占用 38.86 MB → 35.24 MB，解析表 5.20 MB → 1.57 MB；与实际 IPA 体积分开记录 |
 | **[0.1.18 容器宽度修复报告](docs/container-width-report.md)** | 新鲜生成的 Gantt 父容器宽度、坐标取整和标签左右选择检查，以及相同配置下的 Mindmap 颜色和拓扑检查；视觉微差继续保留 Review |
 | **[全部 8,448 个 Native/Official 独立场景](docs/assets/stability-report/visual-parity-evidence.md)** | 528 页分页对比图，每页包含 16 个不同的同源码场景 |
 | **[异常源码 Native/Official 证据](docs/assets/invalid-source-report/invalid-source-evidence.md)** | 从 441 个结构场景的字节级不同压力样本派生的 8,448 个系统化变异、16,896 张截图和 528 张对比图 |
@@ -225,16 +228,16 @@ Kotlin Dagre。ELK 名称和 `flowchart-elk` 仍会作为上游输入被识别�
 
 | 使用方 | 制品 |
 | --- | --- |
-| 当前 Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.13` |
-| 当前 Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.13` |
-| Kotlin `1.7.21` Android | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.13` |
-| Kotlin `1.7.21` Android Compose | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.13` |
-| iOS 二进制 | `CMPMermaid` CocoaPod `0.1.13` |
+| 当前 Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.21` |
+| 当前 Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.21` |
+| Kotlin `1.7.21` Android | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.21` |
+| Kotlin `1.7.21` Android Compose | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.21` |
+| iOS 二进制 | `CMPMermaid` CocoaPod `0.1.21` |
 
 当前 Kotlin Multiplatform 项目：
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.13")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.21")
 }
 ```
 
@@ -247,7 +250,7 @@ dependencies {
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.13",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.21",
     )
 }
 ```
@@ -273,7 +276,7 @@ container.addView(diagramView)
 iOS 项目可以通过 CocoaPods 使用预编译的静态 XCFramework：
 
 ```ruby
-pod 'CMPMermaid', '0.1.13'
+pod 'CMPMermaid', '0.1.21'
 ```
 
 二进制向 Swift 暴露

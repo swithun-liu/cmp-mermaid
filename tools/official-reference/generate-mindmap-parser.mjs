@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { emitJisonStates } from './jison-table-construction.mjs';
 
 const MERMAID_VERSION = '12.0.0';
 const MINDMAP_JISON_SHA256 =
@@ -95,6 +96,8 @@ const cellSource = (cell) => {
 const lines = [];
 lines.push('package com.swithun.cmpmermaid.core.mindmap.upstream.mermaid');
 lines.push('');
+lines.push('import com.swithun.cmpmermaid.core.buildJisonState');
+lines.push('');
 lines.push('/**');
 lines.push(` * Generated from Mermaid ${MERMAID_VERSION} mindmap.jison.`);
 lines.push(` * Upstream mindmap.jison SHA-256: ${MINDMAP_JISON_SHA256}`);
@@ -130,35 +133,7 @@ for (const production of parser.productions_) {
 }
 lines.push('    )');
 lines.push('');
-const stateChunks = [];
-for (let index = 0; index < parser.table.length; index += STATE_CHUNK_SIZE) {
-  stateChunks.push(parser.table.slice(index, index + STATE_CHUNK_SIZE));
-}
-lines.push('    val states: Array<Map<Int, MindmapJisonCell>> = buildList {');
-for (let index = 0; index < stateChunks.length; index += 1) {
-  lines.push(`        addAll(stateChunk${index}())`);
-}
-lines.push('    }.toTypedArray()');
-lines.push('');
-for (let chunkIndex = 0; chunkIndex < stateChunks.length; chunkIndex += 1) {
-  lines.push(
-    `    private fun stateChunk${chunkIndex}(): Array<Map<Int, MindmapJisonCell>> = arrayOf(`,
-  );
-  for (const state of stateChunks[chunkIndex]) {
-    const entries = Object.entries(state);
-    if (entries.length === 0) {
-      lines.push('        emptyMap(),');
-      continue;
-    }
-    lines.push('        mapOf(');
-    for (const [symbol, cell] of entries) {
-      lines.push(`            ${symbol} to ${cellSource(cell)},`);
-    }
-    lines.push('        ),');
-  }
-  lines.push('    )');
-  lines.push('');
-}
+lines.push(...emitJisonStates(parser.table, cellSource, STATE_CHUNK_SIZE));
 const lexerChunks = [];
 for (
   let index = 0;

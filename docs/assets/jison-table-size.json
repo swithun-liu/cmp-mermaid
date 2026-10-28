@@ -1,0 +1,132 @@
+{
+  "units": "bytes",
+  "comparison": "same minimal Objective-C consumer, arm64 iOS 14, Apple clang 21, identical link flags",
+  "publishedBaseline020": {
+    "frameworkSha256": "21cc80f5fdfab2f92ea0aa3bae2ae2da155734733ab298156229f0a6e28db31a",
+    "frameworkArchiveBytes": 136726336,
+    "linkedExecutableBytes": 48076824,
+    "compressedExecutableBytes": 13965552,
+    "fileBackedFrameworkAttributedSymbolBytes": 38857342,
+    "fileBackedJisonTableNamedSymbolBytes": 5201904
+  },
+  "versions": {
+    "0.1.10": {
+      "target": "arm64-apple-ios14.0",
+      "compilerFlags": [
+        "-O2",
+        "-fobjc-arc",
+        "-ObjC",
+        "-dead_strip"
+      ],
+      "frameworkSha256": "86ec91625870382e838ed130a1c369083a08e122e07f2778bbb143bb87696270",
+      "frameworkArchiveBytes": 129761336,
+      "linkedExecutableBytes": 44056008,
+      "compressedExecutableBytes": 12941159,
+      "frameworkAttributedSymbolBytes": 36040342,
+      "fileBackedFrameworkAttributedSymbolBytes": 35825249,
+      "mermaidNamedSymbolBytes": 13332736,
+      "fileBackedMermaidNamedSymbolBytes": 13309600,
+      "jisonNamedSymbolBytes": 5774916,
+      "jisonTableNamedSymbolBytes": 5202288,
+      "fileBackedJisonTableNamedSymbolBytes": 5201904,
+      "jisonStateChunkSymbolBytes": 4686912,
+      "sections": {
+        "__TEXT": 32784384,
+        "__DATA_CONST": 3096576,
+        "__DATA": 409600,
+        "__LINKEDIT": 7979008
+      }
+    },
+    "0.1.20": {
+      "target": "arm64-apple-ios14.0",
+      "compilerFlags": [
+        "-O2",
+        "-fobjc-arc",
+        "-ObjC",
+        "-dead_strip"
+      ],
+      "frameworkSha256": "75e2c286d6465ba3bc798d2979f66424d8b1e3a0c7636ee8db598b407c058fc6",
+      "frameworkArchiveBytes": 136726424,
+      "linkedExecutableBytes": 48076824,
+      "compressedExecutableBytes": 13965552,
+      "frameworkAttributedSymbolBytes": 39082293,
+      "fileBackedFrameworkAttributedSymbolBytes": 38857342,
+      "mermaidNamedSymbolBytes": 13607032,
+      "fileBackedMermaidNamedSymbolBytes": 13583768,
+      "jisonNamedSymbolBytes": 5774860,
+      "jisonTableNamedSymbolBytes": 5202288,
+      "fileBackedJisonTableNamedSymbolBytes": 5201904,
+      "jisonStateChunkSymbolBytes": 4686912,
+      "sections": {
+        "__TEXT": 35553280,
+        "__DATA_CONST": 3342336,
+        "__DATA": 507904,
+        "__LINKEDIT": 8912896
+      }
+    },
+    "0.1.21": {
+      "target": "arm64-apple-ios14.0",
+      "compilerFlags": [
+        "-O2",
+        "-fobjc-arc",
+        "-ObjC",
+        "-dead_strip"
+      ],
+      "frameworkSha256": "03f60c4f77ab8c664426156470dd1c75ec1ef9d293abcd7fce90a49e5bd49a71",
+      "frameworkArchiveBytes": 128125032,
+      "linkedExecutableBytes": 44468384,
+      "compressedExecutableBytes": 13528948,
+      "frameworkAttributedSymbolBytes": 35468737,
+      "fileBackedFrameworkAttributedSymbolBytes": 35243786,
+      "mermaidNamedSymbolBytes": 9979308,
+      "fileBackedMermaidNamedSymbolBytes": 9956044,
+      "jisonNamedSymbolBytes": 2147136,
+      "jisonTableNamedSymbolBytes": 1573780,
+      "fileBackedJisonTableNamedSymbolBytes": 1573396,
+      "jisonStateChunkSymbolBytes": 79660,
+      "sections": {
+        "__TEXT": 31932416,
+        "__DATA_CONST": 3358720,
+        "__DATA": 507904,
+        "__LINKEDIT": 8912896
+      }
+    }
+  },
+  "jvmInitialization": {
+    "020": {
+      "samplesNanos": [
+        58385875,
+        34689875,
+        35286292,
+        34756625,
+        36095000,
+        36298208,
+        36673500,
+        35478542
+      ],
+      "medianMillis": 35.786771,
+      "states": 1611,
+      "entries": 20857
+    },
+    "021": {
+      "samplesNanos": [
+        73386917,
+        38222417,
+        37788708,
+        37920333,
+        37539750,
+        37381125,
+        37250250,
+        41509875
+      ],
+      "medianMillis": 37.8545205,
+      "states": 1611,
+      "entries": 20857
+    }
+  },
+  "officialTableCounts": {
+    "families": 12,
+    "states": 1611,
+    "entries": 20857
+  }
+}

@@ -123,11 +123,19 @@ mkdir -p "$pod_archive_root/compose-resources"
 cp -R "$compose_resources" "$pod_archive_root/compose-resources/composeResources"
 cp "$root_dir/LICENSE" "$pod_archive_root/LICENSE"
 cp "$root_dir/THIRD_PARTY_NOTICES.md" "$pod_archive_root/THIRD_PARTY_NOTICES.md"
+mkdir -p "$pod_archive_root/third_party"
+cp -R "$root_dir/third_party/licenses" "$pod_archive_root/third_party/licenses"
+mkdir -p "$pod_archive_root/compose-resources/third_party"
+cp -R "$root_dir/third_party/licenses" \
+  "$pod_archive_root/compose-resources/third_party/licenses"
 
 (
   cd "$pod_archive_root"
   COPYFILE_DISABLE=1 \
     zip -X -q -r "$release_dir/CMPMermaid-$version.zip" .
+  COPYFILE_DISABLE=1 \
+    zip -X -q -r "$release_dir/cmp-mermaid-licenses-$version.zip" \
+      LICENSE THIRD_PARTY_NOTICES.md third_party
 )
 
 maven_archive_root="$temporary_dir/maven-repository"

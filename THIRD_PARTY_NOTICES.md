@@ -503,10 +503,13 @@ https://github.com/BigBadaboom/androidsvg
 The Compose adapter bundles Arimo Regular, Bold, Italic, and Bold Italic as an
 Arial-compatible default font family.
 
-Arimo is distributed under the Apache License 2.0. The complete license text
+Copyright 2020 The Arimo Project Authors (https://github.com/googlefonts/arimo)
+
+The bundled fonts are distributed under the SIL Open Font License 1.1, as
+recorded in their copyright and license metadata. The complete license text
 is included at:
 
-`third_party/licenses/ARIMO-APACHE-2.0.txt`
+`third_party/licenses/ARIMO-OFL-1.1.txt`
 
 Project:
 

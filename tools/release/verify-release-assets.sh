@@ -18,6 +18,7 @@ required_release_files=(
   "CMPMermaid.podspec"
   "LICENSE"
   "THIRD_PARTY_NOTICES.md"
+  "cmp-mermaid-licenses-$version.zip"
   "cmp-mermaid-$version.cdx.json"
   "cmp-mermaid-android-kotlin17-central-$version.zip"
   "cmp-mermaid-maven-central-$version.zip"
@@ -75,6 +76,20 @@ done
 temporary_dir="$(mktemp -d "$root_dir/build/cmp-mermaid-verify.XXXXXX")"
 trap 'rm -rf "$temporary_dir"' EXIT
 unzip -q "$release_dir/CMPMermaid-$version.zip" -d "$temporary_dir"
+unzip -q "$release_dir/cmp-mermaid-licenses-$version.zip" \
+  -d "$temporary_dir/license-bundle"
+cmp "$root_dir/THIRD_PARTY_NOTICES.md" \
+  "$temporary_dir/license-bundle/THIRD_PARTY_NOTICES.md"
+while IFS= read -r -d '' license_file; do
+  license_name="$(basename "$license_file")"
+  for directory in \
+    "$temporary_dir/third_party/licenses" \
+    "$temporary_dir/compose-resources/third_party/licenses" \
+    "$temporary_dir/license-bundle/third_party/licenses"
+  do
+    cmp "$license_file" "$directory/$license_name"
+  done
+done < <(find "$root_dir/third_party/licenses" -type f -print0)
 "$script_dir/verify-ios-xcframework.sh" \
   "$temporary_dir/CMPMermaid.xcframework"
 

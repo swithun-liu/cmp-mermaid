@@ -39,6 +39,7 @@ jobs:
           node tools/official-reference/generate-stability-corpus.mjs
           node tools/official-reference/generate-invalid-source-corpus.mjs
           node --test \
+            tools/official-reference/jison-table-construction.test.mjs \
             tools/official-reference/visual-structure-corpus.test.mjs \
             tools/official-reference/audit-visual-scenario-duplicates.test.mjs \
             tools/official-reference/visual-stress-corpus.test.mjs
@@ -338,6 +339,17 @@ jobs:
       - name: Install visual audit dependencies
         working-directory: tools/official-reference
         run: npm ci
+
+      - name: Verify official parser table generation
+        working-directory: tools/official-reference
+        run: |
+          node generate-jison-table-oracle.mjs
+          for family in agentflow block class er flow gantt journey mindmap requirement sequence state xychart; do
+            node "generate-${family}-parser.mjs"
+          done
+          git diff --exit-code -- \
+            ../../mermaid-core/src/commonMain \
+            ../../mermaid-core/src/jvmTest/resources/jison-tables
 
       - name: Verify Mermaid diagram inventory
         working-directory: tools/official-reference

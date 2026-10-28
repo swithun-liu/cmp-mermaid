@@ -1,5 +1,7 @@
 package com.swithun.cmpmermaid.core.mindmap.upstream.mermaid
 
+import com.swithun.cmpmermaid.core.buildJisonState
+
 /**
  * Generated from Mermaid 12.0.0 mindmap.jison.
  * Upstream mindmap.jison SHA-256: 1114fbccc641f2ad59a56eec452e21dfb947d78283adf571a6ce24b09dce6993
@@ -81,6 +83,78 @@ internal object MindmapJisonTables {
         MindmapJisonProduction(symbol = 17, length = 4),
     )
 
+    // Mermaid.js 12.0.0: generated shared action arrays ($V*) and o(k, v, o2, l).
+    private val action0: MindmapJisonCell = MindmapJisonCell.Goto(1)
+    private val action1: MindmapJisonCell = MindmapJisonCell.Goto(2)
+    private val action2: MindmapJisonCell = MindmapJisonCell.Goto(3)
+    private val action3: MindmapJisonCell = MindmapJisonCell.Shift(5)
+    private val action4: MindmapJisonCell = MindmapJisonCell.Shift(4)
+    private val action5: MindmapJisonCell = MindmapJisonCell.Accept
+    private val action6: MindmapJisonCell = MindmapJisonCell.Reduce(1)
+    private val action7: MindmapJisonCell = MindmapJisonCell.Goto(6)
+    private val action8: MindmapJisonCell = MindmapJisonCell.Shift(7)
+    private val action9: MindmapJisonCell = MindmapJisonCell.Shift(8)
+    private val action10: MindmapJisonCell = MindmapJisonCell.Shift(13)
+    private val action11: MindmapJisonCell = MindmapJisonCell.Shift(10)
+    private val action12: MindmapJisonCell = MindmapJisonCell.Goto(9)
+    private val action13: MindmapJisonCell = MindmapJisonCell.Goto(11)
+    private val action14: MindmapJisonCell = MindmapJisonCell.Shift(12)
+    private val action15: MindmapJisonCell = MindmapJisonCell.Goto(14)
+    private val action16: MindmapJisonCell = MindmapJisonCell.Shift(15)
+    private val action17: MindmapJisonCell = MindmapJisonCell.Shift(16)
+    private val action18: MindmapJisonCell = MindmapJisonCell.Goto(17)
+    private val action19: MindmapJisonCell = MindmapJisonCell.Goto(18)
+    private val action20: MindmapJisonCell = MindmapJisonCell.Shift(20)
+    private val action21: MindmapJisonCell = MindmapJisonCell.Shift(19)
+    private val action22: MindmapJisonCell = MindmapJisonCell.Reduce(3)
+    private val action23: MindmapJisonCell = MindmapJisonCell.Reduce(2)
+    private val action24: MindmapJisonCell = MindmapJisonCell.Reduce(4)
+    private val action25: MindmapJisonCell = MindmapJisonCell.Reduce(5)
+    private val action26: MindmapJisonCell = MindmapJisonCell.Reduce(6)
+    private val action27: MindmapJisonCell = MindmapJisonCell.Goto(21)
+    private val action28: MindmapJisonCell = MindmapJisonCell.Goto(22)
+    private val action29: MindmapJisonCell = MindmapJisonCell.Shift(26)
+    private val action30: MindmapJisonCell = MindmapJisonCell.Shift(24)
+    private val action31: MindmapJisonCell = MindmapJisonCell.Goto(23)
+    private val action32: MindmapJisonCell = MindmapJisonCell.Shift(25)
+    private val action33: MindmapJisonCell = MindmapJisonCell.Reduce(22)
+    private val action34: MindmapJisonCell = MindmapJisonCell.Goto(27)
+    private val action35: MindmapJisonCell = MindmapJisonCell.Shift(28)
+    private val action36: MindmapJisonCell = MindmapJisonCell.Shift(29)
+    private val action37: MindmapJisonCell = MindmapJisonCell.Reduce(18)
+    private val action38: MindmapJisonCell = MindmapJisonCell.Reduce(19)
+    private val action39: MindmapJisonCell = MindmapJisonCell.Reduce(20)
+    private val action40: MindmapJisonCell = MindmapJisonCell.Reduce(21)
+    private val action41: MindmapJisonCell = MindmapJisonCell.Reduce(23)
+    private val action42: MindmapJisonCell = MindmapJisonCell.Reduce(24)
+    private val action43: MindmapJisonCell = MindmapJisonCell.Reduce(26)
+    private val action44: MindmapJisonCell = MindmapJisonCell.Shift(30)
+    private val action45: MindmapJisonCell = MindmapJisonCell.Shift(31)
+    private val action46: MindmapJisonCell = MindmapJisonCell.Goto(32)
+    private val action47: MindmapJisonCell = MindmapJisonCell.Reduce(7)
+    private val action48: MindmapJisonCell = MindmapJisonCell.Reduce(14)
+    private val action49: MindmapJisonCell = MindmapJisonCell.Shift(33)
+    private val action50: MindmapJisonCell = MindmapJisonCell.Shift(34)
+    private val action51: MindmapJisonCell = MindmapJisonCell.Reduce(8)
+    private val action52: MindmapJisonCell = MindmapJisonCell.Reduce(9)
+    private val action53: MindmapJisonCell = MindmapJisonCell.Reduce(10)
+    private val action54: MindmapJisonCell = MindmapJisonCell.Reduce(15)
+    private val action55: MindmapJisonCell = MindmapJisonCell.Reduce(16)
+    private val action56: MindmapJisonCell = MindmapJisonCell.Reduce(17)
+    private val action57: MindmapJisonCell = MindmapJisonCell.Shift(35)
+    private val action58: MindmapJisonCell = MindmapJisonCell.Shift(36)
+    private val action59: MindmapJisonCell = MindmapJisonCell.Reduce(13)
+    private val action60: MindmapJisonCell = MindmapJisonCell.Reduce(11)
+    private val action61: MindmapJisonCell = MindmapJisonCell.Reduce(12)
+    private val action62: MindmapJisonCell = MindmapJisonCell.Shift(37)
+    private val action63: MindmapJisonCell = MindmapJisonCell.Reduce(25)
+    private val action64: MindmapJisonCell = MindmapJisonCell.Reduce(27)
+    private val symbols0 = intArrayOf(6, 7, 8)
+    private val symbols1 = intArrayOf(6, 7, 11, 14, 15, 16, 17, 18, 19, 22)
+    private val symbols2 = intArrayOf(6, 7, 11)
+    private val symbols3 = intArrayOf(6, 7, 11, 19)
+    private val symbols4 = intArrayOf(1, 6, 7, 11, 13, 15, 16, 19, 22)
+
     val states: Array<Map<Int, MindmapJisonCell>> = buildList {
         addAll(stateChunk0())
         addAll(stateChunk1())
@@ -88,272 +162,146 @@ internal object MindmapJisonTables {
 
     private fun stateChunk0(): Array<Map<Int, MindmapJisonCell>> = arrayOf(
         mapOf(
-            3 to MindmapJisonCell.Goto(1),
-            4 to MindmapJisonCell.Goto(2),
-            5 to MindmapJisonCell.Goto(3),
-            6 to MindmapJisonCell.Shift(5),
-            8 to MindmapJisonCell.Shift(4),
+            3 to action0,
+            4 to action1,
+            5 to action2,
+            6 to action3,
+            8 to action4,
         ),
         mapOf(
-            1 to MindmapJisonCell.Accept,
+            1 to action5,
         ),
         mapOf(
-            1 to MindmapJisonCell.Reduce(1),
+            1 to action6,
         ),
         mapOf(
-            4 to MindmapJisonCell.Goto(6),
-            6 to MindmapJisonCell.Shift(7),
-            7 to MindmapJisonCell.Shift(8),
-            8 to MindmapJisonCell.Shift(4),
+            4 to action7,
+            6 to action8,
+            7 to action9,
+            8 to action4,
         ),
         mapOf(
-            6 to MindmapJisonCell.Shift(13),
-            7 to MindmapJisonCell.Shift(10),
-            9 to MindmapJisonCell.Goto(9),
-            12 to MindmapJisonCell.Goto(11),
-            13 to MindmapJisonCell.Shift(12),
-            14 to MindmapJisonCell.Goto(14),
-            15 to MindmapJisonCell.Shift(15),
-            16 to MindmapJisonCell.Shift(16),
-            17 to MindmapJisonCell.Goto(17),
-            18 to MindmapJisonCell.Goto(18),
-            19 to MindmapJisonCell.Shift(20),
-            22 to MindmapJisonCell.Shift(19),
+            6 to action10,
+            7 to action11,
+            9 to action12,
+            12 to action13,
+            13 to action14,
+            14 to action15,
+            15 to action16,
+            16 to action17,
+            17 to action18,
+            18 to action19,
+            19 to action20,
+            22 to action21,
+        ),
+        buildJisonState(symbols0, action22),
+        mapOf(
+            1 to action23,
+        ),
+        buildJisonState(symbols0, action24),
+        buildJisonState(symbols0, action25),
+        mapOf(
+            1 to action26,
+            6 to action10,
+            12 to action27,
+            13 to action14,
+            14 to action15,
+            15 to action16,
+            16 to action17,
+            17 to action18,
+            18 to action19,
+            19 to action20,
+            22 to action21,
         ),
         mapOf(
-            6 to MindmapJisonCell.Reduce(3),
-            7 to MindmapJisonCell.Reduce(3),
-            8 to MindmapJisonCell.Reduce(3),
+            6 to action10,
+            9 to action28,
+            12 to action13,
+            13 to action14,
+            14 to action15,
+            15 to action16,
+            16 to action17,
+            17 to action18,
+            18 to action19,
+            19 to action20,
+            22 to action21,
         ),
         mapOf(
-            1 to MindmapJisonCell.Reduce(2),
+            6 to action29,
+            7 to action30,
+            10 to action31,
+            11 to action32,
         ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(4),
-            7 to MindmapJisonCell.Reduce(4),
-            8 to MindmapJisonCell.Reduce(4),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(5),
-            7 to MindmapJisonCell.Reduce(5),
-            8 to MindmapJisonCell.Reduce(5),
-        ),
-        mapOf(
-            1 to MindmapJisonCell.Reduce(6),
-            6 to MindmapJisonCell.Shift(13),
-            12 to MindmapJisonCell.Goto(21),
-            13 to MindmapJisonCell.Shift(12),
-            14 to MindmapJisonCell.Goto(14),
-            15 to MindmapJisonCell.Shift(15),
-            16 to MindmapJisonCell.Shift(16),
-            17 to MindmapJisonCell.Goto(17),
-            18 to MindmapJisonCell.Goto(18),
-            19 to MindmapJisonCell.Shift(20),
-            22 to MindmapJisonCell.Shift(19),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Shift(13),
-            9 to MindmapJisonCell.Goto(22),
-            12 to MindmapJisonCell.Goto(11),
-            13 to MindmapJisonCell.Shift(12),
-            14 to MindmapJisonCell.Goto(14),
-            15 to MindmapJisonCell.Shift(15),
-            16 to MindmapJisonCell.Shift(16),
-            17 to MindmapJisonCell.Goto(17),
-            18 to MindmapJisonCell.Goto(18),
-            19 to MindmapJisonCell.Shift(20),
-            22 to MindmapJisonCell.Shift(19),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Shift(26),
-            7 to MindmapJisonCell.Shift(24),
-            10 to MindmapJisonCell.Goto(23),
-            11 to MindmapJisonCell.Shift(25),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(22),
-            7 to MindmapJisonCell.Reduce(22),
-            11 to MindmapJisonCell.Reduce(22),
-            14 to MindmapJisonCell.Goto(27),
-            15 to MindmapJisonCell.Shift(28),
-            16 to MindmapJisonCell.Shift(29),
-            17 to MindmapJisonCell.Goto(17),
-            18 to MindmapJisonCell.Goto(18),
-            19 to MindmapJisonCell.Shift(20),
-            22 to MindmapJisonCell.Shift(19),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(18),
-            7 to MindmapJisonCell.Reduce(18),
-            11 to MindmapJisonCell.Reduce(18),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(19),
-            7 to MindmapJisonCell.Reduce(19),
-            11 to MindmapJisonCell.Reduce(19),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(20),
-            7 to MindmapJisonCell.Reduce(20),
-            11 to MindmapJisonCell.Reduce(20),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(21),
-            7 to MindmapJisonCell.Reduce(21),
-            11 to MindmapJisonCell.Reduce(21),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(23),
-            7 to MindmapJisonCell.Reduce(23),
-            11 to MindmapJisonCell.Reduce(23),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(24),
-            7 to MindmapJisonCell.Reduce(24),
-            11 to MindmapJisonCell.Reduce(24),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(26),
-            7 to MindmapJisonCell.Reduce(26),
-            11 to MindmapJisonCell.Reduce(26),
-            19 to MindmapJisonCell.Shift(30),
-        ),
+        buildJisonState(symbols1, action33, mapOf(
+            14 to action34,
+            15 to action35,
+            16 to action36,
+            17 to action18,
+            18 to action19,
+            19 to action20,
+            22 to action21,
+        )),
+        buildJisonState(symbols2, action37),
+        buildJisonState(symbols2, action38),
+        buildJisonState(symbols2, action39),
+        buildJisonState(symbols2, action40),
+        buildJisonState(symbols2, action41),
+        buildJisonState(symbols2, action42),
+        buildJisonState(symbols3, action43, mapOf(
+            19 to action44,
+        )),
     )
 
     private fun stateChunk1(): Array<Map<Int, MindmapJisonCell>> = arrayOf(
         mapOf(
-            20 to MindmapJisonCell.Shift(31),
+            20 to action45,
         ),
         mapOf(
-            6 to MindmapJisonCell.Shift(26),
-            7 to MindmapJisonCell.Shift(24),
-            10 to MindmapJisonCell.Goto(32),
-            11 to MindmapJisonCell.Shift(25),
+            6 to action29,
+            7 to action30,
+            10 to action46,
+            11 to action32,
         ),
         mapOf(
-            1 to MindmapJisonCell.Reduce(7),
-            6 to MindmapJisonCell.Shift(13),
-            12 to MindmapJisonCell.Goto(21),
-            13 to MindmapJisonCell.Shift(12),
-            14 to MindmapJisonCell.Goto(14),
-            15 to MindmapJisonCell.Shift(15),
-            16 to MindmapJisonCell.Shift(16),
-            17 to MindmapJisonCell.Goto(17),
-            18 to MindmapJisonCell.Goto(18),
-            19 to MindmapJisonCell.Shift(20),
-            22 to MindmapJisonCell.Shift(19),
+            1 to action47,
+            6 to action10,
+            12 to action27,
+            13 to action14,
+            14 to action15,
+            15 to action16,
+            16 to action17,
+            17 to action18,
+            18 to action19,
+            19 to action20,
+            22 to action21,
+        ),
+        buildJisonState(symbols4, action48, mapOf(
+            7 to action49,
+            11 to action50,
+        )),
+        buildJisonState(symbols4, action51),
+        buildJisonState(symbols4, action52),
+        buildJisonState(symbols4, action53),
+        buildJisonState(symbols2, action54),
+        buildJisonState(symbols2, action55),
+        buildJisonState(symbols2, action56),
+        mapOf(
+            20 to action57,
         ),
         mapOf(
-            1 to MindmapJisonCell.Reduce(14),
-            6 to MindmapJisonCell.Reduce(14),
-            7 to MindmapJisonCell.Shift(33),
-            11 to MindmapJisonCell.Shift(34),
-            13 to MindmapJisonCell.Reduce(14),
-            15 to MindmapJisonCell.Reduce(14),
-            16 to MindmapJisonCell.Reduce(14),
-            19 to MindmapJisonCell.Reduce(14),
-            22 to MindmapJisonCell.Reduce(14),
+            21 to action58,
         ),
+        buildJisonState(symbols4, action59, mapOf(
+            7 to action49,
+            11 to action50,
+        )),
+        buildJisonState(symbols4, action60),
+        buildJisonState(symbols4, action61),
         mapOf(
-            1 to MindmapJisonCell.Reduce(8),
-            6 to MindmapJisonCell.Reduce(8),
-            7 to MindmapJisonCell.Reduce(8),
-            11 to MindmapJisonCell.Reduce(8),
-            13 to MindmapJisonCell.Reduce(8),
-            15 to MindmapJisonCell.Reduce(8),
-            16 to MindmapJisonCell.Reduce(8),
-            19 to MindmapJisonCell.Reduce(8),
-            22 to MindmapJisonCell.Reduce(8),
+            21 to action62,
         ),
-        mapOf(
-            1 to MindmapJisonCell.Reduce(9),
-            6 to MindmapJisonCell.Reduce(9),
-            7 to MindmapJisonCell.Reduce(9),
-            11 to MindmapJisonCell.Reduce(9),
-            13 to MindmapJisonCell.Reduce(9),
-            15 to MindmapJisonCell.Reduce(9),
-            16 to MindmapJisonCell.Reduce(9),
-            19 to MindmapJisonCell.Reduce(9),
-            22 to MindmapJisonCell.Reduce(9),
-        ),
-        mapOf(
-            1 to MindmapJisonCell.Reduce(10),
-            6 to MindmapJisonCell.Reduce(10),
-            7 to MindmapJisonCell.Reduce(10),
-            11 to MindmapJisonCell.Reduce(10),
-            13 to MindmapJisonCell.Reduce(10),
-            15 to MindmapJisonCell.Reduce(10),
-            16 to MindmapJisonCell.Reduce(10),
-            19 to MindmapJisonCell.Reduce(10),
-            22 to MindmapJisonCell.Reduce(10),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(15),
-            7 to MindmapJisonCell.Reduce(15),
-            11 to MindmapJisonCell.Reduce(15),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(16),
-            7 to MindmapJisonCell.Reduce(16),
-            11 to MindmapJisonCell.Reduce(16),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(17),
-            7 to MindmapJisonCell.Reduce(17),
-            11 to MindmapJisonCell.Reduce(17),
-        ),
-        mapOf(
-            20 to MindmapJisonCell.Shift(35),
-        ),
-        mapOf(
-            21 to MindmapJisonCell.Shift(36),
-        ),
-        mapOf(
-            1 to MindmapJisonCell.Reduce(13),
-            6 to MindmapJisonCell.Reduce(13),
-            7 to MindmapJisonCell.Shift(33),
-            11 to MindmapJisonCell.Shift(34),
-            13 to MindmapJisonCell.Reduce(13),
-            15 to MindmapJisonCell.Reduce(13),
-            16 to MindmapJisonCell.Reduce(13),
-            19 to MindmapJisonCell.Reduce(13),
-            22 to MindmapJisonCell.Reduce(13),
-        ),
-        mapOf(
-            1 to MindmapJisonCell.Reduce(11),
-            6 to MindmapJisonCell.Reduce(11),
-            7 to MindmapJisonCell.Reduce(11),
-            11 to MindmapJisonCell.Reduce(11),
-            13 to MindmapJisonCell.Reduce(11),
-            15 to MindmapJisonCell.Reduce(11),
-            16 to MindmapJisonCell.Reduce(11),
-            19 to MindmapJisonCell.Reduce(11),
-            22 to MindmapJisonCell.Reduce(11),
-        ),
-        mapOf(
-            1 to MindmapJisonCell.Reduce(12),
-            6 to MindmapJisonCell.Reduce(12),
-            7 to MindmapJisonCell.Reduce(12),
-            11 to MindmapJisonCell.Reduce(12),
-            13 to MindmapJisonCell.Reduce(12),
-            15 to MindmapJisonCell.Reduce(12),
-            16 to MindmapJisonCell.Reduce(12),
-            19 to MindmapJisonCell.Reduce(12),
-            22 to MindmapJisonCell.Reduce(12),
-        ),
-        mapOf(
-            21 to MindmapJisonCell.Shift(37),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(25),
-            7 to MindmapJisonCell.Reduce(25),
-            11 to MindmapJisonCell.Reduce(25),
-        ),
-        mapOf(
-            6 to MindmapJisonCell.Reduce(27),
-            7 to MindmapJisonCell.Reduce(27),
-            11 to MindmapJisonCell.Reduce(27),
-        ),
+        buildJisonState(symbols2, action63),
+        buildJisonState(symbols2, action64),
     )
 
     val lexerPatterns: List<MindmapJisonLexerPattern> = buildList {

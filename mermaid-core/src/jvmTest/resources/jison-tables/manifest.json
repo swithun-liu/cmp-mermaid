@@ -1,0 +1,113 @@
+{
+  "mermaidVersion": "12.0.0",
+  "families": [
+    {
+      "family": "agentflow",
+      "grammar": "agentflow/parser/agentflow.jison",
+      "distributionChunk": "diagram-22UHCM2B.mjs",
+      "distributionSha256": "f7192aef4952840d375a20f2a7bffa4b93c0fdb777c9a22aca1d70897393c0f8",
+      "states": 322,
+      "entries": 5276,
+      "oracleSha256": "9829188f7804fcdaf1f58a7947ed7a72cfebf0ccc12aa28118ea7d2b2e3ff1a1"
+    },
+    {
+      "family": "block",
+      "grammar": "block/parser/block.jison",
+      "distributionChunk": "blockDiagram-BEXU5L5S.mjs",
+      "distributionSha256": "f066a97c89f294242141de2fb3c09fbc9960ae7f60cacf1c67e2b58e39b99a82",
+      "states": 53,
+      "entries": 345,
+      "oracleSha256": "2beee340c5a48caa50353067d9adc23394f5338b637610a5da789b01c5f3249a"
+    },
+    {
+      "family": "class",
+      "grammar": "class/parser/classDiagram.jison",
+      "distributionChunk": "classDiagram-v2-NBCMYWYE.mjs",
+      "distributionSha256": "0988351419a58910bffa177fe4a6dd9b9d74d50d65badb726e0044d7f397c84e",
+      "states": 176,
+      "entries": 1226,
+      "oracleSha256": "bd28e054514b17414f228471714421c3c4e22b6160dfbf59bc5dd6a1b4d61aef"
+    },
+    {
+      "family": "er",
+      "grammar": "er/parser/erDiagram.jison",
+      "distributionChunk": "erDiagram-OPXOYQCR.mjs",
+      "distributionSha256": "1437bfbd601358cd7f2e54d540410bdebc9bdd38131300d16c49705811f9de49",
+      "states": 137,
+      "entries": 1640,
+      "oracleSha256": "e16fe4dd1d1352ce4a35798fcd349cf4a7c50f44e49bde9d426d77d447ca31a1"
+    },
+    {
+      "family": "flow",
+      "grammar": "flowchart/parser/flow.jison",
+      "distributionChunk": "chunk-7M6MHVWA.mjs",
+      "distributionSha256": "d276e4b92a7cc5b39bb1b619648f9fc3eb3993ff288429fcba27c2994c794234",
+      "states": 291,
+      "entries": 4142,
+      "oracleSha256": "7bd9f7da6b7d86bd7ca47aed6ff5148f264957609b3ddd1ed19be19c84218405"
+    },
+    {
+      "family": "gantt",
+      "grammar": "gantt/parser/gantt.jison",
+      "distributionChunk": "ganttDiagram-FUAMR5RP.mjs",
+      "distributionSha256": "f60134c37d88d5058ba503a2dedf5eab6f280b5d6d1d19aedbb0a85a67be409d",
+      "states": 47,
+      "entries": 1128,
+      "oracleSha256": "20b81d6ce989dde180e6e21f67d83eb5598f5de830078d78cccf7a123fc5a46b"
+    },
+    {
+      "family": "journey",
+      "grammar": "user-journey/parser/journey.jison",
+      "distributionChunk": "journeyDiagram-ZHPQQLJL.mjs",
+      "distributionSha256": "b2a84793cf6fea9b0c5cf7f680bcbfebf648dadf0535d4fdfd7f636c025e3c0d",
+      "states": 19,
+      "entries": 134,
+      "oracleSha256": "9368e9a46f845b0032c6af9372a5f21facc0d2bd9ae8ac6ab29b17291b0392a4"
+    },
+    {
+      "family": "mindmap",
+      "grammar": "mindmap/parser/mindmap.jison",
+      "distributionChunk": "mindmap-definition-NLK3R4M7.mjs",
+      "distributionSha256": "b2a2870e2bfcddeae16ee210d69b6cef003afbf6c2542d868e80daae73532510",
+      "states": 38,
+      "entries": 188,
+      "oracleSha256": "2b6c04f0e222358c15104fcac803784b3ec0f72f16ab0d3be45f0db175091c6e"
+    },
+    {
+      "family": "requirement",
+      "grammar": "requirement/parser/requirementDiagram.jison",
+      "distributionChunk": "requirementDiagram-PLB6GJNP.mjs",
+      "distributionSha256": "78077a43ffafbf1f752fe3ea7d7c78a0c7f9af6ad00ab3a619e9c494fc74cb0a",
+      "states": 165,
+      "entries": 1863,
+      "oracleSha256": "6f6afaf2ab6a9feb6e84f06943c3acf39711efbcd7d91df7059846ef1f86c73f"
+    },
+    {
+      "family": "sequence",
+      "grammar": "sequence/parser/sequenceDiagram.jison",
+      "distributionChunk": "sequenceDiagram-PO4LG4MO.mjs",
+      "distributionSha256": "05f2f26e080d2bc490589dd82fc31bff6c24c3d15b9208db2cbd56b9820e9fea",
+      "states": 205,
+      "entries": 2638,
+      "oracleSha256": "507b6bb3ee87cac12c42b27b8531da930616c1b1b041a63407af93ed7aa7a262"
+    },
+    {
+      "family": "state",
+      "grammar": "state/parser/stateDiagram.jison",
+      "distributionChunk": "stateDiagram-v2-GCMORJYK.mjs",
+      "distributionSha256": "33ba302a233f6a2b43efd12b2ba42cd1878d637bf79d351d5901812728c9318d",
+      "states": 82,
+      "entries": 1343,
+      "oracleSha256": "8f29a216cf0ffbceaa78d9d011b7e0395d83a8851213a6deb212f165dd0022b9"
+    },
+    {
+      "family": "xychart",
+      "grammar": "xychart/parser/xychart.jison",
+      "distributionChunk": "xychartDiagram-PMCCYNJV.mjs",
+      "distributionSha256": "d602c86e3513b44777118606f7190dbc4d260ecaba6f26ed3adb56f7375b2b7a",
+      "states": 76,
+      "entries": 934,
+      "oracleSha256": "9da3e40870d5ec580114865af29a93aadb57118a54c14059ed72b11866de97f6"
+    }
+  ]
+}

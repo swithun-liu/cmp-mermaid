@@ -1,5 +1,7 @@
 package com.swithun.cmpmermaid.core.journey.upstream.mermaid
 
+import com.swithun.cmpmermaid.core.buildJisonState
+
 /**
  * Generated from Mermaid 12.0.0 journey.jison.
  * Upstream journey.jison SHA-256: 2230b9f958f7c2f2381149b0e484cd203ff919cf43abd065beba7ab6b5a660a5
@@ -66,183 +68,102 @@ internal object JourneyJisonTables {
         JourneyJisonProduction(symbol = 9, length = 2),
     )
 
+    // Mermaid.js 12.0.0: generated shared action arrays ($V*) and o(k, v, o2, l).
+    private val action0: JourneyJisonCell = JourneyJisonCell.Goto(1)
+    private val action1: JourneyJisonCell = JourneyJisonCell.Shift(2)
+    private val action2: JourneyJisonCell = JourneyJisonCell.Accept
+    private val action3: JourneyJisonCell = JourneyJisonCell.Goto(3)
+    private val action4: JourneyJisonCell = JourneyJisonCell.Reduce(2)
+    private val action5: JourneyJisonCell = JourneyJisonCell.Shift(4)
+    private val action6: JourneyJisonCell = JourneyJisonCell.Goto(5)
+    private val action7: JourneyJisonCell = JourneyJisonCell.Shift(6)
+    private val action8: JourneyJisonCell = JourneyJisonCell.Goto(7)
+    private val action9: JourneyJisonCell = JourneyJisonCell.Shift(8)
+    private val action10: JourneyJisonCell = JourneyJisonCell.Shift(9)
+    private val action11: JourneyJisonCell = JourneyJisonCell.Shift(10)
+    private val action12: JourneyJisonCell = JourneyJisonCell.Shift(11)
+    private val action13: JourneyJisonCell = JourneyJisonCell.Shift(12)
+    private val action14: JourneyJisonCell = JourneyJisonCell.Shift(13)
+    private val action15: JourneyJisonCell = JourneyJisonCell.Shift(14)
+    private val action16: JourneyJisonCell = JourneyJisonCell.Reduce(1)
+    private val action17: JourneyJisonCell = JourneyJisonCell.Reduce(7)
+    private val action18: JourneyJisonCell = JourneyJisonCell.Reduce(3)
+    private val action19: JourneyJisonCell = JourneyJisonCell.Goto(15)
+    private val action20: JourneyJisonCell = JourneyJisonCell.Reduce(5)
+    private val action21: JourneyJisonCell = JourneyJisonCell.Reduce(6)
+    private val action22: JourneyJisonCell = JourneyJisonCell.Reduce(8)
+    private val action23: JourneyJisonCell = JourneyJisonCell.Shift(16)
+    private val action24: JourneyJisonCell = JourneyJisonCell.Shift(17)
+    private val action25: JourneyJisonCell = JourneyJisonCell.Reduce(11)
+    private val action26: JourneyJisonCell = JourneyJisonCell.Reduce(12)
+    private val action27: JourneyJisonCell = JourneyJisonCell.Shift(18)
+    private val action28: JourneyJisonCell = JourneyJisonCell.Reduce(4)
+    private val action29: JourneyJisonCell = JourneyJisonCell.Reduce(9)
+    private val action30: JourneyJisonCell = JourneyJisonCell.Reduce(10)
+    private val action31: JourneyJisonCell = JourneyJisonCell.Reduce(13)
+    private val symbols0 = intArrayOf(5, 6, 8, 10, 11, 12, 14, 16, 17, 18)
+    private val symbols1 = intArrayOf(1, 6, 8, 10, 11, 12, 14, 16, 17, 18)
+    private val symbols2 = intArrayOf(6, 8, 10, 11, 12, 14, 16, 17, 18)
+
     val states: Array<Map<Int, JourneyJisonCell>> = buildList {
         addAll(stateChunk0())
     }.toTypedArray()
 
     private fun stateChunk0(): Array<Map<Int, JourneyJisonCell>> = arrayOf(
         mapOf(
-            3 to JourneyJisonCell.Goto(1),
-            4 to JourneyJisonCell.Shift(2),
+            3 to action0,
+            4 to action1,
         ),
         mapOf(
-            1 to JourneyJisonCell.Accept,
+            1 to action2,
+        ),
+        buildJisonState(symbols0, action4, mapOf(
+            5 to action3,
+        )),
+        mapOf(
+            6 to action5,
+            7 to action6,
+            8 to action7,
+            9 to action8,
+            10 to action9,
+            11 to action10,
+            12 to action11,
+            14 to action12,
+            16 to action13,
+            17 to action14,
+            18 to action15,
+        ),
+        buildJisonState(symbols1, action17, mapOf(
+            1 to action16,
+        )),
+        buildJisonState(symbols2, action18),
+        mapOf(
+            9 to action19,
+            11 to action10,
+            12 to action11,
+            14 to action12,
+            16 to action13,
+            17 to action14,
+            18 to action15,
+        ),
+        buildJisonState(symbols2, action20),
+        buildJisonState(symbols2, action21),
+        buildJisonState(symbols2, action22),
+        mapOf(
+            13 to action23,
         ),
         mapOf(
-            5 to JourneyJisonCell.Goto(3),
-            6 to JourneyJisonCell.Reduce(2),
-            8 to JourneyJisonCell.Reduce(2),
-            10 to JourneyJisonCell.Reduce(2),
-            11 to JourneyJisonCell.Reduce(2),
-            12 to JourneyJisonCell.Reduce(2),
-            14 to JourneyJisonCell.Reduce(2),
-            16 to JourneyJisonCell.Reduce(2),
-            17 to JourneyJisonCell.Reduce(2),
-            18 to JourneyJisonCell.Reduce(2),
+            15 to action24,
         ),
+        buildJisonState(symbols2, action25),
+        buildJisonState(symbols2, action26),
         mapOf(
-            6 to JourneyJisonCell.Shift(4),
-            7 to JourneyJisonCell.Goto(5),
-            8 to JourneyJisonCell.Shift(6),
-            9 to JourneyJisonCell.Goto(7),
-            10 to JourneyJisonCell.Shift(8),
-            11 to JourneyJisonCell.Shift(9),
-            12 to JourneyJisonCell.Shift(10),
-            14 to JourneyJisonCell.Shift(11),
-            16 to JourneyJisonCell.Shift(12),
-            17 to JourneyJisonCell.Shift(13),
-            18 to JourneyJisonCell.Shift(14),
+            19 to action27,
         ),
-        mapOf(
-            1 to JourneyJisonCell.Reduce(1),
-            6 to JourneyJisonCell.Reduce(7),
-            8 to JourneyJisonCell.Reduce(7),
-            10 to JourneyJisonCell.Reduce(7),
-            11 to JourneyJisonCell.Reduce(7),
-            12 to JourneyJisonCell.Reduce(7),
-            14 to JourneyJisonCell.Reduce(7),
-            16 to JourneyJisonCell.Reduce(7),
-            17 to JourneyJisonCell.Reduce(7),
-            18 to JourneyJisonCell.Reduce(7),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(3),
-            8 to JourneyJisonCell.Reduce(3),
-            10 to JourneyJisonCell.Reduce(3),
-            11 to JourneyJisonCell.Reduce(3),
-            12 to JourneyJisonCell.Reduce(3),
-            14 to JourneyJisonCell.Reduce(3),
-            16 to JourneyJisonCell.Reduce(3),
-            17 to JourneyJisonCell.Reduce(3),
-            18 to JourneyJisonCell.Reduce(3),
-        ),
-        mapOf(
-            9 to JourneyJisonCell.Goto(15),
-            11 to JourneyJisonCell.Shift(9),
-            12 to JourneyJisonCell.Shift(10),
-            14 to JourneyJisonCell.Shift(11),
-            16 to JourneyJisonCell.Shift(12),
-            17 to JourneyJisonCell.Shift(13),
-            18 to JourneyJisonCell.Shift(14),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(5),
-            8 to JourneyJisonCell.Reduce(5),
-            10 to JourneyJisonCell.Reduce(5),
-            11 to JourneyJisonCell.Reduce(5),
-            12 to JourneyJisonCell.Reduce(5),
-            14 to JourneyJisonCell.Reduce(5),
-            16 to JourneyJisonCell.Reduce(5),
-            17 to JourneyJisonCell.Reduce(5),
-            18 to JourneyJisonCell.Reduce(5),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(6),
-            8 to JourneyJisonCell.Reduce(6),
-            10 to JourneyJisonCell.Reduce(6),
-            11 to JourneyJisonCell.Reduce(6),
-            12 to JourneyJisonCell.Reduce(6),
-            14 to JourneyJisonCell.Reduce(6),
-            16 to JourneyJisonCell.Reduce(6),
-            17 to JourneyJisonCell.Reduce(6),
-            18 to JourneyJisonCell.Reduce(6),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(8),
-            8 to JourneyJisonCell.Reduce(8),
-            10 to JourneyJisonCell.Reduce(8),
-            11 to JourneyJisonCell.Reduce(8),
-            12 to JourneyJisonCell.Reduce(8),
-            14 to JourneyJisonCell.Reduce(8),
-            16 to JourneyJisonCell.Reduce(8),
-            17 to JourneyJisonCell.Reduce(8),
-            18 to JourneyJisonCell.Reduce(8),
-        ),
-        mapOf(
-            13 to JourneyJisonCell.Shift(16),
-        ),
-        mapOf(
-            15 to JourneyJisonCell.Shift(17),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(11),
-            8 to JourneyJisonCell.Reduce(11),
-            10 to JourneyJisonCell.Reduce(11),
-            11 to JourneyJisonCell.Reduce(11),
-            12 to JourneyJisonCell.Reduce(11),
-            14 to JourneyJisonCell.Reduce(11),
-            16 to JourneyJisonCell.Reduce(11),
-            17 to JourneyJisonCell.Reduce(11),
-            18 to JourneyJisonCell.Reduce(11),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(12),
-            8 to JourneyJisonCell.Reduce(12),
-            10 to JourneyJisonCell.Reduce(12),
-            11 to JourneyJisonCell.Reduce(12),
-            12 to JourneyJisonCell.Reduce(12),
-            14 to JourneyJisonCell.Reduce(12),
-            16 to JourneyJisonCell.Reduce(12),
-            17 to JourneyJisonCell.Reduce(12),
-            18 to JourneyJisonCell.Reduce(12),
-        ),
-        mapOf(
-            19 to JourneyJisonCell.Shift(18),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(4),
-            8 to JourneyJisonCell.Reduce(4),
-            10 to JourneyJisonCell.Reduce(4),
-            11 to JourneyJisonCell.Reduce(4),
-            12 to JourneyJisonCell.Reduce(4),
-            14 to JourneyJisonCell.Reduce(4),
-            16 to JourneyJisonCell.Reduce(4),
-            17 to JourneyJisonCell.Reduce(4),
-            18 to JourneyJisonCell.Reduce(4),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(9),
-            8 to JourneyJisonCell.Reduce(9),
-            10 to JourneyJisonCell.Reduce(9),
-            11 to JourneyJisonCell.Reduce(9),
-            12 to JourneyJisonCell.Reduce(9),
-            14 to JourneyJisonCell.Reduce(9),
-            16 to JourneyJisonCell.Reduce(9),
-            17 to JourneyJisonCell.Reduce(9),
-            18 to JourneyJisonCell.Reduce(9),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(10),
-            8 to JourneyJisonCell.Reduce(10),
-            10 to JourneyJisonCell.Reduce(10),
-            11 to JourneyJisonCell.Reduce(10),
-            12 to JourneyJisonCell.Reduce(10),
-            14 to JourneyJisonCell.Reduce(10),
-            16 to JourneyJisonCell.Reduce(10),
-            17 to JourneyJisonCell.Reduce(10),
-            18 to JourneyJisonCell.Reduce(10),
-        ),
-        mapOf(
-            6 to JourneyJisonCell.Reduce(13),
-            8 to JourneyJisonCell.Reduce(13),
-            10 to JourneyJisonCell.Reduce(13),
-            11 to JourneyJisonCell.Reduce(13),
-            12 to JourneyJisonCell.Reduce(13),
-            14 to JourneyJisonCell.Reduce(13),
-            16 to JourneyJisonCell.Reduce(13),
-            17 to JourneyJisonCell.Reduce(13),
-            18 to JourneyJisonCell.Reduce(13),
-        ),
+        buildJisonState(symbols2, action28),
+        buildJisonState(symbols2, action29),
+        buildJisonState(symbols2, action30),
+        buildJisonState(symbols2, action31),
     )
 
     val lexerPatterns: List<JourneyJisonLexerPattern> = buildList {

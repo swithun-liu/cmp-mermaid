@@ -1,5 +1,7 @@
 package com.swithun.cmpmermaid.core.classdiagram.upstream.mermaid
 
+import com.swithun.cmpmermaid.core.buildJisonState
+
 /**
  * Generated from Mermaid 12.0.0 classDiagram.jison.
  * Upstream classDiagram.jison SHA-256: c2ea20022e4adf501dbbcda909a1bdb74e05a2ac53ff5276d09d00fd54a3e21e
@@ -326,6 +328,329 @@ internal object ClassJisonTables {
         ClassJisonProduction(symbol = 55, length = 1),
     )
 
+    // Mermaid.js 12.0.0: generated shared action arrays ($V*) and o(k, v, o2, l).
+    private val action0: ClassJisonCell = ClassJisonCell.Goto(1)
+    private val action1: ClassJisonCell = ClassJisonCell.Goto(2)
+    private val action2: ClassJisonCell = ClassJisonCell.Goto(3)
+    private val action3: ClassJisonCell = ClassJisonCell.Goto(4)
+    private val action4: ClassJisonCell = ClassJisonCell.Shift(6)
+    private val action5: ClassJisonCell = ClassJisonCell.Goto(5)
+    private val action6: ClassJisonCell = ClassJisonCell.Goto(39)
+    private val action7: ClassJisonCell = ClassJisonCell.Goto(40)
+    private val action8: ClassJisonCell = ClassJisonCell.Goto(21)
+    private val action9: ClassJisonCell = ClassJisonCell.Goto(7)
+    private val action10: ClassJisonCell = ClassJisonCell.Goto(8)
+    private val action11: ClassJisonCell = ClassJisonCell.Goto(9)
+    private val action12: ClassJisonCell = ClassJisonCell.Goto(10)
+    private val action13: ClassJisonCell = ClassJisonCell.Goto(11)
+    private val action14: ClassJisonCell = ClassJisonCell.Goto(12)
+    private val action15: ClassJisonCell = ClassJisonCell.Goto(13)
+    private val action16: ClassJisonCell = ClassJisonCell.Goto(14)
+    private val action17: ClassJisonCell = ClassJisonCell.Goto(15)
+    private val action18: ClassJisonCell = ClassJisonCell.Goto(16)
+    private val action19: ClassJisonCell = ClassJisonCell.Goto(17)
+    private val action20: ClassJisonCell = ClassJisonCell.Shift(18)
+    private val action21: ClassJisonCell = ClassJisonCell.Shift(19)
+    private val action22: ClassJisonCell = ClassJisonCell.Shift(20)
+    private val action23: ClassJisonCell = ClassJisonCell.Goto(22)
+    private val action24: ClassJisonCell = ClassJisonCell.Shift(41)
+    private val action25: ClassJisonCell = ClassJisonCell.Goto(23)
+    private val action26: ClassJisonCell = ClassJisonCell.Shift(26)
+    private val action27: ClassJisonCell = ClassJisonCell.Shift(42)
+    private val action28: ClassJisonCell = ClassJisonCell.Shift(24)
+    private val action29: ClassJisonCell = ClassJisonCell.Shift(25)
+    private val action30: ClassJisonCell = ClassJisonCell.Shift(32)
+    private val action31: ClassJisonCell = ClassJisonCell.Shift(33)
+    private val action32: ClassJisonCell = ClassJisonCell.Shift(34)
+    private val action33: ClassJisonCell = ClassJisonCell.Shift(45)
+    private val action34: ClassJisonCell = ClassJisonCell.Shift(35)
+    private val action35: ClassJisonCell = ClassJisonCell.Shift(36)
+    private val action36: ClassJisonCell = ClassJisonCell.Shift(37)
+    private val action37: ClassJisonCell = ClassJisonCell.Shift(38)
+    private val action38: ClassJisonCell = ClassJisonCell.Shift(27)
+    private val action39: ClassJisonCell = ClassJisonCell.Shift(28)
+    private val action40: ClassJisonCell = ClassJisonCell.Shift(29)
+    private val action41: ClassJisonCell = ClassJisonCell.Shift(30)
+    private val action42: ClassJisonCell = ClassJisonCell.Shift(31)
+    private val action43: ClassJisonCell = ClassJisonCell.Shift(44)
+    private val action44: ClassJisonCell = ClassJisonCell.Shift(46)
+    private val action45: ClassJisonCell = ClassJisonCell.Shift(43)
+    private val action46: ClassJisonCell = ClassJisonCell.Shift(47)
+    private val action47: ClassJisonCell = ClassJisonCell.Accept
+    private val action48: ClassJisonCell = ClassJisonCell.Reduce(1)
+    private val action49: ClassJisonCell = ClassJisonCell.Reduce(2)
+    private val action50: ClassJisonCell = ClassJisonCell.Reduce(3)
+    private val action51: ClassJisonCell = ClassJisonCell.Reduce(5)
+    private val action52: ClassJisonCell = ClassJisonCell.Shift(48)
+    private val action53: ClassJisonCell = ClassJisonCell.Shift(49)
+    private val action54: ClassJisonCell = ClassJisonCell.Reduce(19)
+    private val action55: ClassJisonCell = ClassJisonCell.Shift(50)
+    private val action56: ClassJisonCell = ClassJisonCell.Reduce(21)
+    private val action57: ClassJisonCell = ClassJisonCell.Reduce(22)
+    private val action58: ClassJisonCell = ClassJisonCell.Reduce(23)
+    private val action59: ClassJisonCell = ClassJisonCell.Reduce(24)
+    private val action60: ClassJisonCell = ClassJisonCell.Reduce(25)
+    private val action61: ClassJisonCell = ClassJisonCell.Reduce(26)
+    private val action62: ClassJisonCell = ClassJisonCell.Reduce(27)
+    private val action63: ClassJisonCell = ClassJisonCell.Reduce(28)
+    private val action64: ClassJisonCell = ClassJisonCell.Reduce(29)
+    private val action65: ClassJisonCell = ClassJisonCell.Reduce(30)
+    private val action66: ClassJisonCell = ClassJisonCell.Shift(51)
+    private val action67: ClassJisonCell = ClassJisonCell.Shift(52)
+    private val action68: ClassJisonCell = ClassJisonCell.Reduce(33)
+    private val action69: ClassJisonCell = ClassJisonCell.Reduce(63)
+    private val action70: ClassJisonCell = ClassJisonCell.Shift(54)
+    private val action71: ClassJisonCell = ClassJisonCell.Shift(55)
+    private val action72: ClassJisonCell = ClassJisonCell.Goto(53)
+    private val action73: ClassJisonCell = ClassJisonCell.Goto(56)
+    private val action74: ClassJisonCell = ClassJisonCell.Goto(57)
+    private val action75: ClassJisonCell = ClassJisonCell.Shift(58)
+    private val action76: ClassJisonCell = ClassJisonCell.Shift(59)
+    private val action77: ClassJisonCell = ClassJisonCell.Shift(60)
+    private val action78: ClassJisonCell = ClassJisonCell.Shift(61)
+    private val action79: ClassJisonCell = ClassJisonCell.Shift(62)
+    private val action80: ClassJisonCell = ClassJisonCell.Shift(63)
+    private val action81: ClassJisonCell = ClassJisonCell.Shift(64)
+    private val action82: ClassJisonCell = ClassJisonCell.Shift(65)
+    private val action83: ClassJisonCell = ClassJisonCell.Reduce(47)
+    private val action84: ClassJisonCell = ClassJisonCell.Shift(67)
+    private val action85: ClassJisonCell = ClassJisonCell.Shift(66)
+    private val action86: ClassJisonCell = ClassJisonCell.Shift(68)
+    private val action87: ClassJisonCell = ClassJisonCell.Reduce(65)
+    private val action88: ClassJisonCell = ClassJisonCell.Reduce(66)
+    private val action89: ClassJisonCell = ClassJisonCell.Goto(69)
+    private val action90: ClassJisonCell = ClassJisonCell.Goto(70)
+    private val action91: ClassJisonCell = ClassJisonCell.Goto(71)
+    private val action92: ClassJisonCell = ClassJisonCell.Goto(72)
+    private val action93: ClassJisonCell = ClassJisonCell.Shift(73)
+    private val action94: ClassJisonCell = ClassJisonCell.Shift(74)
+    private val action95: ClassJisonCell = ClassJisonCell.Goto(75)
+    private val action96: ClassJisonCell = ClassJisonCell.Shift(77)
+    private val action97: ClassJisonCell = ClassJisonCell.Goto(76)
+    private val action98: ClassJisonCell = ClassJisonCell.Goto(78)
+    private val action99: ClassJisonCell = ClassJisonCell.Shift(79)
+    private val action100: ClassJisonCell = ClassJisonCell.Reduce(76)
+    private val action101: ClassJisonCell = ClassJisonCell.Reduce(77)
+    private val action102: ClassJisonCell = ClassJisonCell.Reduce(78)
+    private val action103: ClassJisonCell = ClassJisonCell.Reduce(79)
+    private val action104: ClassJisonCell = ClassJisonCell.Reduce(13)
+    private val action105: ClassJisonCell = ClassJisonCell.Shift(80)
+    private val action106: ClassJisonCell = ClassJisonCell.Goto(81)
+    private val action107: ClassJisonCell = ClassJisonCell.Shift(82)
+    private val action108: ClassJisonCell = ClassJisonCell.Reduce(15)
+    private val action109: ClassJisonCell = ClassJisonCell.Shift(83)
+    private val action110: ClassJisonCell = ClassJisonCell.Goto(84)
+    private val action111: ClassJisonCell = ClassJisonCell.Goto(85)
+    private val action112: ClassJisonCell = ClassJisonCell.Goto(86)
+    private val action113: ClassJisonCell = ClassJisonCell.Goto(87)
+    private val action114: ClassJisonCell = ClassJisonCell.Reduce(133)
+    private val action115: ClassJisonCell = ClassJisonCell.Reduce(134)
+    private val action116: ClassJisonCell = ClassJisonCell.Reduce(135)
+    private val action117: ClassJisonCell = ClassJisonCell.Reduce(136)
+    private val action118: ClassJisonCell = ClassJisonCell.Reduce(137)
+    private val action119: ClassJisonCell = ClassJisonCell.Reduce(6)
+    private val action120: ClassJisonCell = ClassJisonCell.Goto(88)
+    private val action121: ClassJisonCell = ClassJisonCell.Goto(89)
+    private val action122: ClassJisonCell = ClassJisonCell.Reduce(20)
+    private val action123: ClassJisonCell = ClassJisonCell.Reduce(31)
+    private val action124: ClassJisonCell = ClassJisonCell.Reduce(32)
+    private val action125: ClassJisonCell = ClassJisonCell.Shift(91)
+    private val action126: ClassJisonCell = ClassJisonCell.Goto(90)
+    private val action127: ClassJisonCell = ClassJisonCell.Goto(92)
+    private val action128: ClassJisonCell = ClassJisonCell.Reduce(64)
+    private val action129: ClassJisonCell = ClassJisonCell.Goto(93)
+    private val action130: ClassJisonCell = ClassJisonCell.Reduce(83)
+    private val action131: ClassJisonCell = ClassJisonCell.Goto(94)
+    private val action132: ClassJisonCell = ClassJisonCell.Reduce(84)
+    private val action133: ClassJisonCell = ClassJisonCell.Reduce(85)
+    private val action134: ClassJisonCell = ClassJisonCell.Reduce(86)
+    private val action135: ClassJisonCell = ClassJisonCell.Reduce(87)
+    private val action136: ClassJisonCell = ClassJisonCell.Reduce(88)
+    private val action137: ClassJisonCell = ClassJisonCell.Reduce(89)
+    private val action138: ClassJisonCell = ClassJisonCell.Reduce(90)
+    private val action139: ClassJisonCell = ClassJisonCell.Shift(96)
+    private val action140: ClassJisonCell = ClassJisonCell.Goto(99)
+    private val action141: ClassJisonCell = ClassJisonCell.Goto(97)
+    private val action142: ClassJisonCell = ClassJisonCell.Goto(98)
+    private val action143: ClassJisonCell = ClassJisonCell.Goto(95)
+    private val action144: ClassJisonCell = ClassJisonCell.Goto(100)
+    private val action145: ClassJisonCell = ClassJisonCell.Shift(102)
+    private val action146: ClassJisonCell = ClassJisonCell.Goto(101)
+    private val action147: ClassJisonCell = ClassJisonCell.Shift(103)
+    private val action148: ClassJisonCell = ClassJisonCell.Goto(104)
+    private val action149: ClassJisonCell = ClassJisonCell.Shift(105)
+    private val action150: ClassJisonCell = ClassJisonCell.Shift(106)
+    private val action151: ClassJisonCell = ClassJisonCell.Shift(107)
+    private val action152: ClassJisonCell = ClassJisonCell.Shift(108)
+    private val action153: ClassJisonCell = ClassJisonCell.Shift(109)
+    private val action154: ClassJisonCell = ClassJisonCell.Shift(121)
+    private val action155: ClassJisonCell = ClassJisonCell.Shift(117)
+    private val action156: ClassJisonCell = ClassJisonCell.Goto(110)
+    private val action157: ClassJisonCell = ClassJisonCell.Shift(113)
+    private val action158: ClassJisonCell = ClassJisonCell.Shift(119)
+    private val action159: ClassJisonCell = ClassJisonCell.Goto(111)
+    private val action160: ClassJisonCell = ClassJisonCell.Goto(112)
+    private val action161: ClassJisonCell = ClassJisonCell.Shift(114)
+    private val action162: ClassJisonCell = ClassJisonCell.Shift(115)
+    private val action163: ClassJisonCell = ClassJisonCell.Shift(116)
+    private val action164: ClassJisonCell = ClassJisonCell.Shift(118)
+    private val action165: ClassJisonCell = ClassJisonCell.Shift(120)
+    private val action166: ClassJisonCell = ClassJisonCell.Shift(122)
+    private val action167: ClassJisonCell = ClassJisonCell.Goto(123)
+    private val action168: ClassJisonCell = ClassJisonCell.Reduce(72)
+    private val action169: ClassJisonCell = ClassJisonCell.Reduce(138)
+    private val action170: ClassJisonCell = ClassJisonCell.Goto(124)
+    private val action171: ClassJisonCell = ClassJisonCell.Shift(125)
+    private val action172: ClassJisonCell = ClassJisonCell.Reduce(74)
+    private val action173: ClassJisonCell = ClassJisonCell.Goto(126)
+    private val action174: ClassJisonCell = ClassJisonCell.Reduce(16)
+    private val action175: ClassJisonCell = ClassJisonCell.Reduce(17)
+    private val action176: ClassJisonCell = ClassJisonCell.Reduce(18)
+    private val action177: ClassJisonCell = ClassJisonCell.Goto(127)
+    private val action178: ClassJisonCell = ClassJisonCell.Shift(128)
+    private val action179: ClassJisonCell = ClassJisonCell.Reduce(36)
+    private val action180: ClassJisonCell = ClassJisonCell.Reduce(9)
+    private val action181: ClassJisonCell = ClassJisonCell.Goto(130)
+    private val action182: ClassJisonCell = ClassJisonCell.Shift(129)
+    private val action183: ClassJisonCell = ClassJisonCell.Reduce(10)
+    private val action184: ClassJisonCell = ClassJisonCell.Reduce(55)
+    private val action185: ClassJisonCell = ClassJisonCell.Goto(131)
+    private val action186: ClassJisonCell = ClassJisonCell.Reduce(7)
+    private val action187: ClassJisonCell = ClassJisonCell.Shift(132)
+    private val action188: ClassJisonCell = ClassJisonCell.Reduce(67)
+    private val action189: ClassJisonCell = ClassJisonCell.Goto(133)
+    private val action190: ClassJisonCell = ClassJisonCell.Shift(135)
+    private val action191: ClassJisonCell = ClassJisonCell.Goto(134)
+    private val action192: ClassJisonCell = ClassJisonCell.Reduce(82)
+    private val action193: ClassJisonCell = ClassJisonCell.Goto(136)
+    private val action194: ClassJisonCell = ClassJisonCell.Reduce(81)
+    private val action195: ClassJisonCell = ClassJisonCell.Shift(137)
+    private val action196: ClassJisonCell = ClassJisonCell.Goto(138)
+    private val action197: ClassJisonCell = ClassJisonCell.Shift(139)
+    private val action198: ClassJisonCell = ClassJisonCell.Reduce(38)
+    private val action199: ClassJisonCell = ClassJisonCell.Shift(140)
+    private val action200: ClassJisonCell = ClassJisonCell.Reduce(41)
+    private val action201: ClassJisonCell = ClassJisonCell.Shift(141)
+    private val action202: ClassJisonCell = ClassJisonCell.Reduce(44)
+    private val action203: ClassJisonCell = ClassJisonCell.Reduce(48)
+    private val action204: ClassJisonCell = ClassJisonCell.Shift(142)
+    private val action205: ClassJisonCell = ClassJisonCell.Shift(143)
+    private val action206: ClassJisonCell = ClassJisonCell.Reduce(50)
+    private val action207: ClassJisonCell = ClassJisonCell.Reduce(61)
+    private val action208: ClassJisonCell = ClassJisonCell.Goto(144)
+    private val action209: ClassJisonCell = ClassJisonCell.Shift(145)
+    private val action210: ClassJisonCell = ClassJisonCell.Goto(146)
+    private val action211: ClassJisonCell = ClassJisonCell.Reduce(91)
+    private val action212: ClassJisonCell = ClassJisonCell.Shift(147)
+    private val action213: ClassJisonCell = ClassJisonCell.Reduce(93)
+    private val action214: ClassJisonCell = ClassJisonCell.Shift(149)
+    private val action215: ClassJisonCell = ClassJisonCell.Shift(148)
+    private val action216: ClassJisonCell = ClassJisonCell.Reduce(97)
+    private val action217: ClassJisonCell = ClassJisonCell.Shift(150)
+    private val action218: ClassJisonCell = ClassJisonCell.Shift(151)
+    private val action219: ClassJisonCell = ClassJisonCell.Shift(152)
+    private val action220: ClassJisonCell = ClassJisonCell.Reduce(105)
+    private val action221: ClassJisonCell = ClassJisonCell.Shift(153)
+    private val action222: ClassJisonCell = ClassJisonCell.Reduce(107)
+    private val action223: ClassJisonCell = ClassJisonCell.Goto(154)
+    private val action224: ClassJisonCell = ClassJisonCell.Reduce(109)
+    private val action225: ClassJisonCell = ClassJisonCell.Reduce(111)
+    private val action226: ClassJisonCell = ClassJisonCell.Reduce(112)
+    private val action227: ClassJisonCell = ClassJisonCell.Reduce(113)
+    private val action228: ClassJisonCell = ClassJisonCell.Reduce(114)
+    private val action229: ClassJisonCell = ClassJisonCell.Reduce(115)
+    private val action230: ClassJisonCell = ClassJisonCell.Reduce(116)
+    private val action231: ClassJisonCell = ClassJisonCell.Reduce(117)
+    private val action232: ClassJisonCell = ClassJisonCell.Reduce(118)
+    private val action233: ClassJisonCell = ClassJisonCell.Reduce(119)
+    private val action234: ClassJisonCell = ClassJisonCell.Reduce(106)
+    private val action235: ClassJisonCell = ClassJisonCell.Reduce(71)
+    private val action236: ClassJisonCell = ClassJisonCell.Reduce(73)
+    private val action237: ClassJisonCell = ClassJisonCell.Shift(155)
+    private val action238: ClassJisonCell = ClassJisonCell.Reduce(14)
+    private val action239: ClassJisonCell = ClassJisonCell.Reduce(37)
+    private val action240: ClassJisonCell = ClassJisonCell.Shift(156)
+    private val action241: ClassJisonCell = ClassJisonCell.Goto(157)
+    private val action242: ClassJisonCell = ClassJisonCell.Reduce(12)
+    private val action243: ClassJisonCell = ClassJisonCell.Reduce(56)
+    private val action244: ClassJisonCell = ClassJisonCell.Reduce(4)
+    private val action245: ClassJisonCell = ClassJisonCell.Reduce(69)
+    private val action246: ClassJisonCell = ClassJisonCell.Reduce(68)
+    private val action247: ClassJisonCell = ClassJisonCell.Goto(158)
+    private val action248: ClassJisonCell = ClassJisonCell.Reduce(80)
+    private val action249: ClassJisonCell = ClassJisonCell.Reduce(34)
+    private val action250: ClassJisonCell = ClassJisonCell.Shift(159)
+    private val action251: ClassJisonCell = ClassJisonCell.Goto(160)
+    private val action252: ClassJisonCell = ClassJisonCell.Reduce(39)
+    private val action253: ClassJisonCell = ClassJisonCell.Goto(161)
+    private val action254: ClassJisonCell = ClassJisonCell.Reduce(42)
+    private val action255: ClassJisonCell = ClassJisonCell.Goto(162)
+    private val action256: ClassJisonCell = ClassJisonCell.Reduce(45)
+    private val action257: ClassJisonCell = ClassJisonCell.Goto(163)
+    private val action258: ClassJisonCell = ClassJisonCell.Reduce(49)
+    private val action259: ClassJisonCell = ClassJisonCell.Reduce(62)
+    private val action260: ClassJisonCell = ClassJisonCell.Reduce(52)
+    private val action261: ClassJisonCell = ClassJisonCell.Shift(164)
+    private val action262: ClassJisonCell = ClassJisonCell.Reduce(60)
+    private val action263: ClassJisonCell = ClassJisonCell.Reduce(92)
+    private val action264: ClassJisonCell = ClassJisonCell.Reduce(94)
+    private val action265: ClassJisonCell = ClassJisonCell.Reduce(95)
+    private val action266: ClassJisonCell = ClassJisonCell.Shift(165)
+    private val action267: ClassJisonCell = ClassJisonCell.Reduce(98)
+    private val action268: ClassJisonCell = ClassJisonCell.Reduce(99)
+    private val action269: ClassJisonCell = ClassJisonCell.Shift(166)
+    private val action270: ClassJisonCell = ClassJisonCell.Reduce(101)
+    private val action271: ClassJisonCell = ClassJisonCell.Shift(168)
+    private val action272: ClassJisonCell = ClassJisonCell.Shift(167)
+    private val action273: ClassJisonCell = ClassJisonCell.Goto(169)
+    private val action274: ClassJisonCell = ClassJisonCell.Reduce(110)
+    private val action275: ClassJisonCell = ClassJisonCell.Reduce(75)
+    private val action276: ClassJisonCell = ClassJisonCell.Shift(170)
+    private val action277: ClassJisonCell = ClassJisonCell.Reduce(11)
+    private val action278: ClassJisonCell = ClassJisonCell.Reduce(70)
+    private val action279: ClassJisonCell = ClassJisonCell.Reduce(35)
+    private val action280: ClassJisonCell = ClassJisonCell.Reduce(40)
+    private val action281: ClassJisonCell = ClassJisonCell.Reduce(43)
+    private val action282: ClassJisonCell = ClassJisonCell.Reduce(46)
+    private val action283: ClassJisonCell = ClassJisonCell.Shift(171)
+    private val action284: ClassJisonCell = ClassJisonCell.Shift(173)
+    private val action285: ClassJisonCell = ClassJisonCell.Goto(172)
+    private val action286: ClassJisonCell = ClassJisonCell.Reduce(96)
+    private val action287: ClassJisonCell = ClassJisonCell.Reduce(100)
+    private val action288: ClassJisonCell = ClassJisonCell.Reduce(102)
+    private val action289: ClassJisonCell = ClassJisonCell.Reduce(103)
+    private val action290: ClassJisonCell = ClassJisonCell.Shift(174)
+    private val action291: ClassJisonCell = ClassJisonCell.Reduce(108)
+    private val action292: ClassJisonCell = ClassJisonCell.Reduce(8)
+    private val action293: ClassJisonCell = ClassJisonCell.Reduce(51)
+    private val action294: ClassJisonCell = ClassJisonCell.Shift(175)
+    private val action295: ClassJisonCell = ClassJisonCell.Reduce(54)
+    private val action296: ClassJisonCell = ClassJisonCell.Reduce(104)
+    private val action297: ClassJisonCell = ClassJisonCell.Reduce(53)
+    private val symbols0 = intArrayOf(1, 8, 9, 22)
+    private val symbols1 = intArrayOf(1, 8, 9)
+    private val symbols2 = intArrayOf(1, 8, 9, 13, 22, 53, 66, 67, 68, 69, 70, 71, 72, 73, 74)
+    private val symbols3 = intArrayOf(1, 8, 9, 39, 41, 44, 46)
+    private val symbols4 = intArrayOf(1, 8, 9, 12, 13, 16, 17, 18, 19, 20, 22, 39, 41, 44, 46, 60, 68, 69, 70, 71, 72, 73, 74, 79, 81, 86, 100, 102, 103)
+    private val symbols5 = intArrayOf(1, 8, 9, 12, 13, 20, 22, 39, 41, 44, 46, 68, 69, 70, 71, 72, 73, 74, 79, 81)
+    private val symbols6 = intArrayOf(1, 8, 9, 12, 13, 18, 20, 22, 39, 41, 44, 46, 47, 60, 68, 69, 70, 71, 72, 73, 74, 79, 81, 86, 100, 102, 103)
+    private val symbols7 = intArrayOf(13, 60, 66, 68, 69, 70, 71, 72, 86, 100, 102, 103)
+    private val symbols8 = intArrayOf(13, 60, 73, 74, 86, 100, 102, 103)
+    private val symbols9 = intArrayOf(13, 60, 68, 69, 70, 71, 72, 86, 100, 102, 103)
+    private val symbols10 = intArrayOf(1, 8, 9, 41)
+    private val symbols11 = intArrayOf(22, 50, 60, 61, 82, 86, 87, 88, 89, 90)
+    private val symbols12 = intArrayOf(1, 8, 9, 12, 13, 22, 39, 41, 44, 46, 68, 69, 70, 71, 72, 73, 74, 79, 81)
+    private val symbols13 = intArrayOf(1, 8, 9, 11, 12, 39, 41, 44, 46)
+    private val symbols14 = intArrayOf(13, 60, 86, 100, 102, 103)
+    private val symbols15 = intArrayOf(1, 8, 9, 39, 41)
+    private val symbols16 = intArrayOf(1, 8, 9, 13)
+    private val symbols17 = intArrayOf(1, 8, 9, 13, 77)
+    private val symbols18 = intArrayOf(1, 8, 9, 13, 80)
+    private val symbols19 = intArrayOf(1, 8, 9, 61)
+    private val symbols20 = intArrayOf(1, 8, 9, 22, 50, 60, 61, 82, 85, 86, 87, 88, 89, 90)
+    private val symbols21 = intArrayOf(1, 8, 9, 22, 50, 60, 61, 82, 86, 87, 88, 89, 90)
+    private val symbols22 = intArrayOf(1, 8, 9, 77)
+
     val states: Array<Map<Int, ClassJisonCell>> = buildList {
         addAll(stateChunk0())
         addAll(stateChunk1())
@@ -340,1607 +665,819 @@ internal object ClassJisonTables {
 
     private fun stateChunk0(): Array<Map<Int, ClassJisonCell>> = arrayOf(
         mapOf(
-            3 to ClassJisonCell.Goto(1),
-            4 to ClassJisonCell.Goto(2),
-            5 to ClassJisonCell.Goto(3),
-            6 to ClassJisonCell.Goto(4),
-            7 to ClassJisonCell.Shift(6),
-            10 to ClassJisonCell.Goto(5),
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(21),
-            21 to ClassJisonCell.Goto(7),
-            23 to ClassJisonCell.Goto(8),
-            24 to ClassJisonCell.Goto(9),
-            25 to ClassJisonCell.Goto(10),
-            26 to ClassJisonCell.Goto(11),
-            27 to ClassJisonCell.Goto(12),
-            28 to ClassJisonCell.Goto(13),
-            29 to ClassJisonCell.Goto(14),
-            30 to ClassJisonCell.Goto(15),
-            31 to ClassJisonCell.Goto(16),
-            32 to ClassJisonCell.Goto(17),
-            33 to ClassJisonCell.Shift(18),
-            35 to ClassJisonCell.Shift(19),
-            37 to ClassJisonCell.Shift(20),
-            38 to ClassJisonCell.Goto(22),
-            42 to ClassJisonCell.Shift(41),
-            43 to ClassJisonCell.Goto(23),
-            46 to ClassJisonCell.Shift(26),
-            48 to ClassJisonCell.Shift(42),
-            51 to ClassJisonCell.Shift(24),
-            52 to ClassJisonCell.Shift(25),
-            54 to ClassJisonCell.Shift(32),
-            56 to ClassJisonCell.Shift(33),
-            57 to ClassJisonCell.Shift(34),
-            60 to ClassJisonCell.Shift(45),
-            62 to ClassJisonCell.Shift(35),
-            63 to ClassJisonCell.Shift(36),
-            64 to ClassJisonCell.Shift(37),
-            65 to ClassJisonCell.Shift(38),
-            75 to ClassJisonCell.Shift(27),
-            76 to ClassJisonCell.Shift(28),
-            78 to ClassJisonCell.Shift(29),
-            82 to ClassJisonCell.Shift(30),
-            83 to ClassJisonCell.Shift(31),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
+            3 to action0,
+            4 to action1,
+            5 to action2,
+            6 to action3,
+            7 to action4,
+            10 to action5,
+            16 to action6,
+            17 to action7,
+            19 to action8,
+            21 to action9,
+            23 to action10,
+            24 to action11,
+            25 to action12,
+            26 to action13,
+            27 to action14,
+            28 to action15,
+            29 to action16,
+            30 to action17,
+            31 to action18,
+            32 to action19,
+            33 to action20,
+            35 to action21,
+            37 to action22,
+            38 to action23,
+            42 to action24,
+            43 to action25,
+            46 to action26,
+            48 to action27,
+            51 to action28,
+            52 to action29,
+            54 to action30,
+            56 to action31,
+            57 to action32,
+            60 to action33,
+            62 to action34,
+            63 to action35,
+            64 to action36,
+            65 to action37,
+            75 to action38,
+            76 to action39,
+            78 to action40,
+            82 to action41,
+            83 to action42,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            1 to ClassJisonCell.Accept,
+            1 to action47,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(1),
+            1 to action48,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(2),
+            1 to action49,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(3),
+            1 to action50,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(5),
-            8 to ClassJisonCell.Shift(48),
-            9 to ClassJisonCell.Reduce(5),
+            1 to action51,
+            8 to action52,
+            9 to action51,
         ),
         mapOf(
-            8 to ClassJisonCell.Shift(49),
+            8 to action53,
+        ),
+        buildJisonState(symbols0, action54, mapOf(
+            22 to action55,
+        )),
+        buildJisonState(symbols1, action56),
+        buildJisonState(symbols1, action57),
+        buildJisonState(symbols1, action58),
+        buildJisonState(symbols1, action59),
+        buildJisonState(symbols1, action60),
+        buildJisonState(symbols1, action61),
+        buildJisonState(symbols1, action62),
+        buildJisonState(symbols1, action63),
+        buildJisonState(symbols1, action64),
+        buildJisonState(symbols1, action65),
+        mapOf(
+            34 to action66,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(19),
-            8 to ClassJisonCell.Reduce(19),
-            9 to ClassJisonCell.Reduce(19),
-            22 to ClassJisonCell.Shift(50),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(21),
-            8 to ClassJisonCell.Reduce(21),
-            9 to ClassJisonCell.Reduce(21),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(22),
-            8 to ClassJisonCell.Reduce(22),
-            9 to ClassJisonCell.Reduce(22),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(23),
-            8 to ClassJisonCell.Reduce(23),
-            9 to ClassJisonCell.Reduce(23),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(24),
-            8 to ClassJisonCell.Reduce(24),
-            9 to ClassJisonCell.Reduce(24),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(25),
-            8 to ClassJisonCell.Reduce(25),
-            9 to ClassJisonCell.Reduce(25),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(26),
-            8 to ClassJisonCell.Reduce(26),
-            9 to ClassJisonCell.Reduce(26),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(27),
-            8 to ClassJisonCell.Reduce(27),
-            9 to ClassJisonCell.Reduce(27),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(28),
-            8 to ClassJisonCell.Reduce(28),
-            9 to ClassJisonCell.Reduce(28),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(29),
-            8 to ClassJisonCell.Reduce(29),
-            9 to ClassJisonCell.Reduce(29),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(30),
-            8 to ClassJisonCell.Reduce(30),
-            9 to ClassJisonCell.Reduce(30),
-        ),
-        mapOf(
-            34 to ClassJisonCell.Shift(51),
-        ),
-        mapOf(
-            36 to ClassJisonCell.Shift(52),
+            36 to action67,
         ),
     )
 
     private fun stateChunk1(): Array<Map<Int, ClassJisonCell>> = arrayOf(
+        buildJisonState(symbols1, action68),
+        buildJisonState(symbols2, action69, mapOf(
+            13 to action70,
+            22 to action71,
+            53 to action72,
+            66 to action73,
+            67 to action74,
+            68 to action75,
+            69 to action76,
+            70 to action77,
+            71 to action78,
+            72 to action79,
+            73 to action80,
+            74 to action81,
+        )),
         mapOf(
-            1 to ClassJisonCell.Reduce(33),
-            8 to ClassJisonCell.Reduce(33),
-            9 to ClassJisonCell.Reduce(33),
+            39 to action82,
+        ),
+        buildJisonState(symbols3, action83, mapOf(
+            39 to action84,
+            44 to action85,
+            46 to action86,
+        )),
+        buildJisonState(symbols1, action87),
+        buildJisonState(symbols1, action88),
+        mapOf(
+            16 to action89,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(63),
-            8 to ClassJisonCell.Reduce(63),
-            9 to ClassJisonCell.Reduce(63),
-            13 to ClassJisonCell.Shift(54),
-            22 to ClassJisonCell.Shift(55),
-            53 to ClassJisonCell.Goto(53),
-            66 to ClassJisonCell.Goto(56),
-            67 to ClassJisonCell.Goto(57),
-            68 to ClassJisonCell.Shift(58),
-            69 to ClassJisonCell.Shift(59),
-            70 to ClassJisonCell.Shift(60),
-            71 to ClassJisonCell.Shift(61),
-            72 to ClassJisonCell.Shift(62),
-            73 to ClassJisonCell.Shift(63),
-            74 to ClassJisonCell.Shift(64),
+            16 to action6,
+            17 to action7,
+            19 to action90,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            39 to ClassJisonCell.Shift(65),
+            16 to action6,
+            17 to action7,
+            19 to action91,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(47),
-            8 to ClassJisonCell.Reduce(47),
-            9 to ClassJisonCell.Reduce(47),
-            39 to ClassJisonCell.Shift(67),
-            41 to ClassJisonCell.Reduce(47),
-            44 to ClassJisonCell.Shift(66),
-            46 to ClassJisonCell.Shift(68),
+            16 to action6,
+            17 to action7,
+            19 to action92,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(65),
-            8 to ClassJisonCell.Reduce(65),
-            9 to ClassJisonCell.Reduce(65),
+            60 to action93,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(66),
-            8 to ClassJisonCell.Reduce(66),
-            9 to ClassJisonCell.Reduce(66),
+            13 to action94,
         ),
         mapOf(
-            16 to ClassJisonCell.Goto(69),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
+            16 to action6,
+            17 to action7,
+            19 to action95,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(70),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
+            13 to action96,
+            55 to action97,
         ),
         mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(71),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
+            58 to action98,
+            60 to action99,
         ),
-        mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(72),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            60 to ClassJisonCell.Shift(73),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Shift(74),
-        ),
-        mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(75),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Shift(77),
-            55 to ClassJisonCell.Goto(76),
-        ),
-        mapOf(
-            58 to ClassJisonCell.Goto(78),
-            60 to ClassJisonCell.Shift(79),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(76),
-            8 to ClassJisonCell.Reduce(76),
-            9 to ClassJisonCell.Reduce(76),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(77),
-            8 to ClassJisonCell.Reduce(77),
-            9 to ClassJisonCell.Reduce(77),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(78),
-            8 to ClassJisonCell.Reduce(78),
-            9 to ClassJisonCell.Reduce(78),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(79),
-            8 to ClassJisonCell.Reduce(79),
-            9 to ClassJisonCell.Reduce(79),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(13),
-            8 to ClassJisonCell.Reduce(13),
-            9 to ClassJisonCell.Reduce(13),
-            12 to ClassJisonCell.Reduce(13),
-            13 to ClassJisonCell.Reduce(13),
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            18 to ClassJisonCell.Shift(80),
-            19 to ClassJisonCell.Goto(81),
-            20 to ClassJisonCell.Shift(82),
-            22 to ClassJisonCell.Reduce(13),
-            39 to ClassJisonCell.Reduce(13),
-            41 to ClassJisonCell.Reduce(13),
-            44 to ClassJisonCell.Reduce(13),
-            46 to ClassJisonCell.Reduce(13),
-            60 to ClassJisonCell.Shift(45),
-            68 to ClassJisonCell.Reduce(13),
-            69 to ClassJisonCell.Reduce(13),
-            70 to ClassJisonCell.Reduce(13),
-            71 to ClassJisonCell.Reduce(13),
-            72 to ClassJisonCell.Reduce(13),
-            73 to ClassJisonCell.Reduce(13),
-            74 to ClassJisonCell.Reduce(13),
-            79 to ClassJisonCell.Reduce(13),
-            81 to ClassJisonCell.Reduce(13),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
+        buildJisonState(symbols1, action100),
+        buildJisonState(symbols1, action101),
+        buildJisonState(symbols1, action102),
+        buildJisonState(symbols1, action103),
+        buildJisonState(symbols4, action104, mapOf(
+            16 to action6,
+            17 to action7,
+            18 to action105,
+            19 to action106,
+            20 to action107,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
+        )),
     )
 
     private fun stateChunk2(): Array<Map<Int, ClassJisonCell>> = arrayOf(
+        buildJisonState(symbols5, action108, mapOf(
+            20 to action109,
+        )),
         mapOf(
-            1 to ClassJisonCell.Reduce(15),
-            8 to ClassJisonCell.Reduce(15),
-            9 to ClassJisonCell.Reduce(15),
-            12 to ClassJisonCell.Reduce(15),
-            13 to ClassJisonCell.Reduce(15),
-            20 to ClassJisonCell.Shift(83),
-            22 to ClassJisonCell.Reduce(15),
-            39 to ClassJisonCell.Reduce(15),
-            41 to ClassJisonCell.Reduce(15),
-            44 to ClassJisonCell.Reduce(15),
-            46 to ClassJisonCell.Reduce(15),
-            68 to ClassJisonCell.Reduce(15),
-            69 to ClassJisonCell.Reduce(15),
-            70 to ClassJisonCell.Reduce(15),
-            71 to ClassJisonCell.Reduce(15),
-            72 to ClassJisonCell.Reduce(15),
-            73 to ClassJisonCell.Reduce(15),
-            74 to ClassJisonCell.Reduce(15),
-            79 to ClassJisonCell.Reduce(15),
-            81 to ClassJisonCell.Reduce(15),
+            15 to action110,
+            16 to action111,
+            17 to action112,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            15 to ClassJisonCell.Goto(84),
-            16 to ClassJisonCell.Goto(85),
-            17 to ClassJisonCell.Goto(86),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
+            16 to action6,
+            17 to action7,
+            19 to action113,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
+        ),
+        buildJisonState(symbols6, action114),
+        buildJisonState(symbols6, action115),
+        buildJisonState(symbols6, action116),
+        buildJisonState(symbols6, action117),
+        buildJisonState(symbols5, action118),
+        mapOf(
+            1 to action119,
+            5 to action120,
+            9 to action119,
+            10 to action5,
+            16 to action6,
+            17 to action7,
+            19 to action8,
+            21 to action9,
+            23 to action10,
+            24 to action11,
+            25 to action12,
+            26 to action13,
+            27 to action14,
+            28 to action15,
+            29 to action16,
+            30 to action17,
+            31 to action18,
+            32 to action19,
+            33 to action20,
+            35 to action21,
+            37 to action22,
+            38 to action23,
+            42 to action24,
+            43 to action25,
+            46 to action26,
+            48 to action27,
+            51 to action28,
+            52 to action29,
+            54 to action30,
+            56 to action31,
+            57 to action32,
+            60 to action33,
+            62 to action34,
+            63 to action35,
+            64 to action36,
+            65 to action37,
+            75 to action38,
+            76 to action39,
+            78 to action40,
+            82 to action41,
+            83 to action42,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(87),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
+            5 to action121,
+            10 to action5,
+            16 to action6,
+            17 to action7,
+            19 to action8,
+            21 to action9,
+            23 to action10,
+            24 to action11,
+            25 to action12,
+            26 to action13,
+            27 to action14,
+            28 to action15,
+            29 to action16,
+            30 to action17,
+            31 to action18,
+            32 to action19,
+            33 to action20,
+            35 to action21,
+            37 to action22,
+            38 to action23,
+            42 to action24,
+            43 to action25,
+            46 to action26,
+            48 to action27,
+            51 to action28,
+            52 to action29,
+            54 to action30,
+            56 to action31,
+            57 to action32,
+            60 to action33,
+            62 to action34,
+            63 to action35,
+            64 to action36,
+            65 to action37,
+            75 to action38,
+            76 to action39,
+            78 to action40,
+            82 to action41,
+            83 to action42,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
+        ),
+        buildJisonState(symbols1, action122),
+        buildJisonState(symbols1, action123),
+        buildJisonState(symbols1, action124),
+        mapOf(
+            13 to action125,
+            16 to action6,
+            17 to action7,
+            19 to action126,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(133),
-            8 to ClassJisonCell.Reduce(133),
-            9 to ClassJisonCell.Reduce(133),
-            12 to ClassJisonCell.Reduce(133),
-            13 to ClassJisonCell.Reduce(133),
-            18 to ClassJisonCell.Reduce(133),
-            20 to ClassJisonCell.Reduce(133),
-            22 to ClassJisonCell.Reduce(133),
-            39 to ClassJisonCell.Reduce(133),
-            41 to ClassJisonCell.Reduce(133),
-            44 to ClassJisonCell.Reduce(133),
-            46 to ClassJisonCell.Reduce(133),
-            47 to ClassJisonCell.Reduce(133),
-            60 to ClassJisonCell.Reduce(133),
-            68 to ClassJisonCell.Reduce(133),
-            69 to ClassJisonCell.Reduce(133),
-            70 to ClassJisonCell.Reduce(133),
-            71 to ClassJisonCell.Reduce(133),
-            72 to ClassJisonCell.Reduce(133),
-            73 to ClassJisonCell.Reduce(133),
-            74 to ClassJisonCell.Reduce(133),
-            79 to ClassJisonCell.Reduce(133),
-            81 to ClassJisonCell.Reduce(133),
-            86 to ClassJisonCell.Reduce(133),
-            100 to ClassJisonCell.Reduce(133),
-            102 to ClassJisonCell.Reduce(133),
-            103 to ClassJisonCell.Reduce(133),
+            53 to action127,
+            66 to action73,
+            67 to action74,
+            68 to action75,
+            69 to action76,
+            70 to action77,
+            71 to action78,
+            72 to action79,
+            73 to action80,
+            74 to action81,
         ),
+        buildJisonState(symbols1, action128),
         mapOf(
-            1 to ClassJisonCell.Reduce(134),
-            8 to ClassJisonCell.Reduce(134),
-            9 to ClassJisonCell.Reduce(134),
-            12 to ClassJisonCell.Reduce(134),
-            13 to ClassJisonCell.Reduce(134),
-            18 to ClassJisonCell.Reduce(134),
-            20 to ClassJisonCell.Reduce(134),
-            22 to ClassJisonCell.Reduce(134),
-            39 to ClassJisonCell.Reduce(134),
-            41 to ClassJisonCell.Reduce(134),
-            44 to ClassJisonCell.Reduce(134),
-            46 to ClassJisonCell.Reduce(134),
-            47 to ClassJisonCell.Reduce(134),
-            60 to ClassJisonCell.Reduce(134),
-            68 to ClassJisonCell.Reduce(134),
-            69 to ClassJisonCell.Reduce(134),
-            70 to ClassJisonCell.Reduce(134),
-            71 to ClassJisonCell.Reduce(134),
-            72 to ClassJisonCell.Reduce(134),
-            73 to ClassJisonCell.Reduce(134),
-            74 to ClassJisonCell.Reduce(134),
-            79 to ClassJisonCell.Reduce(134),
-            81 to ClassJisonCell.Reduce(134),
-            86 to ClassJisonCell.Reduce(134),
-            100 to ClassJisonCell.Reduce(134),
-            102 to ClassJisonCell.Reduce(134),
-            103 to ClassJisonCell.Reduce(134),
+            67 to action129,
+            73 to action80,
+            74 to action81,
         ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(135),
-            8 to ClassJisonCell.Reduce(135),
-            9 to ClassJisonCell.Reduce(135),
-            12 to ClassJisonCell.Reduce(135),
-            13 to ClassJisonCell.Reduce(135),
-            18 to ClassJisonCell.Reduce(135),
-            20 to ClassJisonCell.Reduce(135),
-            22 to ClassJisonCell.Reduce(135),
-            39 to ClassJisonCell.Reduce(135),
-            41 to ClassJisonCell.Reduce(135),
-            44 to ClassJisonCell.Reduce(135),
-            46 to ClassJisonCell.Reduce(135),
-            47 to ClassJisonCell.Reduce(135),
-            60 to ClassJisonCell.Reduce(135),
-            68 to ClassJisonCell.Reduce(135),
-            69 to ClassJisonCell.Reduce(135),
-            70 to ClassJisonCell.Reduce(135),
-            71 to ClassJisonCell.Reduce(135),
-            72 to ClassJisonCell.Reduce(135),
-            73 to ClassJisonCell.Reduce(135),
-            74 to ClassJisonCell.Reduce(135),
-            79 to ClassJisonCell.Reduce(135),
-            81 to ClassJisonCell.Reduce(135),
-            86 to ClassJisonCell.Reduce(135),
-            100 to ClassJisonCell.Reduce(135),
-            102 to ClassJisonCell.Reduce(135),
-            103 to ClassJisonCell.Reduce(135),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(136),
-            8 to ClassJisonCell.Reduce(136),
-            9 to ClassJisonCell.Reduce(136),
-            12 to ClassJisonCell.Reduce(136),
-            13 to ClassJisonCell.Reduce(136),
-            18 to ClassJisonCell.Reduce(136),
-            20 to ClassJisonCell.Reduce(136),
-            22 to ClassJisonCell.Reduce(136),
-            39 to ClassJisonCell.Reduce(136),
-            41 to ClassJisonCell.Reduce(136),
-            44 to ClassJisonCell.Reduce(136),
-            46 to ClassJisonCell.Reduce(136),
-            47 to ClassJisonCell.Reduce(136),
-            60 to ClassJisonCell.Reduce(136),
-            68 to ClassJisonCell.Reduce(136),
-            69 to ClassJisonCell.Reduce(136),
-            70 to ClassJisonCell.Reduce(136),
-            71 to ClassJisonCell.Reduce(136),
-            72 to ClassJisonCell.Reduce(136),
-            73 to ClassJisonCell.Reduce(136),
-            74 to ClassJisonCell.Reduce(136),
-            79 to ClassJisonCell.Reduce(136),
-            81 to ClassJisonCell.Reduce(136),
-            86 to ClassJisonCell.Reduce(136),
-            100 to ClassJisonCell.Reduce(136),
-            102 to ClassJisonCell.Reduce(136),
-            103 to ClassJisonCell.Reduce(136),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(137),
-            8 to ClassJisonCell.Reduce(137),
-            9 to ClassJisonCell.Reduce(137),
-            12 to ClassJisonCell.Reduce(137),
-            13 to ClassJisonCell.Reduce(137),
-            20 to ClassJisonCell.Reduce(137),
-            22 to ClassJisonCell.Reduce(137),
-            39 to ClassJisonCell.Reduce(137),
-            41 to ClassJisonCell.Reduce(137),
-            44 to ClassJisonCell.Reduce(137),
-            46 to ClassJisonCell.Reduce(137),
-            68 to ClassJisonCell.Reduce(137),
-            69 to ClassJisonCell.Reduce(137),
-            70 to ClassJisonCell.Reduce(137),
-            71 to ClassJisonCell.Reduce(137),
-            72 to ClassJisonCell.Reduce(137),
-            73 to ClassJisonCell.Reduce(137),
-            74 to ClassJisonCell.Reduce(137),
-            79 to ClassJisonCell.Reduce(137),
-            81 to ClassJisonCell.Reduce(137),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(6),
-            5 to ClassJisonCell.Goto(88),
-            9 to ClassJisonCell.Reduce(6),
-            10 to ClassJisonCell.Goto(5),
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(21),
-            21 to ClassJisonCell.Goto(7),
-            23 to ClassJisonCell.Goto(8),
-            24 to ClassJisonCell.Goto(9),
-            25 to ClassJisonCell.Goto(10),
-            26 to ClassJisonCell.Goto(11),
-            27 to ClassJisonCell.Goto(12),
-            28 to ClassJisonCell.Goto(13),
-            29 to ClassJisonCell.Goto(14),
-            30 to ClassJisonCell.Goto(15),
-            31 to ClassJisonCell.Goto(16),
-            32 to ClassJisonCell.Goto(17),
-            33 to ClassJisonCell.Shift(18),
-            35 to ClassJisonCell.Shift(19),
-            37 to ClassJisonCell.Shift(20),
-            38 to ClassJisonCell.Goto(22),
-            42 to ClassJisonCell.Shift(41),
-            43 to ClassJisonCell.Goto(23),
-            46 to ClassJisonCell.Shift(26),
-            48 to ClassJisonCell.Shift(42),
-            51 to ClassJisonCell.Shift(24),
-            52 to ClassJisonCell.Shift(25),
-            54 to ClassJisonCell.Shift(32),
-            56 to ClassJisonCell.Shift(33),
-            57 to ClassJisonCell.Shift(34),
-            60 to ClassJisonCell.Shift(45),
-            62 to ClassJisonCell.Shift(35),
-            63 to ClassJisonCell.Shift(36),
-            64 to ClassJisonCell.Shift(37),
-            65 to ClassJisonCell.Shift(38),
-            75 to ClassJisonCell.Shift(27),
-            76 to ClassJisonCell.Shift(28),
-            78 to ClassJisonCell.Shift(29),
-            82 to ClassJisonCell.Shift(30),
-            83 to ClassJisonCell.Shift(31),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            5 to ClassJisonCell.Goto(89),
-            10 to ClassJisonCell.Goto(5),
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(21),
-            21 to ClassJisonCell.Goto(7),
-            23 to ClassJisonCell.Goto(8),
-            24 to ClassJisonCell.Goto(9),
-            25 to ClassJisonCell.Goto(10),
-            26 to ClassJisonCell.Goto(11),
-            27 to ClassJisonCell.Goto(12),
-            28 to ClassJisonCell.Goto(13),
-            29 to ClassJisonCell.Goto(14),
-            30 to ClassJisonCell.Goto(15),
-            31 to ClassJisonCell.Goto(16),
-            32 to ClassJisonCell.Goto(17),
-            33 to ClassJisonCell.Shift(18),
-            35 to ClassJisonCell.Shift(19),
-            37 to ClassJisonCell.Shift(20),
-            38 to ClassJisonCell.Goto(22),
-            42 to ClassJisonCell.Shift(41),
-            43 to ClassJisonCell.Goto(23),
-            46 to ClassJisonCell.Shift(26),
-            48 to ClassJisonCell.Shift(42),
-            51 to ClassJisonCell.Shift(24),
-            52 to ClassJisonCell.Shift(25),
-            54 to ClassJisonCell.Shift(32),
-            56 to ClassJisonCell.Shift(33),
-            57 to ClassJisonCell.Shift(34),
-            60 to ClassJisonCell.Shift(45),
-            62 to ClassJisonCell.Shift(35),
-            63 to ClassJisonCell.Shift(36),
-            64 to ClassJisonCell.Shift(37),
-            65 to ClassJisonCell.Shift(38),
-            75 to ClassJisonCell.Shift(27),
-            76 to ClassJisonCell.Shift(28),
-            78 to ClassJisonCell.Shift(29),
-            82 to ClassJisonCell.Shift(30),
-            83 to ClassJisonCell.Shift(31),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(20),
-            8 to ClassJisonCell.Reduce(20),
-            9 to ClassJisonCell.Reduce(20),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(31),
-            8 to ClassJisonCell.Reduce(31),
-            9 to ClassJisonCell.Reduce(31),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(32),
-            8 to ClassJisonCell.Reduce(32),
-            9 to ClassJisonCell.Reduce(32),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Shift(91),
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(90),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            53 to ClassJisonCell.Goto(92),
-            66 to ClassJisonCell.Goto(56),
-            67 to ClassJisonCell.Goto(57),
-            68 to ClassJisonCell.Shift(58),
-            69 to ClassJisonCell.Shift(59),
-            70 to ClassJisonCell.Shift(60),
-            71 to ClassJisonCell.Shift(61),
-            72 to ClassJisonCell.Shift(62),
-            73 to ClassJisonCell.Shift(63),
-            74 to ClassJisonCell.Shift(64),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(64),
-            8 to ClassJisonCell.Reduce(64),
-            9 to ClassJisonCell.Reduce(64),
-        ),
-        mapOf(
-            67 to ClassJisonCell.Goto(93),
-            73 to ClassJisonCell.Shift(63),
-            74 to ClassJisonCell.Shift(64),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Reduce(83),
-            60 to ClassJisonCell.Reduce(83),
-            66 to ClassJisonCell.Goto(94),
-            68 to ClassJisonCell.Shift(58),
-            69 to ClassJisonCell.Shift(59),
-            70 to ClassJisonCell.Shift(60),
-            71 to ClassJisonCell.Shift(61),
-            72 to ClassJisonCell.Shift(62),
-            86 to ClassJisonCell.Reduce(83),
-            100 to ClassJisonCell.Reduce(83),
-            102 to ClassJisonCell.Reduce(83),
-            103 to ClassJisonCell.Reduce(83),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Reduce(84),
-            60 to ClassJisonCell.Reduce(84),
-            73 to ClassJisonCell.Reduce(84),
-            74 to ClassJisonCell.Reduce(84),
-            86 to ClassJisonCell.Reduce(84),
-            100 to ClassJisonCell.Reduce(84),
-            102 to ClassJisonCell.Reduce(84),
-            103 to ClassJisonCell.Reduce(84),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Reduce(85),
-            60 to ClassJisonCell.Reduce(85),
-            73 to ClassJisonCell.Reduce(85),
-            74 to ClassJisonCell.Reduce(85),
-            86 to ClassJisonCell.Reduce(85),
-            100 to ClassJisonCell.Reduce(85),
-            102 to ClassJisonCell.Reduce(85),
-            103 to ClassJisonCell.Reduce(85),
-        ),
+        buildJisonState(symbols7, action130, mapOf(
+            66 to action131,
+            68 to action75,
+            69 to action76,
+            70 to action77,
+            71 to action78,
+            72 to action79,
+        )),
+        buildJisonState(symbols8, action132),
+        buildJisonState(symbols8, action133),
     )
 
     private fun stateChunk3(): Array<Map<Int, ClassJisonCell>> = arrayOf(
+        buildJisonState(symbols8, action134),
+        buildJisonState(symbols8, action135),
+        buildJisonState(symbols8, action136),
+        buildJisonState(symbols9, action137),
+        buildJisonState(symbols9, action138),
         mapOf(
-            13 to ClassJisonCell.Reduce(86),
-            60 to ClassJisonCell.Reduce(86),
-            73 to ClassJisonCell.Reduce(86),
-            74 to ClassJisonCell.Reduce(86),
-            86 to ClassJisonCell.Reduce(86),
-            100 to ClassJisonCell.Reduce(86),
-            102 to ClassJisonCell.Reduce(86),
-            103 to ClassJisonCell.Reduce(86),
+            8 to action139,
+            23 to action140,
+            24 to action141,
+            30 to action142,
+            38 to action23,
+            40 to action143,
+            42 to action24,
+            43 to action25,
+            48 to action27,
+            54 to action30,
+            56 to action31,
         ),
         mapOf(
-            13 to ClassJisonCell.Reduce(87),
-            60 to ClassJisonCell.Reduce(87),
-            73 to ClassJisonCell.Reduce(87),
-            74 to ClassJisonCell.Reduce(87),
-            86 to ClassJisonCell.Reduce(87),
-            100 to ClassJisonCell.Reduce(87),
-            102 to ClassJisonCell.Reduce(87),
-            103 to ClassJisonCell.Reduce(87),
+            16 to action144,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
         ),
         mapOf(
-            13 to ClassJisonCell.Reduce(88),
-            60 to ClassJisonCell.Reduce(88),
-            73 to ClassJisonCell.Reduce(88),
-            74 to ClassJisonCell.Reduce(88),
-            86 to ClassJisonCell.Reduce(88),
-            100 to ClassJisonCell.Reduce(88),
-            102 to ClassJisonCell.Reduce(88),
-            103 to ClassJisonCell.Reduce(88),
+            41 to action145,
+            45 to action146,
+            51 to action147,
         ),
         mapOf(
-            13 to ClassJisonCell.Reduce(89),
-            60 to ClassJisonCell.Reduce(89),
-            68 to ClassJisonCell.Reduce(89),
-            69 to ClassJisonCell.Reduce(89),
-            70 to ClassJisonCell.Reduce(89),
-            71 to ClassJisonCell.Reduce(89),
-            72 to ClassJisonCell.Reduce(89),
-            86 to ClassJisonCell.Reduce(89),
-            100 to ClassJisonCell.Reduce(89),
-            102 to ClassJisonCell.Reduce(89),
-            103 to ClassJisonCell.Reduce(89),
+            16 to action148,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
         ),
         mapOf(
-            13 to ClassJisonCell.Reduce(90),
-            60 to ClassJisonCell.Reduce(90),
-            68 to ClassJisonCell.Reduce(90),
-            69 to ClassJisonCell.Reduce(90),
-            70 to ClassJisonCell.Reduce(90),
-            71 to ClassJisonCell.Reduce(90),
-            72 to ClassJisonCell.Reduce(90),
-            86 to ClassJisonCell.Reduce(90),
-            100 to ClassJisonCell.Reduce(90),
-            102 to ClassJisonCell.Reduce(90),
-            103 to ClassJisonCell.Reduce(90),
+            47 to action149,
         ),
         mapOf(
-            8 to ClassJisonCell.Shift(96),
-            23 to ClassJisonCell.Goto(99),
-            24 to ClassJisonCell.Goto(97),
-            30 to ClassJisonCell.Goto(98),
-            38 to ClassJisonCell.Goto(22),
-            40 to ClassJisonCell.Goto(95),
-            42 to ClassJisonCell.Shift(41),
-            43 to ClassJisonCell.Goto(23),
-            48 to ClassJisonCell.Shift(42),
-            54 to ClassJisonCell.Shift(32),
-            56 to ClassJisonCell.Shift(33),
+            13 to action150,
         ),
         mapOf(
-            16 to ClassJisonCell.Goto(100),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
+            13 to action151,
         ),
         mapOf(
-            41 to ClassJisonCell.Shift(102),
-            45 to ClassJisonCell.Goto(101),
-            51 to ClassJisonCell.Shift(103),
+            79 to action152,
+            81 to action153,
         ),
         mapOf(
-            16 to ClassJisonCell.Goto(104),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
+            22 to action154,
+            50 to action155,
+            59 to action156,
+            60 to action157,
+            82 to action158,
+            84 to action159,
+            85 to action160,
+            86 to action161,
+            87 to action162,
+            88 to action163,
+            89 to action164,
+            90 to action165,
         ),
         mapOf(
-            47 to ClassJisonCell.Shift(105),
+            60 to action166,
         ),
         mapOf(
-            13 to ClassJisonCell.Shift(106),
+            13 to action96,
+            55 to action167,
         ),
+        buildJisonState(symbols10, action168),
+        buildJisonState(symbols10, action169),
         mapOf(
-            13 to ClassJisonCell.Shift(107),
+            22 to action154,
+            50 to action155,
+            59 to action170,
+            60 to action157,
+            61 to action171,
+            82 to action158,
+            84 to action159,
+            85 to action160,
+            86 to action161,
+            87 to action162,
+            88 to action163,
+            89 to action164,
+            90 to action165,
         ),
-        mapOf(
-            79 to ClassJisonCell.Shift(108),
-            81 to ClassJisonCell.Shift(109),
-        ),
-        mapOf(
-            22 to ClassJisonCell.Shift(121),
-            50 to ClassJisonCell.Shift(117),
-            59 to ClassJisonCell.Goto(110),
-            60 to ClassJisonCell.Shift(113),
-            82 to ClassJisonCell.Shift(119),
-            84 to ClassJisonCell.Goto(111),
-            85 to ClassJisonCell.Goto(112),
-            86 to ClassJisonCell.Shift(114),
-            87 to ClassJisonCell.Shift(115),
-            88 to ClassJisonCell.Shift(116),
-            89 to ClassJisonCell.Shift(118),
-            90 to ClassJisonCell.Shift(120),
-        ),
-        mapOf(
-            60 to ClassJisonCell.Shift(122),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Shift(77),
-            55 to ClassJisonCell.Goto(123),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(72),
-            8 to ClassJisonCell.Reduce(72),
-            9 to ClassJisonCell.Reduce(72),
-            41 to ClassJisonCell.Reduce(72),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(138),
-            8 to ClassJisonCell.Reduce(138),
-            9 to ClassJisonCell.Reduce(138),
-            41 to ClassJisonCell.Reduce(138),
-        ),
-        mapOf(
-            22 to ClassJisonCell.Shift(121),
-            50 to ClassJisonCell.Shift(117),
-            59 to ClassJisonCell.Goto(124),
-            60 to ClassJisonCell.Shift(113),
-            61 to ClassJisonCell.Shift(125),
-            82 to ClassJisonCell.Shift(119),
-            84 to ClassJisonCell.Goto(111),
-            85 to ClassJisonCell.Goto(112),
-            86 to ClassJisonCell.Shift(114),
-            87 to ClassJisonCell.Shift(115),
-            88 to ClassJisonCell.Shift(116),
-            89 to ClassJisonCell.Shift(118),
-            90 to ClassJisonCell.Shift(120),
-        ),
-        mapOf(
-            22 to ClassJisonCell.Reduce(74),
-            50 to ClassJisonCell.Reduce(74),
-            60 to ClassJisonCell.Reduce(74),
-            61 to ClassJisonCell.Reduce(74),
-            82 to ClassJisonCell.Reduce(74),
-            86 to ClassJisonCell.Reduce(74),
-            87 to ClassJisonCell.Reduce(74),
-            88 to ClassJisonCell.Reduce(74),
-            89 to ClassJisonCell.Reduce(74),
-            90 to ClassJisonCell.Reduce(74),
-        ),
+        buildJisonState(symbols11, action172),
     )
 
     private fun stateChunk4(): Array<Map<Int, ClassJisonCell>> = arrayOf(
         mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(126),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
+            16 to action6,
+            17 to action7,
+            19 to action173,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
+        ),
+        buildJisonState(symbols12, action174),
+        buildJisonState(symbols12, action175),
+        buildJisonState(symbols12, action176),
+        mapOf(
+            11 to action177,
+            12 to action178,
+            39 to action179,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(16),
-            8 to ClassJisonCell.Reduce(16),
-            9 to ClassJisonCell.Reduce(16),
-            12 to ClassJisonCell.Reduce(16),
-            13 to ClassJisonCell.Reduce(16),
-            22 to ClassJisonCell.Reduce(16),
-            39 to ClassJisonCell.Reduce(16),
-            41 to ClassJisonCell.Reduce(16),
-            44 to ClassJisonCell.Reduce(16),
-            46 to ClassJisonCell.Reduce(16),
-            68 to ClassJisonCell.Reduce(16),
-            69 to ClassJisonCell.Reduce(16),
-            70 to ClassJisonCell.Reduce(16),
-            71 to ClassJisonCell.Reduce(16),
-            72 to ClassJisonCell.Reduce(16),
-            73 to ClassJisonCell.Reduce(16),
-            74 to ClassJisonCell.Reduce(16),
-            79 to ClassJisonCell.Reduce(16),
-            81 to ClassJisonCell.Reduce(16),
+            12 to action180,
+            15 to action181,
+            16 to action111,
+            17 to action112,
+            18 to action182,
+            39 to action180,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(17),
-            8 to ClassJisonCell.Reduce(17),
-            9 to ClassJisonCell.Reduce(17),
-            12 to ClassJisonCell.Reduce(17),
-            13 to ClassJisonCell.Reduce(17),
-            22 to ClassJisonCell.Reduce(17),
-            39 to ClassJisonCell.Reduce(17),
-            41 to ClassJisonCell.Reduce(17),
-            44 to ClassJisonCell.Reduce(17),
-            46 to ClassJisonCell.Reduce(17),
-            68 to ClassJisonCell.Reduce(17),
-            69 to ClassJisonCell.Reduce(17),
-            70 to ClassJisonCell.Reduce(17),
-            71 to ClassJisonCell.Reduce(17),
-            72 to ClassJisonCell.Reduce(17),
-            73 to ClassJisonCell.Reduce(17),
-            74 to ClassJisonCell.Reduce(17),
-            79 to ClassJisonCell.Reduce(17),
-            81 to ClassJisonCell.Reduce(17),
+            12 to action183,
+            39 to action183,
+        ),
+        buildJisonState(symbols13, action184, mapOf(
+            11 to action185,
+            12 to action178,
+        )),
+        mapOf(
+            1 to action186,
+            9 to action186,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(18),
-            8 to ClassJisonCell.Reduce(18),
-            9 to ClassJisonCell.Reduce(18),
-            12 to ClassJisonCell.Reduce(18),
-            13 to ClassJisonCell.Reduce(18),
-            22 to ClassJisonCell.Reduce(18),
-            39 to ClassJisonCell.Reduce(18),
-            41 to ClassJisonCell.Reduce(18),
-            44 to ClassJisonCell.Reduce(18),
-            46 to ClassJisonCell.Reduce(18),
-            68 to ClassJisonCell.Reduce(18),
-            69 to ClassJisonCell.Reduce(18),
-            70 to ClassJisonCell.Reduce(18),
-            71 to ClassJisonCell.Reduce(18),
-            72 to ClassJisonCell.Reduce(18),
-            73 to ClassJisonCell.Reduce(18),
-            74 to ClassJisonCell.Reduce(18),
-            79 to ClassJisonCell.Reduce(18),
-            81 to ClassJisonCell.Reduce(18),
+            9 to action187,
+        ),
+        buildJisonState(symbols0, action188),
+        mapOf(
+            16 to action6,
+            17 to action7,
+            19 to action189,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            11 to ClassJisonCell.Goto(127),
-            12 to ClassJisonCell.Shift(128),
-            39 to ClassJisonCell.Reduce(36),
+            13 to action190,
+            16 to action6,
+            17 to action7,
+            19 to action191,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
+        ),
+        buildJisonState(symbols7, action192, mapOf(
+            66 to action193,
+            68 to action75,
+            69 to action76,
+            70 to action77,
+            71 to action78,
+            72 to action79,
+        )),
+        buildJisonState(symbols14, action194),
+        mapOf(
+            41 to action195,
         ),
         mapOf(
-            12 to ClassJisonCell.Reduce(9),
-            15 to ClassJisonCell.Goto(130),
-            16 to ClassJisonCell.Goto(85),
-            17 to ClassJisonCell.Goto(86),
-            18 to ClassJisonCell.Shift(129),
-            39 to ClassJisonCell.Reduce(9),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
+            23 to action140,
+            24 to action141,
+            30 to action142,
+            38 to action23,
+            40 to action196,
+            42 to action24,
+            43 to action25,
+            48 to action27,
+            54 to action30,
+            56 to action31,
         ),
         mapOf(
-            12 to ClassJisonCell.Reduce(10),
-            39 to ClassJisonCell.Reduce(10),
+            8 to action197,
+            41 to action198,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(55),
-            8 to ClassJisonCell.Reduce(55),
-            9 to ClassJisonCell.Reduce(55),
-            11 to ClassJisonCell.Goto(131),
-            12 to ClassJisonCell.Shift(128),
-            39 to ClassJisonCell.Reduce(55),
-            41 to ClassJisonCell.Reduce(55),
-            44 to ClassJisonCell.Reduce(55),
-            46 to ClassJisonCell.Reduce(55),
+            8 to action199,
+            41 to action200,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(7),
-            9 to ClassJisonCell.Reduce(7),
-        ),
-        mapOf(
-            9 to ClassJisonCell.Shift(132),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(67),
-            8 to ClassJisonCell.Reduce(67),
-            9 to ClassJisonCell.Reduce(67),
-            22 to ClassJisonCell.Reduce(67),
-        ),
-        mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(133),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Shift(135),
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(134),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Reduce(82),
-            60 to ClassJisonCell.Reduce(82),
-            66 to ClassJisonCell.Goto(136),
-            68 to ClassJisonCell.Shift(58),
-            69 to ClassJisonCell.Shift(59),
-            70 to ClassJisonCell.Shift(60),
-            71 to ClassJisonCell.Shift(61),
-            72 to ClassJisonCell.Shift(62),
-            86 to ClassJisonCell.Reduce(82),
-            100 to ClassJisonCell.Reduce(82),
-            102 to ClassJisonCell.Reduce(82),
-            103 to ClassJisonCell.Reduce(82),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Reduce(81),
-            60 to ClassJisonCell.Reduce(81),
-            86 to ClassJisonCell.Reduce(81),
-            100 to ClassJisonCell.Reduce(81),
-            102 to ClassJisonCell.Reduce(81),
-            103 to ClassJisonCell.Reduce(81),
-        ),
-        mapOf(
-            41 to ClassJisonCell.Shift(137),
-        ),
-        mapOf(
-            23 to ClassJisonCell.Goto(99),
-            24 to ClassJisonCell.Goto(97),
-            30 to ClassJisonCell.Goto(98),
-            38 to ClassJisonCell.Goto(22),
-            40 to ClassJisonCell.Goto(138),
-            42 to ClassJisonCell.Shift(41),
-            43 to ClassJisonCell.Goto(23),
-            48 to ClassJisonCell.Shift(42),
-            54 to ClassJisonCell.Shift(32),
-            56 to ClassJisonCell.Shift(33),
-        ),
-        mapOf(
-            8 to ClassJisonCell.Shift(139),
-            41 to ClassJisonCell.Reduce(38),
-        ),
-        mapOf(
-            8 to ClassJisonCell.Shift(140),
-            41 to ClassJisonCell.Reduce(41),
-        ),
-        mapOf(
-            8 to ClassJisonCell.Shift(141),
-            41 to ClassJisonCell.Reduce(44),
+            8 to action201,
+            41 to action202,
         ),
     )
 
     private fun stateChunk5(): Array<Map<Int, ClassJisonCell>> = arrayOf(
+        buildJisonState(symbols15, action203, mapOf(
+            39 to action204,
+        )),
         mapOf(
-            1 to ClassJisonCell.Reduce(48),
-            8 to ClassJisonCell.Reduce(48),
-            9 to ClassJisonCell.Reduce(48),
-            39 to ClassJisonCell.Shift(142),
-            41 to ClassJisonCell.Reduce(48),
+            41 to action205,
+        ),
+        buildJisonState(symbols10, action206),
+        mapOf(
+            41 to action207,
+            45 to action208,
+            51 to action147,
         ),
         mapOf(
-            41 to ClassJisonCell.Shift(143),
+            47 to action209,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(50),
-            8 to ClassJisonCell.Reduce(50),
-            9 to ClassJisonCell.Reduce(50),
-            41 to ClassJisonCell.Reduce(50),
+            16 to action6,
+            17 to action7,
+            19 to action210,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
+        buildJisonState(symbols16, action211, mapOf(
+            13 to action212,
+        )),
+        buildJisonState(symbols17, action213, mapOf(
+            13 to action214,
+            77 to action215,
+        )),
+        buildJisonState(symbols18, action216, mapOf(
+            13 to action217,
+            80 to action218,
+        )),
         mapOf(
-            41 to ClassJisonCell.Reduce(61),
-            45 to ClassJisonCell.Goto(144),
-            51 to ClassJisonCell.Shift(103),
+            13 to action219,
         ),
-        mapOf(
-            47 to ClassJisonCell.Shift(145),
-        ),
-        mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(146),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(91),
-            8 to ClassJisonCell.Reduce(91),
-            9 to ClassJisonCell.Reduce(91),
-            13 to ClassJisonCell.Shift(147),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(93),
-            8 to ClassJisonCell.Reduce(93),
-            9 to ClassJisonCell.Reduce(93),
-            13 to ClassJisonCell.Shift(149),
-            77 to ClassJisonCell.Shift(148),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(97),
-            8 to ClassJisonCell.Reduce(97),
-            9 to ClassJisonCell.Reduce(97),
-            13 to ClassJisonCell.Shift(150),
-            80 to ClassJisonCell.Shift(151),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Shift(152),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(105),
-            8 to ClassJisonCell.Reduce(105),
-            9 to ClassJisonCell.Reduce(105),
-            61 to ClassJisonCell.Shift(153),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(107),
-            8 to ClassJisonCell.Reduce(107),
-            9 to ClassJisonCell.Reduce(107),
-            22 to ClassJisonCell.Shift(121),
-            50 to ClassJisonCell.Shift(117),
-            60 to ClassJisonCell.Shift(113),
-            61 to ClassJisonCell.Reduce(107),
-            82 to ClassJisonCell.Shift(119),
-            85 to ClassJisonCell.Goto(154),
-            86 to ClassJisonCell.Shift(114),
-            87 to ClassJisonCell.Shift(115),
-            88 to ClassJisonCell.Shift(116),
-            89 to ClassJisonCell.Shift(118),
-            90 to ClassJisonCell.Shift(120),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(109),
-            8 to ClassJisonCell.Reduce(109),
-            9 to ClassJisonCell.Reduce(109),
-            22 to ClassJisonCell.Reduce(109),
-            50 to ClassJisonCell.Reduce(109),
-            60 to ClassJisonCell.Reduce(109),
-            61 to ClassJisonCell.Reduce(109),
-            82 to ClassJisonCell.Reduce(109),
-            86 to ClassJisonCell.Reduce(109),
-            87 to ClassJisonCell.Reduce(109),
-            88 to ClassJisonCell.Reduce(109),
-            89 to ClassJisonCell.Reduce(109),
-            90 to ClassJisonCell.Reduce(109),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(111),
-            8 to ClassJisonCell.Reduce(111),
-            9 to ClassJisonCell.Reduce(111),
-            22 to ClassJisonCell.Reduce(111),
-            50 to ClassJisonCell.Reduce(111),
-            60 to ClassJisonCell.Reduce(111),
-            61 to ClassJisonCell.Reduce(111),
-            82 to ClassJisonCell.Reduce(111),
-            86 to ClassJisonCell.Reduce(111),
-            87 to ClassJisonCell.Reduce(111),
-            88 to ClassJisonCell.Reduce(111),
-            89 to ClassJisonCell.Reduce(111),
-            90 to ClassJisonCell.Reduce(111),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(112),
-            8 to ClassJisonCell.Reduce(112),
-            9 to ClassJisonCell.Reduce(112),
-            22 to ClassJisonCell.Reduce(112),
-            50 to ClassJisonCell.Reduce(112),
-            60 to ClassJisonCell.Reduce(112),
-            61 to ClassJisonCell.Reduce(112),
-            82 to ClassJisonCell.Reduce(112),
-            86 to ClassJisonCell.Reduce(112),
-            87 to ClassJisonCell.Reduce(112),
-            88 to ClassJisonCell.Reduce(112),
-            89 to ClassJisonCell.Reduce(112),
-            90 to ClassJisonCell.Reduce(112),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(113),
-            8 to ClassJisonCell.Reduce(113),
-            9 to ClassJisonCell.Reduce(113),
-            22 to ClassJisonCell.Reduce(113),
-            50 to ClassJisonCell.Reduce(113),
-            60 to ClassJisonCell.Reduce(113),
-            61 to ClassJisonCell.Reduce(113),
-            82 to ClassJisonCell.Reduce(113),
-            86 to ClassJisonCell.Reduce(113),
-            87 to ClassJisonCell.Reduce(113),
-            88 to ClassJisonCell.Reduce(113),
-            89 to ClassJisonCell.Reduce(113),
-            90 to ClassJisonCell.Reduce(113),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(114),
-            8 to ClassJisonCell.Reduce(114),
-            9 to ClassJisonCell.Reduce(114),
-            22 to ClassJisonCell.Reduce(114),
-            50 to ClassJisonCell.Reduce(114),
-            60 to ClassJisonCell.Reduce(114),
-            61 to ClassJisonCell.Reduce(114),
-            82 to ClassJisonCell.Reduce(114),
-            86 to ClassJisonCell.Reduce(114),
-            87 to ClassJisonCell.Reduce(114),
-            88 to ClassJisonCell.Reduce(114),
-            89 to ClassJisonCell.Reduce(114),
-            90 to ClassJisonCell.Reduce(114),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(115),
-            8 to ClassJisonCell.Reduce(115),
-            9 to ClassJisonCell.Reduce(115),
-            22 to ClassJisonCell.Reduce(115),
-            50 to ClassJisonCell.Reduce(115),
-            60 to ClassJisonCell.Reduce(115),
-            61 to ClassJisonCell.Reduce(115),
-            82 to ClassJisonCell.Reduce(115),
-            86 to ClassJisonCell.Reduce(115),
-            87 to ClassJisonCell.Reduce(115),
-            88 to ClassJisonCell.Reduce(115),
-            89 to ClassJisonCell.Reduce(115),
-            90 to ClassJisonCell.Reduce(115),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(116),
-            8 to ClassJisonCell.Reduce(116),
-            9 to ClassJisonCell.Reduce(116),
-            22 to ClassJisonCell.Reduce(116),
-            50 to ClassJisonCell.Reduce(116),
-            60 to ClassJisonCell.Reduce(116),
-            61 to ClassJisonCell.Reduce(116),
-            82 to ClassJisonCell.Reduce(116),
-            86 to ClassJisonCell.Reduce(116),
-            87 to ClassJisonCell.Reduce(116),
-            88 to ClassJisonCell.Reduce(116),
-            89 to ClassJisonCell.Reduce(116),
-            90 to ClassJisonCell.Reduce(116),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(117),
-            8 to ClassJisonCell.Reduce(117),
-            9 to ClassJisonCell.Reduce(117),
-            22 to ClassJisonCell.Reduce(117),
-            50 to ClassJisonCell.Reduce(117),
-            60 to ClassJisonCell.Reduce(117),
-            61 to ClassJisonCell.Reduce(117),
-            82 to ClassJisonCell.Reduce(117),
-            86 to ClassJisonCell.Reduce(117),
-            87 to ClassJisonCell.Reduce(117),
-            88 to ClassJisonCell.Reduce(117),
-            89 to ClassJisonCell.Reduce(117),
-            90 to ClassJisonCell.Reduce(117),
-        ),
+        buildJisonState(symbols19, action220, mapOf(
+            61 to action221,
+        )),
+        buildJisonState(symbols20, action222, mapOf(
+            22 to action154,
+            50 to action155,
+            60 to action157,
+            82 to action158,
+            85 to action223,
+            86 to action161,
+            87 to action162,
+            88 to action163,
+            89 to action164,
+            90 to action165,
+        )),
+        buildJisonState(symbols21, action224),
+        buildJisonState(symbols21, action225),
+        buildJisonState(symbols21, action226),
+        buildJisonState(symbols21, action227),
+        buildJisonState(symbols21, action228),
+        buildJisonState(symbols21, action229),
+        buildJisonState(symbols21, action230),
+        buildJisonState(symbols21, action231),
     )
 
     private fun stateChunk6(): Array<Map<Int, ClassJisonCell>> = arrayOf(
+        buildJisonState(symbols21, action232),
+        buildJisonState(symbols21, action233),
+        buildJisonState(symbols1, action234),
+        buildJisonState(symbols10, action235),
+        buildJisonState(symbols19, action236, mapOf(
+            61 to action221,
+        )),
         mapOf(
-            1 to ClassJisonCell.Reduce(118),
-            8 to ClassJisonCell.Reduce(118),
-            9 to ClassJisonCell.Reduce(118),
-            22 to ClassJisonCell.Reduce(118),
-            50 to ClassJisonCell.Reduce(118),
-            60 to ClassJisonCell.Reduce(118),
-            61 to ClassJisonCell.Reduce(118),
-            82 to ClassJisonCell.Reduce(118),
-            86 to ClassJisonCell.Reduce(118),
-            87 to ClassJisonCell.Reduce(118),
-            88 to ClassJisonCell.Reduce(118),
-            89 to ClassJisonCell.Reduce(118),
-            90 to ClassJisonCell.Reduce(118),
+            60 to action237,
+        ),
+        buildJisonState(symbols12, action238),
+        mapOf(
+            39 to action239,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(119),
-            8 to ClassJisonCell.Reduce(119),
-            9 to ClassJisonCell.Reduce(119),
-            22 to ClassJisonCell.Reduce(119),
-            50 to ClassJisonCell.Reduce(119),
-            60 to ClassJisonCell.Reduce(119),
-            61 to ClassJisonCell.Reduce(119),
-            82 to ClassJisonCell.Reduce(119),
-            86 to ClassJisonCell.Reduce(119),
-            87 to ClassJisonCell.Reduce(119),
-            88 to ClassJisonCell.Reduce(119),
-            89 to ClassJisonCell.Reduce(119),
-            90 to ClassJisonCell.Reduce(119),
+            13 to action240,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(106),
-            8 to ClassJisonCell.Reduce(106),
-            9 to ClassJisonCell.Reduce(106),
+            15 to action241,
+            16 to action111,
+            17 to action112,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(71),
-            8 to ClassJisonCell.Reduce(71),
-            9 to ClassJisonCell.Reduce(71),
-            41 to ClassJisonCell.Reduce(71),
+            12 to action242,
+            39 to action242,
+        ),
+        buildJisonState(symbols3, action243),
+        mapOf(
+            1 to action244,
+        ),
+        buildJisonState(symbols0, action245),
+        buildJisonState(symbols0, action246),
+        mapOf(
+            16 to action6,
+            17 to action7,
+            19 to action247,
+            60 to action33,
+            86 to action43,
+            100 to action44,
+            102 to action45,
+            103 to action46,
+        ),
+        buildJisonState(symbols14, action248),
+        buildJisonState(symbols10, action249),
+        mapOf(
+            41 to action250,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(73),
-            8 to ClassJisonCell.Reduce(73),
-            9 to ClassJisonCell.Reduce(73),
-            61 to ClassJisonCell.Shift(153),
-        ),
-        mapOf(
-            60 to ClassJisonCell.Shift(155),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(14),
-            8 to ClassJisonCell.Reduce(14),
-            9 to ClassJisonCell.Reduce(14),
-            12 to ClassJisonCell.Reduce(14),
-            13 to ClassJisonCell.Reduce(14),
-            22 to ClassJisonCell.Reduce(14),
-            39 to ClassJisonCell.Reduce(14),
-            41 to ClassJisonCell.Reduce(14),
-            44 to ClassJisonCell.Reduce(14),
-            46 to ClassJisonCell.Reduce(14),
-            68 to ClassJisonCell.Reduce(14),
-            69 to ClassJisonCell.Reduce(14),
-            70 to ClassJisonCell.Reduce(14),
-            71 to ClassJisonCell.Reduce(14),
-            72 to ClassJisonCell.Reduce(14),
-            73 to ClassJisonCell.Reduce(14),
-            74 to ClassJisonCell.Reduce(14),
-            79 to ClassJisonCell.Reduce(14),
-            81 to ClassJisonCell.Reduce(14),
-        ),
-        mapOf(
-            39 to ClassJisonCell.Reduce(37),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Shift(156),
-        ),
-        mapOf(
-            15 to ClassJisonCell.Goto(157),
-            16 to ClassJisonCell.Goto(85),
-            17 to ClassJisonCell.Goto(86),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            12 to ClassJisonCell.Reduce(12),
-            39 to ClassJisonCell.Reduce(12),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(56),
-            8 to ClassJisonCell.Reduce(56),
-            9 to ClassJisonCell.Reduce(56),
-            39 to ClassJisonCell.Reduce(56),
-            41 to ClassJisonCell.Reduce(56),
-            44 to ClassJisonCell.Reduce(56),
-            46 to ClassJisonCell.Reduce(56),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(4),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(69),
-            8 to ClassJisonCell.Reduce(69),
-            9 to ClassJisonCell.Reduce(69),
-            22 to ClassJisonCell.Reduce(69),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(68),
-            8 to ClassJisonCell.Reduce(68),
-            9 to ClassJisonCell.Reduce(68),
-            22 to ClassJisonCell.Reduce(68),
-        ),
-        mapOf(
-            16 to ClassJisonCell.Goto(39),
-            17 to ClassJisonCell.Goto(40),
-            19 to ClassJisonCell.Goto(158),
-            60 to ClassJisonCell.Shift(45),
-            86 to ClassJisonCell.Shift(44),
-            100 to ClassJisonCell.Shift(46),
-            102 to ClassJisonCell.Shift(43),
-            103 to ClassJisonCell.Shift(47),
-        ),
-        mapOf(
-            13 to ClassJisonCell.Reduce(80),
-            60 to ClassJisonCell.Reduce(80),
-            86 to ClassJisonCell.Reduce(80),
-            100 to ClassJisonCell.Reduce(80),
-            102 to ClassJisonCell.Reduce(80),
-            103 to ClassJisonCell.Reduce(80),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(34),
-            8 to ClassJisonCell.Reduce(34),
-            9 to ClassJisonCell.Reduce(34),
-            41 to ClassJisonCell.Reduce(34),
-        ),
-        mapOf(
-            41 to ClassJisonCell.Shift(159),
-        ),
-        mapOf(
-            23 to ClassJisonCell.Goto(99),
-            24 to ClassJisonCell.Goto(97),
-            30 to ClassJisonCell.Goto(98),
-            38 to ClassJisonCell.Goto(22),
-            40 to ClassJisonCell.Goto(160),
-            41 to ClassJisonCell.Reduce(39),
-            42 to ClassJisonCell.Shift(41),
-            43 to ClassJisonCell.Goto(23),
-            48 to ClassJisonCell.Shift(42),
-            54 to ClassJisonCell.Shift(32),
-            56 to ClassJisonCell.Shift(33),
+            23 to action140,
+            24 to action141,
+            30 to action142,
+            38 to action23,
+            40 to action251,
+            41 to action252,
+            42 to action24,
+            43 to action25,
+            48 to action27,
+            54 to action30,
+            56 to action31,
         ),
     )
 
     private fun stateChunk7(): Array<Map<Int, ClassJisonCell>> = arrayOf(
         mapOf(
-            23 to ClassJisonCell.Goto(99),
-            24 to ClassJisonCell.Goto(97),
-            30 to ClassJisonCell.Goto(98),
-            38 to ClassJisonCell.Goto(22),
-            40 to ClassJisonCell.Goto(161),
-            41 to ClassJisonCell.Reduce(42),
-            42 to ClassJisonCell.Shift(41),
-            43 to ClassJisonCell.Goto(23),
-            48 to ClassJisonCell.Shift(42),
-            54 to ClassJisonCell.Shift(32),
-            56 to ClassJisonCell.Shift(33),
+            23 to action140,
+            24 to action141,
+            30 to action142,
+            38 to action23,
+            40 to action253,
+            41 to action254,
+            42 to action24,
+            43 to action25,
+            48 to action27,
+            54 to action30,
+            56 to action31,
         ),
         mapOf(
-            23 to ClassJisonCell.Goto(99),
-            24 to ClassJisonCell.Goto(97),
-            30 to ClassJisonCell.Goto(98),
-            38 to ClassJisonCell.Goto(22),
-            40 to ClassJisonCell.Goto(162),
-            41 to ClassJisonCell.Reduce(45),
-            42 to ClassJisonCell.Shift(41),
-            43 to ClassJisonCell.Goto(23),
-            48 to ClassJisonCell.Shift(42),
-            54 to ClassJisonCell.Shift(32),
-            56 to ClassJisonCell.Shift(33),
+            23 to action140,
+            24 to action141,
+            30 to action142,
+            38 to action23,
+            40 to action255,
+            41 to action256,
+            42 to action24,
+            43 to action25,
+            48 to action27,
+            54 to action30,
+            56 to action31,
         ),
         mapOf(
-            45 to ClassJisonCell.Goto(163),
-            51 to ClassJisonCell.Shift(103),
+            45 to action257,
+            51 to action147,
+        ),
+        buildJisonState(symbols10, action258),
+        mapOf(
+            41 to action259,
+        ),
+        buildJisonState(symbols15, action260, mapOf(
+            39 to action261,
+        )),
+        buildJisonState(symbols1, action262),
+        buildJisonState(symbols1, action263),
+        buildJisonState(symbols1, action264),
+        buildJisonState(symbols22, action265, mapOf(
+            77 to action266,
+        )),
+        buildJisonState(symbols1, action267),
+        buildJisonState(symbols16, action268, mapOf(
+            13 to action269,
+        )),
+        buildJisonState(symbols17, action270, mapOf(
+            13 to action271,
+            77 to action272,
+        )),
+        mapOf(
+            22 to action154,
+            50 to action155,
+            60 to action157,
+            82 to action158,
+            84 to action273,
+            85 to action160,
+            86 to action161,
+            87 to action162,
+            88 to action163,
+            89 to action164,
+            90 to action165,
+        ),
+        buildJisonState(symbols21, action274),
+        buildJisonState(symbols11, action275),
+        mapOf(
+            14 to action276,
         ),
         mapOf(
-            1 to ClassJisonCell.Reduce(49),
-            8 to ClassJisonCell.Reduce(49),
-            9 to ClassJisonCell.Reduce(49),
-            41 to ClassJisonCell.Reduce(49),
+            12 to action277,
+            39 to action277,
         ),
-        mapOf(
-            41 to ClassJisonCell.Reduce(62),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(52),
-            8 to ClassJisonCell.Reduce(52),
-            9 to ClassJisonCell.Reduce(52),
-            39 to ClassJisonCell.Shift(164),
-            41 to ClassJisonCell.Reduce(52),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(60),
-            8 to ClassJisonCell.Reduce(60),
-            9 to ClassJisonCell.Reduce(60),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(92),
-            8 to ClassJisonCell.Reduce(92),
-            9 to ClassJisonCell.Reduce(92),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(94),
-            8 to ClassJisonCell.Reduce(94),
-            9 to ClassJisonCell.Reduce(94),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(95),
-            8 to ClassJisonCell.Reduce(95),
-            9 to ClassJisonCell.Reduce(95),
-            77 to ClassJisonCell.Shift(165),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(98),
-            8 to ClassJisonCell.Reduce(98),
-            9 to ClassJisonCell.Reduce(98),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(99),
-            8 to ClassJisonCell.Reduce(99),
-            9 to ClassJisonCell.Reduce(99),
-            13 to ClassJisonCell.Shift(166),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(101),
-            8 to ClassJisonCell.Reduce(101),
-            9 to ClassJisonCell.Reduce(101),
-            13 to ClassJisonCell.Shift(168),
-            77 to ClassJisonCell.Shift(167),
-        ),
-        mapOf(
-            22 to ClassJisonCell.Shift(121),
-            50 to ClassJisonCell.Shift(117),
-            60 to ClassJisonCell.Shift(113),
-            82 to ClassJisonCell.Shift(119),
-            84 to ClassJisonCell.Goto(169),
-            85 to ClassJisonCell.Goto(112),
-            86 to ClassJisonCell.Shift(114),
-            87 to ClassJisonCell.Shift(115),
-            88 to ClassJisonCell.Shift(116),
-            89 to ClassJisonCell.Shift(118),
-            90 to ClassJisonCell.Shift(120),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(110),
-            8 to ClassJisonCell.Reduce(110),
-            9 to ClassJisonCell.Reduce(110),
-            22 to ClassJisonCell.Reduce(110),
-            50 to ClassJisonCell.Reduce(110),
-            60 to ClassJisonCell.Reduce(110),
-            61 to ClassJisonCell.Reduce(110),
-            82 to ClassJisonCell.Reduce(110),
-            86 to ClassJisonCell.Reduce(110),
-            87 to ClassJisonCell.Reduce(110),
-            88 to ClassJisonCell.Reduce(110),
-            89 to ClassJisonCell.Reduce(110),
-            90 to ClassJisonCell.Reduce(110),
-        ),
-        mapOf(
-            22 to ClassJisonCell.Reduce(75),
-            50 to ClassJisonCell.Reduce(75),
-            60 to ClassJisonCell.Reduce(75),
-            61 to ClassJisonCell.Reduce(75),
-            82 to ClassJisonCell.Reduce(75),
-            86 to ClassJisonCell.Reduce(75),
-            87 to ClassJisonCell.Reduce(75),
-            88 to ClassJisonCell.Reduce(75),
-            89 to ClassJisonCell.Reduce(75),
-            90 to ClassJisonCell.Reduce(75),
-        ),
-        mapOf(
-            14 to ClassJisonCell.Shift(170),
-        ),
-        mapOf(
-            12 to ClassJisonCell.Reduce(11),
-            39 to ClassJisonCell.Reduce(11),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(70),
-            8 to ClassJisonCell.Reduce(70),
-            9 to ClassJisonCell.Reduce(70),
-            22 to ClassJisonCell.Reduce(70),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(35),
-            8 to ClassJisonCell.Reduce(35),
-            9 to ClassJisonCell.Reduce(35),
-            41 to ClassJisonCell.Reduce(35),
-        ),
+        buildJisonState(symbols0, action278),
+        buildJisonState(symbols10, action279),
     )
 
     private fun stateChunk8(): Array<Map<Int, ClassJisonCell>> = arrayOf(
         mapOf(
-            41 to ClassJisonCell.Reduce(40),
+            41 to action280,
         ),
         mapOf(
-            41 to ClassJisonCell.Reduce(43),
+            41 to action281,
         ),
         mapOf(
-            41 to ClassJisonCell.Reduce(46),
+            41 to action282,
         ),
         mapOf(
-            41 to ClassJisonCell.Shift(171),
+            41 to action283,
         ),
         mapOf(
-            41 to ClassJisonCell.Shift(173),
-            45 to ClassJisonCell.Goto(172),
-            51 to ClassJisonCell.Shift(103),
+            41 to action284,
+            45 to action285,
+            51 to action147,
         ),
+        buildJisonState(symbols1, action286),
+        buildJisonState(symbols1, action287),
+        buildJisonState(symbols1, action288),
+        buildJisonState(symbols22, action289, mapOf(
+            77 to action290,
+        )),
+        buildJisonState(symbols20, action291, mapOf(
+            22 to action154,
+            50 to action155,
+            60 to action157,
+            82 to action158,
+            85 to action223,
+            86 to action161,
+            87 to action162,
+            88 to action163,
+            89 to action164,
+            90 to action165,
+        )),
+        buildJisonState(symbols3, action292),
+        buildJisonState(symbols10, action293),
         mapOf(
-            1 to ClassJisonCell.Reduce(96),
-            8 to ClassJisonCell.Reduce(96),
-            9 to ClassJisonCell.Reduce(96),
+            41 to action294,
         ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(100),
-            8 to ClassJisonCell.Reduce(100),
-            9 to ClassJisonCell.Reduce(100),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(102),
-            8 to ClassJisonCell.Reduce(102),
-            9 to ClassJisonCell.Reduce(102),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(103),
-            8 to ClassJisonCell.Reduce(103),
-            9 to ClassJisonCell.Reduce(103),
-            77 to ClassJisonCell.Shift(174),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(108),
-            8 to ClassJisonCell.Reduce(108),
-            9 to ClassJisonCell.Reduce(108),
-            22 to ClassJisonCell.Shift(121),
-            50 to ClassJisonCell.Shift(117),
-            60 to ClassJisonCell.Shift(113),
-            61 to ClassJisonCell.Reduce(108),
-            82 to ClassJisonCell.Shift(119),
-            85 to ClassJisonCell.Goto(154),
-            86 to ClassJisonCell.Shift(114),
-            87 to ClassJisonCell.Shift(115),
-            88 to ClassJisonCell.Shift(116),
-            89 to ClassJisonCell.Shift(118),
-            90 to ClassJisonCell.Shift(120),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(8),
-            8 to ClassJisonCell.Reduce(8),
-            9 to ClassJisonCell.Reduce(8),
-            39 to ClassJisonCell.Reduce(8),
-            41 to ClassJisonCell.Reduce(8),
-            44 to ClassJisonCell.Reduce(8),
-            46 to ClassJisonCell.Reduce(8),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(51),
-            8 to ClassJisonCell.Reduce(51),
-            9 to ClassJisonCell.Reduce(51),
-            41 to ClassJisonCell.Reduce(51),
-        ),
-        mapOf(
-            41 to ClassJisonCell.Shift(175),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(54),
-            8 to ClassJisonCell.Reduce(54),
-            9 to ClassJisonCell.Reduce(54),
-            41 to ClassJisonCell.Reduce(54),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(104),
-            8 to ClassJisonCell.Reduce(104),
-            9 to ClassJisonCell.Reduce(104),
-        ),
-        mapOf(
-            1 to ClassJisonCell.Reduce(53),
-            8 to ClassJisonCell.Reduce(53),
-            9 to ClassJisonCell.Reduce(53),
-            41 to ClassJisonCell.Reduce(53),
-        ),
+        buildJisonState(symbols10, action295),
+        buildJisonState(symbols1, action296),
+        buildJisonState(symbols10, action297),
     )
 
     val lexerPatterns: List<ClassJisonLexerPattern> = buildList {

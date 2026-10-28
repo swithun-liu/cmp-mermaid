@@ -79,10 +79,11 @@ geometry gates.
 | Deterministic SceneGraph replay | 441 passed, 0 mismatches |
 | Built-in theme matrix | 363/363 |
 | Separate generated Native stress inputs | 7,936 retained historical baseline |
-| Current 0.1.20 JVM tests | Core: 1,108 passed, 0 failed; Compose: 75 passed, 0 failed |
+| Current 0.1.21 JVM tests | Core: 1,123 passed, 0 failed; Compose: 75 passed, 0 failed |
+| Current Jison table equivalence | 12 families, 1,611 states and 20,857 entries match the official JavaScript tables, including key order |
 | Current container-width audit | 2 families, 3 unique sources, 9 configuration scenarios, 18 screenshots and 3 contact sheets; 0 Pass / 9 Review / 0 Fail |
-| Current 0.1.20 Wasm tests | Core: 1,106 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
-| Current 0.1.20 iOS Simulator Arm64 tests | Core: 1,106 passed, 0 failed; Compose: 76 passed, 0 failed |
+| Current 0.1.21 Wasm tests | Core: 1,109 passed, 0 failed; Compose: 62 passed, 0 failed; debug UI: historical 9 passed, 0 failed |
+| Current 0.1.21 iOS Simulator Arm64 tests | Core: 1,109 passed, 0 failed; Compose: 76 passed, 0 failed |
 | Current SVG rectangle / text-content audit | 79 audit tests passed; one rectangle reproduction and 13 fresh Class sources; genuine occlusion differences remain failures |
 | Current Class terminal audit | 13 sources, 26 screenshots, one contact sheet; detail/geometry/topology each pass 13; overall 13 Review for text/node and absolute endpoint differences |
 | Core production soak | Historical 415-case baseline: 2,075 renders, 674ms total, 1ms P95, 63,968 bytes retained heap |
@@ -93,6 +94,7 @@ geometry gates.
 | --- | --- |
 | **[Full diagram roadmap](docs/full-diagram-roadmap.md)** | Official 33-family inventory and current family-gate state |
 | **[Stability test report](docs/stability-report.md)** | Current decision, visual evidence, tests, soak metrics, runtime load evidence, and reproduction steps |
+| **[0.1.21 parser table size report](docs/jison-table-size-report.md)** | Same-consumer iOS measurements: framework-attributed file-backed symbols 38.86 MB → 35.24 MB; parser tables 5.20 MB → 1.57 MB |
 | **[0.1.20 edge-label repair](docs/label-compatibility-report.md)** | Final SVG-path label checks and upstream polyline midpoint semantics; unchanged 32-source evidence captured at 0.1.19 |
 | **[SVG rectangle occlusion audit](docs/rectangle-occlusion-audit.md)** | Recognizes Official's filled rectangle paths and preserves matching label occlusion; separate one-source reproduction |
 | **[0.1.20 Class terminal repair](docs/class-terminal-report.md)** | Full upstream terminal calculation, original occlusion and actual HTML text coverage; 13 fresh source-bound pairs |
@@ -250,16 +252,16 @@ above.
 
 | Consumer | Artifact |
 | --- | --- |
-| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.20` |
-| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.20` |
-| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.20` |
-| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.20` |
-| iOS binary | `CMPMermaid` CocoaPod `0.1.20` |
+| Current Kotlin Multiplatform | `io.github.swithun-liu:mermaid-core:0.1.21` |
+| Current Compose Multiplatform | `io.github.swithun-liu:mermaid-compose:0.1.21` |
+| Android with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-core-android-kotlin17:0.1.21` |
+| Android Compose with Kotlin `1.7.21` | `io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.21` |
+| iOS binary | `CMPMermaid` CocoaPod `0.1.21` |
 
 Current Kotlin Multiplatform projects:
 ```kotlin
 dependencies {
-    implementation("io.github.swithun-liu:mermaid-compose:0.1.20")
+    implementation("io.github.swithun-liu:mermaid-compose:0.1.21")
 }
 ```
 
@@ -273,7 +275,7 @@ Android projects pinned to Kotlin `1.7.21` use the isolated Android artifact:
 ```kotlin
 dependencies {
     implementation(
-        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.20",
+        "io.github.swithun-liu:mermaid-compose-android-kotlin17:0.1.21",
     )
 }
 ```
@@ -303,7 +305,7 @@ Kotlin `1.7.21` Android artifact.
 iOS projects can consume the precompiled static XCFramework through CocoaPods:
 
 ```ruby
-pod 'CMPMermaid', '0.1.20'
+pod 'CMPMermaid', '0.1.21'
 ```
 
 The binary exposes `CMPMermaidViewControllerFactory.makeViewController(...)`
